@@ -46,7 +46,7 @@ cp .env.example .env
 ## 当前进度
 
 - [x] 项目骨架初始化
-- [ ] section_parser 实现
+- [x] section_parser 实现
 - [ ] anchor_parser 实现
 - [ ] LLM-based paper_state 构造
 - [ ] rubric checklist 派生
