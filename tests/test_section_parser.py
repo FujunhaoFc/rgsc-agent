@@ -222,3 +222,127 @@ def test_real_paper_amun_has_intro_or_abstract():
     assert any(
         "abstract" in t or "introduction" in t for t in early_titles
     ), f"Expected Abstract or Introduction in first 8 sections, got: {early_titles}"
+
+
+# ===========================================================================
+# v2 additions: rules F, G, H + structured output
+# ===========================================================================
+
+
+from pipeline.paper_observer.section_parser import (
+    parse_paper_full,
+    parse_paper_md_full,
+)
+
+
+def test_rule_F_drops_paper_title():
+    """Rule F: paper title (unnumbered # before any true section) is dropped."""
+    md = (
+        "# Some Catchy Paper Title: With Subtitle\n"
+        "Author One, Author Two\n"
+        "\n"
+        "# Abstract\n"
+        "abstract body\n"
+        "# 1 Introduction\n"
+        "intro body\n"
+    )
+    full = parse_paper_full(md)
+    section_ids = [s["id"] for s in full["sections"]]
+    # Title should NOT appear in main sections
+    assert not any("catchy" in sid for sid in section_ids)
+    # Abstract and Intro should be there
+    assert "sec-abstract" in section_ids
+    assert "sec-1" in section_ids
+    # Title should appear in metadata_headings
+    metadata_titles = [m["title"].lower() for m in full["metadata_headings"]]
+    assert any("catchy" in t for t in metadata_titles)
+
+
+def test_rule_F_drops_author_line():
+    """Rule F: I0T-style author line marked as # is dropped."""
+    md = (
+        "# Paper Title\n"
+        "# Alice* Bob* Carol KAIST\n"     # I0T-style author "heading"
+        "# Abstract\n"
+        "body\n"
+        "# 1 Intro\n"
+        "body\n"
+    )
+    full = parse_paper_full(md)
+    section_ids = [s["id"] for s in full["sections"]]
+    assert "sec-abstract" in section_ids
+    assert "sec-1" in section_ids
+    # Neither title nor author line should appear in sections
+    assert not any("alice" in sid or "kaist" in sid for sid in section_ids)
+    assert not any("paper-title" in sid for sid in section_ids)
+
+
+def test_rule_G_filters_after_references():
+    """Rule G: unnumbered headings after References are filtered."""
+    md = (
+        "# Abstract\n"
+        "abs\n"
+        "# 1 Intro\n"
+        "body\n"
+        "# References\n"
+        "ref body\n"
+        "# Evaluation Task\n"             # Beyond-Ngram form pollution
+        "form body\n"
+        "# Coherence:\n"
+        "form body\n"
+        "# A Real Appendix\n"             # appendix should still pass!
+        "app body\n"
+    )
+    full = parse_paper_full(md)
+    section_ids = [s["id"] for s in full["sections"]]
+    # Form headings dropped
+    assert not any("evaluation-task" in sid for sid in section_ids)
+    assert not any("coherence" in sid for sid in section_ids)
+    # Appendix kept
+    assert "sec-A" in section_ids
+    # References itself kept
+    assert "sec-references" in section_ids
+    # Dropped ones go to metadata
+    metadata_titles = [m["title"].lower() for m in full["metadata_headings"]]
+    assert any("evaluation task" in t for t in metadata_titles)
+
+
+def test_rule_H_unnumbered_must_have_letter():
+    """Rule H: pure-punctuation or no-letter unnumbered titles dropped."""
+    md = (
+        "# ###\n"        # no letters
+        "junk\n"
+        "# Abstract\n"   # real
+        "body\n"
+        "# 1 Intro\n"
+        "body\n"
+    )
+    full = parse_paper_full(md)
+    section_ids = [s["id"] for s in full["sections"]]
+    assert "sec-abstract" in section_ids
+    # The "###" title should not have created a section
+    assert all("untitled" not in sid for sid in section_ids)
+
+
+def test_real_papers_metadata_extraction():
+    """All 5 real papers should have at least 1 metadata heading (paper title)."""
+    from pathlib import Path
+    project_root = Path(__file__).resolve().parents[1]
+    train_dir = project_root / "data" / "train_valid"
+    if not train_dir.exists():
+        import pytest as _p
+        _p.skip("train_valid not present")
+
+    for paper in ["AMUN", "Beyond-Ngram", "I0T", "INCLINE", "min-p"]:
+        full = parse_paper_md_full(str(train_dir / paper / "paper.md"))
+        # Each paper should have at least its title in metadata
+        assert len(full["metadata_headings"]) >= 1, (
+            f"{paper}: expected >=1 metadata heading, got 0"
+        )
+        # First section should be Abstract or Introduction (not paper title)
+        first_section = full["sections"][0]
+        first_lower = first_section["title"].lower()
+        assert (
+            "abstract" in first_lower
+            or "introduction" in first_lower
+        ), f"{paper}: first section should be Abstract/Intro, got: {first_section['title']}"
