@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.env
+data/train_valid/
+data/example_repo/
+data/official_tools/
+data/OFFICIAL_README.md
+outputs/*/
+!outputs/.gitkeep
+.DS_Store
+*.log
