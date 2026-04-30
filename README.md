@@ -47,7 +47,7 @@ cp .env.example .env
 
 - [x] 项目骨架初始化
 - [x] section_parser 实现
-- [ ] anchor_parser 实现
+- [x] anchor_parser 实现
 - [ ] LLM-based paper_state 构造
 - [ ] rubric checklist 派生
 - [ ] 5 篇论文上的覆盖率诊断
