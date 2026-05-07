@@ -1,0 +1,241 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "paper_state",
+  "description": "Structured representation of a research paper for the RGSC-Agent pipeline (NLPCC 2026 Task 11). v1 schema — used for Call 1 skeleton extraction.",
+  "type": "object",
+  "required": [
+    "paper_id",
+    "title",
+    "problem_definition",
+    "core_method",
+    "datasets",
+    "models",
+    "baselines",
+    "metrics",
+    "main_experiments",
+    "expected_claims",
+    "reproducibility_meta"
+  ],
+  "additionalProperties": true,
+  "properties": {
+
+    "paper_id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Short identifier matching the directory name (e.g. 'AMUN')."
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "venue": {
+      "type": ["string", "null"],
+      "description": "Venue and year if known, else null."
+    },
+    "code_url": {
+      "type": ["string", "null"],
+      "description": "Official code repo URL if mentioned in paper, else null."
+    },
+
+    "sections": {
+      "type": "array",
+      "description": "Filled by section_parser; not produced by LLM.",
+      "items": { "type": "object" }
+    },
+    "entities": {
+      "type": "object",
+      "description": "Filled by entity_extractor; not produced by LLM."
+    },
+
+    "problem_definition": {
+      "type": "object",
+      "required": ["task", "input", "output", "evaluation_target"],
+      "properties": {
+        "task":              { "type": "string", "minLength": 1 },
+        "input":             { "type": "string", "minLength": 1 },
+        "output":            { "type": "string", "minLength": 1 },
+        "evaluation_target": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
+
+    "core_method": {
+      "type": "object",
+      "required": ["name", "one_line", "atomic_steps", "settings", "key_hyperparameters"],
+      "properties": {
+        "name":     { "type": "string", "minLength": 1 },
+        "one_line": { "type": "string", "minLength": 1 },
+        "atomic_steps": {
+          "type": "array",
+          "description": "Filled by Call 2; in Call 1 output, expected to be [].",
+          "items": {
+            "type": "object",
+            "required": ["id", "description"],
+            "properties": {
+              "id":          { "type": "string" },
+              "description": { "type": "string" },
+              "depends_on_method":     { "type": ["string", "null"] },
+              "depends_on_equations":  {
+                "type": "array",
+                "items": { "type": "string" }
+              },
+              "source_section": { "type": ["string", "null"] }
+            },
+            "additionalProperties": true
+          }
+        },
+        "settings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "name", "description"],
+            "properties": {
+              "id":          { "type": "string" },
+              "name":        { "type": "string" },
+              "description": { "type": "string" }
+            },
+            "additionalProperties": true
+          }
+        },
+        "key_hyperparameters": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name", "value"],
+            "properties": {
+              "name":           { "type": "string" },
+              "value":          { "type": "string" },
+              "source_section": { "type": ["string", "null"] }
+            },
+            "additionalProperties": true
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+
+    "datasets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "used_for"],
+        "properties": {
+          "name":           { "type": "string" },
+          "splits":         { "type": "array", "items": { "type": "string" } },
+          "used_for":       { "type": "string" },
+          "source_section": { "type": ["string", "null"] }
+        },
+        "additionalProperties": true
+      }
+    },
+
+    "models": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "role"],
+        "properties": {
+          "name":           { "type": "string" },
+          "role":           { "type": "string" },
+          "source_section": { "type": ["string", "null"] }
+        },
+        "additionalProperties": true
+      }
+    },
+
+    "baselines": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "type"],
+        "properties": {
+          "name":           { "type": "string" },
+          "type":           { "type": "string" },
+          "reference":      { "type": ["string", "null"] },
+          "source_section": { "type": ["string", "null"] }
+        },
+        "additionalProperties": true
+      }
+    },
+
+    "metrics": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "definition"],
+        "properties": {
+          "name":           { "type": "string" },
+          "definition":     { "type": "string" },
+          "source_section": { "type": ["string", "null"] }
+        },
+        "additionalProperties": true
+      }
+    },
+
+    "main_experiments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "evidence_in_paper", "claim", "primary"],
+        "properties": {
+          "id":                { "type": "string" },
+          "evidence_in_paper": { "type": "string", "description": "table-N or figure-N id from entities[]" },
+          "primary":           { "type": "boolean" },
+          "claim":             { "type": "string" },
+          "axes": {
+            "description": "Filled by Call 2; null in Call 1 output.",
+            "oneOf": [
+              { "type": "null" },
+              {
+                "type": "object",
+                "properties": {
+                  "rows": { "type": "array", "items": { "type": "string" } },
+                  "cols": { "type": "array", "items": { "type": "string" } }
+                }
+              }
+            ]
+          },
+          "settings_used":  { "type": "array", "items": { "type": "string" } },
+          "datasets_used":  { "type": "array", "items": { "type": "string" } },
+          "models_used":    { "type": "array", "items": { "type": "string" } }
+        },
+        "additionalProperties": true
+      }
+    },
+
+    "expected_claims": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "claim_text", "evidence"],
+        "properties": {
+          "id":                { "type": "string" },
+          "claim_text":        { "type": "string" },
+          "evidence":          { "type": "string" },
+          "verification_hint": { "type": ["string", "null"] }
+        },
+        "additionalProperties": true
+      }
+    },
+
+    "reproducibility_meta": {
+      "type": "object",
+      "required": [
+        "needs_training",
+        "estimated_compute",
+        "data_availability",
+        "code_partial_available",
+        "minimum_viable_experiments"
+      ],
+      "properties": {
+        "needs_training":        { "type": "boolean" },
+        "estimated_compute":     { "type": "string" },
+        "data_availability":     { "type": "string", "enum": ["public", "partial", "private", "unknown"] },
+        "code_partial_available":{ "type": "boolean" },
+        "minimum_viable_experiments": { "type": "array", "items": { "type": "string" } },
+        "deferred_experiments":  { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": true
+    }
+  }
+}
