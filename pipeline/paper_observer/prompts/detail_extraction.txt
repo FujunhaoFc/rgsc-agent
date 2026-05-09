@@ -1,0 +1,81 @@
+You are continuing a paper extraction task. The skeleton paper_state is already filled. Your job is to add detail to TWO fields only:
+
+  (1) core_method.atomic_steps  (currently [])
+  (2) main_experiments[].axes  (currently null)
+
+# Output Format
+
+Output ONE valid JSON object. NO markdown code fences. NO commentary. Just raw JSON.
+
+The output must be the COMPLETE updated paper_state — keep ALL existing fields exactly as given, but with the two fields above filled in. Do NOT modify any other field.
+
+# Critical Rules
+
+1. NEVER fabricate. If the method section doesn't describe a step in detail, do not invent it. atomic_steps should reflect what the paper actually says.
+
+2. Section references in `source_section` must be from the SECTIONS list below.
+
+3. Method references in `depends_on_method` must be either the proposed method's name (from core_method.name) or a baseline name (from baselines[].name) or null.
+
+4. atomic_steps[].id must be unique strings like "step-1", "step-2", ...
+
+5. For axes:
+   - rows: the methods being compared (including the proposed method and all baselines that appear in this experiment)
+   - cols: the metrics or column headers as they appear in the paper's Table/Figure
+
+6. Output must validate against the same JSON schema. Specifically:
+   - atomic_steps is now a NON-EMPTY array of objects
+   - main_experiments[].axes is no longer null; it's an object with "rows" and "cols" arrays
+
+# Field Guidance for atomic_steps
+
+atomic_steps should capture the **operational steps** required to implement the proposed method, at the granularity of code modules. Aim for 6-15 entries per paper.
+
+Each step should be:
+- An atomic, implementable action (e.g. "Generate adversarial examples for the forget set using PGD-50 attack")
+- Mapped to a specific section if the paper details it (source_section)
+- Linked to dependencies if the step uses a known method or builds on a specific equation
+
+Examples of GOOD atomic_steps for a typical ML method:
+- "Compute adversarial examples for forget set using PGD attack with epsilon=8/255"
+- "Construct augmented training set: D_R ∪ D_F ∪ D_A"
+- "Initialize unlearned model from pretrained model weights"
+- "Fine-tune for 10 epochs using cross-entropy loss with learning rate scheduler"
+- "Evaluate on D_F, D_R, D_T to compute Unlearn/Retain/Test accuracy"
+- "Run RMIA attack to compute FT AUC"
+
+Examples of BAD atomic_steps (do NOT produce these):
+- "Implement the method" (too coarse)
+- "Train neural network" (no specifics)
+- "Cite related work" (not an implementation step)
+- "Discuss limitations" (not an action)
+
+# Field Guidance for main_experiments.axes
+
+For EACH main_experiment, fill in the axes:
+
+- "rows": list of method names that the experiment compares. This usually includes the proposed method and the baselines that appear in this Table/Figure. Use the names exactly as they appear in baselines[].name and core_method.name. If the table compares model variants instead of methods (e.g. ResNet-18 vs VGG19), list those.
+
+- "cols": list of column headers as they appear in the paper. Use metric names from metrics[].name when applicable.
+
+If a particular main_experiment's axes are unclear from the paper text given, use:
+  "axes": {"rows": [], "cols": []}
+…and the field will be filled in later. Do NOT make up rows/cols.
+
+# Existing paper_state (DO NOT modify other fields)
+
+{{existing_state_json}}
+
+# Paper content (middle portion, lines {{method_line_start}} to {{method_line_end}})
+
+This is the middle portion of the paper, which typically contains the method description and may also include parts of the experiments setup.
+
+---
+{{method_section}}
+---
+
+# Output
+
+Now output the COMPLETE paper_state with atomic_steps filled in (6-15 entries) and each main_experiments[].axes filled with the table/figure structure (or empty arrays if unclear).
+
+Output ONLY the JSON, no fences, no commentary.

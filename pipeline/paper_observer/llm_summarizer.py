@@ -203,8 +203,13 @@ def _call_llm(
         model=_model_name(),
         messages=messages,
         temperature=0.0,
-        max_tokens=8000,
+        max_tokens=16000,
     )
+    if resp is None or not resp.choices:
+        raise RuntimeError(
+            f"DeepSeek API returned empty response. "
+            f"resp={resp!r}"
+        )
     text = resp.choices[0].message.content or ""
     usage = {
         "input_tokens": resp.usage.prompt_tokens if resp.usage else None,
@@ -253,7 +258,7 @@ def extract_skeleton(
         # On retry, give the LLM its own previous output + the validation
         # errors, and ask it to FIX those specific issues rather than
         # regenerate from scratch.
-        if last_error and attempt > 1:
+        if last_error and attempt > 1 and not last_error.startswith("Failed to parse"):
             retry_prompt = (
                 "Your previous response had validation errors. "
                 "Below is your previous JSON output and the errors. "
@@ -304,6 +309,177 @@ def extract_skeleton(
         f"Last error:\n{last_error}"
     )
 
+# ----------------------------------------------------------------------------
+# Call 2: detail extraction
+# ----------------------------------------------------------------------------
+
+
+def _get_method_context(paper_md: str) -> Tuple[int, int, str]:
+    """Return middle 50% of paper as method context for Call 2.
+
+    Earlier versions tried to identify the method section by parsing
+    titles. The heuristics needed paper-specific exceptions and never
+    converged. The middle 50% of any reasonable ML paper reliably
+    contains the method section, so we just return that — no parsing.
+    """
+    md_lines = paper_md.splitlines()
+    n_lines = len(md_lines)
+    line_start = max(1, n_lines // 4)
+    line_end = (3 * n_lines) // 4
+    return line_start, line_end, "\n".join(md_lines[line_start - 1 : line_end])
+
+
+def render_detail_prompt(
+    existing_state: Dict,
+    paper_md: str,
+    sections: List[Dict],
+) -> Tuple[str, Dict]:
+    """Render Call 2 (detail extraction) prompt."""
+    template_path = PROMPT_DIR / "detail_extraction.txt"
+    template = template_path.read_text(encoding="utf-8")
+
+    state_for_llm = {k: v for k, v in existing_state.items() if k not in ("sections", "entities")}
+    existing_state_json = json.dumps(state_for_llm, indent=2, ensure_ascii=False)
+
+    line_start, line_end, method_section = _get_method_context(paper_md)
+
+    rendered = (
+        template
+        .replace("{{existing_state_json}}", existing_state_json)
+        .replace("{{method_line_start}}", str(line_start))
+        .replace("{{method_line_end}}", str(line_end))
+        .replace("{{method_section}}", method_section)
+    )
+
+    debug = {
+        "method_line_start": line_start,
+        "method_line_end": line_end,
+        "method_section_chars": len(method_section),
+    }
+    return rendered, debug
+
+
+def extract_detail(
+    skeleton_state: Dict,
+    paper_md: str,
+    sections: List[Dict],
+    *,
+    verbose: bool = True,
+) -> Tuple[Dict, List[Dict]]:
+    """Run Call 2: fill atomic_steps and axes in an existing skeleton paper_state.
+
+    Returns (updated_state, usage_log).
+    """
+    client = _make_client()
+    prompt, debug = render_detail_prompt(skeleton_state, paper_md, sections)
+
+    if verbose:
+        print(f"[detail] method section: lines {debug['method_line_start']}-{debug['method_line_end']}, "
+              f"{debug['method_section_chars']:,} chars")
+        print(f"[detail] prompt_chars={len(prompt):,}")
+
+    usage_log: List[Dict] = []
+    last_error: Optional[str] = None
+    last_raw_output: str = ""
+
+    for attempt in range(1, MAX_RETRIES + 1):
+        if verbose:
+            print(f"[detail] attempt {attempt}/{MAX_RETRIES}...")
+
+        if last_error and attempt > 1 and not last_error.startswith("Failed to parse"):
+            retry_prompt = (
+                "Your previous response had validation errors. "
+                "Below is your previous JSON output and the errors. "
+                "Output a CORRECTED full JSON object — keep all parts that "
+                "were correct, fix only the errors. Output ONLY the JSON.\n\n"
+                "=== Your previous output ===\n"
+                f"{last_raw_output}\n\n"
+                "=== Validation errors ===\n"
+                f"{last_error}\n\n"
+                "Now output the corrected full JSON:"
+            )
+            text, usage = _call_llm(client, retry_prompt)
+        else:
+            text, usage = _call_llm(client, prompt)
+
+        usage_log.append({**usage, "attempt": attempt})
+        last_raw_output = text
+        if verbose:
+            print(f"  → {usage['input_tokens']} in / {usage['output_tokens']} out tokens")
+
+        try:
+            state = _parse_json_loose(text)
+        except json.JSONDecodeError as e:
+            last_error = f"Failed to parse output as JSON: {e}\n(first 300 chars): {text[:300]}"
+            if verbose:
+                print(f"  ✗ JSON parse failed: {e}")
+            continue
+
+        # Re-inject sections and entities (LLM doesn't produce them)
+        state["sections"] = skeleton_state["sections"]
+        state["entities"] = skeleton_state["entities"]
+
+        # Validate
+        err = _validate_paper_state(state)
+
+        # Extra Call-2-specific checks beyond schema
+        extra_errors = []
+        if not state.get("core_method", {}).get("atomic_steps"):
+            extra_errors.append("core_method.atomic_steps must be a non-empty list (Call 2 must fill it)")
+        for i, exp in enumerate(state.get("main_experiments", [])):
+            if exp.get("axes") is None:
+                extra_errors.append(f"main_experiments[{i}].axes is null; Call 2 must fill it (use empty arrays if unclear)")
+
+        if err is None and not extra_errors:
+            if verbose:
+                print(f"  ✓ schema + Call-2 checks pass on attempt {attempt}")
+            return state, usage_log
+
+        combined = (err or "")
+        if extra_errors:
+            combined += "\nCall-2 specific:\n" + "\n".join(f"  - {e}" for e in extra_errors)
+        last_error = combined
+        if verbose:
+            print(f"  ✗ validation issues:")
+            for line in combined.splitlines()[:6]:
+                print(f"    {line}")
+        continue
+
+    raise RuntimeError(
+        f"Call 2 failed after {MAX_RETRIES} attempts.\n"
+        f"Last error:\n{last_error}"
+    )
+
+
+# ----------------------------------------------------------------------------
+# Combined driver: both Call 1 and Call 2
+# ----------------------------------------------------------------------------
+
+
+def extract_full_paper_state(
+    paper_id: str,
+    paper_md: str,
+    sections: List[Dict],
+    entities: Dict,
+    *,
+    verbose: bool = True,
+) -> Tuple[Dict, Dict]:
+    """Run Call 1 + Call 2 end-to-end. Returns (final_state, usage_breakdown)."""
+    print(f"=== Call 1 (skeleton) ===")
+    skeleton, call1_usage = extract_skeleton(
+        paper_id, paper_md, sections, entities, verbose=verbose,
+    )
+    print(f"\n=== Call 2 (detail) ===")
+    final, call2_usage = extract_detail(
+        skeleton, paper_md, sections, verbose=verbose,
+    )
+    breakdown = {
+        "call1_usage": call1_usage,
+        "call2_usage": call2_usage,
+    }
+    return final, breakdown
+
+
 
 # ----------------------------------------------------------------------------
 # Driver: run on AMUN
@@ -317,54 +493,72 @@ if __name__ == "__main__":
     from pipeline.paper_observer.section_parser import parse_paper_md
     from pipeline.paper_observer.entity_extractor import extract_from_paper
 
-    paper_name = sys.argv[1] if len(sys.argv) > 1 else "AMUN"
+    args = sys.argv[1:]
+    paper_name = args[0] if args else "AMUN"
+    mode = args[1] if len(args) > 1 else "full"   # "skeleton", "detail", "full"
 
     paper_path = PROJECT_ROOT / "data" / "train_valid" / paper_name / "paper.md"
     if not paper_path.exists():
         print(f"Paper not found: {paper_path}", file=sys.stderr)
         sys.exit(1)
 
-    print(f"=== Extracting skeleton paper_state for: {paper_name} ===\n")
-
+    print(f"=== Extracting paper_state for {paper_name} (mode={mode}) ===\n")
     paper_md = paper_path.read_text(encoding="utf-8")
     sections = parse_paper_md(str(paper_path))
     entities = extract_from_paper(str(paper_path), sections)
 
-    print(f"Loaded paper.md: {len(paper_md):,} chars")
-    print(f"Sections: {len(sections)}")
-    print(f"Entities: {sum(len(v) for v in entities.values())} "
-          f"(tables={len(entities['tables'])}, "
-          f"figures={len(entities['figures'])}, "
-          f"algorithms={len(entities['algorithms'])}, "
-          f"equations={len(entities['equations'])})")
-    print()
-
-    state, usage = extract_skeleton(paper_name, paper_md, sections, entities)
+    print(f"paper.md: {len(paper_md):,} chars")
+    print(f"sections: {len(sections)}, entities: "
+          f"{sum(len(v) for v in entities.values())}\n")
 
     out_dir = PROJECT_ROOT / "outputs" / paper_name
     out_dir.mkdir(parents=True, exist_ok=True)
-    out_path = out_dir / "paper_state.json"
-    out_path.write_text(
-        json.dumps(state, indent=2, ensure_ascii=False),
-        encoding="utf-8",
-    )
 
+    if mode == "skeleton":
+        state, usage = extract_skeleton(paper_name, paper_md, sections, entities)
+        out_path = out_dir / "paper_state.json"
+        usage_summary = {"call1_usage": usage}
+    elif mode == "detail":
+        existing_path = out_dir / "paper_state.json"
+        if not existing_path.exists():
+            print(f"No skeleton found at {existing_path}; run skeleton first")
+            sys.exit(1)
+        skeleton = json.loads(existing_path.read_text(encoding="utf-8"))
+        state, usage = extract_detail(skeleton, paper_md, sections)
+        out_path = out_dir / "paper_state.json"
+        usage_summary = {"call2_usage": usage}
+    else:
+        state, usage_summary = extract_full_paper_state(
+            paper_name, paper_md, sections, entities,
+        )
+        out_path = out_dir / "paper_state.json"
+
+    out_path.write_text(json.dumps(state, indent=2, ensure_ascii=False), encoding="utf-8")
     print(f"\n✓ Wrote: {out_path}")
-    print(f"  Total attempts: {len(usage)}")
-    total_in = sum(u["input_tokens"] or 0 for u in usage)
-    total_out = sum(u["output_tokens"] or 0 for u in usage)
-    print(f"  Total tokens: {total_in:,} in / {total_out:,} out")
 
-    # Quick summary of what was extracted
-    print("\n--- Extracted summary ---")
-    print(f"core_method.name:     {state['core_method']['name']}")
-    print(f"core_method.one_line: {state['core_method']['one_line']}")
-    print(f"datasets:             {len(state['datasets'])}  ({[d['name'] for d in state['datasets']]})")
-    print(f"models:               {len(state['models'])}  ({[m['name'] for m in state['models']]})")
-    print(f"baselines:            {len(state['baselines'])}  ({[b['name'] for b in state['baselines']]})")
-    print(f"metrics:              {len(state['metrics'])}  ({[m['name'] for m in state['metrics']]})")
+    # Summary
+    print("\n--- Final summary ---")
+    cm = state["core_method"]
+    print(f"core_method.name:     {cm['name']}")
+    print(f"core_method.one_line: {cm['one_line']}")
+    print(f"atomic_steps:         {len(cm['atomic_steps'])}")
+    if cm["atomic_steps"]:
+        print(f"  first step: {cm['atomic_steps'][0].get('description', '')[:80]}")
+        print(f"  last  step: {cm['atomic_steps'][-1].get('description', '')[:80]}")
+    print(f"datasets:             {len(state['datasets'])}")
+    print(f"models:               {len(state['models'])}")
+    print(f"baselines:            {len(state['baselines'])}")
+    print(f"metrics:              {len(state['metrics'])}")
     print(f"main_experiments:     {len(state['main_experiments'])}  "
-          f"primary={sum(1 for e in state['main_experiments'] if e.get('primary'))}")
+          f"(axes filled: {sum(1 for e in state['main_experiments'] if e.get('axes'))})")
     print(f"expected_claims:      {len(state['expected_claims'])}")
-    print(f"settings:             {len(state['core_method']['settings'])}")
-    print(f"key_hyperparameters:  {len(state['core_method']['key_hyperparameters'])}")
+    print(f"settings:             {len(cm['settings'])}")
+    print(f"key_hyperparameters:  {len(cm['key_hyperparameters'])}")
+
+    # Token total
+    print("\n--- Token usage ---")
+    for key, log in usage_summary.items():
+        if isinstance(log, list):
+            in_total = sum(u["input_tokens"] or 0 for u in log)
+            out_total = sum(u["output_tokens"] or 0 for u in log)
+            print(f"{key}: {in_total:,} in / {out_total:,} out, attempts={len(log)}")
