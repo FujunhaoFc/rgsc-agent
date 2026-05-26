@@ -216,7 +216,7 @@ def _gen_code_implementation(state: Dict) -> List[Dict]:
 def _gen_command_execution(state: Dict) -> List[Dict]:
     items: List[Dict] = []
 
-    # One item per main_experiment
+    # Per-experiment command execution
     for exp in state.get("main_experiments", []):
         exp_id = exp.get("id", "")
         evidence = exp.get("evidence_in_paper", "")
@@ -229,6 +229,62 @@ def _gen_command_execution(state: Dict) -> List[Dict]:
             "source": {"field": "main_experiments", "ref": exp_id},
             "anchor": evidence if evidence else None,
         })
+
+    # Process-level command execution (training, evaluation pipelines run successfully)
+    cm = state.get("core_method", {})
+    method_name = cm.get("name", "the method")
+
+    if state.get("reproducibility_meta", {}).get("needs_training", False):
+        items.append({
+            "type": "Command Execution",
+            "description": f"The training process for {method_name} has been successfully "
+                           f"executed and finished without errors.",
+            "source": {"field": "reproducibility_meta", "ref": "training"},
+            "anchor": None,
+        })
+
+    items.append({
+        "type": "Command Execution",
+        "description": f"The evaluation pipeline for {method_name} has been successfully "
+                       f"executed and finished without errors.",
+        "source": {"field": "reproducibility_meta", "ref": "evaluation"},
+        "anchor": None,
+    })
+
+    # Per-dataset evaluation command
+    for ds in state.get("datasets", []):
+        name = ds.get("name", "")
+        items.append({
+            "type": "Command Execution",
+            "description": f"The evaluation on the {name} dataset has been "
+                           f"successfully executed without errors.",
+            "source": {"field": "datasets", "ref": name},
+            "anchor": None,
+        })
+
+    # Per-baseline execution command
+    for b in state.get("baselines", []):
+        name = b.get("name", "")
+        items.append({
+            "type": "Command Execution",
+            "description": f"The {name} baseline has been successfully executed "
+                           f"and produced its expected output.",
+            "source": {"field": "baselines", "ref": name},
+            "anchor": None,
+        })
+
+    # Per-setting execution command (if multiple settings exist)
+    settings = cm.get("settings", [])
+    if len(settings) >= 2:
+        for setting in settings:
+            name = setting.get("name", "")
+            items.append({
+                "type": "Command Execution",
+                "description": f"The experiment under the '{name}' setting has been "
+                               f"successfully executed and produced its expected output.",
+                "source": {"field": "core_method.settings", "ref": setting.get("id")},
+                "anchor": None,
+            })
 
     return items
 

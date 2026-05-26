@@ -1,0 +1,187 @@
+[
+  {
+    "paper": "AMUN",
+    "by_type": {
+      "Paper Observation": {
+        "total": 13,
+        "hit": 13,
+        "partial": 0,
+        "miss": 0
+      },
+      "Plan Writing": {
+        "total": 27,
+        "hit": 7,
+        "partial": 13,
+        "miss": 7
+      },
+      "Code Implementation": {
+        "total": 28,
+        "hit": 10,
+        "partial": 12,
+        "miss": 6
+      },
+      "Command Execution": {
+        "total": 4,
+        "hit": 1,
+        "partial": 1,
+        "miss": 2
+      },
+      "Result Matching": {
+        "total": 5,
+        "hit": 5,
+        "partial": 0,
+        "miss": 0
+      }
+    },
+    "llm_input_tokens": 140016,
+    "llm_output_tokens": 66908
+  },
+  {
+    "paper": "Beyond-Ngram",
+    "by_type": {
+      "Paper Observation": {
+        "total": 8,
+        "hit": 7,
+        "partial": 1,
+        "miss": 0
+      },
+      "Plan Writing": {
+        "total": 22,
+        "hit": 13,
+        "partial": 3,
+        "miss": 6
+      },
+      "Code Implementation": {
+        "total": 21,
+        "hit": 9,
+        "partial": 5,
+        "miss": 7
+      },
+      "Command Execution": {
+        "total": 4,
+        "hit": 0,
+        "partial": 1,
+        "miss": 3
+      },
+      "Result Matching": {
+        "total": 7,
+        "hit": 7,
+        "partial": 0,
+        "miss": 0
+      }
+    },
+    "llm_input_tokens": 123503,
+    "llm_output_tokens": 53341
+  },
+  {
+    "paper": "I0T",
+    "by_type": {
+      "Paper Observation": {
+        "total": 10,
+        "hit": 9,
+        "partial": 1,
+        "miss": 0
+      },
+      "Plan Writing": {
+        "total": 32,
+        "hit": 7,
+        "partial": 15,
+        "miss": 10
+      },
+      "Code Implementation": {
+        "total": 31,
+        "hit": 5,
+        "partial": 13,
+        "miss": 13
+      },
+      "Command Execution": {
+        "total": 22,
+        "hit": 3,
+        "partial": 8,
+        "miss": 11
+      },
+      "Result Matching": {
+        "total": 7,
+        "hit": 7,
+        "partial": 0,
+        "miss": 0
+      }
+    },
+    "llm_input_tokens": 248446,
+    "llm_output_tokens": 129645
+  },
+  {
+    "paper": "INCLINE",
+    "by_type": {
+      "Paper Observation": {
+        "total": 13,
+        "hit": 13,
+        "partial": 0,
+        "miss": 0
+      },
+      "Plan Writing": {
+        "total": 22,
+        "hit": 6,
+        "partial": 11,
+        "miss": 5
+      },
+      "Code Implementation": {
+        "total": 22,
+        "hit": 6,
+        "partial": 6,
+        "miss": 10
+      },
+      "Command Execution": {
+        "total": 9,
+        "hit": 3,
+        "partial": 1,
+        "miss": 5
+      },
+      "Result Matching": {
+        "total": 10,
+        "hit": 10,
+        "partial": 0,
+        "miss": 0
+      }
+    },
+    "llm_input_tokens": 130644,
+    "llm_output_tokens": 53495
+  },
+  {
+    "paper": "min-p",
+    "by_type": {
+      "Paper Observation": {
+        "total": 8,
+        "hit": 8,
+        "partial": 0,
+        "miss": 0
+      },
+      "Plan Writing": {
+        "total": 31,
+        "hit": 4,
+        "partial": 13,
+        "miss": 14
+      },
+      "Code Implementation": {
+        "total": 25,
+        "hit": 2,
+        "partial": 7,
+        "miss": 16
+      },
+      "Command Execution": {
+        "total": 12,
+        "hit": 3,
+        "partial": 0,
+        "miss": 9
+      },
+      "Result Matching": {
+        "total": 6,
+        "hit": 6,
+        "partial": 0,
+        "miss": 0
+      }
+    },
+    "llm_input_tokens": 176982,
+    "llm_output_tokens": 110587
+  }
+]
