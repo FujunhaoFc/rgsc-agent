@@ -1,0 +1,66 @@
+You are refining a multi-stage execution plan for reproducing a scientific paper's experiments. The stages have already been determined by rule-based clustering. Your job is to ONLY (1) rewrite each stage's actions list, (2) reassign atomic_steps to the most appropriate stage, and (3) review depends_on relations.
+
+## Strict constraints
+
+You MUST NOT:
+- Delete, merge, add, or rename stages.
+- Modify stage_id, stage_type, name, or description of any stage.
+- Modify checklist_items_covered.
+- Reference any stage_id not present in the input.
+- Output any text outside the JSON object (no preamble, no markdown fences, no explanation).
+
+You MUST:
+- For each stage, output 3 to 8 actions. Each action is a concrete imperative sentence ≤25 words. Actions should describe what the Executor will actually do (write code, run command, download dataset), not paraphrase paper content.
+- Assign every atomic_step (by its index in the input list) to exactly one stage_id from the input.
+- Ensure depends_on forms a DAG. Use stage_id values from the input only.
+- Output strict JSON matching the schema below. No trailing commas. No comments.
+
+## Action quality guidance
+
+Bad (mechanical, paraphrases paper):
+- "Implement: Fine-tune ViT-B/32 CLIP on COCO using CyCLIP loss"
+- "Train BN layers"
+
+Good (executable, concrete):
+- "Load pretrained ViT-B/32 CLIP from openai/clip checkpoint into models/clip_base.pt"
+- "Implement CyCLIP loss in src/losses/cyclip.py with in-modal + cross-modal consistency terms"
+- "Run python train.py --config configs/cyclip_coco.yaml --epochs 10 --save models/cyclip_ft.pt"
+
+For stages whose stage_id ends in -plan / -impl / -exec (sub-stages from large-stage split), make actions clearly distinct:
+- -plan: design decisions, config files, architecture choices
+- -impl: code modules to write
+- -exec: commands to run
+
+## atomic_step assignment guidance
+
+- Training / fine-tuning / loss-computing steps → training stages (main-training preferred unless the step is clearly baseline-specific).
+- Data loading / preprocessing / tokenization steps → preprocessing (if exists) else setup.
+- Inference / sampling / decoding steps → inference stage (if exists) else training.
+- Evaluation / metric computation steps → evaluation.
+
+If unsure, leave the step on its current assignment.
+
+## Input
+
+```json
+{LLM_INPUT_JSON}
+```
+
+## Output schema
+
+```json
+{
+  "stage_refinements": [
+    {
+      "stage_id": "",
+      "actions": ["", "..."],
+      "depends_on": ["", "..."]
+    }
+  ],
+  "atomic_step_assignment": {
+    "": ""
+  }
+}
+```
+
+Output the JSON object only.

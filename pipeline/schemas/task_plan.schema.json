@@ -1,0 +1,124 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "task_plan",
+  "description": "Ordered stages of checklist items for the Executor/Verifier (Stage Planner output).",
+  "type": "object",
+  "required": ["paper_id", "stages", "execution_order", "coverage_stats"],
+  "additionalProperties": false,
+  "properties": {
+    "paper_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "stages": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 12,
+      "items": {
+        "type": "object",
+        "required": [
+          "stage_id",
+          "name",
+          "stage_type",
+          "description",
+          "actions",
+          "checklist_items_covered",
+          "depends_on",
+          "expected_artifacts"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "stage_id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Semantic kebab-case identifier, e.g. env-setup, main-training."
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Human-readable stage name."
+          },
+          "stage_type": {
+            "type": "string",
+            "enum": [
+              "setup",
+              "preprocessing",
+              "training",
+              "inference",
+              "evaluation",
+              "analysis",
+              "verification"
+            ]
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1
+          },
+          "actions": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "string", "minLength": 1 }
+          },
+          "checklist_items_covered": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 1 }
+          },
+          "depends_on": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 1 }
+          },
+          "expected_artifacts": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 1 }
+          }
+        }
+      }
+    },
+    "execution_order": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 12,
+      "items": { "type": "string", "minLength": 1 },
+      "description": "Ordered list of stage_ids defining execution sequence."
+    },
+    "coverage_stats": {
+      "type": "object",
+      "required": [
+        "total_derived_items",
+        "paper_observation_items_excluded",
+        "plannable_items",
+        "covered_items",
+        "coverage_ratio",
+        "uncovered_item_ids"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "total_derived_items": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "paper_observation_items_excluded": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "plannable_items": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "covered_items": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "coverage_ratio": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 1.0
+        },
+        "uncovered_item_ids": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    }
+  }
+}

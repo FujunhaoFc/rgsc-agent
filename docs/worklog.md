@@ -5,3 +5,11 @@
 格式：日期 | 任务 | 改了什么 | 关键结果
 ---
 2026-05-12 | Phase 1 closeout | derive_from_state.py 实现 + coverage_diagnostic.py 5 轮迭代 | overall recall 49.2% baseline
+2026-05-27 | Stage Planner 规则微调 | planner.py Steps 1-4 + 大 stage 拆分 + preprocessing 类型 | 5 篇平均 5.6 stages, coverage 100%, min-p has_training=False 正确, Beyond-Ngram baseline-training(60 items) 按 type 拆为 plan/impl/exec 三个子 stage
+2026-05-29 | Stage Planner Step 5 LLM refine 收尾 | planner.py: _llm_refine_stages() + _debug 落盘 + max_tokens 4000→8000; prompt stage_refinement.txt; tests/test_stage_planner.py (10 tests × 5 fixtures = 46 passed) | max_tokens=8000 决策依据: 4000 下 Beyond-Ngram (7 stages, 17k prompt) 100% 失败回退 rule-based, 8000 下 5/5 全过 (4/5 一次过, Beyond-Ngram 需 2-3 attempts). atomic_step_assignment 字段 LLM 实际输出为空, 分配信息隐式在 actions 里. 5 篇最终成本 ~$0.10 (含重跑). Phase 2 Stage Planner 总成本 ~$0.10, Phase 1 Paper Observer ~$0.80 + Coverage Diagnostic ~$6.20
+
+技术债务记录:
+- pipeline/stage_planner/planner.py 重复实现了 LLM client (复用了 paper_observer/llm_summarizer.py 的设计但没复用代码). Phase 3 启动时统一抽到 pipeline/common/llm.py
+
+技术债务记录:
+- pipeline/stage_planner/planner.py 重复实现了 LLM client (复用了 paper_observer/llm_summarizer.py 的设计但没复用代码). Phase 3 启动时统一抽到 pipeline/common/llm.py
