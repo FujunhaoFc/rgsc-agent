@@ -1,0 +1,288 @@
+{
+  "paper_id": "INCLINE",
+  "stages": [
+    {
+      "stage_id": "env-setup",
+      "name": "Environment Setup",
+      "stage_type": "setup",
+      "description": "Create repository, install dependencies, clone code",
+      "actions": [
+        "Create directory structure: mkdir -p src/ data/raw data/processed models/ configs/ results/",
+        "Install Python packages: pip install -r requirements.txt (torch transformers datasets sacrebleu etc.)",
+        "Download BLOOMZ-7B1-MT model from Hugging Face into models/bloomz-7b1-mt/",
+        "Download LLAMA3.1-8B-INSTRUCT model from Hugging Face into models/llama3.1-8b-instruct/ (if authorized)",
+        "Set environment variables for Hugging Face token and data paths in .env",
+        "Clone official code repository and copy any required external baselines (e.g., ITI, CAA) into external/"
+      ],
+      "checklist_items_covered": [
+        "derived-ce-011",
+        "derived-ce-012",
+        "derived-pw-030",
+        "derived-pw-031",
+        "derived-pw-032",
+        "derived-pw-033",
+        "derived-pw-034",
+        "derived-pw-035",
+        "derived-pw-036",
+        "derived-pw-037",
+        "derived-pw-038",
+        "derived-pw-039"
+      ],
+      "depends_on": [],
+      "expected_artifacts": [
+        "repo_skeleton",
+        "requirements.txt"
+      ]
+    },
+    {
+      "stage_id": "data-prep",
+      "name": "Data Preparation",
+      "stage_type": "preprocessing",
+      "description": "Download and preprocess all required datasets",
+      "actions": [
+        "Download News Commentary v16 (en-xx parallel) from WMT into data/raw/news_commentary/",
+        "Download CCAligned for all language pairs into data/raw/ccaligned/",
+        "Download Flores development set into data/raw/flores_dev/",
+        "Download XCOPA from Hugging Face datasets into data/raw/xcopa/",
+        "Download XStoryCloze from Hugging Face datasets into data/raw/xstorycloze/",
+        "Preprocess each dataset: tokenize, split into train/val/test, save as JSONL in data/processed/",
+        "Create a manifest CSV listing all processed files, language pairs, and splits"
+      ],
+      "checklist_items_covered": [
+        "derived-pw-018",
+        "derived-pw-019",
+        "derived-pw-020",
+        "derived-pw-021",
+        "derived-pw-022",
+        "derived-pw-023",
+        "derived-pw-024",
+        "derived-pw-025",
+        "derived-pw-026",
+        "derived-pw-027",
+        "derived-pw-028",
+        "derived-pw-029",
+        "derived-ce-013",
+        "derived-ce-014",
+        "derived-ce-015",
+        "derived-ce-016",
+        "derived-ce-017",
+        "derived-ce-018",
+        "derived-ce-019",
+        "derived-ce-020",
+        "derived-ce-021",
+        "derived-ce-022",
+        "derived-ce-023",
+        "derived-ce-024"
+      ],
+      "depends_on": [
+        "env-setup"
+      ],
+      "expected_artifacts": [
+        "downloaded_datasets"
+      ]
+    },
+    {
+      "stage_id": "baseline-training",
+      "name": "Train Baselines",
+      "stage_type": "training",
+      "description": "Implement and train all baseline methods for comparison",
+      "actions": [
+        "Create shared evaluation harness src/evaluation/evaluator.py with accuracy, EM, BLEU functions",
+        "Implement BASELINE: script src/baselines/baseline.py that runs original model without intervention",
+        "Implement MT-GOOGLE: script src/baselines/mt_google.py that calls Google Translate API then feeds English to LLM",
+        "Implement MT-LLM: script src/baselines/mt_llm.py that uses BLOOMZ-7B1-MT to translate inputs to English before LLM",
+        "Implement SFT: fine-tune BLOOMZ-7B1-MT on English XCOPA/XStoryCloze with LoRA via python train_sft.py --config configs/sft.yaml",
+        "Implement ITI: compute attention-head direction vectors for English shift, apply during inference in src/baselines/iti_intervene.py",
+        "Implement CAA: compute contrastive activation difference vectors, apply during inference in src/baselines/caa_intervene.py"
+      ],
+      "checklist_items_covered": [
+        "derived-pw-040",
+        "derived-pw-041",
+        "derived-pw-042",
+        "derived-pw-043",
+        "derived-pw-044",
+        "derived-pw-045",
+        "derived-ci-012",
+        "derived-ci-013",
+        "derived-ci-014",
+        "derived-ci-015",
+        "derived-ci-016",
+        "derived-ci-017",
+        "derived-ce-025",
+        "derived-ce-026",
+        "derived-ce-027",
+        "derived-ce-028",
+        "derived-ce-029",
+        "derived-ce-030"
+      ],
+      "depends_on": [
+        "env-setup",
+        "data-prep"
+      ],
+      "expected_artifacts": [
+        "baseline_models",
+        "baseline_checkpoints"
+      ]
+    },
+    {
+      "stage_id": "main-training",
+      "name": "Train Proposed Method",
+      "stage_type": "training",
+      "description": "Implement and train the proposed method",
+      "actions": [
+        "Write script src/data/sample_parallel.py to sample 500 parallel pairs per language, output data/alignment_samples.jsonl",
+        "Write script src/extract_hidden.py: run BLOOMZ-7B1-MT on each pair, save last-token hidden states for all layers to hidden_states.pt",
+        "Write script src/compute_alignment.py: load hidden_states.pt, compute W_l via least squares per layer, save alignment_matrices.pt",
+        "Implement src/intervention.py: class that loads alignment matrices and applies h_mix = h_s + α (W_l h_s) at each layer",
+        "Integrate intervention into generation: modify model forward in src/generate_with_intervention.py to replace hidden states during decoding",
+        "Write script src/tune_alpha.py: grid search α in [-1,1] on validation set per language, save best_alpha.json",
+        "Execute full setup pipeline: bash run_incline_setup.sh (sample, extract, compute alignment, tune alpha)"
+      ],
+      "checklist_items_covered": [
+        "derived-pw-001",
+        "derived-pw-002",
+        "derived-pw-003",
+        "derived-pw-004",
+        "derived-pw-005",
+        "derived-pw-006",
+        "derived-pw-007",
+        "derived-pw-008",
+        "derived-pw-009",
+        "derived-pw-010",
+        "derived-pw-011",
+        "derived-pw-012",
+        "derived-pw-013",
+        "derived-pw-014",
+        "derived-pw-015",
+        "derived-pw-016",
+        "derived-pw-017",
+        "derived-pw-049",
+        "derived-pw-050",
+        "derived-pw-051",
+        "derived-pw-052",
+        "derived-pw-053",
+        "derived-ci-001",
+        "derived-ci-002",
+        "derived-ci-003",
+        "derived-ci-004",
+        "derived-ci-005",
+        "derived-ci-006",
+        "derived-ci-007",
+        "derived-ci-008",
+        "derived-ci-009",
+        "derived-ci-010",
+        "derived-ci-011",
+        "derived-ce-031",
+        "derived-ce-032",
+        "derived-ce-033",
+        "derived-ce-034",
+        "derived-ce-035",
+        "derived-ce-036"
+      ],
+      "depends_on": [
+        "env-setup",
+        "data-prep"
+      ],
+      "expected_artifacts": [
+        "trained_model",
+        "training_logs"
+      ]
+    },
+    {
+      "stage_id": "evaluation",
+      "name": "Evaluation",
+      "stage_type": "evaluation",
+      "description": "Run evaluation on all experiments and compute metrics",
+      "actions": [
+        "Run baseline evaluations: python src/evaluate.py --method baseline --tasks xcopa,xstorycloze,mzsre,flores,wmt23,mgsm",
+        "Run all other baseline evaluations (MT-GOOGLE, MT-LLM, SFT, ITI, CAA) with respective configs",
+        "Run INCLINE evaluation: python src/evaluate.py --method incline --alignment alignment_matrices.pt --alphas best_alpha.json",
+        "Compute accuracy for XCOPA, XStoryCloze, XWinograd using sklearn.metrics.accuracy_score",
+        "Compute exact match (EM) for MZsRE by string matching predicted and ground truth answers",
+        "Compute BLEU for Flores and WMT23 using sacrebleu",
+        "Aggregate all results into summary CSV and LaTeX tables with scripts/aggregate_results.py",
+        "Generate comparison plots per task using scripts/plot_results.py, save in results/plots/"
+      ],
+      "checklist_items_covered": [
+        "derived-pw-046",
+        "derived-pw-047",
+        "derived-pw-048",
+        "derived-ci-018",
+        "derived-ci-019",
+        "derived-ci-020",
+        "derived-ce-001",
+        "derived-ce-002",
+        "derived-ce-003",
+        "derived-ce-004",
+        "derived-ce-005",
+        "derived-ce-006",
+        "derived-ce-007",
+        "derived-ce-008",
+        "derived-ce-009",
+        "derived-ce-010",
+        "derived-rm-001",
+        "derived-rm-002",
+        "derived-rm-003",
+        "derived-rm-004",
+        "derived-rm-005",
+        "derived-rm-006",
+        "derived-rm-007",
+        "derived-rm-008",
+        "derived-rm-009",
+        "derived-rm-010"
+      ],
+      "depends_on": [
+        "main-training",
+        "baseline-training"
+      ],
+      "expected_artifacts": [
+        "evaluation_results",
+        "metric_tables"
+      ]
+    },
+    {
+      "stage_id": "final-verification",
+      "name": "Final Verification",
+      "stage_type": "verification",
+      "description": "Compare reproduced results against paper claims",
+      "actions": [
+        "Load paper's reported metrics from paper_claims.json into a comparison dataframe",
+        "Compute relative differences for each method and metric: (reproduced - reported) / reported",
+        "Check whether differences lie within acceptable tolerance (±5%)",
+        "Generate verification report verification_report.md documenting agreement or discrepancies",
+        "If discrepancies exist, list potential causes (data splits, model versions, hyperparameter differences)",
+        "Archive all raw results, logs, and the verification report in final_verification/"
+      ],
+      "checklist_items_covered": [
+        "derived-rm-011",
+        "derived-rm-012",
+        "derived-rm-013",
+        "derived-rm-014",
+        "derived-rm-015",
+        "derived-rm-016"
+      ],
+      "depends_on": [
+        "evaluation"
+      ],
+      "expected_artifacts": [
+        "verification_report"
+      ]
+    }
+  ],
+  "execution_order": [
+    "env-setup",
+    "data-prep",
+    "baseline-training",
+    "main-training",
+    "evaluation",
+    "final-verification"
+  ],
+  "coverage_stats": {
+    "total_derived_items": 159,
+    "paper_observation_items_excluded": 34,
+    "plannable_items": 125,
+    "covered_items": 125,
+    "coverage_ratio": 1.0,
+    "uncovered_item_ids": []
+  }
+}

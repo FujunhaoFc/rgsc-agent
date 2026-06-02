@@ -1,0 +1,970 @@
+{
+  "paper_id": "Beyond-Ngram",
+  "title": "Beyond N-Grams: Rethinking Evaluation Metrics and Strategies for Multilingual Abstractive Summarization",
+  "venue": null,
+  "code_url": null,
+  "problem_definition": {
+    "task": "Systematically assess the reliability of automatic evaluation metrics for multilingual abstractive summarization by correlating metric scores with human judgments across diverse languages.",
+    "input": "Automatically generated summaries and gold reference summaries across eight languages.",
+    "output": "Pearson correlation coefficients between automatic metric scores and human Likert ratings, stratified by language typology and resource level.",
+    "evaluation_target": "Demonstrate the limitations of n-gram-based metrics for fusional languages, show the improvements from tokenization adaptations and neural metrics, and advocate for neural metrics specifically trained for evaluation tasks like COMET."
+  },
+  "core_method": {
+    "name": "Multilingual Metric Evaluation Protocol",
+    "one_line": "A large-scale human evaluation of GPT-3.5-Turbo and Gemini-generated summaries across eight languages from four typological families, collecting ~20,000 human annotations to correlate n-gram and neural metric scores with human judgments.",
+    "atomic_steps": [
+      {
+        "id": "step-1",
+        "description": "Select 8 languages from 4 typological families (Isolating: Chinese, Yoruba; Agglutinative: Japanese, Turkish; Low Fusional: Arabic, Spanish; High Fusional: Hebrew, Ukrainian) and group by resource level (High/Low) based on GPT-3 pre-training data proportions.",
+        "source_section": "sec-4.1",
+        "depends_on_method": null
+      },
+      {
+        "id": "step-2",
+        "description": "Sample 400 test articles and reference summaries per language from XL-Sum (for 7 languages) and HeSum (for Hebrew).",
+        "source_section": "sec-4.1",
+        "depends_on_method": null
+      },
+      {
+        "id": "step-3",
+        "description": "Generate system summaries for all 400 samples per language using GPT-3.5-Turbo-0125 and Gemini-1.0-Pro, yielding two summaries per article.",
+        "source_section": "sec-4.1",
+        "depends_on_method": null
+      },
+      {
+        "id": "step-4",
+        "description": "Corrupt a subset of generated summaries using language-specific strategies: for coherence, replace verbs with lemmas, replace conjunctions, or reorder non-adjacent sentences; for completeness, shuffle named entities with the same label and insert an irrelevant sentence from another article.",
+        "source_section": "sec-appendix-a.5",
+        "depends_on_method": null
+      },
+      {
+        "id": "step-5",
+        "description": "Design the MTurk annotation task: each HIT displays an article, a qualification question, and two system summaries (one from each model); annotators rate each summary on coherence and completeness using a 1–4 Likert scale, with descriptions of each quality criterion.",
+        "source_section": "sec-4.2",
+        "depends_on_method": null
+      },
+      {
+        "id": "step-6",
+        "description": "Recruit crowd workers via Amazon Mechanical Turk, with 3 annotators per summary pair, and collect ~20,000 total annotations (400 samples × 3 annotators × 2 models per language).",
+        "source_section": "sec-4.3",
+        "depends_on_method": null
+      },
+      {
+        "id": "step-7",
+        "description": "Aggregate human ratings per summary (e.g., mean of the 3 annotators) to obtain final Likert scores for coherence and completeness.",
+        "source_section": "sec-4.3",
+        "depends_on_method": null
+      },
+      {
+        "id": "step-8a",
+        "description": "Compute n-gram metric scores for all system summaries against gold references: ROUGE-1/2/3/L with default space tokenization, BLEU, CHRF, ROUGE variants with mBERT tokenizer and with language‑specific monolingual tokenizer, and BLEU computed on lemmatized text for fusional languages.",
+        "source_section": "sec-5.2",
+        "depends_on_method": null
+      },
+      {
+        "id": "step-8b",
+        "description": "Compute neural metric scores: MoverScore (with mBERT embeddings), BERTScore (using mBERT and language‑specific BERT models per language), Gemini-as-a-judge (Gemini 1.0 Pro with same prompt as annotators), and COMET (using wmt22‑comet‑da, excluding source input to adapt for summarization).",
+        "source_section": "sec-5.2",
+        "depends_on_method": null
+      },
+      {
+        "id": "step-9",
+        "description": "Calculate Pearson correlation coefficient between each metric’s scores and the aggregated human Likert ratings, separately for coherence and completeness.",
+        "source_section": "sec-6",
+        "depends_on_method": null
+      },
+      {
+        "id": "step-10",
+        "description": "Group correlations by typological family: Isolating (Chinese, Yoruba), Agglutinative (Japanese, Turkish), Low Fusional (Arabic, Spanish), High Fusional (Hebrew, Ukrainian); compute per‑family averages.",
+        "source_section": "sec-6",
+        "depends_on_method": null
+      },
+      {
+        "id": "step-11",
+        "description": "Group correlations by resource level: High (Chinese, Japanese, Arabic, Spanish) and Low (Yoruba, Turkish, Hebrew, Ukrainian) based on GPT-3 token proportions; compute per‑resource averages.",
+        "source_section": "sec-6",
+        "depends_on_method": null
+      },
+      {
+        "id": "step-12",
+        "description": "Report Pearson r values with statistical significance markers (*p<0.05, **p<0.01).",
+        "source_section": "sec-6",
+        "depends_on_method": null
+      }
+    ],
+    "settings": [
+      {
+        "id": "set-1",
+        "name": "full correlation analysis",
+        "description": "Evaluation of 21 automatic metrics (n-gram and neural, including tokenizer-adapted variants) using 400 samples per language, 3 annotators per summary, Likert-scale ratings for coherence and completeness, with Pearson correlation and p-value significance testing."
+      }
+    ],
+    "key_hyperparameters": [
+      {
+        "name": "samples_per_language",
+        "value": "400",
+        "source_section": "sec-4.1"
+      },
+      {
+        "name": "annotators_per_summary",
+        "value": "3",
+        "source_section": "sec-4.3"
+      },
+      {
+        "name": "rating_scale",
+        "value": "1-4 Likert",
+        "source_section": "sec-4.2"
+      },
+      {
+        "name": "quality_criteria",
+        "value": "Coherence, Completeness",
+        "source_section": "sec-4.2"
+      },
+      {
+        "name": "generation_models",
+        "value": "GPT-3.5-Turbo-0125, Gemini 1.0 Pro",
+        "source_section": "sec-4.1"
+      },
+      {
+        "name": "correlation_metric",
+        "value": "Pearson r",
+        "source_section": "sec-6"
+      },
+      {
+        "name": "significance_testing",
+        "value": "p-values reported (*p<0.05, **p<0.01)",
+        "source_section": "sec-6"
+      }
+    ]
+  },
+  "datasets": [
+    {
+      "name": "XL-Sum",
+      "splits": [
+        "test"
+      ],
+      "used_for": "source articles and reference summaries for summarization evaluation (Chinese, Yoruba, Japanese, Turkish, Arabic, Spanish, Ukrainian)",
+      "source_section": "sec-4.1"
+    },
+    {
+      "name": "HeSum",
+      "splits": [
+        "test"
+      ],
+      "used_for": "source articles and reference summaries for Hebrew summarization evaluation",
+      "source_section": "sec-4.1"
+    }
+  ],
+  "models": [
+    {
+      "name": "GPT-3.5-Turbo-0125",
+      "role": "summarizer",
+      "source_section": "sec-4.1"
+    },
+    {
+      "name": "Gemini-1.0-Pro",
+      "role": "summarizer",
+      "source_section": "sec-4.1"
+    }
+  ],
+  "baselines": [
+    {
+      "name": "ROUGE-1",
+      "type": "n-gram metric",
+      "reference": null,
+      "source_section": "sec-5.2"
+    },
+    {
+      "name": "ROUGE-2",
+      "type": "n-gram metric",
+      "reference": null,
+      "source_section": "sec-5.2"
+    },
+    {
+      "name": "ROUGE-3",
+      "type": "n-gram metric",
+      "reference": null,
+      "source_section": "sec-5.2"
+    },
+    {
+      "name": "ROUGE-L",
+      "type": "n-gram metric",
+      "reference": null,
+      "source_section": "sec-5.2"
+    },
+    {
+      "name": "BLEU",
+      "type": "n-gram metric",
+      "reference": null,
+      "source_section": "sec-5.2"
+    },
+    {
+      "name": "CHRF",
+      "type": "n-gram metric",
+      "reference": null,
+      "source_section": "sec-5.2"
+    },
+    {
+      "name": "ROUGE-1 (mBERT Tokenizer)",
+      "type": "n-gram metric with adapted tokenization",
+      "reference": null,
+      "source_section": "sec-5.2"
+    },
+    {
+      "name": "ROUGE-2 (mBERT Tokenizer)",
+      "type": "n-gram metric with adapted tokenization",
+      "reference": null,
+      "source_section": "sec-5.2"
+    },
+    {
+      "name": "ROUGE-3 (mBERT Tokenizer)",
+      "type": "n-gram metric with adapted tokenization",
+      "reference": null,
+      "source_section": "sec-5.2"
+    },
+    {
+      "name": "ROUGE-L (mBERT Tokenizer)",
+      "type": "n-gram metric with adapted tokenization",
+      "reference": null,
+      "source_section": "sec-5.2"
+    },
+    {
+      "name": "ROUGE-1 (Monolingual Tokenizer)",
+      "type": "n-gram metric with adapted tokenization",
+      "reference": null,
+      "source_section": "sec-5.2"
+    },
+    {
+      "name": "ROUGE-2 (Monolingual Tokenizer)",
+      "type": "n-gram metric with adapted tokenization",
+      "reference": null,
+      "source_section": "sec-5.2"
+    },
+    {
+      "name": "ROUGE-3 (Monolingual Tokenizer)",
+      "type": "n-gram metric with adapted tokenization",
+      "reference": null,
+      "source_section": "sec-5.2"
+    },
+    {
+      "name": "ROUGE-L (Monolingual Tokenizer)",
+      "type": "n-gram metric with adapted tokenization",
+      "reference": null,
+      "source_section": "sec-5.2"
+    },
+    {
+      "name": "BLEU (Lemmatized Form)",
+      "type": "n-gram metric with lemmatization",
+      "reference": null,
+      "source_section": "sec-5.2"
+    },
+    {
+      "name": "Gemini as a Judge",
+      "type": "LLM-as-a-judge",
+      "reference": null,
+      "source_section": "sec-5.2"
+    },
+    {
+      "name": "MoverScore",
+      "type": "neural metric (embedding-based)",
+      "reference": null,
+      "source_section": "sec-5.2"
+    },
+    {
+      "name": "BERTScore (mBERT)",
+      "type": "neural metric (embedding-based)",
+      "reference": null,
+      "source_section": "sec-5.2"
+    },
+    {
+      "name": "BERTScore (Monolingual)",
+      "type": "neural metric (embedding-based)",
+      "reference": null,
+      "source_section": "sec-5.2"
+    },
+    {
+      "name": "COMET",
+      "type": "neural metric (evaluation-trained)",
+      "reference": null,
+      "source_section": "sec-5.2"
+    }
+  ],
+  "metrics": [
+    {
+      "name": "Pearson correlation",
+      "definition": "Pearson correlation coefficient between automatic metric scores and human Likert-scale ratings for summary quality (coherence and completeness).",
+      "source_section": "sec-6"
+    }
+  ],
+  "main_experiments": [
+    {
+      "id": "exp-figure1",
+      "evidence_in_paper": "figure-1",
+      "primary": true,
+      "claim": "Elo score trends from human evaluation: Gemini-generated summaries rank higher for high-fusional and low-resource languages, while GPT summaries rank higher for high-resource languages.",
+      "axes": {
+        "rows": [
+          "Gemini",
+          "GPT-3.5-Turbo"
+        ],
+        "cols": [
+          "Elo score (per language)"
+        ]
+      },
+      "settings_used": [],
+      "datasets_used": [],
+      "models_used": [
+        "Gemini",
+        "GPT-3.5-Turbo"
+      ]
+    },
+    {
+      "id": "exp-table5",
+      "evidence_in_paper": "table-5",
+      "primary": true,
+      "claim": "Standard n-gram metrics show negative or weak correlations with human judgments for fusional languages (e.g., ROUGE-L -0.23 for high-fusional coherence), while neural metrics like COMET consistently achieve stronger correlations across all typological families (e.g., 0.35 high-fusional coherence).",
+      "axes": {
+        "rows": [
+          "ROUGE-1",
+          "ROUGE-2",
+          "ROUGE-3",
+          "ROUGE-L",
+          "BLEU",
+          "CHRF",
+          "ROUGE-1 (mBERT Tokenizer)",
+          "ROUGE-2 (mBERT Tokenizer)",
+          "ROUGE-3 (mBERT Tokenizer)",
+          "ROUGE-L (mBERT Tokenizer)",
+          "ROUGE-1 (Monolingual Tokenizer)",
+          "ROUGE-2 (Monolingual Tokenizer)",
+          "ROUGE-3 (Monolingual Tokenizer)",
+          "ROUGE-L (Monolingual Tokenizer)",
+          "BLEU (Lemmatized Form)",
+          "Gemini as a Judge",
+          "MoverScore",
+          "BERTScore (mBERT)",
+          "BERTScore (Monolingual)",
+          "COMET"
+        ],
+        "cols": [
+          "Coherence (Isolating)",
+          "Coherence (Agglutinative)",
+          "Coherence (Low Fusional)",
+          "Coherence (High Fusional)",
+          "Completeness (Isolating)",
+          "Completeness (Agglutinative)",
+          "Completeness (Low Fusional)",
+          "Completeness (High Fusional)"
+        ]
+      },
+      "settings_used": [
+        "set-1"
+      ],
+      "datasets_used": [
+        "XL-Sum",
+        "HeSum"
+      ],
+      "models_used": [
+        "GPT-3.5-Turbo-0125",
+        "Gemini-1.0-Pro"
+      ]
+    },
+    {
+      "id": "exp-table6",
+      "evidence_in_paper": "table-6",
+      "primary": true,
+      "claim": "COMET yields the highest correlation with human judgments across resource levels; monolingual BERTScore outperforms multilingual BERTScore for high-resource languages and low-resource completeness.",
+      "axes": {
+        "rows": [
+          "Gemini as a Judge",
+          "MoverScore",
+          "BERTScore (mBERT)",
+          "BERTScore (Monolingual)",
+          "COMET"
+        ],
+        "cols": [
+          "Coherence (High)",
+          "Coherence (Low)",
+          "Completeness (High)",
+          "Completeness (Low)"
+        ]
+      },
+      "settings_used": [
+        "set-1"
+      ],
+      "datasets_used": [
+        "XL-Sum",
+        "HeSum"
+      ],
+      "models_used": [
+        "GPT-3.5-Turbo-0125",
+        "Gemini-1.0-Pro"
+      ]
+    },
+    {
+      "id": "exp-perlang-corr-coh",
+      "evidence_in_paper": "table-10",
+      "primary": false,
+      "claim": "Per-language Pearson correlations for coherence confirm the negative trends in fusional languages (Hebrew, Arabic) and the benefits of adapted tokenization/neural metrics.",
+      "axes": {
+        "rows": [],
+        "cols": []
+      },
+      "settings_used": [
+        "set-1"
+      ],
+      "datasets_used": [
+        "XL-Sum",
+        "HeSum"
+      ],
+      "models_used": [
+        "GPT-3.5-Turbo-0125",
+        "Gemini-1.0-Pro"
+      ]
+    },
+    {
+      "id": "exp-perlang-corr-com",
+      "evidence_in_paper": "table-11",
+      "primary": false,
+      "claim": "Per-language completeness correlations mirror the typological patterns and show that lemmatized BLEU improves high-fusional correlations dramatically (e.g., from -0.10 to 0.40).",
+      "axes": {
+        "rows": [],
+        "cols": []
+      },
+      "settings_used": [
+        "set-1"
+      ],
+      "datasets_used": [
+        "XL-Sum",
+        "HeSum"
+      ],
+      "models_used": [
+        "GPT-3.5-Turbo-0125",
+        "Gemini-1.0-Pro"
+      ]
+    }
+  ],
+  "expected_claims": [
+    {
+      "id": "claim-1",
+      "claim_text": "Standard ROUGE-L yields negative Pearson correlation for high-fusional languages: -0.23 for coherence and -0.18 for completeness.",
+      "evidence": "table-5",
+      "verification_hint": "Check row 5 (ROUGE-L) under coherence and completeness columns for High Fusional; both should be negative as stated."
+    },
+    {
+      "id": "claim-2",
+      "claim_text": "Using the mBERT tokenizer with ROUGE-L changes the correlation for high-fusional languages from negative to positive: -0.23 → 0.08 (coherence) and -0.18 → 0.12 (completeness).",
+      "evidence": "table-5",
+      "verification_hint": "Compare row 5 (ROUGE-L) and row 11 (ROUGE-L mBERT) for High Fusional; verify the sign change and exact values."
+    },
+    {
+      "id": "claim-3",
+      "claim_text": "COMET achieves the highest correlation among all metrics across typological families, with 0.35 for high-fusional coherence and 0.24 for completeness.",
+      "evidence": "table-5",
+      "verification_hint": "Check row 21 (COMET) across all family columns; confirm 0.35 is the highest in high-fusional coherence and 0.24 in completeness."
+    },
+    {
+      "id": "claim-4",
+      "claim_text": "Applying BLEU on lemmatized text improves correlation for high-fusional completeness from -0.10 to 0.40.",
+      "evidence": "table-5",
+      "verification_hint": "Compare row 6 (BLEU) and row 16 (BLEU Lemmatized) under completeness High Fusional; verify the increase to 0.40."
+    },
+    {
+      "id": "claim-5",
+      "claim_text": "Monolingual BERTScore outperforms multilingual BERTScore for high-resource languages (coherence 0.27 vs 0.23) and low-resource completeness (0.21 vs 0.15).",
+      "evidence": "table-6",
+      "verification_hint": "Check BERTScore (mBERT) and BERTScore (Monolingual) rows for High resource coherence and Low resource completeness; verify the stated values."
+    }
+  ],
+  "reproducibility_meta": {
+    "needs_training": false,
+    "estimated_compute": "CPU only, minutes for metric computation and correlation analysis; crowdsourcing annotation time (multiple days)",
+    "data_availability": "unknown",
+    "code_partial_available": false,
+    "minimum_viable_experiments": [
+      "exp-table5",
+      "exp-table6"
+    ],
+    "deferred_experiments": [
+      "exp-perlang-corr-coh",
+      "exp-perlang-corr-com"
+    ]
+  },
+  "sections": [
+    {
+      "id": "sec-abstract",
+      "title": "Abstract",
+      "level": 1,
+      "line_start": 9,
+      "line_end": 12,
+      "char_start": 249,
+      "char_end": 1828,
+      "parent": null
+    },
+    {
+      "id": "sec-1",
+      "title": "1 Introduction",
+      "level": 1,
+      "line_start": 13,
+      "line_end": 26,
+      "char_start": 1828,
+      "char_end": 7354,
+      "parent": null
+    },
+    {
+      "id": "sec-2",
+      "title": "2 Limitations of Current Generation Evaluation in Diverse Languages",
+      "level": 1,
+      "line_start": 27,
+      "line_end": 44,
+      "char_start": 7354,
+      "char_end": 13343,
+      "parent": null
+    },
+    {
+      "id": "sec-2.1",
+      "title": "2.1 The Limitations and Shortcomings of Current Generation Evaluation",
+      "level": 2,
+      "line_start": 29,
+      "line_end": 34,
+      "char_start": 7425,
+      "char_end": 9900,
+      "parent": "sec-2"
+    },
+    {
+      "id": "sec-2.2",
+      "title": "2.2 Generation Evaluation in the Face of Language Diversity",
+      "level": 2,
+      "line_start": 35,
+      "line_end": 44,
+      "char_start": 9900,
+      "char_end": 13343,
+      "parent": "sec-2"
+    },
+    {
+      "id": "sec-3",
+      "title": "3 Our Approach: Systematic Evaluation of Summarization Across Languages",
+      "level": 1,
+      "line_start": 45,
+      "line_end": 52,
+      "char_start": 13343,
+      "char_end": 15375,
+      "parent": null
+    },
+    {
+      "id": "sec-4",
+      "title": "4 Data Collection",
+      "level": 1,
+      "line_start": 53,
+      "line_end": 88,
+      "char_start": 15375,
+      "char_end": 21907,
+      "parent": null
+    },
+    {
+      "id": "sec-4.1",
+      "title": "4.1 The Generated Summaries",
+      "level": 2,
+      "line_start": 63,
+      "line_end": 70,
+      "char_start": 16529,
+      "char_end": 17452,
+      "parent": "sec-4"
+    },
+    {
+      "id": "sec-4.2",
+      "title": "4.2 The Task: Ranking the Generated Summaries",
+      "level": 2,
+      "line_start": 71,
+      "line_end": 82,
+      "char_start": 17452,
+      "char_end": 20831,
+      "parent": "sec-4"
+    },
+    {
+      "id": "sec-4.3",
+      "title": "4.3 Ensuring High Annotation Consistency",
+      "level": 2,
+      "line_start": 83,
+      "line_end": 88,
+      "char_start": 20831,
+      "char_end": 21907,
+      "parent": "sec-4"
+    },
+    {
+      "id": "sec-5",
+      "title": "5 Correlation Analysis Settings",
+      "level": 1,
+      "line_start": 89,
+      "line_end": 123,
+      "char_start": 21907,
+      "char_end": 34051,
+      "parent": null
+    },
+    {
+      "id": "sec-5.1",
+      "title": "5.1 Data Analysis",
+      "level": 2,
+      "line_start": 93,
+      "line_end": 111,
+      "char_start": 22152,
+      "char_end": 27628,
+      "parent": "sec-5"
+    },
+    {
+      "id": "sec-5.2",
+      "title": "5.2 Assessed Metrics for Summarization",
+      "level": 2,
+      "line_start": 112,
+      "line_end": 123,
+      "char_start": 27628,
+      "char_end": 34051,
+      "parent": "sec-5"
+    },
+    {
+      "id": "sec-6",
+      "title": "6 Results and Analysis",
+      "level": 1,
+      "line_start": 124,
+      "line_end": 145,
+      "char_start": 34051,
+      "char_end": 40170,
+      "parent": null
+    },
+    {
+      "id": "sec-7",
+      "title": "7 Conclusion",
+      "level": 1,
+      "line_start": 146,
+      "line_end": 153,
+      "char_start": 40170,
+      "char_end": 41901,
+      "parent": null
+    },
+    {
+      "id": "sec-limitations",
+      "title": "Limitations",
+      "level": 1,
+      "line_start": 154,
+      "line_end": 159,
+      "char_start": 41901,
+      "char_end": 42989,
+      "parent": null
+    },
+    {
+      "id": "sec-acknowledgements",
+      "title": "Acknowledgements",
+      "level": 1,
+      "line_start": 160,
+      "line_end": 163,
+      "char_start": 42989,
+      "char_end": 43484,
+      "parent": null
+    },
+    {
+      "id": "sec-references",
+      "title": "References",
+      "level": 1,
+      "line_start": 164,
+      "line_end": 228,
+      "char_start": 43484,
+      "char_end": 54629,
+      "parent": null
+    },
+    {
+      "id": "sec-A",
+      "title": "A Data Collection",
+      "level": 1,
+      "line_start": 229,
+      "line_end": 258,
+      "char_start": 54629,
+      "char_end": 57670,
+      "parent": null
+    },
+    {
+      "id": "sec-A.1",
+      "title": "A.1 Language Selection",
+      "level": 2,
+      "line_start": 231,
+      "line_end": 234,
+      "char_start": 54650,
+      "char_end": 54791,
+      "parent": "sec-A"
+    },
+    {
+      "id": "sec-A.2",
+      "title": "A.2 Power Analysis for Sample Size",
+      "level": 2,
+      "line_start": 235,
+      "line_end": 238,
+      "char_start": 54791,
+      "char_end": 55240,
+      "parent": "sec-A"
+    },
+    {
+      "id": "sec-A.3",
+      "title": "A.3 Participant Interface",
+      "level": 2,
+      "line_start": 239,
+      "line_end": 242,
+      "char_start": 55240,
+      "char_end": 55445,
+      "parent": "sec-A"
+    },
+    {
+      "id": "sec-A.4",
+      "title": "A.4 Data Collection Details",
+      "level": 2,
+      "line_start": 243,
+      "line_end": 250,
+      "char_start": 55445,
+      "char_end": 56420,
+      "parent": "sec-A"
+    },
+    {
+      "id": "sec-A.5",
+      "title": "A.5 Data Corruption",
+      "level": 2,
+      "line_start": 251,
+      "line_end": 254,
+      "char_start": 56420,
+      "char_end": 57368,
+      "parent": "sec-A"
+    },
+    {
+      "id": "sec-A.6",
+      "title": "A.6 Qualification Task",
+      "level": 2,
+      "line_start": 255,
+      "line_end": 258,
+      "char_start": 57368,
+      "char_end": 57670,
+      "parent": "sec-A"
+    },
+    {
+      "id": "sec-B",
+      "title": "B Correlation Analysis",
+      "level": 1,
+      "line_start": 259,
+      "line_end": 438,
+      "char_start": 57670,
+      "char_end": 75884,
+      "parent": null
+    },
+    {
+      "id": "sec-B.1",
+      "title": "B.1 Implementation Details",
+      "level": 2,
+      "line_start": 261,
+      "line_end": 274,
+      "char_start": 57696,
+      "char_end": 60385,
+      "parent": "sec-B"
+    },
+    {
+      "id": "sec-B.2",
+      "title": "B.2 Results",
+      "level": 2,
+      "line_start": 275,
+      "line_end": 438,
+      "char_start": 60385,
+      "char_end": 75884,
+      "parent": "sec-B"
+    }
+  ],
+  "entities": {
+    "tables": [
+      {
+        "id": "table-1",
+        "label": "1",
+        "caption": "Categorization of languages based on morphological typology and resource availability. ISO 639-1 language codes are provided in parentheses.",
+        "first_mention_line": 59,
+        "context_lines": [
+          54,
+          79
+        ],
+        "in_section": "sec-4"
+      },
+      {
+        "id": "table-2",
+        "label": "2",
+        "caption": "Model-Generated Summaries Intrinsic Evaluation per language.",
+        "first_mention_line": 77,
+        "context_lines": [
+          72,
+          97
+        ],
+        "in_section": "sec-4.2"
+      },
+      {
+        "id": "table-3",
+        "label": "3",
+        "caption": "Distribution of Workers by Country of Birth.",
+        "first_mention_line": 81,
+        "context_lines": [
+          76,
+          101
+        ],
+        "in_section": "sec-4.2"
+      },
+      {
+        "id": "table-4",
+        "label": "4",
+        "caption": "",
+        "first_mention_line": 101,
+        "context_lines": [
+          96,
+          121
+        ],
+        "in_section": "sec-5.1"
+      },
+      {
+        "id": "table-5",
+        "label": "5",
+        "caption": "Pearson correlation between resource types and evaluation metrics. Significance: $^ { * } p < 0 . 0 5 , ^ { * * } p < 0 . 0 1$ The dashed line separates English-based from multilingual metrics. The highest correlation per column is in bold.",
+        "first_mention_line": 122,
+        "context_lines": [
+          117,
+          142
+        ],
+        "in_section": "sec-5.2"
+      },
+      {
+        "id": "table-6",
+        "label": "6",
+        "caption": "",
+        "first_mention_line": 126,
+        "context_lines": [
+          121,
+          146
+        ],
+        "in_section": "sec-6"
+      },
+      {
+        "id": "table-8",
+        "label": "8",
+        "caption": "",
+        "first_mention_line": 233,
+        "context_lines": [
+          228,
+          253
+        ],
+        "in_section": "sec-A.1"
+      },
+      {
+        "id": "table-9",
+        "label": "9",
+        "caption": "",
+        "first_mention_line": 253,
+        "context_lines": [
+          248,
+          273
+        ],
+        "in_section": "sec-A.5"
+      },
+      {
+        "id": "table-7",
+        "label": "7",
+        "caption": "",
+        "first_mention_line": 263,
+        "context_lines": [
+          258,
+          283
+        ],
+        "in_section": "sec-B.1"
+      },
+      {
+        "id": "table-11",
+        "label": "11",
+        "caption": "",
+        "first_mention_line": 277,
+        "context_lines": [
+          272,
+          297
+        ],
+        "in_section": "sec-B.2"
+      },
+      {
+        "id": "table-10",
+        "label": "10",
+        "caption": "",
+        "first_mention_line": 277,
+        "context_lines": [
+          272,
+          297
+        ],
+        "in_section": "sec-B.2"
+      }
+    ],
+    "figures": [
+      {
+        "id": "figure-1",
+        "label": "1",
+        "caption": "",
+        "first_mention_line": 103,
+        "context_lines": [
+          98,
+          123
+        ],
+        "in_section": "sec-5.1"
+      },
+      {
+        "id": "figure-6",
+        "label": "6",
+        "caption": "",
+        "first_mention_line": 241,
+        "context_lines": [
+          236,
+          261
+        ],
+        "in_section": "sec-A.3"
+      },
+      {
+        "id": "figure-2",
+        "label": "2",
+        "caption": "Participant Interface in a closed mode: The interface includes three drop-down sections: Instructions, Qualification and the Annotation task.",
+        "first_mention_line": 303,
+        "context_lines": [
+          298,
+          323
+        ],
+        "in_section": "sec-B.2"
+      },
+      {
+        "id": "figure-3",
+        "label": "3",
+        "caption": "The Participant Instructions Interface: The participant has general steps and a detailed explanation and examples of each tested criteria.",
+        "first_mention_line": 354,
+        "context_lines": [
+          349,
+          374
+        ],
+        "in_section": "sec-B.2"
+      },
+      {
+        "id": "figure-4",
+        "label": "4",
+        "caption": "The Participant Qualification Interface: The human summary is displayed at the top (the example is in Arabic), while the Qualification section below requires the participant to fill in their home state and answer a question generated by Gemini based on the human summary, designed to assess basic comprehension of the provided summary.",
+        "first_mention_line": 370,
+        "context_lines": [
+          365,
+          390
+        ],
+        "in_section": "sec-B.2"
+      },
+      {
+        "id": "figure-5",
+        "label": "5",
+        "caption": "The Participant Annotation Interface: Two summaries are displayed side by side. Each criterion includes a slider ranging from 1 to 4, along with an info hover feature providing a reminder of the criterion’s definition.",
+        "first_mention_line": 396,
+        "context_lines": [
+          391,
+          416
+        ],
+        "in_section": "sec-B.2"
+      }
+    ],
+    "algorithms": [],
+    "equations": []
+  }
+}

@@ -1,0 +1,1157 @@
+{
+  "paper_id": "INCLINE",
+  "title": "Bridging the Language Gaps in Large Language Models with Inference-Time Cross-Lingual Intervention",
+  "venue": null,
+  "code_url": null,
+  "problem_definition": {
+    "task": "Enhance LLM performance on low-performing (source) languages by aligning their internal representations with those of high-performing (target) languages during inference.",
+    "input": "Text input in a source (low-performing) language for a downstream task.",
+    "output": "Model predictions (e.g., classification, generation) improved via inference-time representation transformation toward the target language space.",
+    "evaluation_target": "Match or exceed performance of resource-intensive methods like fine-tuning and strong baselines while reducing cross-lingual performance gaps without additional LLM training."
+  },
+  "core_method": {
+    "name": "INCLINE (Inference-Time Cross-Lingual Intervention)",
+    "one_line": "INCLINE learns alignment matrices from parallel sentences using least-squares optimization and applies them during inference to transform source language representations toward the target language representation space without additional model training.",
+    "atomic_steps": [
+      {
+        "id": "step-1",
+        "description": "Sample 500 parallel sentence pairs for each source language (non-English) and target language (English) from News Commentary v16 (or CCAligned if unavailable).",
+        "source_section": "sec-4.1",
+        "depends_on_method": null
+      },
+      {
+        "id": "step-2",
+        "description": "Tokenize each parallel sentence pair and extract hidden states of the last token from all layers of the LLM (e.g., BLOOMZ-7B1-MT), yielding vectors h^s_{i,l} and h^t_{i,l} for every layer l.",
+        "source_section": "sec-3.1",
+        "depends_on_method": null
+      },
+      {
+        "id": "step-3",
+        "description": "For each layer l, stack the extracted source and target hidden states across all N pairs to form matrices H_s and H_t.",
+        "source_section": "sec-3.1",
+        "depends_on_method": null
+      },
+      {
+        "id": "step-4",
+        "description": "Compute the optimal alignment matrix W_l^* = (H_s^T H_s)^{-1} (H_s^T H_t) using a closed-form least-squares solver.",
+        "source_section": "sec-3.1",
+        "depends_on_method": null
+      },
+      {
+        "id": "step-5",
+        "description": "Store all learned alignment matrices {W_l^*} for l = 1 to L (all layers).",
+        "source_section": "sec-3.1",
+        "depends_on_method": null
+      },
+      {
+        "id": "step-6",
+        "description": "During inference on a test input in source language, feed the sequence and capture the hidden state h^s_{q,l} of the last token at each layer l.",
+        "source_section": "sec-3.2",
+        "depends_on_method": null
+      },
+      {
+        "id": "step-7",
+        "description": "For each layer l, project the source hidden state using the alignment matrix: ŷ^t_{q,l} = W_l^* h^s_{q,l}.",
+        "source_section": "sec-3.2",
+        "depends_on_method": null
+      },
+      {
+        "id": "step-8",
+        "description": "Blend the projected target state with the original hidden state using intervention strength α: h^{mix}_{q,l} = h^s_{q,l} + α ŷ^t_{q,l}.",
+        "source_section": "sec-3.2",
+        "depends_on_method": null
+      },
+      {
+        "id": "step-9",
+        "description": "Replace the last token's hidden state at layer l with h^{mix}_{q,l} and continue decoding.",
+        "source_section": "sec-3.2",
+        "depends_on_method": null
+      },
+      {
+        "id": "step-10",
+        "description": "Tune α per source language using a validation set by sweeping over the interval [-1, 1] to maximise task-specific performance.",
+        "source_section": "sec-3.2",
+        "depends_on_method": null
+      },
+      {
+        "id": "step-11",
+        "description": "Evaluate the intervened model on downstream multilingual benchmarks (discriminative tasks: accuracy; generative tasks: EM, BLEU, accuracy).",
+        "source_section": "sec-4.1, sec-4.2",
+        "depends_on_method": null
+      }
+    ],
+    "settings": [
+      {
+        "id": "set-incline-hidden",
+        "name": "INCLINE-HIDDEN",
+        "description": "Intervene on hidden states of all layers, aligning source to target (English) using learned alignment matrices."
+      },
+      {
+        "id": "set-incline-attn",
+        "name": "INCLINE-ATTN",
+        "description": "Intervene on outputs of attention heads."
+      },
+      {
+        "id": "set-incline-ffn",
+        "name": "INCLINE-FFN",
+        "description": "Intervene on outputs of FFN blocks."
+      },
+      {
+        "id": "set-incline-emb",
+        "name": "INCLINE-EMB",
+        "description": "Intervene on embeddings."
+      },
+      {
+        "id": "set-incline-fdev",
+        "name": "INCLINE-FDEV",
+        "description": "INCLINE with alignment matrices trained on high-quality Flores development set instead of News Commentary."
+      },
+      {
+        "id": "set-sft-incline",
+        "name": "SFT + INCLINE",
+        "description": "Apply INCLINE on top of a task-specific supervised fine-tuned model (English training data)."
+      }
+    ],
+    "key_hyperparameters": [
+      {
+        "name": "α (intervention strength)",
+        "value": "range [-1, 1], per-language optimal value determined by validation (e.g., positive for Spanish, negative for Chinese)",
+        "source_section": "sec-3.2"
+      },
+      {
+        "name": "Number of parallel sentences for training alignment",
+        "value": "500",
+        "source_section": "sec-4.1"
+      },
+      {
+        "name": "Target component",
+        "value": "Hidden states (INCLINE-HIDDEN) as default; also explored attention, FFN, embeddings",
+        "source_section": "sec-5"
+      },
+      {
+        "name": "Intervention position",
+        "value": "Last token only",
+        "source_section": "sec-3.2"
+      },
+      {
+        "name": "Layers intervened",
+        "value": "All layers",
+        "source_section": "sec-3.2"
+      }
+    ]
+  },
+  "datasets": [
+    {
+      "name": "News Commentary v16",
+      "splits": [
+        "train"
+      ],
+      "used_for": "Training alignment matrices for INCLINE (500 random parallel sentences per language pair)",
+      "source_section": "sec-4.1"
+    },
+    {
+      "name": "CCAligned",
+      "splits": [
+        "train"
+      ],
+      "used_for": "Training alignment matrices for languages not covered by News Commentary",
+      "source_section": "sec-4.1"
+    },
+    {
+      "name": "Flores development set",
+      "splits": [
+        "dev"
+      ],
+      "used_for": "Training alignment matrices for INCLINE-FDEV high-quality variant",
+      "source_section": "sec-6"
+    },
+    {
+      "name": "XCOPA",
+      "splits": [
+        "test"
+      ],
+      "used_for": "Multilingual discriminative benchmark (causal reasoning)",
+      "source_section": "sec-4.1"
+    },
+    {
+      "name": "XStoryCloze",
+      "splits": [
+        "test"
+      ],
+      "used_for": "Multilingual discriminative benchmark (story completion)",
+      "source_section": "sec-4.1"
+    },
+    {
+      "name": "XWinograd",
+      "splits": [
+        "test"
+      ],
+      "used_for": "Multilingual discriminative benchmark (pronoun resolution)",
+      "source_section": "sec-4.1"
+    },
+    {
+      "name": "XCSQA",
+      "splits": [
+        "test"
+      ],
+      "used_for": "Multilingual discriminative benchmark (commonsense QA)",
+      "source_section": "sec-4.1"
+    },
+    {
+      "name": "XNLI",
+      "splits": [
+        "test"
+      ],
+      "used_for": "Multilingual discriminative benchmark (natural language inference)",
+      "source_section": "sec-4.1"
+    },
+    {
+      "name": "MZsRE",
+      "splits": [
+        "test"
+      ],
+      "used_for": "Multilingual generative benchmark (zero-shot relation extraction)",
+      "source_section": "sec-4.1"
+    },
+    {
+      "name": "Flores",
+      "splits": [
+        "test"
+      ],
+      "used_for": "Multilingual generative benchmark (machine translation)",
+      "source_section": "sec-4.1"
+    },
+    {
+      "name": "WMT23",
+      "splits": [
+        "test"
+      ],
+      "used_for": "Multilingual generative benchmark (machine translation)",
+      "source_section": "sec-4.1"
+    },
+    {
+      "name": "MGSM",
+      "splits": [
+        "test"
+      ],
+      "used_for": "Multilingual generative benchmark (mathematical reasoning)",
+      "source_section": "sec-4.1"
+    }
+  ],
+  "models": [
+    {
+      "name": "BLOOMZ-7B1-MT",
+      "role": "Main backbone LLM for all baselines",
+      "source_section": "sec-4.1"
+    },
+    {
+      "name": "LLAMA3.1-8B-INSTRUCT",
+      "role": "Additional LLM backbone for generalization test",
+      "source_section": "sec-4.1"
+    },
+    {
+      "name": "LLAMA2-7B-CHAT",
+      "role": "Additional LLM backbone for generalization test",
+      "source_section": "sec-4.1"
+    },
+    {
+      "name": "MISTRAL-7B-INSTRUCT",
+      "role": "Additional LLM backbone for generalization test",
+      "source_section": "sec-4.1"
+    },
+    {
+      "name": "FALCON-7B-INSTRUCT",
+      "role": "Additional LLM backbone for generalization test",
+      "source_section": "sec-4.1"
+    },
+    {
+      "name": "MATHOCTOPUS",
+      "role": "Specialized math model (fine-tuned from LLAMA2-7B) used for MGSM task",
+      "source_section": "sec-4.1"
+    },
+    {
+      "name": "BLOOMZ-560M",
+      "role": "Smaller BLOOMZ variant for scaling analysis",
+      "source_section": "sec-6"
+    },
+    {
+      "name": "BLOOMZ-1B",
+      "role": "Smaller BLOOMZ variant for scaling analysis",
+      "source_section": "sec-6"
+    },
+    {
+      "name": "BLOOMZ-3B",
+      "role": "Smaller BLOOMZ variant for scaling analysis",
+      "source_section": "sec-6"
+    },
+    {
+      "name": "BLOOMZ-7.1B",
+      "role": "Larger BLOOMZ variant for scaling analysis",
+      "source_section": "sec-6"
+    }
+  ],
+  "baselines": [
+    {
+      "name": "BASELINE",
+      "type": "Original LLM without intervention",
+      "reference": null,
+      "source_section": "sec-4.1"
+    },
+    {
+      "name": "MT-GOOGLE",
+      "type": "Translate non-English inputs to English via Google Translate",
+      "reference": null,
+      "source_section": "sec-4.1"
+    },
+    {
+      "name": "MT-LLM",
+      "type": "Translate non-English inputs to English using BLOOMZ-7B1-MT",
+      "reference": null,
+      "source_section": "sec-4.1"
+    },
+    {
+      "name": "SFT",
+      "type": "Task-specific supervised fine-tuning on English training data",
+      "reference": null,
+      "source_section": "sec-4.1"
+    },
+    {
+      "name": "ITI",
+      "type": "Inference-time intervention using attention head probing for truthfulness, adapted here to shift towards English",
+      "reference": "Li et al., 2023b",
+      "source_section": "sec-4.1"
+    },
+    {
+      "name": "CAA",
+      "type": "Contrastive Activation Addition using mean difference in hidden states, adapted here to shift output from non-English to English",
+      "reference": "Rimsky et al., 2024",
+      "source_section": "sec-4.1"
+    }
+  ],
+  "metrics": [
+    {
+      "name": "Accuracy",
+      "definition": "Percentage of correct predictions in discriminative tasks (XCOPA, XStoryCloze, XWinograd, XCSQA, XNLI) and MGSM generative task.",
+      "source_section": "sec-4.2"
+    },
+    {
+      "name": "Exact Match (EM)",
+      "definition": "Strict matching score for MZsRE zero-shot relation extraction.",
+      "source_section": "sec-4.2"
+    },
+    {
+      "name": "BLEU",
+      "definition": "Bilingual Evaluation Understudy score for machine translation quality in Flores and WMT23.",
+      "source_section": "sec-4.2"
+    }
+  ],
+  "main_experiments": [
+    {
+      "id": "exp-table1",
+      "evidence_in_paper": "table-1",
+      "primary": true,
+      "claim": "INCLINE significantly improves accuracy on discriminative tasks (XCOPA, XStoryCloze, XWinograd, XCSQA, XNLI) over BASELINE and other intervention baselines, with up to +4.96 average gain on XStoryCloze and clear improvements on both seen and unseen languages. SFT+INCLINE further boosts SFT performance.",
+      "axes": {
+        "rows": [
+          "BASELINE",
+          "MT-GOOGLE",
+          "MT-LLM",
+          "ITI",
+          "CAA",
+          "INCLINE",
+          "SFT",
+          "SFT + INCLINE"
+        ],
+        "cols": [
+          "XCOPA µ_ALL",
+          "XCOPA µ_SEEN",
+          "XCOPA µ_UNSEEN",
+          "XStoryCloze µ_ALL",
+          "XStoryCloze µ_SEEN",
+          "XStoryCloze µ_UNSEEN",
+          "XWinograd µ_ALL",
+          "XWinograd µ_SEEN",
+          "XWinograd µ_UNSEEN",
+          "XCSQA µ_ALL",
+          "XCSQA µ_SEEN",
+          "XCSQA µ_UNSEEN",
+          "XNLI µ_ALL",
+          "XNLI µ_SEEN",
+          "XNLI µ_UNSEEN"
+        ]
+      },
+      "settings_used": [
+        "set-incline-hidden",
+        "set-sft-incline"
+      ],
+      "datasets_used": [
+        "XCOPA",
+        "XStoryCloze",
+        "XWinograd",
+        "XCSQA",
+        "XNLI"
+      ],
+      "models_used": [
+        "BLOOMZ-7B1-MT"
+      ]
+    },
+    {
+      "id": "exp-table2",
+      "evidence_in_paper": "table-2",
+      "primary": true,
+      "claim": "INCLINE enhances generative task performance (MZsRE, Flores, WMT23, MGSM) over baselines, achieving best BLEU on Flores and WMT23, improving EM on MZsRE by +3.26, and accuracy on MGSM by +3.50.",
+      "axes": {
+        "rows": [
+          "BASELINE",
+          "MT-GOOGLE",
+          "MT-LLM",
+          "ITI",
+          "CAA",
+          "INCLINE"
+        ],
+        "cols": [
+          "MZsRE µ_ALL",
+          "MZsRE µ_SEEN",
+          "MZsRE µ_UNSEEN",
+          "Flores µ_ALL",
+          "Flores µ_SEEN",
+          "Flores µ_UNSEEN",
+          "WMT23 µ_ALL",
+          "WMT23 µ_SEEN",
+          "WMT23 µ_UNSEEN",
+          "MGSM µ_ALL",
+          "MGSM µ_SEEN",
+          "MGSM µ_UNSEEN"
+        ]
+      },
+      "settings_used": [
+        "set-incline-hidden"
+      ],
+      "datasets_used": [
+        "MZsRE",
+        "Flores",
+        "WMT23",
+        "MGSM"
+      ],
+      "models_used": [
+        "BLOOMZ-7B1-MT",
+        "MATHOCTOPUS"
+      ]
+    },
+    {
+      "id": "exp-table3",
+      "evidence_in_paper": "table-3",
+      "primary": false,
+      "claim": "Intervening on hidden states (INCLINE-HIDDEN) yields the greatest average performance gains across XCOPA, XCSQA, Flores, MGSM compared to intervening on attention, FFN, or embeddings.",
+      "axes": {
+        "rows": [
+          "BASELINE",
+          "INCLINE-HIDDEN",
+          "INCLINE-ATTN",
+          "INCLINE-FFN",
+          "INCLINE-EMB"
+        ],
+        "cols": [
+          "XCOPA",
+          "XCSQA",
+          "Flores",
+          "MGSM"
+        ]
+      },
+      "settings_used": [
+        "set-incline-hidden",
+        "set-incline-attn",
+        "set-incline-ffn",
+        "set-incline-emb"
+      ],
+      "datasets_used": [
+        "XCOPA",
+        "XCSQA",
+        "Flores",
+        "MGSM"
+      ],
+      "models_used": [
+        "BLOOMZ-7B1-MT"
+      ]
+    },
+    {
+      "id": "exp-table4",
+      "evidence_in_paper": "table-4",
+      "primary": false,
+      "claim": "INCLINE consistently improves XStoryCloze accuracy across five different LLM backbones (BLOOMZ-7B1-MT, LLAMA3.1-8B-INSTRUCT, LLAMA2-7B-CHAT, MISTRAL-7B-INSTRUCT, FALCON-7B-INSTRUCT).",
+      "axes": {
+        "rows": [
+          "BLOOMZ-7B1-MT BASELINE",
+          "BLOOMZ-7B1-MT INCLINE",
+          "LLAMA3.1-8B-INSTRUCT BASELINE",
+          "LLAMA3.1-8B-INSTRUCT INCLINE",
+          "LLAMA2-7B-CHAT BASELINE",
+          "LLAMA2-7B-CHAT INCLINE",
+          "MISTRAL-7B-INSTRUCT BASELINE",
+          "MISTRAL-7B-INSTRUCT INCLINE",
+          "FALCON-7B-INSTRUCT BASELINE",
+          "FALCON-7B-INSTRUCT INCLINE"
+        ],
+        "cols": [
+          "ar",
+          "es",
+          "hi",
+          "id",
+          "ru",
+          "sw",
+          "zh",
+          "AVG"
+        ]
+      },
+      "settings_used": [
+        "set-incline-hidden"
+      ],
+      "datasets_used": [
+        "XStoryCloze"
+      ],
+      "models_used": [
+        "BLOOMZ-7B1-MT",
+        "LLAMA3.1-8B-INSTRUCT",
+        "LLAMA2-7B-CHAT",
+        "MISTRAL-7B-INSTRUCT",
+        "FALCON-7B-INSTRUCT"
+      ]
+    },
+    {
+      "id": "exp-table5",
+      "evidence_in_paper": "table-5",
+      "primary": false,
+      "claim": "Training INCLINE alignment matrices with high-quality parallel sentences (Flores dev, INCLINE-FDEV) further improves BLEU on Flores over using News Commentary.",
+      "axes": {
+        "rows": [
+          "BASELINE",
+          "INCLINE",
+          "INCLINE-FDEV"
+        ],
+        "cols": [
+          "ar",
+          "el",
+          "es",
+          "fr",
+          "hi",
+          "ru",
+          "tr",
+          "vi",
+          "zh",
+          "AVG"
+        ]
+      },
+      "settings_used": [
+        "set-incline-hidden",
+        "set-incline-fdev"
+      ],
+      "datasets_used": [
+        "Flores"
+      ],
+      "models_used": [
+        "BLOOMZ-7B1-MT"
+      ]
+    },
+    {
+      "id": "exp-fig3a",
+      "evidence_in_paper": "figure-3",
+      "primary": false,
+      "claim": "INCLINE achieves near-optimal accuracy with 500 parallel sentences and only 172 seconds training time; increasing data further does not improve accuracy, showing cost-effectiveness.",
+      "axes": {
+        "rows": [
+          "INCLINE"
+        ],
+        "cols": [
+          "Number of Training Data",
+          "Accuracy",
+          "Time (Seconds)"
+        ]
+      },
+      "settings_used": [
+        "set-incline-hidden"
+      ],
+      "datasets_used": [
+        "XStoryCloze"
+      ],
+      "models_used": [
+        "BLOOMZ-7B1-MT"
+      ]
+    },
+    {
+      "id": "exp-fig3b",
+      "evidence_in_paper": "figure-3",
+      "primary": false,
+      "claim": "INCLINE intervention increases Correct Prediction Consistency (CPC) between non-English and English on XStoryCloze, especially for low-resource Swahili (from 0.54 to 0.65).",
+      "axes": {
+        "rows": [
+          "BASELINE",
+          "INCLINE"
+        ],
+        "cols": [
+          "ar",
+          "es",
+          "hi",
+          "id",
+          "ru",
+          "sw",
+          "zh"
+        ]
+      },
+      "settings_used": [
+        "set-incline-hidden"
+      ],
+      "datasets_used": [
+        "XStoryCloze"
+      ],
+      "models_used": [
+        "BLOOMZ-7B1-MT"
+      ]
+    },
+    {
+      "id": "exp-fig4",
+      "evidence_in_paper": "figure-4",
+      "primary": false,
+      "claim": "Optimal intervention strength α differs by language: positive for Spanish (Indo-European like English) and negative for Chinese (Sino-Tibetan), suggesting language relatedness influences α.",
+      "axes": {
+        "rows": [
+          "BASELINE",
+          "INCLINE"
+        ],
+        "cols": [
+          "α",
+          "Accuracy"
+        ]
+      },
+      "settings_used": [
+        "set-incline-hidden"
+      ],
+      "datasets_used": [
+        "XStoryCloze"
+      ],
+      "models_used": [
+        "BLOOMZ-7B1-MT"
+      ]
+    },
+    {
+      "id": "exp-fig5a",
+      "evidence_in_paper": "figure-5",
+      "primary": false,
+      "claim": "Larger BLOOMZ models benefit more from INCLINE on MZsRE; relative improvement over baseline increases with model size.",
+      "axes": {
+        "rows": [
+          "BASELINE",
+          "INCLINE"
+        ],
+        "cols": [
+          "0.56b",
+          "1b",
+          "3b",
+          "7.1b"
+        ]
+      },
+      "settings_used": [
+        "set-incline-hidden"
+      ],
+      "datasets_used": [
+        "MZsRE"
+      ],
+      "models_used": [
+        "BLOOMZ-560M",
+        "BLOOMZ-1B",
+        "BLOOMZ-3B",
+        "BLOOMZ-7.1B"
+      ]
+    },
+    {
+      "id": "exp-fig5b",
+      "evidence_in_paper": "figure-5",
+      "primary": false,
+      "claim": "INCLINE further improves Exact Match on MZsRE when combined with in-context learning (0-shot, 2-shot, 4-shot), demonstrating complementary benefits.",
+      "axes": {
+        "rows": [
+          "BASELINE",
+          "INCLINE"
+        ],
+        "cols": [
+          "0-shot",
+          "2-shot",
+          "4-shot"
+        ]
+      },
+      "settings_used": [
+        "set-incline-hidden"
+      ],
+      "datasets_used": [
+        "MZsRE"
+      ],
+      "models_used": [
+        "BLOOMZ-7B1-MT"
+      ]
+    }
+  ],
+  "expected_claims": [
+    {
+      "id": "claim-1",
+      "claim_text": "INCLINE significantly improves discriminative task performance over BASELINE and intervention baselines (ITI, CAA), e.g., +4.96 average accuracy on XStoryCloze.",
+      "evidence": "table-1",
+      "verification_hint": "Check that INCLINE row in Table 1 shows higher µALL accuracy on XStoryCloze (79.92) compared to BASELINE (74.96) and other baselines, with improvement values in parentheses."
+    },
+    {
+      "id": "claim-2",
+      "claim_text": "INCLINE improves generative task metrics (EM, BLEU, accuracy) over baselines, including +3.50 accuracy on MGSM and best BLEU on Flores/WMT23.",
+      "evidence": "table-2",
+      "verification_hint": "Verify INCLINE achieves highest BLEU on Flores (48.19), WMT23 (14.23), highest MGSM accuracy (42.85) among non-translation baselines, and gains over BASELINE."
+    },
+    {
+      "id": "claim-3",
+      "claim_text": "INCLINE is cost-effective: training alignment matrices requires only 500 parallel sentences and 172 seconds on one A100.",
+      "evidence": "figure-3",
+      "verification_hint": "Check Figure 3(a) curve: accuracy plateaus after ~500 samples and training time corresponds to ~172 seconds."
+    },
+    {
+      "id": "claim-4",
+      "claim_text": "Intervening on hidden states is superior to intervening on attention, FFN, or embeddings across tasks.",
+      "evidence": "table-3",
+      "verification_hint": "In Table 3, INCLINE-HIDDEN row should have the highest values (or consistently near the top) across XCOPA, XCSQA, Flores, MGSM compared to ATTENTION, FFN, EMB variants."
+    },
+    {
+      "id": "claim-5",
+      "claim_text": "INCLINE generalizes across diverse LLM backbones, improving XStoryCloze accuracy for all five tested models.",
+      "evidence": "table-4",
+      "verification_hint": "In Table 4, for each backbone (BLOOMZ, LLAMA3.1, LLAMA2, MISTRAL, FALCON), INCLINE accuracy exceeds BASELINE accuracy."
+    },
+    {
+      "id": "claim-6",
+      "claim_text": "Using high-quality parallel data (Flores dev) for training alignment matrices yields better performance than standard News Commentary parallel data.",
+      "evidence": "table-5",
+      "verification_hint": "In Table 5, INCLINE-FDEV BLEU scores should be higher than standard INCLINE across all languages, and average AVG higher (50.94 vs 48.19)."
+    }
+  ],
+  "reproducibility_meta": {
+    "needs_training": true,
+    "estimated_compute": "Single A100 GPU, alignment training takes ~172 seconds per language pair; inference adds 12% overhead.",
+    "data_availability": "public",
+    "code_partial_available": true,
+    "minimum_viable_experiments": [
+      "exp-table1",
+      "exp-table2"
+    ],
+    "deferred_experiments": [
+      "exp-table3",
+      "exp-table4",
+      "exp-table5",
+      "exp-fig3a",
+      "exp-fig3b",
+      "exp-fig4",
+      "exp-fig5a",
+      "exp-fig5b"
+    ]
+  },
+  "sections": [
+    {
+      "id": "sec-abstract",
+      "title": "Abstract",
+      "level": 1,
+      "line_start": 13,
+      "line_end": 16,
+      "char_start": 297,
+      "char_end": 1579,
+      "parent": null
+    },
+    {
+      "id": "sec-1",
+      "title": "1 Introduction",
+      "level": 1,
+      "line_start": 17,
+      "line_end": 72,
+      "char_start": 1579,
+      "char_end": 7524,
+      "parent": null
+    },
+    {
+      "id": "sec-2",
+      "title": "2 Related Work",
+      "level": 1,
+      "line_start": 73,
+      "line_end": 129,
+      "char_start": 7524,
+      "char_end": 11393,
+      "parent": null
+    },
+    {
+      "id": "sec-3",
+      "title": "3 Methodology",
+      "level": 1,
+      "line_start": 130,
+      "line_end": 178,
+      "char_start": 11393,
+      "char_end": 17753,
+      "parent": null
+    },
+    {
+      "id": "sec-3.1",
+      "title": "3.1 Learning the Cross-Lingual Alignment",
+      "level": 2,
+      "line_start": 139,
+      "line_end": 156,
+      "char_start": 12304,
+      "char_end": 14792,
+      "parent": "sec-3"
+    },
+    {
+      "id": "sec-3.2",
+      "title": "3.2 Inference-Time Transformation",
+      "level": 2,
+      "line_start": 157,
+      "line_end": 178,
+      "char_start": 14792,
+      "char_end": 17753,
+      "parent": "sec-3"
+    },
+    {
+      "id": "sec-4",
+      "title": "4 Experiments",
+      "level": 1,
+      "line_start": 179,
+      "line_end": 267,
+      "char_start": 17753,
+      "char_end": 31743,
+      "parent": null
+    },
+    {
+      "id": "sec-4.1",
+      "title": "4.1 Experimental Setup",
+      "level": 2,
+      "line_start": 183,
+      "line_end": 203,
+      "char_start": 17878,
+      "char_end": 24772,
+      "parent": "sec-4"
+    },
+    {
+      "id": "sec-4.2",
+      "title": "4.2 Results",
+      "level": 2,
+      "line_start": 204,
+      "line_end": 267,
+      "char_start": 24772,
+      "char_end": 31743,
+      "parent": "sec-4"
+    },
+    {
+      "id": "sec-5",
+      "title": "5 Analysis",
+      "level": 1,
+      "line_start": 268,
+      "line_end": 303,
+      "char_start": 31743,
+      "char_end": 38517,
+      "parent": null
+    },
+    {
+      "id": "sec-6",
+      "title": "6 Discussions",
+      "level": 1,
+      "line_start": 304,
+      "line_end": 349,
+      "char_start": 38517,
+      "char_end": 43320,
+      "parent": null
+    },
+    {
+      "id": "sec-7",
+      "title": "7 Conclusion",
+      "level": 1,
+      "line_start": 350,
+      "line_end": 353,
+      "char_start": 43320,
+      "char_end": 44050,
+      "parent": null
+    },
+    {
+      "id": "sec-8",
+      "title": "8 Limitations",
+      "level": 1,
+      "line_start": 354,
+      "line_end": 357,
+      "char_start": 44050,
+      "char_end": 44892,
+      "parent": null
+    },
+    {
+      "id": "sec-acknowledgement",
+      "title": "Acknowledgement",
+      "level": 1,
+      "line_start": 358,
+      "line_end": 363,
+      "char_start": 44892,
+      "char_end": 45446,
+      "parent": null
+    },
+    {
+      "id": "sec-references",
+      "title": "References",
+      "level": 1,
+      "line_start": 364,
+      "line_end": 456,
+      "char_start": 45446,
+      "char_end": 65163,
+      "parent": null
+    },
+    {
+      "id": "sec-A",
+      "title": "A Details of Datasets",
+      "level": 1,
+      "line_start": 457,
+      "line_end": 460,
+      "char_start": 65163,
+      "char_end": 65319,
+      "parent": null
+    },
+    {
+      "id": "sec-B",
+      "title": "B Hyperparameters for SFT",
+      "level": 1,
+      "line_start": 461,
+      "line_end": 464,
+      "char_start": 65319,
+      "char_end": 65687,
+      "parent": null
+    },
+    {
+      "id": "sec-C",
+      "title": "C Detailed Results of Intervention",
+      "level": 1,
+      "line_start": 465,
+      "line_end": 468,
+      "char_start": 65687,
+      "char_end": 65903,
+      "parent": null
+    },
+    {
+      "id": "sec-D",
+      "title": "D The value of α across languages",
+      "level": 1,
+      "line_start": 469,
+      "line_end": 472,
+      "char_start": 65903,
+      "char_end": 66049,
+      "parent": null
+    },
+    {
+      "id": "sec-E",
+      "title": "E Projection to Non-English",
+      "level": 1,
+      "line_start": 473,
+      "line_end": 476,
+      "char_start": 66049,
+      "char_end": 66604,
+      "parent": null
+    },
+    {
+      "id": "sec-F",
+      "title": "F Details of Visualizing",
+      "level": 1,
+      "line_start": 477,
+      "line_end": 480,
+      "char_start": 66604,
+      "char_end": 67526,
+      "parent": null
+    },
+    {
+      "id": "sec-G",
+      "title": "G Supplementary Results of Training Data Volume",
+      "level": 1,
+      "line_start": 481,
+      "line_end": 506,
+      "char_start": 67526,
+      "char_end": 85134,
+      "parent": null
+    }
+  ],
+  "entities": {
+    "tables": [
+      {
+        "id": "table-1",
+        "label": "1",
+        "caption": "Main results of discriminative tasks. All the tasks are evaluated using accuracy. † denotes the best results. µALL, µSEEN, and $\\mu _ { \\mathrm { U N S E F N } }$ indicate the macro-average of results across all the languages, the seen languages, and the unseen languages, respectively.",
+        "first_mention_line": 198,
+        "context_lines": [
+          193,
+          218
+        ],
+        "in_section": "sec-4.1"
+      },
+      {
+        "id": "table-2",
+        "label": "2",
+        "caption": "",
+        "first_mention_line": 206,
+        "context_lines": [
+          201,
+          226
+        ],
+        "in_section": "sec-4.2"
+      },
+      {
+        "id": "table-7",
+        "label": "7",
+        "caption": "",
+        "first_mention_line": 206,
+        "context_lines": [
+          201,
+          226
+        ],
+        "in_section": "sec-4.2"
+      },
+      {
+        "id": "table-3",
+        "label": "3",
+        "caption": "The averaged results of XStoryCloze, XCSQA, Flores, MGSM tasks with four configurations for IN-CLINE given by BLOOMZ-7B1-MT.",
+        "first_mention_line": 276,
+        "context_lines": [
+          271,
+          296
+        ],
+        "in_section": "sec-5"
+      },
+      {
+        "id": "table-4",
+        "label": "4",
+        "caption": "The results of XStoryCloze dataset with five LLM backbones.",
+        "first_mention_line": 298,
+        "context_lines": [
+          293,
+          318
+        ],
+        "in_section": "sec-5"
+      },
+      {
+        "id": "table-5",
+        "label": "5",
+        "caption": "The BLEU results of Flores dataset with INCLINE and INCLINE-FDEV.",
+        "first_mention_line": 310,
+        "context_lines": [
+          305,
+          330
+        ],
+        "in_section": "sec-6"
+      },
+      {
+        "id": "table-6",
+        "label": "6",
+        "caption": "",
+        "first_mention_line": 459,
+        "context_lines": [
+          454,
+          479
+        ],
+        "in_section": "sec-A"
+      },
+      {
+        "id": "table-8",
+        "label": "8",
+        "caption": "",
+        "first_mention_line": 475,
+        "context_lines": [
+          470,
+          495
+        ],
+        "in_section": "sec-E"
+      },
+      {
+        "id": "table-9",
+        "label": "9",
+        "caption": "",
+        "first_mention_line": 483,
+        "context_lines": [
+          478,
+          503
+        ],
+        "in_section": "sec-G"
+      }
+    ],
+    "figures": [
+      {
+        "id": "figure-1",
+        "label": "1",
+        "caption": "Bivariate kernel density estimation plots displaying the representations (hidden states of the last token) from 100 random examples in English (blue) and their Portuguese translations (orange) from XCOPA (Ponti et al., 2020). After intervention using INCLINE, the Portuguese representations are aligned closer to the English representations.",
+        "first_mention_line": 53,
+        "context_lines": [
+          48,
+          73
+        ],
+        "in_section": "sec-1"
+      },
+      {
+        "id": "figure-2",
+        "label": "2",
+        "caption": "Framework of INCLINE. INCLINE involves two steps: (a) Learning the Cross-Lingual Alignment: sentence representations from a parallel dataset are used to train alignment matrices that map source (Portuguese) representations to the target (English) representations. (b) Inference-Time Transformation: this step adapts the source representations from downstream tasks into the target representation space using the alignment matrices.",
+        "first_mention_line": 128,
+        "context_lines": [
+          123,
+          148
+        ],
+        "in_section": "sec-2"
+      },
+      {
+        "id": "figure-3",
+        "label": "3",
+        "caption": "(a) Training costs of INCLINE with regard to the number of parallel sentences and time used for training alignment matrices. INCLINE is evaluated on XStoryCloze in Swahili. (b) Correct Prediction Consistency (CPC) between non-English and English on XStoryCloze for the model using INCLINE.",
+        "first_mention_line": 266,
+        "context_lines": [
+          261,
+          286
+        ],
+        "in_section": "sec-4.2"
+      },
+      {
+        "id": "figure-4",
+        "label": "4",
+        "caption": "The accuracy changed with hyperparameter α on the XStoryCloze task with BLOOMZ-7B1-MT.",
+        "first_mention_line": 294,
+        "context_lines": [
+          289,
+          314
+        ],
+        "in_section": "sec-5"
+      },
+      {
+        "id": "figure-5",
+        "label": "5",
+        "caption": "",
+        "first_mention_line": 314,
+        "context_lines": [
+          309,
+          334
+        ],
+        "in_section": "sec-6"
+      },
+      {
+        "id": "figure-6",
+        "label": "6",
+        "caption": "",
+        "first_mention_line": 471,
+        "context_lines": [
+          466,
+          491
+        ],
+        "in_section": "sec-D"
+      }
+    ],
+    "algorithms": [],
+    "equations": [
+      {
+        "id": "equation-4",
+        "label": "4",
+        "caption": "",
+        "first_mention_line": 173,
+        "context_lines": [
+          168,
+          193
+        ],
+        "in_section": "sec-3.2"
+      }
+    ]
+  }
+}

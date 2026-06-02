@@ -1,0 +1,957 @@
+{
+  "paper": "I0T",
+  "by_type": {
+    "Paper Observation": {
+      "total": 10,
+      "hit": 9,
+      "partial": 1,
+      "miss": 0
+    },
+    "Plan Writing": {
+      "total": 32,
+      "hit": 5,
+      "partial": 4,
+      "miss": 23
+    },
+    "Code Implementation": {
+      "total": 31,
+      "hit": 4,
+      "partial": 7,
+      "miss": 20
+    },
+    "Command Execution": {
+      "total": 22,
+      "hit": 0,
+      "partial": 1,
+      "miss": 21
+    },
+    "Result Matching": {
+      "total": 7,
+      "hit": 7,
+      "partial": 0,
+      "miss": 0
+    }
+  },
+  "results": [
+    {
+      "rubric_idx": 0,
+      "rubric_type": "Paper Observation",
+      "rubric_criteria": "The agent has read section 3 completely to understand the calculation of modality gap metrics.",
+      "verdict": "hit",
+      "matched_id": "derived-po-005",
+      "method": "llm",
+      "reason": "Reading Section 3 completely to understand its content directly satisfies the rubric's requirement of reading that section to understand modality gap metrics, as the content inherently includes those metrics."
+    },
+    {
+      "rubric_idx": 1,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The calculation of centroid distance and linear separability are planned to be implemented",
+      "verdict": "hit",
+      "matched_id": "derived-pw-010",
+      "method": "llm",
+      "reason": "This candidate explicitly describes computing Centroid Distance (CD) and Linear Separability (LS) as modality gap metrics, fulfilling the rubric's requirement."
+    },
+    {
+      "rubric_idx": 2,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The code for the caculation of centroid distance and linear separability are implemented",
+      "verdict": "partial",
+      "matched_id": "derived-ci-020",
+      "method": "llm",
+      "reason": "The rubric requires both centroid distance and linear separability code; candidate 020 covers centroid distance and candidate 021 covers linear separability, so together they satisfy the compound requirement."
+    },
+    {
+      "rubric_idx": 3,
+      "rubric_type": "Paper Observation",
+      "rubric_criteria": "The agent has read section 3.1 completely to understand the range of different severity levels of modality gap.",
+      "verdict": "hit",
+      "matched_id": "derived-po-006",
+      "method": "llm",
+      "reason": "Both the rubric and the derived item require reading Section 3.1 to understand its content, which includes the range of severity levels of modality gap."
+    },
+    {
+      "rubric_idx": 4,
+      "rubric_type": "Paper Observation",
+      "rubric_criteria": "The agent has read section 4 completely to understand the core methodology of I0T framework.",
+      "verdict": "hit",
+      "matched_id": "derived-po-009",
+      "method": "llm",
+      "reason": "Candidate directly matches the rubric by stating the agent reads Section 4 (Methodology) to understand its content, which corresponds to reading section 4 completely to understand the core methodology."
+    },
+    {
+      "rubric_idx": 5,
+      "rubric_type": "Paper Observation",
+      "rubric_criteria": "The agent has read section 4.1 and Appendix D.1 completely to understand the training process of the first stage.",
+      "verdict": "partial",
+      "matched_id": "derived-po-010",
+      "method": "llm",
+      "reason": "The rubric requires reading both Section 4.1 and Appendix D.1; derived-po-010 covers 4.1 and derived-po-027 covers D.1, together satisfying the rubric, but no single candidate covers both."
+    },
+    {
+      "rubric_idx": 6,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The plan includes the collection of the ShareGPT4V dataset and using the 3 independent subsets of it (LAION, COCO, SAM).",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "No candidate mentions the LAION or SAM subsets of ShareGPT4V; only COCO is mentioned, and no candidate describes collecting the full dataset."
+    },
+    {
+      "rubric_idx": 7,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The plan includes the preparation of CLIP-based models (Long-CLIP, Long-CLIP-only).",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 8,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The plan includes the implementation of the combination of contrasive learning and cyclic losses.",
+      "verdict": "hit",
+      "matched_id": "derived-pw-001",
+      "method": "llm",
+      "reason": "The candidate explicitly includes fine-tuning using CyCLIP loss, which combines contrastive loss (CLIP) and cyclic losses (image and caption cyclic losses), thus directly satisfying the rubric's requirement for implementing the combination of contrastive learning and cyclic losses."
+    },
+    {
+      "rubric_idx": 9,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The plan includes the hyperparameters during the training process, and their values match the descriptions in the paper: learning rate of 1e-6, weight decay of 1e-2, batch size of 128, ...",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 10,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The code for the collection and implementation of the ShareGPT4V dataset and its 3 independent subsets (LAION, COCO, SAM) has been implemented.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "No candidate item mentions the code for collecting the ShareGPT4V dataset and its subsets (LAION, COCO, SAM); all derived items describe model training, evaluation, or baseline steps that use the dataset."
+    },
+    {
+      "rubric_idx": 11,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The code for fine-tuning CLIP-based models with the combination of contrasive learning and cyclic losses is implemented.",
+      "verdict": "hit",
+      "matched_id": "derived-ci-001",
+      "method": "llm",
+      "reason": "This candidate directly describes fine-tuning a CLIP model with a combination of contrastive (L_CLIP) and cyclic losses (L_I-Cyclic and L_C-Cyclic)."
+    },
+    {
+      "rubric_idx": 12,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The hyperparameters are set correctly in the configuration files and programs.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "None of the candidates mention setting hyperparameters correctly in configuration files or programs; they all describe the presence of code implementing specific steps or baselines, not hyperparameter configuration."
+    },
+    {
+      "rubric_idx": 13,
+      "rubric_type": "Command Execution",
+      "rubric_criteria": "The training process has been successfully executed and finished without errors.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 14,
+      "rubric_type": "Paper Observation",
+      "rubric_criteria": "The agent has read Appendix D.2 and Table 3 completely to understand the evaluation of downstream tasks.",
+      "verdict": "hit",
+      "matched_id": "derived-po-034",
+      "method": "anchor",
+      "reason": "anchor match"
+    },
+    {
+      "rubric_idx": 15,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The plan includes the collection of the Flickr30k dataset to implement I2T and T2I tasks.",
+      "verdict": "hit",
+      "matched_id": "derived-pw-011",
+      "method": "llm",
+      "reason": "The candidate describes evaluating I2T and T2I retrieval on Flickr30k, which encompasses collecting the dataset for those tasks."
+    },
+    {
+      "rubric_idx": 16,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The code for the evaluation of I2T and T2I retrieval tasks on the Flickr30k dataset has been implemented, using R@1 metric.",
+      "verdict": "hit",
+      "matched_id": "derived-ci-011",
+      "method": "llm",
+      "reason": "Derived item derived-ci-011 explicitly states 'Evaluate downstream tasks: image-text retrieval (I2T, T2I Recall@1 on Flickr30k)', which directly corresponds to implementing the evaluation code for I2T and T2I retrieval on Flickr30k using R@1 metric as required by the rubric."
+    },
+    {
+      "rubric_idx": 17,
+      "rubric_type": "Command Execution",
+      "rubric_criteria": "The models are evaluated successfully on I2T and T2I retrieval tasks on the Flickr30k dataset.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "None of the candidate items refer to evaluating models on I2T and T2I retrieval tasks on Flickr30k; they describe modality gap, centroid distance, activation, and ablation results, which are different procedures."
+    },
+    {
+      "rubric_idx": 18,
+      "rubric_type": "Result Matching",
+      "rubric_criteria": "The training outcomes match the results in Table 3: Long-CLIP-only (LCO) trained on COCO subset performs the best on I2T and T2I tasks.",
+      "verdict": "hit",
+      "matched_id": "derived-rm-003",
+      "method": "anchor",
+      "reason": "anchor match"
+    },
+    {
+      "rubric_idx": 19,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The plan includes the collection of the CIFAR100 and Birdsnap datasets to implement image classification tasks.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "The rubric requires collection of the Birdsnap dataset, but the plan only includes CUB-200 (Birds), a different bird dataset. No candidate mentions Birdsnap."
+    },
+    {
+      "rubric_idx": 20,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The code for the evaluation of image classification tasks on the CIFAR100 and Birdsnap datasets has been implemented.",
+      "verdict": "partial",
+      "matched_id": "derived-ci-025",
+      "method": "llm",
+      "reason": "The rubric requires evaluation code for both CIFAR100 and Birdsnap; items 025 and 026 separately cover each dataset, so together they would satisfy the compound requirement, making each a partial match."
+    },
+    {
+      "rubric_idx": 21,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The plan includes the collection of the Flickr8k-Expert and Flickr8k-CF datasets to implement correlation experiments.",
+      "verdict": "partial",
+      "matched_id": "derived-pw-018",
+      "method": "llm",
+      "reason": "The rubric requires listing both Flickr8k-Expert and Flickr8k-CF datasets; no single candidate mentions both, but derived-pw-018 and derived-pw-019 each list one dataset. Together they cover the compound requirement, so it's a partial match."
+    },
+    {
+      "rubric_idx": 22,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The code for the evaluation correlation with regard to human experts on the Flickr8k-Expert and Flickr8k-CF datasets has been implemented.",
+      "verdict": "partial",
+      "matched_id": "derived-ci-027",
+      "method": "llm",
+      "reason": "The rubric requires implementation of evaluation correlation on both Flickr8k-Expert and Flickr8k-CF datasets. Derived-ci-027 implements only the Expert correlation, covering half of the compound criterion; the remaining half is covered by derived-ci-028."
+    },
+    {
+      "rubric_idx": 23,
+      "rubric_type": "Paper Observation",
+      "rubric_criteria": "The agent has read section 4.2 completely to understand the second stage of I0T framework, including both the post-hoc method and the learnable method.",
+      "verdict": "hit",
+      "matched_id": "derived-po-011",
+      "method": "llm",
+      "reason": "The candidate explicitly instructs reading Section 4.2 (The Second Stage of I0T) to understand its content, which covers both the post-hoc and learnable methods as required."
+    },
+    {
+      "rubric_idx": 24,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The implementation of the post-hoc method is planned to be done by subtracting the mean vectors and normalising by dividing by the Frobenius norms.",
+      "verdict": "hit",
+      "matched_id": "derived-pw-003",
+      "method": "llm",
+      "reason": "Candidate explicitly describes subtracting modality-specific mean vectors and re-normalizing by Frobenius norm, which is the post-hoc method required by the rubric."
+    },
+    {
+      "rubric_idx": 25,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The code for the post-hoc method is implemented following the description in the paper: subtract the mean vector and then normalize by dividing by the Frobenius norms",
+      "verdict": "hit",
+      "matched_id": "derived-ci-003",
+      "method": "llm",
+      "reason": "The candidate describes subtracting the modality mean and re-normalizing by Frobenius norm, which corresponds directly to the rubric's 'subtract the mean vector and then normalize by dividing by the Frobenius norms'."
+    },
+    {
+      "rubric_idx": 26,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The implementation of additional batch normalization layers is planned as the paper describes.",
+      "verdict": "hit",
+      "matched_id": "derived-pw-004",
+      "method": "llm",
+      "reason": "The candidate explicitly plans to add independent batch normalization layers after the frozen encoders, which is the implementation of additional BN layers as per the paper's I0T_async method."
+    },
+    {
+      "rubric_idx": 27,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The hyperparameters (averaging factor $\\alpha$, batch size) in the training process of batch normalization layers are planned.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: {\"verdict\": \"partial\", \"matched_id\": \"derived-pw-044\", \"reason\": \"The candidate "
+    },
+    {
+      "rubric_idx": 28,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The implementation of Multimodal Contrastive Learning of Sentence and Image Embeddings (MCSIE) is planned.",
+      "verdict": "partial",
+      "matched_id": "derived-pw-005",
+      "method": "llm",
+      "reason": "The candidate describes a component (mCSIE augmentation) of the MCSIE implementation, but the rubric requires the overall plan for MCSIE. Multiple candidates together cover the full implementation, so individual items are partial."
+    },
+    {
+      "rubric_idx": 29,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The code for additional batch normalization layers is implemented correctly, aligned with the paper.",
+      "verdict": "hit",
+      "matched_id": "derived-ci-004",
+      "method": "llm",
+      "reason": "Derived item 004 requires the implementation of additional, independent batch normalization layers with learnable parameters, which exactly corresponds to the rubric's demand for code implementing additional batch normalization layers."
+    },
+    {
+      "rubric_idx": 30,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The hyperparameters are set correctly in the configuration files and programs.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "The rubric requires verifying that hyperparameters are set correctly in configuration files and programs, but no candidate item describes checking hyperparameter correctness; all candidates only assert the presence of code for specific steps or baselines."
+    },
+    {
+      "rubric_idx": 31,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The Multimodal Contrastive Learning of Sentence and Image Embeddings (MCSIE) is implemented correctly according to the paper.",
+      "verdict": "partial",
+      "matched_id": "derived-ci-001",
+      "method": "llm",
+      "reason": "The candidate describes a specific step (first-stage fine-tuning) of the MCSIE implementation; implementing it contributes to, but does not alone satisfy, the overall rubric that the full MCSIE is implemented correctly."
+    },
+    {
+      "rubric_idx": 32,
+      "rubric_type": "Command Execution",
+      "rubric_criteria": "The training process of batch normalisation has been successfully executed and finished without errors.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 33,
+      "rubric_type": "Paper Observation",
+      "rubric_criteria": "The agent has read section 5.1 and table 1 completely to check the experiment settings across variations of Long-CLIP-based models.",
+      "verdict": "hit",
+      "matched_id": "derived-po-031",
+      "method": "anchor",
+      "reason": "anchor match"
+    },
+    {
+      "rubric_idx": 34,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The modality gap calculation experiments are planned with models alone (LongCLIP, LCO, LCCO, LCCOM).",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 35,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The experiments of retrieval tasks (I2T, T2I) on Flickr30k are planned with models alone (LongCLIP, LCO, LCCO, LCCOM).",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 36,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The experiments of classification tasks (CIFAR100, Birdsnap) are planned with models alone (LongCLIP, LCO, LCCO, LCCOM).",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 37,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The experiments of correlation (Flickr8k-Expert, Flickr8k-CF) are planned with models alone (LongCLIP, LCO, LCCO, LCCOM).",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 38,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The modality gap calculation experiments are planned with additional normalization layers applied both during fine-tuning and after training (+LN, +LN*, +BN, +BN*).",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: {\"verdict\": \"partial\", \"matched_id\": \"derived-pw-004\", \"reason\": \"The plan inclu"
+    },
+    {
+      "rubric_idx": 39,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The experiments of retrieval tasks (I2T, T2I) on Flickr30k are planned with additional normalization layers applied both during fine-tuning and after training (+LN, +LN*, +BN, +BN*).",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 40,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The experiments of classification tasks (CIFAR100, Birdsnap) are planned with additional normalization layers applied both during fine-tuning and after training (+LN, +LN*, +BN, +BN*).",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 41,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The experiments of correlation (Flickr8k-Expert, Flickr8k-CF) are planned with additional normalization layers applied both during fine-tuning and after training (+LN, +LN*, +BN, +BN*).",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 42,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The code for modality gap calculation experiments with models alone (LongCLIP, LCO, LCCO, LCCOM) has been implemented.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "No candidate mentions implementing code for modality gap calculation experiments with LongCLIP, LCO, LCCO, or LCCOM, or refers to these specific models."
+    },
+    {
+      "rubric_idx": 43,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The code for retrieval tasks (I2T, T2I) on Flickr30k with models alone (LongCLIP, LCO, LCCO, LCCOM) has been implemented.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 44,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The code for classification tasks (CIFAR100, Birdsnap) with models alone (LongCLIP, LCO, LCCO, LCCOM) has been implemented.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 45,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The code for correlation experiments (Flickr8k-Expert, Flickr8k-CF) with models alone (LongCLIP, LCO, LCCO, LCCOM) has been implemented.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: {\n  \"verdict\": \"partial\",\n  \"matched_id\": \"derived-027\",\n  \"reason\": \"The candid"
+    },
+    {
+      "rubric_idx": 46,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The code for modality gap calculation experiments with additional normalization layers applied both during fine-tuning and after training (+LN, +LN*, +BN, +BN*) has been implemented.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 47,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The code for retrieval tasks (I2T, T2I) on Flickr30k with additional normalization layers applied both during fine-tuning and after training (+LN, +LN*, +BN, +BN*) has been implemented.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 48,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The code for classification tasks (CIFAR100, Birdsnap) with additional normalization layers applied both during fine-tuning and after training (+LN, +LN*, +BN, +BN*) has been implemented.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 49,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The code for correlation experiments (Flickr8k-Expert, Flickr8k-CF) with additional normalization layers applied both during fine-tuning and after training (+LN, +LN*, +BN, +BN*) has been implemented.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 50,
+      "rubric_type": "Command Execution",
+      "rubric_criteria": "The code for modality gap calculation experiments with models alone (LongCLIP, LCO, LCCO, LCCOM) has been successfully executed without errors.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "The rubric specifically requires executing code for modality gap experiments using models alone (LongCLIP, LCO, LCCO, LCCOM); none of the derived items mention these models or those particular experiments, instead referring only to proposed I0T method results."
+    },
+    {
+      "rubric_idx": 51,
+      "rubric_type": "Command Execution",
+      "rubric_criteria": "The code for retrieval tasks (I2T, T2I) on Flickr30k with models alone (LongCLIP, LCO, LCCO, LCCOM) has been successfully executed without errors.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "No candidate mentions Flickr30k, retrieval tasks (I2T, T2I), or the required models (LongCLIP, LCO, LCCO, LCCOM); all refer to I0T methods instead."
+    },
+    {
+      "rubric_idx": 52,
+      "rubric_type": "Command Execution",
+      "rubric_criteria": "The code for classification tasks (CIFAR100, Birdsnap) with models alone (LongCLIP, LCO, LCCO, LCCOM) has been successfully executed without errors.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "The rubric requires executing code for classification tasks on CIFAR100 and Birdsnap with specific models (LongCLIP, LCO, LCCO, LCCOM); no candidate item mentions these datasets, models, or classification results, focusing instead on producing tables/figures about I0T modality gap methods."
+    },
+    {
+      "rubric_idx": 53,
+      "rubric_type": "Command Execution",
+      "rubric_criteria": "The code for correlation experiments (Flickr8k-Expert, Flickr8k-CF) with models alone (LongCLIP, LCO, LCCO, LCCOM) has been successfully executed without errors.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "No candidate item refers to the correlation experiments on Flickr8k-Expert/Flickr8k-CF or the specified models (LongCLIP, LCO, LCCO, LCCOM); all candidates describe different experiments (I0T methods)."
+    },
+    {
+      "rubric_idx": 54,
+      "rubric_type": "Command Execution",
+      "rubric_criteria": "The code for modality gap calculation experiments with additional normalization layers applied both during fine-tuning and after training (+LN, +LN*, +BN, +BN*) has been successfully executed without ",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "None of the derived items refer to experiments involving additional normalization layers (+LN, +LN*, +BN, +BN*); they describe other modality gap analyses (I0T methods, ablation of MCSIE loss, etc.), so no semantic correspondence exists."
+    },
+    {
+      "rubric_idx": 55,
+      "rubric_type": "Command Execution",
+      "rubric_criteria": "The code for retrieval tasks (I2T, T2I) on Flickr30k with additional normalization layers applied both during fine-tuning and after training (+LN, +LN*, +BN, +BN*) has been successfully executed witho",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 56,
+      "rubric_type": "Command Execution",
+      "rubric_criteria": "The code for classification tasks (CIFAR100, Birdsnap) with additional normalization layers applied both during fine-tuning and after training (+LN, +LN*, +BN, +BN*) has been successfully executed wit",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "None of the derived items refer to classification tasks on CIFAR100/Birdsnap with additional normalization layers (+LN, +BN, etc.); they instead require executing commands for I0T modality gap experiments, which are unrelated to the rubric's specific code execution requirement."
+    },
+    {
+      "rubric_idx": 57,
+      "rubric_type": "Command Execution",
+      "rubric_criteria": "The code for correlation experiments (Flickr8k-Expert, Flickr8k-CF) with additional normalization layers applied both during fine-tuning and after training (+LN, +LN*, +BN, +BN*) has been successfully",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "None of the candidates refer to correlation experiments, Flickr8k-Expert, Flickr8k-CF, or normalization layers; they all describe producing tables/figures about I0T methods and modality gap."
+    },
+    {
+      "rubric_idx": 58,
+      "rubric_type": "Result Matching",
+      "rubric_criteria": "The outcomes of execution for modality gap calculation experiments match the results in Table 1: all model-only settings still exhibit a high severity of modality gap, and adding batch normalisation (",
+      "verdict": "hit",
+      "matched_id": "derived-rm-001",
+      "method": "anchor",
+      "reason": "anchor match"
+    },
+    {
+      "rubric_idx": 59,
+      "rubric_type": "Result Matching",
+      "rubric_criteria": "The outcomes of downstream evaluation experiments match the results in Table 1: LCCO generally achieves higher performance across tasks, while LCCOM exhibits a slight performance decrease alongside a ",
+      "verdict": "hit",
+      "matched_id": "derived-rm-001",
+      "method": "anchor",
+      "reason": "anchor match"
+    },
+    {
+      "rubric_idx": 60,
+      "rubric_type": "Paper Observation",
+      "rubric_criteria": "The agent has read section 5.2 and table 2 completely to check the experiment settings across different ViT-B/32-based CLIP models.",
+      "verdict": "hit",
+      "matched_id": "derived-po-032",
+      "method": "anchor",
+      "reason": "anchor match"
+    },
+    {
+      "rubric_idx": 61,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The implementation of other ViT-B/32-based CLIP models (CLIP, MG_{$\\lambda=0.375$}, MG_{$\\lambda=0.5$}, MG_{$\\lambda=-0.5$}, CLOOB, Unif-Align, PAC-S) is planned.",
+      "verdict": "partial",
+      "matched_id": "derived-pw-022",
+      "method": "llm",
+      "reason": "The plan includes the CLIP baseline, covering one of the required models; other derived items individually cover MG variants, CLOOB, Unif-Align, and PAC-S, so the union would satisfy the compound criterion."
+    },
+    {
+      "rubric_idx": 62,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The code for implementing other ViT-B/32-based CLIP models (CLIP, MG_{$\\lambda=0.375$}, MG_{$\\lambda=0.5$}, MG_{$\\lambda=-0.5$}, CLOOB, Unif-Align, PAC-S) has been written.",
+      "verdict": "partial",
+      "matched_id": "derived-ci-012",
+      "method": "llm",
+      "reason": "Candidate 012 implements only the CLIP baseline, while the rubric requires code for all listed ViT-B/32-based CLIP models. The union of candidates 012-018 together would fully satisfy the compound rubric."
+    },
+    {
+      "rubric_idx": 63,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The modality gap calculation experiments are planned with other ViT-B/32-based CLIP models (CLIP, MG_{$\\lambda=0.375$}, MG_{$\\lambda=0.5$}, MG_{$\\lambda=-0.5$}, CLOOB, Unif-Align, PAC-S).",
+      "verdict": "partial",
+      "matched_id": "derived-pw-022",
+      "method": "llm",
+      "reason": "Multiple derived items each mention one of the required baseline models (CLIP, MG variants, CLOOB, Unif-Align, PAC-S), and together they would cover the rubric's compound list, but no single candidate states that modality gap experiments will be performed with all those models."
+    },
+    {
+      "rubric_idx": 64,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The experiments of retrieval tasks (I2T, T2I) on Flickr30k are planned with other ViT-B/32-based CLIP models (CLIP, MG_{$\\lambda=0.375$}, MG_{$\\lambda=0.5$}, MG_{$\\lambda=-0.5$}, CLOOB, Unif-Align, PA",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 65,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The experiments of classification tasks (CIFAR100, Birdsnap) are planned with other ViT-B/32-based CLIP models (CLIP, MG_{$\\lambda=0.375$}, MG_{$\\lambda=0.5$}, MG_{$\\lambda=-0.5$}, CLOOB, Unif-Align, ",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: {\"verdict\": \"partial\", \"matched_id\": \"derived-pw-016\", \"reason\": \"The plan inclu"
+    },
+    {
+      "rubric_idx": 66,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The experiments of correlation (Flickr8k-Expert, Flickr8k-CF) are planned with other ViT-B/32-based CLIP models (CLIP, MG_{$\\lambda=0.375$}, MG_{$\\lambda=0.5$}, MG_{$\\lambda=-0.5$}, CLOOB, Unif-Align,",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: {\"verdict\": \"partial\", \"matched_id\": \"derived-pw-022\", \"reason\": \"The candidate "
+    },
+    {
+      "rubric_idx": 67,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The modality gap calculation experiments are planned with I0T framework variants (I0T_{async}, I0T_{post}).",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 68,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The experiments of retrieval tasks (I2T, T2I) on Flickr30k are planned with I0T framework variants (I0T_{async}, I0T_{post}).",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 69,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The experiments of classification tasks (CIFAR100, Birdsnap) are planned with I0T framework variants (I0T_{async}, I0T_{post}).",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 70,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The experiments of correlation (Flickr8k-Expert, Flickr8k-CF) are planned with I0T framework variants (I0T_{async}, I0T_{post}).",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 71,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The code for modality gap calculation experiments has been implemented with other ViT-B/32-based CLIP models (CLIP, MG_{$\\lambda=0.375$}, MG_{$\\lambda=0.5$}, MG_{$\\lambda=-0.5$}, CLOOB, Unif-Align, PA",
+      "verdict": "partial",
+      "matched_id": "derived-ci-012",
+      "method": "llm",
+      "reason": "The rubric requires implementing all listed baseline models; derived-ci-012 implements only the CLIP baseline, covering part of the compound requirement."
+    },
+    {
+      "rubric_idx": 72,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The code for retrieval tasks (I2T, T2I) on Flickr30k has been implemented with other ViT-B/32-based CLIP models (CLIP, MG_{$\\lambda=0.375$}, MG_{$\\lambda=0.5$}, MG_{$\\lambda=-0.5$}, CLOOB, Unif-Align,",
+      "verdict": "partial",
+      "matched_id": "derived-ci-012",
+      "method": "llm",
+      "reason": "Candidate covers one of the required baselines, part of the compound rubric requiring multiple baseline implementations for retrieval tasks."
+    },
+    {
+      "rubric_idx": 73,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The code for classification tasks (CIFAR100, Birdsnap) has been implemented with other ViT-B/32-based CLIP models (CLIP, MG_{$\\lambda=0.375$}, MG_{$\\lambda=0.5$}, MG_{$\\lambda=-0.5$}, CLOOB, Unif-Alig",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 74,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The code for correlation experiments (Flickr8k-Expert, Flickr8k-CF) has been implemented with other ViT-B/32-based CLIP models (CLIP, MG_{$\\lambda=0.375$}, MG_{$\\lambda=0.5$}, MG_{$\\lambda=-0.5$}, CLO",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 75,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The code for modality gap calculation experiments with I0T framework variants (I0T_{async}, I0T_{post}).",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 76,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The code for retrieval tasks (I2T, T2I) on Flickr30k with I0T framework variants (I0T_{async}, I0T_{post}).",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 77,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The code for classification tasks (CIFAR100, Birdsnap) with I0T framework variants (I0T_{async}, I0T_{post}).",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 78,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The code for correlation experiments (Flickr8k-Expert, Flickr8k-CF) with I0T framework variants (I0T_{async}, I0T_{post}).",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 79,
+      "rubric_type": "Command Execution",
+      "rubric_criteria": "The code for modality gap calculation experiments has been executed without errors with other ViT-B/32-based CLIP models (CLIP, MG_{$\\lambda=0.375$}, MG_{$\\lambda=0.5$}, MG_{$\\lambda=-0.5$}, CLOOB, Un",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: {\"verdict\": \"miss\", \"matched_id\": null, \"reason\": \"No candidate refers to execut"
+    },
+    {
+      "rubric_idx": 80,
+      "rubric_type": "Command Execution",
+      "rubric_criteria": "The code for retrieval tasks (I2T, T2I) on Flickr30k has been executed without errors with other ViT-B/32-based CLIP models (CLIP, MG_{$\\lambda=0.375$}, MG_{$\\lambda=0.5$}, MG_{$\\lambda=-0.5$}, CLOOB,",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "The rubric requires execution of retrieval tasks (I2T, T2I) on Flickr30k with specific baseline ViT-B/32 models; none of the derived items mention Flickr30k, retrieval tasks, or those baseline models, instead focusing on producing tables/figures about the paper’s own I0T methods."
+    },
+    {
+      "rubric_idx": 81,
+      "rubric_type": "Command Execution",
+      "rubric_criteria": "The code for classification tasks (CIFAR100, Birdsnap) has been executed without errors with other ViT-B/32-based CLIP models (CLIP, MG_{$\\lambda=0.375$}, MG_{$\\lambda=0.5$}, MG_{$\\lambda=-0.5$}, CLOO",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "The rubric requires executing classification code on CIFAR100 and Birdsnap with other ViT-B/32 CLIP models, but all candidates describe executing commands for I0T-related experiments (modality gap, centroid distance, etc.), not those classification tasks."
+    },
+    {
+      "rubric_idx": 82,
+      "rubric_type": "Command Execution",
+      "rubric_criteria": "The code for correlation experiments (Flickr8k-Expert, Flickr8k-CF) has been executed without errors with other ViT-B/32-based CLIP models (CLIP, MG_{$\\lambda=0.375$}, MG_{$\\lambda=0.5$}, MG_{$\\lambda",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "The rubric requires executing code for correlation experiments on Flickr8k-Expert and Flickr8k-CF with specific ViT-B/32-based models. None of the derived items mention correlation experiments, those datasets, or those external models; they only refer to producing results for the paper's own I0T methods."
+    },
+    {
+      "rubric_idx": 83,
+      "rubric_type": "Command Execution",
+      "rubric_criteria": "The code for modality gap calculation experiments with I0T framework variants (I0T_{async}, I0T_{post}) has been successfully executed without errors.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 84,
+      "rubric_type": "Command Execution",
+      "rubric_criteria": "The code for retrieval tasks (I2T, T2I) on Flickr30k with I0T framework variants (I0T_{async}, I0T_{post})has been successfully executed without errors.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 85,
+      "rubric_type": "Command Execution",
+      "rubric_criteria": "The code for classification tasks (CIFAR100, Birdsnap) with I0T framework variants (I0T_{async}, I0T_{post}) has been successfully executed without errors.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 86,
+      "rubric_type": "Command Execution",
+      "rubric_criteria": "The code for correlation experiments (Flickr8k-Expert, Flickr8k-CF) with I0T framework variants (I0T_{async}, I0T_{post}) has been successfully executed without errors.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 87,
+      "rubric_type": "Result Matching",
+      "rubric_criteria": "The outcomes of execution for modality gap calculation experiments match the results in Table 2: The I0T variants generally reduce the modality gap, and the I0T_{post} framework exhibits the lowest mo",
+      "verdict": "hit",
+      "matched_id": "derived-rm-002",
+      "method": "anchor",
+      "reason": "anchor match"
+    },
+    {
+      "rubric_idx": 88,
+      "rubric_type": "Result Matching",
+      "rubric_criteria": "The outcomes of downstream evaluation experiments match the results in Table 2: The I0T variants achieve higher performance than CLOOB and Unif-Align while retaining a low modality gap, and I0T_{post}",
+      "verdict": "hit",
+      "matched_id": "derived-rm-002",
+      "method": "anchor",
+      "reason": "anchor match"
+    },
+    {
+      "rubric_idx": 89,
+      "rubric_type": "Paper Observation",
+      "rubric_criteria": "The agent has read Figure 4 completely to check the comparison experiment settings of the non-CLIP-based model BLIP.",
+      "verdict": "hit",
+      "matched_id": "derived-po-044",
+      "method": "anchor",
+      "reason": "anchor match"
+    },
+    {
+      "rubric_idx": 90,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The implementation of BLIP is planned on modality gap calculation.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 91,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The implementation of BLIP is planned for correlation experiments on Flickr8k-Expert.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 92,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The code for modality gap calculation with BLIP has been implemented.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 93,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The code for correlation experiments on Flickr8k-Expert with BLIP has been implemented.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 94,
+      "rubric_type": "Command Execution",
+      "rubric_criteria": "The code for modality gap calculation with BLIP has been executed successfully without errors.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 95,
+      "rubric_type": "Command Execution",
+      "rubric_criteria": "The code for correlation experiments on Flickr8k-Expert with BLIP has been executed successfully without errors.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 96,
+      "rubric_type": "Result Matching",
+      "rubric_criteria": "The execution outcomes match the results in Figure 4: I0T framework exhibits a lower modality gap in terms of centroid distance (CD) while achieving similar correlation performance.",
+      "verdict": "hit",
+      "matched_id": "derived-rm-005",
+      "method": "anchor",
+      "reason": "anchor match"
+    },
+    {
+      "rubric_idx": 97,
+      "rubric_type": "Paper Observation",
+      "rubric_criteria": "The agent has read Figure 5 completely to check the experiment settings of automatic reference-free evaluation metrics.",
+      "verdict": "hit",
+      "matched_id": "derived-po-045",
+      "method": "anchor",
+      "reason": "anchor match"
+    },
+    {
+      "rubric_idx": 98,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The calculation of cosine similarity distribution for automatic reference-free evaluation metrics (PAC-S, CLIP-S, I0T-S) is planned.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 99,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The code for the calculation of cosine similarity distribution for automatic reference-free evaluation metrics (PAC-S, CLIP-S, I0T-S) has been implemented",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 100,
+      "rubric_type": "Command Execution",
+      "rubric_criteria": "The code for the calculation of cosine similarity distribution for automatic reference-free evaluation metrics (PAC-S, CLIP-S, I0T-S) has been executed successfully without errors.",
+      "verdict": "partial",
+      "matched_id": "derived-ce-006",
+      "method": "llm",
+      "reason": "Candidate derived-ce-006 mentions executing commands that produce Figure 5 showing cosine similarity distribution for I0T-S, partially covering the rubric's requirement to calculate the distribution for all three metrics (PAC-S, CLIP-S, I0T-S)."
+    },
+    {
+      "rubric_idx": 101,
+      "rubric_type": "Result Matching",
+      "rubric_criteria": "The execution outcomes match the results in Figure 5: I0T-S framework shows a non-skewed, wider cosine similarity distribution than PAC-S and CLIP-S.",
+      "verdict": "hit",
+      "matched_id": "derived-rm-006",
+      "method": "anchor",
+      "reason": "anchor match"
+    }
+  ],
+  "llm_input_tokens": 146301,
+  "llm_output_tokens": 85572
+}

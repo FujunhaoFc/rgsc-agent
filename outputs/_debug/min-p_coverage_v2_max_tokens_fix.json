@@ -1,0 +1,777 @@
+{
+  "paper": "min-p",
+  "by_type": {
+    "Paper Observation": {
+      "total": 8,
+      "hit": 8,
+      "partial": 0,
+      "miss": 0
+    },
+    "Plan Writing": {
+      "total": 31,
+      "hit": 4,
+      "partial": 1,
+      "miss": 26
+    },
+    "Code Implementation": {
+      "total": 25,
+      "hit": 2,
+      "partial": 2,
+      "miss": 21
+    },
+    "Command Execution": {
+      "total": 12,
+      "hit": 3,
+      "partial": 3,
+      "miss": 6
+    },
+    "Result Matching": {
+      "total": 6,
+      "hit": 6,
+      "partial": 0,
+      "miss": 0
+    }
+  },
+  "results": [
+    {
+      "rubric_idx": 0,
+      "rubric_type": "Paper Observation",
+      "rubric_criteria": "The agent has read section 3.1 completely to understand the core methodology of the min-p sampling.",
+      "verdict": "hit",
+      "matched_id": "derived-po-004",
+      "method": "llm",
+      "reason": "The candidate explicitly requires reading Section 3.1 to understand its content, which directly matches the official rubric's requirement to read section 3.1 to understand the core methodology of min-p sampling."
+    },
+    {
+      "rubric_idx": 1,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The plan includes the calculation of the maximum probability.",
+      "verdict": "hit",
+      "matched_id": "derived-pw-004",
+      "method": "llm",
+      "reason": "The item directly describes identifying the maximum token probability, which is the calculation of the maximum probability."
+    },
+    {
+      "rubric_idx": 2,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The plan includes the truncation shreshold.",
+      "verdict": "hit",
+      "matched_id": "derived-pw-005",
+      "method": "llm",
+      "reason": "The derived item describes computing the dynamic truncation threshold, directly corresponding to the rubric's truncation threshold."
+    },
+    {
+      "rubric_idx": 3,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The plan includes the construction of the sampling pool.",
+      "verdict": "hit",
+      "matched_id": "derived-pw-009",
+      "method": "llm",
+      "reason": "Applying the removal mask to the logits defines the set of tokens available for sampling, thereby constructing the sampling pool."
+    },
+    {
+      "rubric_idx": 4,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The plan includes sampling from the pool.",
+      "verdict": "hit",
+      "matched_id": "derived-pw-010",
+      "method": "llm",
+      "reason": "Derived item explicitly states using filtered logits for multinomial sampling, which corresponds to sampling from the token pool after filtering."
+    },
+    {
+      "rubric_idx": 5,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The code for the calculation of the maximum probability is implemented to identify the token with the highest probability in the distribution $p_{\\mathcal{max}}$.",
+      "verdict": "hit",
+      "matched_id": "derived-ci-004",
+      "method": "llm",
+      "reason": "The derived item directly requires code to identify the maximum token probability p_max = max(probs), which exactly matches the calculation of the maximum probability described in the rubric."
+    },
+    {
+      "rubric_idx": 6,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The code for the truncation threshold is implemented, $p_{\\mathrm{base}}$ is set and scaled by $p_{\\mathrm{max}}$ as equation (1).",
+      "verdict": "hit",
+      "matched_id": "derived-ci-005",
+      "method": "llm",
+      "reason": "The item directly describes computing the truncation threshold as p_base * p_max, matching the rubric's requirement."
+    },
+    {
+      "rubric_idx": 7,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The code for the construction of  is implemented, collecting tokens with probability larger than the scaled probabilty as equation (2).",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 8,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The code for sampling from the pool is implemented to sample the next token from scaled distribution as equation (3).",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "No derived item mentions sampling from the pool or scaled distribution as equation (3)."
+    },
+    {
+      "rubric_idx": 9,
+      "rubric_type": "Paper Observation",
+      "rubric_criteria": "The agent has read section 5.1 completely to check the experimental setups.",
+      "verdict": "hit",
+      "matched_id": "derived-po-011",
+      "method": "llm",
+      "reason": "The derived item explicitly requires reading Section 5.1, matching the rubric's required section and action."
+    },
+    {
+      "rubric_idx": 10,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The collection and implementation of models (Mistral 7B, Mistral Large 132B, Llama 3.2 1B, 3B, 8B, 70B) are planned.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "No single derived item addresses planning of all required models; each mentions only a subset or a single model."
+    },
+    {
+      "rubric_idx": 11,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The collection of the benchmarks (GPQA, GSM8K CoT, AlpacaEval Creative Writing) is planned.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "No single derived item covers the planned collection of all three benchmarks (GPQA, GSM8K CoT, AlpacaEval Creative Writing); each dataset is mentioned separately."
+    },
+    {
+      "rubric_idx": 12,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The implementation of metrics (accuracy, win rate, LC-win rate) is planned",
+      "verdict": "partial",
+      "matched_id": "derived-pw-029",
+      "method": "llm",
+      "reason": "The derived items separately mention Accuracy, Win Rate, and LC-Win Rate metrics, each covering a sub-part of the rubric requirement for planning implementation of all three."
+    },
+    {
+      "rubric_idx": 13,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The implementation of baseline methods (top-p sampling, temperature sampling, $\\epsilon$ sampling, $\\eta$ sampling, mirostat sampling) are planned.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 14,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The hyperparameters (temperature, p_{mathcal{base}}, ...) are planned to be set as described in the paper.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: {\"verdict\":"
+    },
+    {
+      "rubric_idx": 15,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The code for the models (Mistral 7B, Mistral Large 132B, Llama 3.2 1B, 3B, 8B, 70B) have been implemented.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "No derived item specifies implementation of the named models; they describe sampling steps or metrics."
+    },
+    {
+      "rubric_idx": 16,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The code for benchmark collection (GPQA, GSM8K CoT, AlpacaEval Creative Writing) has been implemented.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "No derived item covers implementation of benchmark collection for GPQA, GSM8K CoT, or AlpacaEval Creative Writing."
+    },
+    {
+      "rubric_idx": 17,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The code for metric calculation (accuracy, win rate, LC-win rate) has been implemented",
+      "verdict": "partial",
+      "matched_id": "derived-ci-018",
+      "method": "llm",
+      "reason": "The candidate covers only the accuracy metric, a sub-part of the required metric calculation code for accuracy, win rate, and LC-win rate."
+    },
+    {
+      "rubric_idx": 18,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The code for baseline methods (top-p sampling, temperature sampling, $\\epsilon$ sampling, $\\eta$ sampling, mirostat sampling) has been implemented.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "No single derived item covers all five required baselines; each baseline is covered only individually, so completing any one candidate would not satisfy the full rubric criterion."
+    },
+    {
+      "rubric_idx": 19,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The hyperparameters (temperature, p_{mathcal{base}}, ...) are set correctly in the configuration files and programs as described in the paper.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "No candidate checks correct hyperparameter configuration; all check code presence for algorithm steps or baselines."
+    },
+    {
+      "rubric_idx": 20,
+      "rubric_type": "Paper Observation",
+      "rubric_criteria": "The agent has read section 5.2.1 and Table 2 completely to check the GPQA experiment settings.",
+      "verdict": "hit",
+      "matched_id": "derived-po-053",
+      "method": "anchor",
+      "reason": "anchor match"
+    },
+    {
+      "rubric_idx": 21,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The 5-shot prompting strategy is planned.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "No candidate mentions a 5-shot prompting strategy."
+    },
+    {
+      "rubric_idx": 22,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The experiments of all baselines (top-p sampling, temperature sampling, $\\epsilon$ sampling, $\\eta$ sampling, mirostat sampling) with Mistral 7B are planned on the GPQA benchmark.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 23,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The experiments of min-p sampling with Mistral 7B is planned on the GPQA benchmark.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "No single derived item combines min-p sampling, Mistral 7B, and GPQA; the required components are scattered across separate items like model, dataset, and min-p steps."
+    },
+    {
+      "rubric_idx": 24,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The experiments with different temperatures ($\\tau=0.7, 1.0, 1.5, 2.0, 3.0$) are planned for each method.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 25,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The 5-shot prompting strategy has implemented.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "No derived item mentions 5-shot prompting; all items refer to other aspects like sampling algorithm, datasets, models, baselines, metrics, or hyperparameters."
+    },
+    {
+      "rubric_idx": 26,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The code for the experiments of all baselines (top-p sampling, temperature sampling, $\\epsilon$ sampling, $\\eta$ sampling, mirostat sampling) with Mistral 7B has been implemented on the GPQA benchmark",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "No single candidate covers implementation of experiments for all required baselines with Mistral 7B on GPQA."
+    },
+    {
+      "rubric_idx": 27,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The code for the experiments of min-p sampling with Mistral 7B has been implemented on the GPQA benchmark.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "No derived item describes implementing the full experiment with Mistral 7B on GPQA; items cover only algorithm sub-steps, baselines, or metrics."
+    },
+    {
+      "rubric_idx": 28,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The experiments with different temperatures ($\\tau=0.7, 1.0, 1.5, 2.0, 3.0$) are implemented for each method.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "None of the derived items describe implementing experiments across multiple temperature values for each method; they only describe individual code steps, baselines, or metrics."
+    },
+    {
+      "rubric_idx": 29,
+      "rubric_type": "Command Execution",
+      "rubric_criteria": "The experiments of all baselines (top-p sampling, temperature sampling, $\\epsilon$ sampling, $\\eta$ sampling, mirostat sampling) on the GPQA benchmark are executed successfully without errors.",
+      "verdict": "partial",
+      "matched_id": "derived-ce-009",
+      "method": "llm",
+      "reason": "Table 8 involves GPQA but only min-p vs top-p, not all required baselines (temperature, ε, η, mirostat)."
+    },
+    {
+      "rubric_idx": 30,
+      "rubric_type": "Command Execution",
+      "rubric_criteria": "The experiments of min-p on the GPQA benchmark are executed successfully without errors.",
+      "verdict": "hit",
+      "matched_id": "derived-ce-009",
+      "method": "llm",
+      "reason": "derived-ce-009 directly covers execution of commands for Table 8, which includes min-p sampling results on the GPQA benchmark."
+    },
+    {
+      "rubric_idx": 31,
+      "rubric_type": "Result Matching",
+      "rubric_criteria": "The execution outcomes match the results in Table 2: Mistral 7B with min-p sampling consistently outperforms all previous baselines across all temperatures on the GPQA benchmark.",
+      "verdict": "hit",
+      "matched_id": "derived-rm-001",
+      "method": "anchor",
+      "reason": "anchor match"
+    },
+    {
+      "rubric_idx": 32,
+      "rubric_type": "Paper Observation",
+      "rubric_criteria": "The agent has read Table 3a completely to check the GPQA experiment settings with the large model (Mistral Large 132B).",
+      "verdict": "hit",
+      "matched_id": "derived-po-054",
+      "method": "anchor",
+      "reason": "anchor match"
+    },
+    {
+      "rubric_idx": 33,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The experiments of other baselines (Temp' only, top-p_{0.95}, top-p_{0.9}) with Mistral Large are planned on the GPQA benchmark.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 34,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The experiments of min-p sampling with Mistral Large is planned on the GPQA benchmark.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "No single derived item describes the planned experiment combining min-p sampling, Mistral Large, and the GPQA benchmark; they only provide separate atomic components."
+    },
+    {
+      "rubric_idx": 35,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The experiments with different temperatures ($\\tau=0.5, 1.0, 2.0, 3.0, 4.0$) are planned for each method on the GPQA benchmark.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "No derived item specifies experiments with temperatures 0.5, 1.0, 2.0, 3.0, 4.0 for each method on the GPQA benchmark."
+    },
+    {
+      "rubric_idx": 36,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The code for the experiments of other baselines (Temp' only, top-p_{0.95}, top-p_{0.9}) with Mistral Large has been implemented on the GPQA benchmark.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "No single candidate implements all specified baselines (Temp' only, top-p_{0.95}, top-p_{0.9}) with Mistral Large on GPQA; they only mention individual baselines generically."
+    },
+    {
+      "rubric_idx": 37,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The code for the experiments of min-p sampling with Mistral Large has been implemented on the GPQA benchmark.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "No candidate explicitly addresses the whole experiment code for min-p sampling with Mistral Large on GPQA; candidates are granular step implementations, baselines, or metrics."
+    },
+    {
+      "rubric_idx": 38,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The experiments with different temperatures ($\\tau=0.5, 1.0, 2.0, 3.0, 4.0$) are implemented for each method on the GPQA benchmark.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "No candidate describes implementing the full experiment loop over the specific temperatures τ=0.5,1.0,2.0,3.0,4.0 for each method on the GPQA benchmark; candidates only cover individual sampling steps, individual baselines, or evaluation metrics."
+    },
+    {
+      "rubric_idx": 39,
+      "rubric_type": "Command Execution",
+      "rubric_criteria": "The experiments of other baselines (Temp' only, top-p_{0.95}, top-p_{0.9}) with Mistral Large on the GPQA benchmark are executed successfully without errors.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 40,
+      "rubric_type": "Command Execution",
+      "rubric_criteria": "The experiments of min-p with Mistral Large on the GPQA benchmark are executed successfully without errors.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 41,
+      "rubric_type": "Result Matching",
+      "rubric_criteria": "The execution outcomes match the results in Table 3a: Mistral Large with min-p sampling generally outperforms other baselines, especially when $\\tau >= 1.0$ on the GPQA benchmark. Also, the performanc",
+      "verdict": "hit",
+      "matched_id": "derived-rm-002",
+      "method": "anchor",
+      "reason": "anchor match"
+    },
+    {
+      "rubric_idx": 42,
+      "rubric_type": "Paper Observation",
+      "rubric_criteria": "The agent has read section 5.2.2 and Table 2 completely to check the GSM8K CoT experiment settings.",
+      "verdict": "hit",
+      "matched_id": "derived-po-053",
+      "method": "anchor",
+      "reason": "anchor match"
+    },
+    {
+      "rubric_idx": 43,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The 8-shot prompting strategy is planned.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "No derived item mentions 8-shot prompting, few-shot examples, or any prompting strategy planning."
+    },
+    {
+      "rubric_idx": 44,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The experiments of all baselines (top-p sampling, temperature sampling, $\\epsilon$ sampling, $\\eta$ sampling, mirostat sampling) with Mistral 7B are planned on the GSM8K CoT benchmark.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "No single candidate item combines all required baselines, Mistral 7B, and GSM8K CoT benchmark; only separate component items exist."
+    },
+    {
+      "rubric_idx": 45,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The experiments of min-p sampling with Mistral 7B is planned on the GSM8K CoT benchmark.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "No single derived item combines the min-p method, Mistral 7B model, and GSM8K dataset as required; each item only covers one aspect separately."
+    },
+    {
+      "rubric_idx": 46,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The experiments with different temperatures ($\\tau=0.7, 1.0, 1.5, 2.0, 3.0$) are planned for each method on the GSM8K CoT benchmark.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "No single derived item combines planning experiments with the specific temperatures (0.7, 1.0, 1.5, 2.0, 3.0) on the GSM8K CoT benchmark; pw-037 mentions temperature range but not GSM8K, pw-015 mentions GSM8K dataset but not temperatures."
+    },
+    {
+      "rubric_idx": 47,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The code for the experiments of all baselines (top-p sampling, temperature sampling, $\\epsilon$ sampling, $\\eta$ sampling, mirostat sampling) with Mistral 7B has been implemented on the GSM8K CoT benc",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "No single derived item covers all required baselines, model, and benchmark; the rubric requires implementation of all baselines with Mistral 7B on GSM8K CoT."
+    },
+    {
+      "rubric_idx": 48,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The code for the experiments of min-p sampling with Mistral 7B has been implemented on the GSM8K CoT benchmark.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "The official rubric requires the full experiment code (min-p sampling with Mistral 7B on GSM8K CoT), but no derived item mentions the specific model, benchmark, or the complete experiment; they only cover isolated algorithm steps or other baselines/metrics."
+    },
+    {
+      "rubric_idx": 49,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The experiments with different temperatures ($\\tau=0.7, 1.0, 1.5, 2.0, 3.0$) are implemented for each method on the GSM8K CoT benchmark.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "None of the derived items describes implementing experiments with specific temperatures on the GSM8K CoT benchmark; they cover generic sampling steps, baseline implementations, or metric computations."
+    },
+    {
+      "rubric_idx": 50,
+      "rubric_type": "Command Execution",
+      "rubric_criteria": "The experiments of all baselines (top-p sampling, temperature sampling, $\\epsilon$ sampling, $\\eta$ sampling, mirostat sampling) on the GSM8K CoT benchmark are executed successfully without errors.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "No candidate covers all listed baselines on the GSM8K CoT benchmark, only partial mentions like top-p or GSM8K in some items."
+    },
+    {
+      "rubric_idx": 51,
+      "rubric_type": "Command Execution",
+      "rubric_criteria": "The experiments of min-p on the GPQA benchmark are executed successfully without errors.",
+      "verdict": "hit",
+      "matched_id": "derived-ce-009",
+      "method": "llm",
+      "reason": "The derived item requires executing commands that produce Table 8 results, which include min-p experiments on GPQA benchmark, thus satisfying the criterion."
+    },
+    {
+      "rubric_idx": 52,
+      "rubric_type": "Result Matching",
+      "rubric_criteria": "The execution outcomes match the results in Table 2: Mistral 7B with min-p sampling generally outperforms previous baselines when $\\tau>=1.0$ on the GSM8K CoT benchmark.",
+      "verdict": "hit",
+      "matched_id": "derived-rm-001",
+      "method": "anchor",
+      "reason": "anchor match"
+    },
+    {
+      "rubric_idx": 53,
+      "rubric_type": "Paper Observation",
+      "rubric_criteria": "The agent has read section 5.2.3 and Table 3b completely to check the creative writing experiment settings.",
+      "verdict": "hit",
+      "matched_id": "derived-po-056",
+      "method": "anchor",
+      "reason": "anchor match"
+    },
+    {
+      "rubric_idx": 54,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The judge models (openchat-3.5-0106, GPT-4 Turbo) are planned to be implemented",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "No derived item mentions implementing the judge models openchat-3.5-0106 or GPT-4 Turbo."
+    },
+    {
+      "rubric_idx": 55,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The experiments of baselines (temperature only, $\\epsilon$ sampling, top-p sampling, mirostat sampling) with Mistral 7B are planned on the AlpacaEval Creative Writing benchmark.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 56,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The experiments of min-p sampling with Mistral 7B is planned on the AlpacaEval Creative Writing benchmark.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "No derived item combines min-p sampling, Mistral 7B, and AlpacaEval Creative Writing benchmark into a single plan item."
+    },
+    {
+      "rubric_idx": 57,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The experiments with different temperatures ($\\tau=1.0, 1.5$) are planned for each method on the AlpacaEval Creative Writing benchmark.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: {\"verdict\": \"miss\", \"matched_id\": null, \"reason\": \"No derived item plans experim"
+    },
+    {
+      "rubric_idx": 58,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The code for the experiments of baselines (temperature only, $\\epsilon$ sampling, top-p sampling, mirostat sampling) with Mistral 7B has been implemented on the AlpacaEval Creative Writing benchmark.",
+      "verdict": "partial",
+      "matched_id": "derived-ci-011",
+      "method": "llm",
+      "reason": "Candidate covers implementation of one baseline (Temperature Only) which is a sub-part of the full rubric requirement for all listed baselines with Mistral 7B on AlpacaEval."
+    },
+    {
+      "rubric_idx": 59,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The code for the experiments of min-p sampling with Mistral 7B has been implemented on the AlpacaEval Creative Writing benchmark.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "No derived item mentions Mistral 7B or the AlpacaEval Creative Writing benchmark; they only cover generic min-p sampling steps or baseline/metric implementations."
+    },
+    {
+      "rubric_idx": 60,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The experiments with different temperatures ($\\tau=1.0, 1.5$) are implemented for each method on the AlpacaEval Creative Writing benchmark.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "No derived item describes implementing experiments with different temperatures (1.0, 1.5) for each method on the AlpacaEval Creative Writing benchmark."
+    },
+    {
+      "rubric_idx": 61,
+      "rubric_type": "Command Execution",
+      "rubric_criteria": "The experiments of baselines (temperature only, $\\epsilon$ sampling, top-p sampling, mirostat sampling) on the AlpacaEval Creative Writing benchmark are executed successfully without errors.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 62,
+      "rubric_type": "Command Execution",
+      "rubric_criteria": "The experiments of min-p on the AlpacaEval Creative Writing benchmark are executed successfully without errors.",
+      "verdict": "hit",
+      "matched_id": "derived-ce-006",
+      "method": "llm",
+      "reason": "The derived item explicitly requires executing commands that produce results for the AlpacaEval Creative Writing benchmark (Table 7), matching the official rubric."
+    },
+    {
+      "rubric_idx": 63,
+      "rubric_type": "Result Matching",
+      "rubric_criteria": "The execution outcomes match the results in Table 3b: Mistral 7B with min-p sampling consistently outperforms previous baselines across all temperatures on the AlpacaEval Creative Writing benchmark.",
+      "verdict": "hit",
+      "matched_id": "derived-rm-003",
+      "method": "anchor",
+      "reason": "anchor match"
+    },
+    {
+      "rubric_idx": 64,
+      "rubric_type": "Paper Observation",
+      "rubric_criteria": "The agent has read Table 3a completely to check the GPQA and GSM8K CoT experiment settings with Llama 3 models (Llama 3.2 1B-Instruct, 3B-Instruct, 8B-Instruct).",
+      "verdict": "hit",
+      "matched_id": "derived-po-054",
+      "method": "anchor",
+      "reason": "anchor match"
+    },
+    {
+      "rubric_idx": 65,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The experiments of all sampling methods (Temp' only, top-p=0.9, top-p=0.95, min-p=0.05, min-p=0.1) with Llama 3 models (Llama 3.2 1B-Instruct, 3B-Instruct, 8B-Instruct) are planned on the GPQA benchma",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "No candidate item describes planning experiments with the specified sampling methods, Llama 3 models, and GPQA benchmark together."
+    },
+    {
+      "rubric_idx": 66,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The experiments of all sampling methods (Temp' only, top-p=0.9, top-p=0.95, min-p=0.05, min-p=0.1) with Llama 3 models (Llama 3.2 1B-Instruct, 3B-Instruct, 8B-Instruct) are planned on the GSM8K CoT be",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 67,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The code for the experiments of all sampling methods (Temp' only, top-p=0.9, top-p=0.95, min-p=0.05, min-p=0.1) with Llama 3 models (Llama 3.2 1B-Instruct, 3B-Instruct, 8B-Instruct) have been implemen",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 68,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The code for the experiments of all sampling methods (Temp' only, top-p=0.9, top-p=0.95, min-p=0.05, min-p=0.1) with Llama 3 models (Llama 3.2 1B-Instruct, 3B-Instruct, 8B-Instruct) has been implement",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "No single candidate item covers all required sampling methods and models; each addresses only a subset or individual step."
+    },
+    {
+      "rubric_idx": 69,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The code for the experiments of all sampling methods (Temp' only, top-p=0.9, top-p=0.95, min-p=0.05, min-p=0.1) with Llama 3 models (Llama 3.2 1B-Instruct, 3B-Instruct, 8B-Instruct) has been implement",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 70,
+      "rubric_type": "Command Execution",
+      "rubric_criteria": "The experiments of all sampling methods (Temp' only, top-p=0.9, top-p=0.95, min-p=0.05, min-p=0.1) with Llama 3 models (Llama 3.2 1B-Instruct, 3B-Instruct, 8B-Instruct) on the GPQA benchmark are execu",
+      "verdict": "partial",
+      "matched_id": "derived-ce-009",
+      "method": "llm",
+      "reason": "derived-ce-009 mentions executing experiments on Llama 3 models with min-p sampling on GPQA (Table 8), partially matching the rubric's required models and benchmark, but does not explicitly list all specific sampling methods (Temp' only, top-p=0.9/0.95, min-p=0.05/0.1) and model sizes."
+    },
+    {
+      "rubric_idx": 71,
+      "rubric_type": "Command Execution",
+      "rubric_criteria": "The experiments of all sampling methods (Temp' only, top-p=0.9, top-p=0.95, min-p=0.05, min-p=0.1) with Llama 3 models (Llama 3.2 1B-Instruct, 3B-Instruct, 8B-Instruct) on the GSM8K CoT benchmark are ",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 72,
+      "rubric_type": "Result Matching",
+      "rubric_criteria": "The execution outcomes match the results in Table 8: Llama 3 models with min-p sampling perform better in most cases on both GPQA and GSM8K CoT benchmarks, especially when the temperature is higher (>",
+      "verdict": "hit",
+      "matched_id": "derived-rm-009",
+      "method": "anchor",
+      "reason": "anchor match"
+    },
+    {
+      "rubric_idx": 73,
+      "rubric_type": "Paper Observation",
+      "rubric_criteria": "The agent has read Table 9 completely to check the GPQA and GSM8K CoT experiment settings with the large Llama model (Llama 3.1 70B).",
+      "verdict": "hit",
+      "matched_id": "derived-po-062",
+      "method": "anchor",
+      "reason": "anchor match"
+    },
+    {
+      "rubric_idx": 74,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The experiments of all sampling methods (Temp' only, top-p=0.9, top-p=0.95, min-p=0.05, min-p=0.1, min-p=0.2) with Llama 3.1 70B are planned on the GPQA benchmark.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "No single derived item explicitly plans experiments for all listed sampling methods (Temp' only, top-p=0.9, top-p=0.95, min-p=0.05, min-p=0.1, min-p=0.2) with Llama 3.1 70B on GPQA."
+    },
+    {
+      "rubric_idx": 75,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The experiments of all sampling methods (Temp' only, top-p=0.9, top-p=0.95, min-p=0.05, min-p=0.2) with Llama 3.1 70B are planned on the GSM8K CoT benchmark.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "No single candidate covers the combination of all specified sampling methods, Llama 3.1 70B model, and GSM8K CoT benchmark as required by the rubric."
+    },
+    {
+      "rubric_idx": 76,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The experiments with different temperatures ($\\tau=0.5, 0.7, 1.0,  2.0, 3.0, 4.0$) are planned for each method with Llama 3 modesl on the GPQA and GSM8K CoT benchmarks.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "No derived item describes planning experiments with the specified temperatures (τ=0.5,0.7,1.0,2.0,3.0,4.0) on GPQA and GSM8K with Llama 3 models; candidates only cover individual components like temperature range, datasets, or models in isolation."
+    },
+    {
+      "rubric_idx": 77,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The code for the experiments of all sampling methods (Temp' only, top-p=0.9, top-p=0.95, min-p=0.05, min-p=0.1, min-p=0.2) with Llama 3.1 70B has been implemented on the GPQA benchmark.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "No single candidate item covers the complete implementation of all required sampling methods with the specified model and benchmark."
+    },
+    {
+      "rubric_idx": 78,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The code for the experiments of all sampling methods (Temp' only, top-p=0.9, top-p=0.95, min-p=0.05, min-p=0.2) with Llama 3.1 70B has been implemented on the GSM8K CoT benchmark.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "No single derived item covers the full implementation requirement for all listed sampling methods with the specified model and benchmark; items only cover individual baselines or algorithm steps."
+    },
+    {
+      "rubric_idx": 79,
+      "rubric_type": "Command Execution",
+      "rubric_criteria": "The experiments of all sampling methods (Temp' only, top-p=0.9, top-p=0.95, min-p=0.05, min-p=0.1, min-p=0.2) with Llama 3.1 70B on the GPQA benchmark are executed successfully without errors.",
+      "verdict": "partial",
+      "matched_id": "derived-ce-009",
+      "method": "llm",
+      "reason": "Candidate derived-ce-009 involves executing commands for GPQA benchmark results with Llama models and min-p vs top-p, but the official rubric requires a specific model (Llama 3.1 70B) and a complete set of sampling methods (Temp' only, top-p=0.9/0.95, min-p=0.05/0.1/0.2), so it is only a partial match."
+    },
+    {
+      "rubric_idx": 80,
+      "rubric_type": "Command Execution",
+      "rubric_criteria": "The experiments of all sampling methods (Temp' only, top-p=0.9, top-p=0.95, min-p=0.05, min-p=0.2) with Llama 3.1 70B on the GSM8K CoT benchmark are executed successfully without errors.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 81,
+      "rubric_type": "Result Matching",
+      "rubric_criteria": "The execution outcomes match the results in Table 9: Llama 3.1 70B with min-p sampling performs better in most cases on both GPQA and GSM8K CoT benchmarks, especially when the temperature is higher (>",
+      "verdict": "hit",
+      "matched_id": "derived-rm-007",
+      "method": "anchor",
+      "reason": "anchor match"
+    }
+  ],
+  "llm_input_tokens": 75436,
+  "llm_output_tokens": 55555
+}

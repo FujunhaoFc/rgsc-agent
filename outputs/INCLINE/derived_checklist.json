@@ -1,0 +1,1592 @@
+[
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 1 (Introduction) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-1"
+    },
+    "anchor": null,
+    "id": "derived-po-001"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 2 (Related Work) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-2"
+    },
+    "anchor": null,
+    "id": "derived-po-002"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 3 (Methodology) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-3"
+    },
+    "anchor": null,
+    "id": "derived-po-003"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 3.1 (Learning the Cross-Lingual Alignment) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-3.1"
+    },
+    "anchor": null,
+    "id": "derived-po-004"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 3.2 (Inference-Time Transformation) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-3.2"
+    },
+    "anchor": null,
+    "id": "derived-po-005"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 4 (Experiments) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-4"
+    },
+    "anchor": null,
+    "id": "derived-po-006"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 4.1 (Experimental Setup) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-4.1"
+    },
+    "anchor": null,
+    "id": "derived-po-007"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 4.2 (Results) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-4.2"
+    },
+    "anchor": null,
+    "id": "derived-po-008"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 5 (Analysis) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-5"
+    },
+    "anchor": null,
+    "id": "derived-po-009"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 6 (Discussions) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-6"
+    },
+    "anchor": null,
+    "id": "derived-po-010"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 7 (Conclusion) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-7"
+    },
+    "anchor": null,
+    "id": "derived-po-011"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 8 (Limitations) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-8"
+    },
+    "anchor": null,
+    "id": "derived-po-012"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section A (Details of Datasets) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-A"
+    },
+    "anchor": null,
+    "id": "derived-po-013"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section B (Hyperparameters for SFT) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-B"
+    },
+    "anchor": null,
+    "id": "derived-po-014"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section C (Detailed Results of Intervention) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-C"
+    },
+    "anchor": null,
+    "id": "derived-po-015"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section D (The value of α across languages) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-D"
+    },
+    "anchor": null,
+    "id": "derived-po-016"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section E (Projection to Non-English) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-E"
+    },
+    "anchor": null,
+    "id": "derived-po-017"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section F (Details of Visualizing) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-F"
+    },
+    "anchor": null,
+    "id": "derived-po-018"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section G (Supplementary Results of Training Data Volume) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-G"
+    },
+    "anchor": null,
+    "id": "derived-po-019"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Table 1 and understood the information it presents.",
+    "source": {
+      "field": "entities.tables",
+      "ref": "table-1"
+    },
+    "anchor": "table-1",
+    "id": "derived-po-020"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Table 2 and understood the information it presents.",
+    "source": {
+      "field": "entities.tables",
+      "ref": "table-2"
+    },
+    "anchor": "table-2",
+    "id": "derived-po-021"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Table 7 and understood the information it presents.",
+    "source": {
+      "field": "entities.tables",
+      "ref": "table-7"
+    },
+    "anchor": "table-7",
+    "id": "derived-po-022"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Table 3 and understood the information it presents.",
+    "source": {
+      "field": "entities.tables",
+      "ref": "table-3"
+    },
+    "anchor": "table-3",
+    "id": "derived-po-023"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Table 4 and understood the information it presents.",
+    "source": {
+      "field": "entities.tables",
+      "ref": "table-4"
+    },
+    "anchor": "table-4",
+    "id": "derived-po-024"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Table 5 and understood the information it presents.",
+    "source": {
+      "field": "entities.tables",
+      "ref": "table-5"
+    },
+    "anchor": "table-5",
+    "id": "derived-po-025"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Table 6 and understood the information it presents.",
+    "source": {
+      "field": "entities.tables",
+      "ref": "table-6"
+    },
+    "anchor": "table-6",
+    "id": "derived-po-026"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Table 8 and understood the information it presents.",
+    "source": {
+      "field": "entities.tables",
+      "ref": "table-8"
+    },
+    "anchor": "table-8",
+    "id": "derived-po-027"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Table 9 and understood the information it presents.",
+    "source": {
+      "field": "entities.tables",
+      "ref": "table-9"
+    },
+    "anchor": "table-9",
+    "id": "derived-po-028"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Figure 1 and understood the information it presents.",
+    "source": {
+      "field": "entities.figures",
+      "ref": "figure-1"
+    },
+    "anchor": "figure-1",
+    "id": "derived-po-029"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Figure 2 and understood the information it presents.",
+    "source": {
+      "field": "entities.figures",
+      "ref": "figure-2"
+    },
+    "anchor": "figure-2",
+    "id": "derived-po-030"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Figure 3 and understood the information it presents.",
+    "source": {
+      "field": "entities.figures",
+      "ref": "figure-3"
+    },
+    "anchor": "figure-3",
+    "id": "derived-po-031"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Figure 4 and understood the information it presents.",
+    "source": {
+      "field": "entities.figures",
+      "ref": "figure-4"
+    },
+    "anchor": "figure-4",
+    "id": "derived-po-032"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Figure 5 and understood the information it presents.",
+    "source": {
+      "field": "entities.figures",
+      "ref": "figure-5"
+    },
+    "anchor": "figure-5",
+    "id": "derived-po-033"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Figure 6 and understood the information it presents.",
+    "source": {
+      "field": "entities.figures",
+      "ref": "figure-6"
+    },
+    "anchor": "figure-6",
+    "id": "derived-po-034"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes sample 500 parallel sentence pairs for each source language (non-English) and target language (English) from News Commentary v16 (or CCAligned if unavailable).",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-1"
+    },
+    "anchor": null,
+    "id": "derived-pw-001"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes tokenize each parallel sentence pair and extract hidden states of the last token from all layers of the LLM (e.g., BLOOMZ-7B1-MT), yielding vectors h^s_{i,l} and h^t_{i,l} for every layer l.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-2"
+    },
+    "anchor": null,
+    "id": "derived-pw-002"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes for each layer l, stack the extracted source and target hidden states across all N pairs to form matrices H_s and H_t.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-3"
+    },
+    "anchor": null,
+    "id": "derived-pw-003"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes compute the optimal alignment matrix W_l^* = (H_s^T H_s)^{-1} (H_s^T H_t) using a closed-form least-squares solver.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-4"
+    },
+    "anchor": null,
+    "id": "derived-pw-004"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes store all learned alignment matrices {W_l^*} for l = 1 to L (all layers).",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-5"
+    },
+    "anchor": null,
+    "id": "derived-pw-005"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes during inference on a test input in source language, feed the sequence and capture the hidden state h^s_{q,l} of the last token at each layer l.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-6"
+    },
+    "anchor": null,
+    "id": "derived-pw-006"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes for each layer l, project the source hidden state using the alignment matrix: ŷ^t_{q,l} = W_l^* h^s_{q,l}.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-7"
+    },
+    "anchor": null,
+    "id": "derived-pw-007"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes blend the projected target state with the original hidden state using intervention strength α: h^{mix}_{q,l} = h^s_{q,l} + α ŷ^t_{q,l}.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-8"
+    },
+    "anchor": null,
+    "id": "derived-pw-008"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes replace the last token's hidden state at layer l with h^{mix}_{q,l} and continue decoding.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-9"
+    },
+    "anchor": null,
+    "id": "derived-pw-009"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes tune α per source language using a validation set by sweeping over the interval [-1, 1] to maximise task-specific performance.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-10"
+    },
+    "anchor": null,
+    "id": "derived-pw-010"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes evaluate the intervened model on downstream multilingual benchmarks (discriminative tasks: accuracy; generative tasks: EM, BLEU, accuracy).",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-11"
+    },
+    "anchor": null,
+    "id": "derived-pw-011"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the setting 'INCLINE-HIDDEN': Intervene on hidden states of all layers, aligning source to target (English) using learned alignment matrices.",
+    "source": {
+      "field": "core_method.settings",
+      "ref": "set-incline-hidden"
+    },
+    "anchor": null,
+    "id": "derived-pw-012"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the setting 'INCLINE-ATTN': Intervene on outputs of attention heads.",
+    "source": {
+      "field": "core_method.settings",
+      "ref": "set-incline-attn"
+    },
+    "anchor": null,
+    "id": "derived-pw-013"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the setting 'INCLINE-FFN': Intervene on outputs of FFN blocks.",
+    "source": {
+      "field": "core_method.settings",
+      "ref": "set-incline-ffn"
+    },
+    "anchor": null,
+    "id": "derived-pw-014"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the setting 'INCLINE-EMB': Intervene on embeddings.",
+    "source": {
+      "field": "core_method.settings",
+      "ref": "set-incline-emb"
+    },
+    "anchor": null,
+    "id": "derived-pw-015"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the setting 'INCLINE-FDEV': INCLINE with alignment matrices trained on high-quality Flores development set instead of News Commentary.",
+    "source": {
+      "field": "core_method.settings",
+      "ref": "set-incline-fdev"
+    },
+    "anchor": null,
+    "id": "derived-pw-016"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the setting 'SFT + INCLINE': Apply INCLINE on top of a task-specific supervised fine-tuned model (English training data).",
+    "source": {
+      "field": "core_method.settings",
+      "ref": "set-sft-incline"
+    },
+    "anchor": null,
+    "id": "derived-pw-017"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the use of the News Commentary v16 dataset.",
+    "source": {
+      "field": "datasets",
+      "ref": "News Commentary v16"
+    },
+    "anchor": null,
+    "id": "derived-pw-018"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the use of the CCAligned dataset.",
+    "source": {
+      "field": "datasets",
+      "ref": "CCAligned"
+    },
+    "anchor": null,
+    "id": "derived-pw-019"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the use of the Flores development set dataset.",
+    "source": {
+      "field": "datasets",
+      "ref": "Flores development set"
+    },
+    "anchor": null,
+    "id": "derived-pw-020"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the use of the XCOPA dataset.",
+    "source": {
+      "field": "datasets",
+      "ref": "XCOPA"
+    },
+    "anchor": null,
+    "id": "derived-pw-021"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the use of the XStoryCloze dataset.",
+    "source": {
+      "field": "datasets",
+      "ref": "XStoryCloze"
+    },
+    "anchor": null,
+    "id": "derived-pw-022"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the use of the XWinograd dataset.",
+    "source": {
+      "field": "datasets",
+      "ref": "XWinograd"
+    },
+    "anchor": null,
+    "id": "derived-pw-023"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the use of the XCSQA dataset.",
+    "source": {
+      "field": "datasets",
+      "ref": "XCSQA"
+    },
+    "anchor": null,
+    "id": "derived-pw-024"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the use of the XNLI dataset.",
+    "source": {
+      "field": "datasets",
+      "ref": "XNLI"
+    },
+    "anchor": null,
+    "id": "derived-pw-025"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the use of the MZsRE dataset.",
+    "source": {
+      "field": "datasets",
+      "ref": "MZsRE"
+    },
+    "anchor": null,
+    "id": "derived-pw-026"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the use of the Flores dataset.",
+    "source": {
+      "field": "datasets",
+      "ref": "Flores"
+    },
+    "anchor": null,
+    "id": "derived-pw-027"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the use of the WMT23 dataset.",
+    "source": {
+      "field": "datasets",
+      "ref": "WMT23"
+    },
+    "anchor": null,
+    "id": "derived-pw-028"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the use of the MGSM dataset.",
+    "source": {
+      "field": "datasets",
+      "ref": "MGSM"
+    },
+    "anchor": null,
+    "id": "derived-pw-029"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the use of the BLOOMZ-7B1-MT model.",
+    "source": {
+      "field": "models",
+      "ref": "BLOOMZ-7B1-MT"
+    },
+    "anchor": null,
+    "id": "derived-pw-030"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the use of the LLAMA3.1-8B-INSTRUCT model.",
+    "source": {
+      "field": "models",
+      "ref": "LLAMA3.1-8B-INSTRUCT"
+    },
+    "anchor": null,
+    "id": "derived-pw-031"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the use of the LLAMA2-7B-CHAT model.",
+    "source": {
+      "field": "models",
+      "ref": "LLAMA2-7B-CHAT"
+    },
+    "anchor": null,
+    "id": "derived-pw-032"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the use of the MISTRAL-7B-INSTRUCT model.",
+    "source": {
+      "field": "models",
+      "ref": "MISTRAL-7B-INSTRUCT"
+    },
+    "anchor": null,
+    "id": "derived-pw-033"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the use of the FALCON-7B-INSTRUCT model.",
+    "source": {
+      "field": "models",
+      "ref": "FALCON-7B-INSTRUCT"
+    },
+    "anchor": null,
+    "id": "derived-pw-034"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the use of the MATHOCTOPUS model.",
+    "source": {
+      "field": "models",
+      "ref": "MATHOCTOPUS"
+    },
+    "anchor": null,
+    "id": "derived-pw-035"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the use of the BLOOMZ-560M model.",
+    "source": {
+      "field": "models",
+      "ref": "BLOOMZ-560M"
+    },
+    "anchor": null,
+    "id": "derived-pw-036"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the use of the BLOOMZ-1B model.",
+    "source": {
+      "field": "models",
+      "ref": "BLOOMZ-1B"
+    },
+    "anchor": null,
+    "id": "derived-pw-037"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the use of the BLOOMZ-3B model.",
+    "source": {
+      "field": "models",
+      "ref": "BLOOMZ-3B"
+    },
+    "anchor": null,
+    "id": "derived-pw-038"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the use of the BLOOMZ-7.1B model.",
+    "source": {
+      "field": "models",
+      "ref": "BLOOMZ-7.1B"
+    },
+    "anchor": null,
+    "id": "derived-pw-039"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the BASELINE baseline for comparison.",
+    "source": {
+      "field": "baselines",
+      "ref": "BASELINE"
+    },
+    "anchor": null,
+    "id": "derived-pw-040"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the MT-GOOGLE baseline for comparison.",
+    "source": {
+      "field": "baselines",
+      "ref": "MT-GOOGLE"
+    },
+    "anchor": null,
+    "id": "derived-pw-041"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the MT-LLM baseline for comparison.",
+    "source": {
+      "field": "baselines",
+      "ref": "MT-LLM"
+    },
+    "anchor": null,
+    "id": "derived-pw-042"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the SFT baseline for comparison.",
+    "source": {
+      "field": "baselines",
+      "ref": "SFT"
+    },
+    "anchor": null,
+    "id": "derived-pw-043"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the ITI baseline for comparison.",
+    "source": {
+      "field": "baselines",
+      "ref": "ITI"
+    },
+    "anchor": null,
+    "id": "derived-pw-044"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the CAA baseline for comparison.",
+    "source": {
+      "field": "baselines",
+      "ref": "CAA"
+    },
+    "anchor": null,
+    "id": "derived-pw-045"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the Accuracy evaluation metric.",
+    "source": {
+      "field": "metrics",
+      "ref": "Accuracy"
+    },
+    "anchor": null,
+    "id": "derived-pw-046"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the Exact Match (EM) evaluation metric.",
+    "source": {
+      "field": "metrics",
+      "ref": "Exact Match (EM)"
+    },
+    "anchor": null,
+    "id": "derived-pw-047"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the BLEU evaluation metric.",
+    "source": {
+      "field": "metrics",
+      "ref": "BLEU"
+    },
+    "anchor": null,
+    "id": "derived-pw-048"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan specifies the hyperparameter 'α (intervention strength)' with value range [-1, 1], per-language optimal value determined by validation (e.g., positive for Spanish, negative for Chinese).",
+    "source": {
+      "field": "core_method.key_hyperparameters",
+      "ref": "α (intervention strength)"
+    },
+    "anchor": null,
+    "id": "derived-pw-049"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan specifies the hyperparameter 'Number of parallel sentences for training alignment' with value 500.",
+    "source": {
+      "field": "core_method.key_hyperparameters",
+      "ref": "Number of parallel sentences for training alignment"
+    },
+    "anchor": null,
+    "id": "derived-pw-050"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan specifies the hyperparameter 'Target component' with value Hidden states (INCLINE-HIDDEN) as default; also explored attention, FFN, embeddings.",
+    "source": {
+      "field": "core_method.key_hyperparameters",
+      "ref": "Target component"
+    },
+    "anchor": null,
+    "id": "derived-pw-051"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan specifies the hyperparameter 'Intervention position' with value Last token only.",
+    "source": {
+      "field": "core_method.key_hyperparameters",
+      "ref": "Intervention position"
+    },
+    "anchor": null,
+    "id": "derived-pw-052"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan specifies the hyperparameter 'Layers intervened' with value All layers.",
+    "source": {
+      "field": "core_method.key_hyperparameters",
+      "ref": "Layers intervened"
+    },
+    "anchor": null,
+    "id": "derived-pw-053"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code implementing the following step is present: Sample 500 parallel sentence pairs for each source language (non-English) and target language (English) from News Commentary v16 (or CCAligned if unavailable).",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-1"
+    },
+    "anchor": null,
+    "id": "derived-ci-001"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code implementing the following step is present: Tokenize each parallel sentence pair and extract hidden states of the last token from all layers of the LLM (e.g., BLOOMZ-7B1-MT), yielding vectors h^s_{i,l} and h^t_{i,l} for every layer l.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-2"
+    },
+    "anchor": null,
+    "id": "derived-ci-002"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code implementing the following step is present: For each layer l, stack the extracted source and target hidden states across all N pairs to form matrices H_s and H_t.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-3"
+    },
+    "anchor": null,
+    "id": "derived-ci-003"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code implementing the following step is present: Compute the optimal alignment matrix W_l^* = (H_s^T H_s)^{-1} (H_s^T H_t) using a closed-form least-squares solver.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-4"
+    },
+    "anchor": null,
+    "id": "derived-ci-004"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code implementing the following step is present: Store all learned alignment matrices {W_l^*} for l = 1 to L (all layers).",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-5"
+    },
+    "anchor": null,
+    "id": "derived-ci-005"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code implementing the following step is present: During inference on a test input in source language, feed the sequence and capture the hidden state h^s_{q,l} of the last token at each layer l.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-6"
+    },
+    "anchor": null,
+    "id": "derived-ci-006"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code implementing the following step is present: For each layer l, project the source hidden state using the alignment matrix: ŷ^t_{q,l} = W_l^* h^s_{q,l}.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-7"
+    },
+    "anchor": null,
+    "id": "derived-ci-007"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code implementing the following step is present: Blend the projected target state with the original hidden state using intervention strength α: h^{mix}_{q,l} = h^s_{q,l} + α ŷ^t_{q,l}.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-8"
+    },
+    "anchor": null,
+    "id": "derived-ci-008"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code implementing the following step is present: Replace the last token's hidden state at layer l with h^{mix}_{q,l} and continue decoding.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-9"
+    },
+    "anchor": null,
+    "id": "derived-ci-009"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code implementing the following step is present: Tune α per source language using a validation set by sweeping over the interval [-1, 1] to maximise task-specific performance.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-10"
+    },
+    "anchor": null,
+    "id": "derived-ci-010"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code implementing the following step is present: Evaluate the intervened model on downstream multilingual benchmarks (discriminative tasks: accuracy; generative tasks: EM, BLEU, accuracy).",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-11"
+    },
+    "anchor": null,
+    "id": "derived-ci-011"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code for the BASELINE baseline is implemented.",
+    "source": {
+      "field": "baselines",
+      "ref": "BASELINE"
+    },
+    "anchor": null,
+    "id": "derived-ci-012"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code for the MT-GOOGLE baseline is implemented.",
+    "source": {
+      "field": "baselines",
+      "ref": "MT-GOOGLE"
+    },
+    "anchor": null,
+    "id": "derived-ci-013"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code for the MT-LLM baseline is implemented.",
+    "source": {
+      "field": "baselines",
+      "ref": "MT-LLM"
+    },
+    "anchor": null,
+    "id": "derived-ci-014"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code for the SFT baseline is implemented.",
+    "source": {
+      "field": "baselines",
+      "ref": "SFT"
+    },
+    "anchor": null,
+    "id": "derived-ci-015"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code for the ITI baseline is implemented.",
+    "source": {
+      "field": "baselines",
+      "ref": "ITI"
+    },
+    "anchor": null,
+    "id": "derived-ci-016"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code for the CAA baseline is implemented.",
+    "source": {
+      "field": "baselines",
+      "ref": "CAA"
+    },
+    "anchor": null,
+    "id": "derived-ci-017"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code computing the Accuracy metric is implemented.",
+    "source": {
+      "field": "metrics",
+      "ref": "Accuracy"
+    },
+    "anchor": null,
+    "id": "derived-ci-018"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code computing the Exact Match (EM) metric is implemented.",
+    "source": {
+      "field": "metrics",
+      "ref": "Exact Match (EM)"
+    },
+    "anchor": null,
+    "id": "derived-ci-019"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code computing the BLEU metric is implemented.",
+    "source": {
+      "field": "metrics",
+      "ref": "BLEU"
+    },
+    "anchor": null,
+    "id": "derived-ci-020"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The agent has executed the command(s) that produce the results shown in Table 1 (INCLINE significantly improves accuracy on discriminative tasks (XCOPA, XStoryCl...).",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-table1"
+    },
+    "anchor": "table-1",
+    "id": "derived-ce-001"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The agent has executed the command(s) that produce the results shown in Table 2 (INCLINE enhances generative task performance (MZsRE, Flores, WMT23, MGSM) over b...).",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-table2"
+    },
+    "anchor": "table-2",
+    "id": "derived-ce-002"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The agent has executed the command(s) that produce the results shown in Table 3 (Intervening on hidden states (INCLINE-HIDDEN) yields the greatest average perfor...).",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-table3"
+    },
+    "anchor": "table-3",
+    "id": "derived-ce-003"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The agent has executed the command(s) that produce the results shown in Table 4 (INCLINE consistently improves XStoryCloze accuracy across five different LLM bac...).",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-table4"
+    },
+    "anchor": "table-4",
+    "id": "derived-ce-004"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The agent has executed the command(s) that produce the results shown in Table 5 (Training INCLINE alignment matrices with high-quality parallel sentences (Flores...).",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-table5"
+    },
+    "anchor": "table-5",
+    "id": "derived-ce-005"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The agent has executed the command(s) that produce the results shown in Figure 3 (INCLINE achieves near-optimal accuracy with 500 parallel sentences and only 172 ...).",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-fig3a"
+    },
+    "anchor": "figure-3",
+    "id": "derived-ce-006"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The agent has executed the command(s) that produce the results shown in Figure 3 (INCLINE intervention increases Correct Prediction Consistency (CPC) between non-...).",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-fig3b"
+    },
+    "anchor": "figure-3",
+    "id": "derived-ce-007"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The agent has executed the command(s) that produce the results shown in Figure 4 (Optimal intervention strength α differs by language: positive for Spanish (Indo-...).",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-fig4"
+    },
+    "anchor": "figure-4",
+    "id": "derived-ce-008"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The agent has executed the command(s) that produce the results shown in Figure 5 (Larger BLOOMZ models benefit more from INCLINE on MZsRE; relative improvement ov...).",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-fig5a"
+    },
+    "anchor": "figure-5",
+    "id": "derived-ce-009"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The agent has executed the command(s) that produce the results shown in Figure 5 (INCLINE further improves Exact Match on MZsRE when combined with in-context lear...).",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-fig5b"
+    },
+    "anchor": "figure-5",
+    "id": "derived-ce-010"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The training process for INCLINE (Inference-Time Cross-Lingual Intervention) has been successfully executed and finished without errors.",
+    "source": {
+      "field": "reproducibility_meta",
+      "ref": "training"
+    },
+    "anchor": null,
+    "id": "derived-ce-011"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The evaluation pipeline for INCLINE (Inference-Time Cross-Lingual Intervention) has been successfully executed and finished without errors.",
+    "source": {
+      "field": "reproducibility_meta",
+      "ref": "evaluation"
+    },
+    "anchor": null,
+    "id": "derived-ce-012"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The evaluation on the News Commentary v16 dataset has been successfully executed without errors.",
+    "source": {
+      "field": "datasets",
+      "ref": "News Commentary v16"
+    },
+    "anchor": null,
+    "id": "derived-ce-013"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The evaluation on the CCAligned dataset has been successfully executed without errors.",
+    "source": {
+      "field": "datasets",
+      "ref": "CCAligned"
+    },
+    "anchor": null,
+    "id": "derived-ce-014"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The evaluation on the Flores development set dataset has been successfully executed without errors.",
+    "source": {
+      "field": "datasets",
+      "ref": "Flores development set"
+    },
+    "anchor": null,
+    "id": "derived-ce-015"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The evaluation on the XCOPA dataset has been successfully executed without errors.",
+    "source": {
+      "field": "datasets",
+      "ref": "XCOPA"
+    },
+    "anchor": null,
+    "id": "derived-ce-016"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The evaluation on the XStoryCloze dataset has been successfully executed without errors.",
+    "source": {
+      "field": "datasets",
+      "ref": "XStoryCloze"
+    },
+    "anchor": null,
+    "id": "derived-ce-017"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The evaluation on the XWinograd dataset has been successfully executed without errors.",
+    "source": {
+      "field": "datasets",
+      "ref": "XWinograd"
+    },
+    "anchor": null,
+    "id": "derived-ce-018"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The evaluation on the XCSQA dataset has been successfully executed without errors.",
+    "source": {
+      "field": "datasets",
+      "ref": "XCSQA"
+    },
+    "anchor": null,
+    "id": "derived-ce-019"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The evaluation on the XNLI dataset has been successfully executed without errors.",
+    "source": {
+      "field": "datasets",
+      "ref": "XNLI"
+    },
+    "anchor": null,
+    "id": "derived-ce-020"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The evaluation on the MZsRE dataset has been successfully executed without errors.",
+    "source": {
+      "field": "datasets",
+      "ref": "MZsRE"
+    },
+    "anchor": null,
+    "id": "derived-ce-021"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The evaluation on the Flores dataset has been successfully executed without errors.",
+    "source": {
+      "field": "datasets",
+      "ref": "Flores"
+    },
+    "anchor": null,
+    "id": "derived-ce-022"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The evaluation on the WMT23 dataset has been successfully executed without errors.",
+    "source": {
+      "field": "datasets",
+      "ref": "WMT23"
+    },
+    "anchor": null,
+    "id": "derived-ce-023"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The evaluation on the MGSM dataset has been successfully executed without errors.",
+    "source": {
+      "field": "datasets",
+      "ref": "MGSM"
+    },
+    "anchor": null,
+    "id": "derived-ce-024"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The BASELINE baseline has been successfully executed and produced its expected output.",
+    "source": {
+      "field": "baselines",
+      "ref": "BASELINE"
+    },
+    "anchor": null,
+    "id": "derived-ce-025"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The MT-GOOGLE baseline has been successfully executed and produced its expected output.",
+    "source": {
+      "field": "baselines",
+      "ref": "MT-GOOGLE"
+    },
+    "anchor": null,
+    "id": "derived-ce-026"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The MT-LLM baseline has been successfully executed and produced its expected output.",
+    "source": {
+      "field": "baselines",
+      "ref": "MT-LLM"
+    },
+    "anchor": null,
+    "id": "derived-ce-027"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The SFT baseline has been successfully executed and produced its expected output.",
+    "source": {
+      "field": "baselines",
+      "ref": "SFT"
+    },
+    "anchor": null,
+    "id": "derived-ce-028"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The ITI baseline has been successfully executed and produced its expected output.",
+    "source": {
+      "field": "baselines",
+      "ref": "ITI"
+    },
+    "anchor": null,
+    "id": "derived-ce-029"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The CAA baseline has been successfully executed and produced its expected output.",
+    "source": {
+      "field": "baselines",
+      "ref": "CAA"
+    },
+    "anchor": null,
+    "id": "derived-ce-030"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The experiment under the 'INCLINE-HIDDEN' setting has been successfully executed and produced its expected output.",
+    "source": {
+      "field": "core_method.settings",
+      "ref": "set-incline-hidden"
+    },
+    "anchor": null,
+    "id": "derived-ce-031"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The experiment under the 'INCLINE-ATTN' setting has been successfully executed and produced its expected output.",
+    "source": {
+      "field": "core_method.settings",
+      "ref": "set-incline-attn"
+    },
+    "anchor": null,
+    "id": "derived-ce-032"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The experiment under the 'INCLINE-FFN' setting has been successfully executed and produced its expected output.",
+    "source": {
+      "field": "core_method.settings",
+      "ref": "set-incline-ffn"
+    },
+    "anchor": null,
+    "id": "derived-ce-033"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The experiment under the 'INCLINE-EMB' setting has been successfully executed and produced its expected output.",
+    "source": {
+      "field": "core_method.settings",
+      "ref": "set-incline-emb"
+    },
+    "anchor": null,
+    "id": "derived-ce-034"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The experiment under the 'INCLINE-FDEV' setting has been successfully executed and produced its expected output.",
+    "source": {
+      "field": "core_method.settings",
+      "ref": "set-incline-fdev"
+    },
+    "anchor": null,
+    "id": "derived-ce-035"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The experiment under the 'SFT + INCLINE' setting has been successfully executed and produced its expected output.",
+    "source": {
+      "field": "core_method.settings",
+      "ref": "set-sft-incline"
+    },
+    "anchor": null,
+    "id": "derived-ce-036"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the results in Table 1: INCLINE significantly improves accuracy on discriminative tasks (XCOPA, XStoryCloze, XWinograd, XCSQA, XNLI) over BASELINE and other intervention baselines, with up to +4.96 average gain on XStoryCloze and clear improvements on both seen and unseen languages. SFT+INCLINE further boosts SFT performance.",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-table1"
+    },
+    "anchor": "table-1",
+    "id": "derived-rm-001"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the results in Table 2: INCLINE enhances generative task performance (MZsRE, Flores, WMT23, MGSM) over baselines, achieving best BLEU on Flores and WMT23, improving EM on MZsRE by +3.26, and accuracy on MGSM by +3.50.",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-table2"
+    },
+    "anchor": "table-2",
+    "id": "derived-rm-002"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the results in Table 3: Intervening on hidden states (INCLINE-HIDDEN) yields the greatest average performance gains across XCOPA, XCSQA, Flores, MGSM compared to intervening on attention, FFN, or embeddings.",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-table3"
+    },
+    "anchor": "table-3",
+    "id": "derived-rm-003"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the results in Table 4: INCLINE consistently improves XStoryCloze accuracy across five different LLM backbones (BLOOMZ-7B1-MT, LLAMA3.1-8B-INSTRUCT, LLAMA2-7B-CHAT, MISTRAL-7B-INSTRUCT, FALCON-7B-INSTRUCT).",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-table4"
+    },
+    "anchor": "table-4",
+    "id": "derived-rm-004"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the results in Table 5: Training INCLINE alignment matrices with high-quality parallel sentences (Flores dev, INCLINE-FDEV) further improves BLEU on Flores over using News Commentary.",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-table5"
+    },
+    "anchor": "table-5",
+    "id": "derived-rm-005"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the results in Figure 3: INCLINE achieves near-optimal accuracy with 500 parallel sentences and only 172 seconds training time; increasing data further does not improve accuracy, showing cost-effectiveness.",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-fig3a"
+    },
+    "anchor": "figure-3",
+    "id": "derived-rm-006"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the results in Figure 3: INCLINE intervention increases Correct Prediction Consistency (CPC) between non-English and English on XStoryCloze, especially for low-resource Swahili (from 0.54 to 0.65).",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-fig3b"
+    },
+    "anchor": "figure-3",
+    "id": "derived-rm-007"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the results in Figure 4: Optimal intervention strength α differs by language: positive for Spanish (Indo-European like English) and negative for Chinese (Sino-Tibetan), suggesting language relatedness influences α.",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-fig4"
+    },
+    "anchor": "figure-4",
+    "id": "derived-rm-008"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the results in Figure 5: Larger BLOOMZ models benefit more from INCLINE on MZsRE; relative improvement over baseline increases with model size.",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-fig5a"
+    },
+    "anchor": "figure-5",
+    "id": "derived-rm-009"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the results in Figure 5: INCLINE further improves Exact Match on MZsRE when combined with in-context learning (0-shot, 2-shot, 4-shot), demonstrating complementary benefits.",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-fig5b"
+    },
+    "anchor": "figure-5",
+    "id": "derived-rm-010"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the specific claim (based on Table 1): INCLINE significantly improves discriminative task performance over BASELINE and intervention baselines (ITI, CAA), e.g., +4.96 average accuracy on XStoryCloze.",
+    "source": {
+      "field": "expected_claims",
+      "ref": "claim-1"
+    },
+    "anchor": "table-1",
+    "id": "derived-rm-011"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the specific claim (based on Table 2): INCLINE improves generative task metrics (EM, BLEU, accuracy) over baselines, including +3.50 accuracy on MGSM and best BLEU on Flores/WMT23.",
+    "source": {
+      "field": "expected_claims",
+      "ref": "claim-2"
+    },
+    "anchor": "table-2",
+    "id": "derived-rm-012"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the specific claim (based on Figure 3): INCLINE is cost-effective: training alignment matrices requires only 500 parallel sentences and 172 seconds on one A100.",
+    "source": {
+      "field": "expected_claims",
+      "ref": "claim-3"
+    },
+    "anchor": "figure-3",
+    "id": "derived-rm-013"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the specific claim (based on Table 3): Intervening on hidden states is superior to intervening on attention, FFN, or embeddings across tasks.",
+    "source": {
+      "field": "expected_claims",
+      "ref": "claim-4"
+    },
+    "anchor": "table-3",
+    "id": "derived-rm-014"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the specific claim (based on Table 4): INCLINE generalizes across diverse LLM backbones, improving XStoryCloze accuracy for all five tested models.",
+    "source": {
+      "field": "expected_claims",
+      "ref": "claim-5"
+    },
+    "anchor": "table-4",
+    "id": "derived-rm-015"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the specific claim (based on Table 5): Using high-quality parallel data (Flores dev) for training alignment matrices yields better performance than standard News Commentary parallel data.",
+    "source": {
+      "field": "expected_claims",
+      "ref": "claim-6"
+    },
+    "anchor": "table-5",
+    "id": "derived-rm-016"
+  }
+]

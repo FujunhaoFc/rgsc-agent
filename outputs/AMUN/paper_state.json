@@ -1,0 +1,1217 @@
+{
+  "paper_id": "AMUN",
+  "title": "Not All Wrong is Bad: Using Adversarial Examples for Unlearning",
+  "venue": "ICML 2025",
+  "code_url": "https://github.com/Ali-E/AMUN",
+  "problem_definition": {
+    "task": "Machine unlearning for image classification: remove influence of a forget set from a trained classifier.",
+    "input": "A trained classification model and a forget subset of the training data (optionally the remaining training data).",
+    "output": "An unlearned model that behaves similarly to a model retrained on the complement of the forget set.",
+    "evaluation_target": "Match retrained-from-scratch behavior in accuracy, prediction confidence, and resistance to membership inference attacks."
+  },
+  "core_method": {
+    "name": "AMUN",
+    "one_line": "AMUN fine-tunes the trained model on adversarial examples of the forget set (with wrong labels) to reduce prediction confidence on forget samples while localizing decision boundary changes and preserving test accuracy.",
+    "atomic_steps": [
+      {
+        "id": "step-1",
+        "description": "Train initial model f on full dataset D (or load a pretrained classifier).",
+        "source_section": "sec-3",
+        "depends_on_method": null
+      },
+      {
+        "id": "step-2",
+        "description": "Partition dataset into forget set D_F, retain set D_R, and test set D_T according to the target forget percentage.",
+        "source_section": "sec-3",
+        "depends_on_method": null
+      },
+      {
+        "id": "step-3",
+        "description": "For each sample x in D_F, generate adversarial example x_adv using PGD-50 attack with L2 norm bound; start with a small epsilon and double it until the model prediction is different from the original label.",
+        "source_section": "sec-4",
+        "depends_on_method": "PGD-50 adversarial attack"
+      },
+      {
+        "id": "step-4",
+        "description": "Assign a random wrong label y_wrong (any class other than the ground truth) to each x_adv to form the adversarial dataset D_A.",
+        "source_section": "sec-4",
+        "depends_on_method": null
+      },
+      {
+        "id": "step-5",
+        "description": "(Optional, for AMUN+SalUn) Compute weight saliency mask on f by gradient-based importance estimation using D_F to restrict parameter updates.",
+        "source_section": "sec-4",
+        "depends_on_method": "SalUn"
+      },
+      {
+        "id": "step-6",
+        "description": "Assemble fine-tuning dataset: if D_R is available use D_R ∪ D_F ∪ D_A; if only D_F is accessible use D_F ∪ D_A; for very large D_F, use D_R ∪ D_A or only D_A.",
+        "source_section": "sec-4",
+        "depends_on_method": null
+      },
+      {
+        "id": "step-7",
+        "description": "Fine-tune f on the assembled dataset for 10 epochs using cross-entropy loss and a learning rate chosen by grid search over [10^{-6}, 10^{-1}]; apply saliency mask from step-5 for AMUN+SalUn.",
+        "source_section": "sec-C",
+        "depends_on_method": "AMUN"
+      },
+      {
+        "id": "step-8",
+        "description": "Evaluate unlearned model on D_F, D_R, D_T to compute Unlearn Accuracy, Retain Accuracy, and Test Accuracy.",
+        "source_section": "sec-5.2",
+        "depends_on_method": null
+      },
+      {
+        "id": "step-9",
+        "description": "Run membership inference attack (RMIA) on the unlearned model to compute FT AUC (or MIS for legacy comparisons) between D_F and D_T.",
+        "source_section": "sec-5.2",
+        "depends_on_method": "RMIA"
+      },
+      {
+        "id": "step-10",
+        "description": "Compute Average Gap as the mean absolute difference between the unlearned model and the Retrain baseline for Unlearn Acc, Retain Acc, Test Acc, and FT AUC (or MIS).",
+        "source_section": "sec-5.2",
+        "depends_on_method": "Retrain"
+      }
+    ],
+    "settings": [
+      {
+        "id": "set-with-remain",
+        "name": "with remain set",
+        "description": "Fine-tune on D_R ∪ D_F ∪ D_A when D_R is available; for very large D_F, use D_R ∪ D_A."
+      },
+      {
+        "id": "set-without-remain",
+        "name": "without remain set",
+        "description": "Fine-tune on D_F ∪ D_A when only D_F is accessible; for very large D_F, use only D_A."
+      },
+      {
+        "id": "set-amun-salun",
+        "name": "AMUN+SalUn",
+        "description": "AMUN combined with weight saliency masking from SalUn to restrict parameter changes during fine-tuning, applicable in both with- and without-remain settings."
+      }
+    ],
+    "key_hyperparameters": [
+      {
+        "name": "Adversarial attack method",
+        "value": "PGD-50 with ℓ₂ norm bound",
+        "source_section": "sec-4"
+      },
+      {
+        "name": "Initial epsilon (ϵ_init)",
+        "value": "small (unspecified); doubled until adversarial example found",
+        "source_section": "sec-4"
+      },
+      {
+        "name": "PGD step size",
+        "value": "0.1 × ϵ",
+        "source_section": "sec-4"
+      },
+      {
+        "name": "Fine-tuning epochs",
+        "value": "10",
+        "source_section": "sec-C"
+      },
+      {
+        "name": "Learning rate",
+        "value": "grid search in [10⁻⁶, 10⁻¹]",
+        "source_section": "sec-C"
+      }
+    ]
+  },
+  "datasets": [
+    {
+      "name": "CIFAR-10",
+      "splits": [
+        "train",
+        "test"
+      ],
+      "used_for": "main image classification benchmark (unlearning random subsets)",
+      "source_section": "sec-3.1"
+    },
+    {
+      "name": "Tiny Imagenet",
+      "splits": [
+        "train",
+        "test"
+      ],
+      "used_for": "additional image classification benchmark (VGG19 experiments)",
+      "source_section": "sec-3.2"
+    }
+  ],
+  "models": [
+    {
+      "name": "ResNet-18",
+      "role": "classifier",
+      "source_section": "sec-3.1"
+    },
+    {
+      "name": "VGG19",
+      "role": "classifier",
+      "source_section": "sec-3.2"
+    },
+    {
+      "name": "Adversarially trained ResNet-18 (TRADES)",
+      "role": "adversarially robust classifier",
+      "source_section": "sec-6.2.2"
+    },
+    {
+      "name": "Clipped ResNet-18 (Lipschitz-regularized)",
+      "role": "provably robust classifier (controlled Lipschitz constant)",
+      "source_section": "sec-6.2.2"
+    }
+  ],
+  "baselines": [
+    {
+      "name": "Retrain",
+      "type": "exact unlearning",
+      "reference": null,
+      "source_section": "sec-5.1"
+    },
+    {
+      "name": "FT",
+      "type": "approximate unlearning (fine-tuning on D_R)",
+      "reference": "Warnecke et al., 2021",
+      "source_section": "sec-5.1"
+    },
+    {
+      "name": "RL",
+      "type": "approximate unlearning (random labels on D_F)",
+      "reference": "Golatkar et al., 2020",
+      "source_section": "sec-5.1"
+    },
+    {
+      "name": "GA",
+      "type": "approximate unlearning (gradient ascent on D_F loss)",
+      "reference": "Thudi et al., 2022",
+      "source_section": "sec-5.1"
+    },
+    {
+      "name": "BS",
+      "type": "approximate unlearning (boundary shifting with attack labels)",
+      "reference": "Chen et al., 2023b",
+      "source_section": "sec-5.1"
+    },
+    {
+      "name": "l1-Sparse",
+      "type": "approximate unlearning (model sparsity)",
+      "reference": "Liu et al., 2024",
+      "source_section": "sec-5.1"
+    },
+    {
+      "name": "SalUn",
+      "type": "approximate unlearning (gradient-based weight saliency)",
+      "reference": "Fan et al., 2024",
+      "source_section": "sec-5.1"
+    }
+  ],
+  "metrics": [
+    {
+      "name": "Unlearn Accuracy",
+      "definition": "Accuracy of the unlearned model on the forget set D_F.",
+      "source_section": "sec-5.2"
+    },
+    {
+      "name": "Retain Accuracy",
+      "definition": "Accuracy of the unlearned model on the remain set D_R.",
+      "source_section": "sec-5.2"
+    },
+    {
+      "name": "Test Accuracy",
+      "definition": "Accuracy of the unlearned model on the held-out test set D_T.",
+      "source_section": "sec-5.2"
+    },
+    {
+      "name": "FT AUC",
+      "definition": "Area under the ROC curve of the state-of-the-art membership inference attack RMIA for distinguishing D_F from D_T.",
+      "source_section": "sec-5.2"
+    },
+    {
+      "name": "MIS",
+      "definition": "Membership inference score from prior MIA methods (Yeom et al., Song et al.), used as a legacy metric.",
+      "source_section": "sec-5.2"
+    },
+    {
+      "name": "Average Gap",
+      "definition": "Mean absolute difference between the unlearned model and the retrained model across Unlearn Acc, Retain Acc, Test Acc, and FT AUC (or MIS).",
+      "source_section": "sec-5.2"
+    }
+  ],
+  "main_experiments": [
+    {
+      "id": "exp-table1",
+      "evidence_in_paper": "table-1",
+      "primary": true,
+      "claim": "AMUN achieves the lowest Average Gap, outperforming all baselines when the remain set D_R is available during unlearning (CIFAR-10, 10% and 50% forget sizes).",
+      "axes": {
+        "rows": [
+          "Retrain",
+          "FT",
+          "RL",
+          "GA",
+          "BS",
+          "l1-Sparse",
+          "SalUn",
+          "AMUN",
+          "AMUN+SalUn"
+        ],
+        "cols": [
+          "UNLEARN ACC",
+          "RETAIN ACC",
+          "TEST ACC",
+          "FT AUC",
+          "AVG. GAP"
+        ]
+      },
+      "settings_used": [
+        "set-with-remain",
+        "set-amun-salun"
+      ],
+      "datasets_used": [
+        "CIFAR-10"
+      ],
+      "models_used": [
+        "ResNet-18"
+      ]
+    },
+    {
+      "id": "exp-table2",
+      "evidence_in_paper": "table-2",
+      "primary": true,
+      "claim": "AMUN dominates prior methods when only the forget set D_F is available, and AMUN+SalUn further improves the Average Gap (CIFAR-10, 10% and 50% forget sizes).",
+      "axes": {
+        "rows": [
+          "Retrain",
+          "RL",
+          "GA",
+          "BS",
+          "SalUn",
+          "AMUN",
+          "AMUN+Salun"
+        ],
+        "cols": [
+          "UNLEARN ACC",
+          "RETAIN ACC",
+          "TEST ACC",
+          "FT AUC",
+          "AVG. GAP"
+        ]
+      },
+      "settings_used": [
+        "set-without-remain",
+        "set-amun-salun"
+      ],
+      "datasets_used": [
+        "CIFAR-10"
+      ],
+      "models_used": [
+        "ResNet-18"
+      ]
+    },
+    {
+      "id": "exp-figure2",
+      "evidence_in_paper": "figure-2",
+      "primary": true,
+      "claim": "AMUN outperforms other methods in continuous unlearning (multiple sequential requests) by maintaining a larger gap between D_R vs D_F and D_F vs D_T AUCs.",
+      "axes": {
+        "rows": [
+          "AMUN",
+          "AMUN-A",
+          "SalUn",
+          "RL",
+          "GA",
+          "BS"
+        ],
+        "cols": [
+          "AUC Gap"
+        ]
+      },
+      "settings_used": [
+        "set-with-remain",
+        "set-without-remain"
+      ],
+      "datasets_used": [
+        "CIFAR-10"
+      ],
+      "models_used": [
+        "ResNet-18"
+      ]
+    },
+    {
+      "id": "exp-table4",
+      "evidence_in_paper": "table-4",
+      "primary": false,
+      "claim": "AMUN and AMUN+SalUn outperform baselines on Tiny Imagenet (VGG19) when D_R is accessible.",
+      "axes": {
+        "rows": [
+          "Retrain",
+          "FT",
+          "RL",
+          "GA",
+          "BS",
+          "l1-Sparse",
+          "SalUn",
+          "AMUN",
+          "AMUN+SalUn"
+        ],
+        "cols": [
+          "UNLEARN ACC",
+          "RETAIN ACC",
+          "TEST ACC",
+          "FT AUC",
+          "AVG. GAP"
+        ]
+      },
+      "settings_used": [
+        "set-with-remain",
+        "set-amun-salun"
+      ],
+      "datasets_used": [
+        "Tiny Imagenet"
+      ],
+      "models_used": [
+        "VGG19"
+      ]
+    },
+    {
+      "id": "exp-table5",
+      "evidence_in_paper": "table-5",
+      "primary": false,
+      "claim": "AMUN and AMUN+SalUn significantly outperform baselines on Tiny Imagenet when only D_F is accessible.",
+      "axes": {
+        "rows": [
+          "Retrain",
+          "RL",
+          "GA",
+          "BS",
+          "SalUn",
+          "AMUN",
+          "AMUN+SalUn"
+        ],
+        "cols": [
+          "UNLEARN ACC",
+          "RETAIN ACC",
+          "TEST ACC",
+          "FT AUC",
+          "AVG. GAP"
+        ]
+      },
+      "settings_used": [
+        "set-without-remain",
+        "set-amun-salun"
+      ],
+      "datasets_used": [
+        "Tiny Imagenet"
+      ],
+      "models_used": [
+        "VGG19"
+      ]
+    },
+    {
+      "id": "exp-table3",
+      "evidence_in_paper": "table-3",
+      "primary": false,
+      "claim": "AMUN remains effective on adversarially robust (clipped) ResNet-18 models even without access to D_R; FT AUC stays near random guessing.",
+      "axes": {
+        "rows": [
+          "Retrain",
+          "AMUN"
+        ],
+        "cols": [
+          "FT AUC",
+          "FR AUC",
+          "TEST ACC"
+        ]
+      },
+      "settings_used": [
+        "set-without-remain"
+      ],
+      "datasets_used": [
+        "CIFAR-10"
+      ],
+      "models_used": [
+        "Clipped ResNet-18 (Lipschitz-regularized)"
+      ]
+    },
+    {
+      "id": "exp-table6",
+      "evidence_in_paper": "table-6",
+      "primary": false,
+      "claim": "AMUN is effective on clipped robust models when D_R is available.",
+      "axes": {
+        "rows": [],
+        "cols": []
+      },
+      "settings_used": [
+        "set-with-remain"
+      ],
+      "datasets_used": [
+        "CIFAR-10"
+      ],
+      "models_used": [
+        "Clipped ResNet-18 (Lipschitz-regularized)"
+      ]
+    },
+    {
+      "id": "exp-table7",
+      "evidence_in_paper": "table-7",
+      "primary": false,
+      "claim": "AMUN is effective on adversarially trained ResNet-18 models (TRADES) when D_R is available.",
+      "axes": {
+        "rows": [],
+        "cols": []
+      },
+      "settings_used": [
+        "set-with-remain"
+      ],
+      "datasets_used": [
+        "CIFAR-10"
+      ],
+      "models_used": [
+        "Adversarially trained ResNet-18 (TRADES)"
+      ]
+    },
+    {
+      "id": "exp-figure1",
+      "evidence_in_paper": "figure-1",
+      "primary": false,
+      "claim": "Using adversarial examples with wrong labels (D_A) preserves test accuracy during fine-tuning; replacing D_A with random-location or random-label datasets leads to accuracy degradation, especially without D_R.",
+      "axes": {
+        "rows": [
+          "Adv",
+          "Orig",
+          "Adv-RS",
+          "Adv-RL",
+          "Orig-RL",
+          "Orig-AdvL"
+        ],
+        "cols": [
+          "Test Accuracy"
+        ]
+      },
+      "settings_used": [
+        "set-with-remain",
+        "set-without-remain"
+      ],
+      "datasets_used": [
+        "CIFAR-10"
+      ],
+      "models_used": [
+        "ResNet-18"
+      ]
+    }
+  ],
+  "expected_claims": [
+    {
+      "id": "claim-1",
+      "claim_text": "AMUN achieves the smallest Average Gap among approximate methods when D_R is available, significantly closing the gap to retrained models.",
+      "evidence": "table-1",
+      "verification_hint": "Check that AMUN's Average Gap (10%: ~0.62, 50%: ~0.33) is lower than all baselines (FT, RL, GA, BS, l1-Sparse, SalUn)."
+    },
+    {
+      "id": "claim-2",
+      "claim_text": "Without access to D_R, AMUN (and AMUN+SalUn) substantially outperforms other methods, while other methods fail (GA degrades, RL/BS/SalUn produce near-perfect accuracy but poor MIA scores).",
+      "evidence": "table-2",
+      "verification_hint": "Verify that AMUN's Average Gap (1.94 for 10%, 2.51 for 50%) is far lower than RL/GA/BS/SalUn (all >4)."
+    },
+    {
+      "id": "claim-3",
+      "claim_text": "After unlearning 10% of CIFAR-10 with AMUN, the SOTA membership inference attack RMIA cannot distinguish forget samples from test samples (AUC ≈ 50%).",
+      "evidence": "table-1",
+      "verification_hint": "Check FT AUC for AMUN under 10% forget: 50.18 ± 0.36, consistent with random guessing (50.00 ± 0.42 for retrain)."
+    },
+    {
+      "id": "claim-4",
+      "claim_text": "Fine-tuning on adversarial examples does not cause catastrophic forgetting of test accuracy.",
+      "evidence": "figure-1",
+      "verification_hint": "Observe that 'Adv' curves (using D_A) maintain test accuracy >80% even after 20 epochs, while random-label or random-sample curves collapse."
+    },
+    {
+      "id": "claim-5",
+      "claim_text": "AMUN handles continuous unlearning requests effectively; after 5 sequential unlearnings of 2% each, the gap between D_R vs D_F and D_F vs D_T AUCs remains large (better than baselines).",
+      "evidence": "figure-2",
+      "verification_hint": "Plot shows AUC gap (D_R vs D_F minus D_F vs D_T) stays above 10 for AMUN, while baselines drop near zero."
+    }
+  ],
+  "reproducibility_meta": {
+    "needs_training": true,
+    "estimated_compute": "Single GPU (e.g., NVIDIA A100), hours: training ResNet-18 on CIFAR-10 ~0.2 GPU hours, unlearning ~0.02 GPU hours per run.",
+    "data_availability": "public",
+    "code_partial_available": true,
+    "minimum_viable_experiments": [
+      "exp-table1",
+      "exp-table2"
+    ],
+    "deferred_experiments": [
+      "exp-figure2",
+      "exp-table4",
+      "exp-table5",
+      "exp-table3",
+      "exp-table6",
+      "exp-table7",
+      "exp-figure1"
+    ]
+  },
+  "sections": [
+    {
+      "id": "sec-abstract",
+      "title": "Abstract",
+      "level": 1,
+      "line_start": 5,
+      "line_end": 8,
+      "char_start": 135,
+      "char_end": 1537,
+      "parent": null
+    },
+    {
+      "id": "sec-1",
+      "title": "1 Introduction",
+      "level": 1,
+      "line_start": 9,
+      "line_end": 34,
+      "char_start": 1537,
+      "char_end": 8170,
+      "parent": null
+    },
+    {
+      "id": "sec-1.1",
+      "title": "1.1 Related Work",
+      "level": 2,
+      "line_start": 31,
+      "line_end": 34,
+      "char_start": 6341,
+      "char_end": 8170,
+      "parent": "sec-1"
+    },
+    {
+      "id": "sec-2",
+      "title": "2 Preliminaries",
+      "level": 1,
+      "line_start": 35,
+      "line_end": 58,
+      "char_start": 8170,
+      "char_end": 13605,
+      "parent": null
+    },
+    {
+      "id": "sec-2.1",
+      "title": "2.1 Notation",
+      "level": 2,
+      "line_start": 39,
+      "line_end": 42,
+      "char_start": 8325,
+      "char_end": 10241,
+      "parent": "sec-2"
+    },
+    {
+      "id": "sec-2.2",
+      "title": "2.2 Definitions",
+      "level": 2,
+      "line_start": 43,
+      "line_end": 48,
+      "char_start": 10241,
+      "char_end": 11449,
+      "parent": "sec-2"
+    },
+    {
+      "id": "sec-2.3",
+      "title": "2.3 Approximate Unlearning",
+      "level": 2,
+      "line_start": 49,
+      "line_end": 54,
+      "char_start": 11449,
+      "char_end": 12724,
+      "parent": "sec-2"
+    },
+    {
+      "id": "sec-2.4",
+      "title": "2.4 Unlearning Settings",
+      "level": 2,
+      "line_start": 55,
+      "line_end": 58,
+      "char_start": 12724,
+      "char_end": 13605,
+      "parent": "sec-2"
+    },
+    {
+      "id": "sec-3",
+      "title": "3 Motivation",
+      "level": 1,
+      "line_start": 59,
+      "line_end": 132,
+      "char_start": 13605,
+      "char_end": 25761,
+      "parent": null
+    },
+    {
+      "id": "sec-3.1",
+      "title": "3.1 A Guiding Observation",
+      "level": 2,
+      "line_start": 63,
+      "line_end": 72,
+      "char_start": 13788,
+      "char_end": 17269,
+      "parent": "sec-3"
+    },
+    {
+      "id": "sec-3.2",
+      "title": "3.2 Fine-tuning on Adversarial Examples",
+      "level": 2,
+      "line_start": 73,
+      "line_end": 132,
+      "char_start": 17269,
+      "char_end": 25761,
+      "parent": "sec-3"
+    },
+    {
+      "id": "sec-4",
+      "title": "4 Adversarial Machine UNlearning (AMUN)",
+      "level": 1,
+      "line_start": 133,
+      "line_end": 177,
+      "char_start": 25761,
+      "char_end": 34212,
+      "parent": null
+    },
+    {
+      "id": "sec-4.1",
+      "title": "4.1 Influencing Factors",
+      "level": 2,
+      "line_start": 154,
+      "line_end": 177,
+      "char_start": 29434,
+      "char_end": 34212,
+      "parent": "sec-4"
+    },
+    {
+      "id": "sec-5",
+      "title": "5 Evaluation Setup",
+      "level": 1,
+      "line_start": 178,
+      "line_end": 206,
+      "char_start": 34212,
+      "char_end": 38888,
+      "parent": null
+    },
+    {
+      "id": "sec-5.1",
+      "title": "5.1 Baseline Methods",
+      "level": 2,
+      "line_start": 182,
+      "line_end": 185,
+      "char_start": 34422,
+      "char_end": 34980,
+      "parent": "sec-5"
+    },
+    {
+      "id": "sec-5.2",
+      "title": "5.2 Evaluation Metrics",
+      "level": 2,
+      "line_start": 186,
+      "line_end": 200,
+      "char_start": 34980,
+      "char_end": 37566,
+      "parent": "sec-5"
+    },
+    {
+      "id": "sec-5.3",
+      "title": "5.3 Unlearning Settings",
+      "level": 2,
+      "line_start": 201,
+      "line_end": 206,
+      "char_start": 37566,
+      "char_end": 38888,
+      "parent": "sec-5"
+    },
+    {
+      "id": "sec-6",
+      "title": "6 Experiments",
+      "level": 1,
+      "line_start": 207,
+      "line_end": 299,
+      "char_start": 38888,
+      "char_end": 61854,
+      "parent": null
+    },
+    {
+      "id": "sec-6.1",
+      "title": "6.1 Effectiveness of AMUN",
+      "level": 2,
+      "line_start": 219,
+      "line_end": 256,
+      "char_start": 40689,
+      "char_end": 45044,
+      "parent": "sec-6"
+    },
+    {
+      "id": "sec-6.2",
+      "title": "6.2 Ablation Studies",
+      "level": 2,
+      "line_start": 257,
+      "line_end": 293,
+      "char_start": 45044,
+      "char_end": 59036,
+      "parent": "sec-6"
+    },
+    {
+      "id": "sec-6.2.1",
+      "title": "6.2.1 FINE-TUNING ON ADVERSARIAL EXAMPLES",
+      "level": 3,
+      "line_start": 261,
+      "line_end": 281,
+      "char_start": 45705,
+      "char_end": 55305,
+      "parent": "sec-6.2"
+    },
+    {
+      "id": "sec-6.2.2",
+      "title": "6.2.2 ADVERSARIALLY ROBUST MODELS",
+      "level": 3,
+      "line_start": 282,
+      "line_end": 293,
+      "char_start": 55305,
+      "char_end": 59036,
+      "parent": "sec-6.2"
+    },
+    {
+      "id": "sec-6.3",
+      "title": "6.3 Continuous Unlearning",
+      "level": 2,
+      "line_start": 294,
+      "line_end": 299,
+      "char_start": 59036,
+      "char_end": 61854,
+      "parent": "sec-6"
+    },
+    {
+      "id": "sec-7",
+      "title": "7 Conclusions",
+      "level": 1,
+      "line_start": 300,
+      "line_end": 303,
+      "char_start": 61854,
+      "char_end": 62800,
+      "parent": null
+    },
+    {
+      "id": "sec-acknowledgments",
+      "title": "Acknowledgments",
+      "level": 1,
+      "line_start": 304,
+      "line_end": 307,
+      "char_start": 62800,
+      "char_end": 63241,
+      "parent": null
+    },
+    {
+      "id": "sec-impact-statement",
+      "title": "Impact Statement",
+      "level": 1,
+      "line_start": 308,
+      "line_end": 311,
+      "char_start": 63241,
+      "char_end": 64135,
+      "parent": null
+    },
+    {
+      "id": "sec-references",
+      "title": "References",
+      "level": 1,
+      "line_start": 312,
+      "line_end": 390,
+      "char_start": 64135,
+      "char_end": 74691,
+      "parent": null
+    },
+    {
+      "id": "sec-A",
+      "title": "A Proofs",
+      "level": 1,
+      "line_start": 391,
+      "line_end": 420,
+      "char_start": 74691,
+      "char_end": 79203,
+      "parent": null
+    },
+    {
+      "id": "sec-B",
+      "title": "B Related Works (cont.)",
+      "level": 1,
+      "line_start": 421,
+      "line_end": 428,
+      "char_start": 79203,
+      "char_end": 81492,
+      "parent": null
+    },
+    {
+      "id": "sec-C",
+      "title": "C Implementation Details",
+      "level": 1,
+      "line_start": 429,
+      "line_end": 434,
+      "char_start": 81492,
+      "char_end": 83841,
+      "parent": null
+    },
+    {
+      "id": "sec-D",
+      "title": "D AMUN + SalUn",
+      "level": 1,
+      "line_start": 435,
+      "line_end": 494,
+      "char_start": 83841,
+      "char_end": 88602,
+      "parent": null
+    },
+    {
+      "id": "sec-E",
+      "title": "E Effectiveness of AMUN (cont.)",
+      "level": 1,
+      "line_start": 495,
+      "line_end": 621,
+      "char_start": 88602,
+      "char_end": 99606,
+      "parent": null
+    },
+    {
+      "id": "sec-E.1",
+      "title": "E.1 Computational Cost",
+      "level": 2,
+      "line_start": 551,
+      "line_end": 621,
+      "char_start": 93385,
+      "char_end": 99606,
+      "parent": "sec-E"
+    },
+    {
+      "id": "sec-F",
+      "title": "F Ablation Study (cont.)",
+      "level": 1,
+      "line_start": 622,
+      "line_end": 825,
+      "char_start": 99606,
+      "char_end": 128490,
+      "parent": null
+    },
+    {
+      "id": "sec-F.1",
+      "title": "F.1 Empirical Behavior of Retrained Models",
+      "level": 2,
+      "line_start": 626,
+      "line_end": 639,
+      "char_start": 99874,
+      "char_end": 102785,
+      "parent": "sec-F"
+    },
+    {
+      "id": "sec-F.1.1",
+      "title": "F.1.1 CONFIDENCE VALUES IN UNLEARNED MODELS",
+      "level": 3,
+      "line_start": 636,
+      "line_end": 639,
+      "char_start": 101380,
+      "char_end": 102785,
+      "parent": "sec-F.1"
+    },
+    {
+      "id": "sec-F.2",
+      "title": "F.2 Adversarially Robust Models (cont.)",
+      "level": 2,
+      "line_start": 640,
+      "line_end": 653,
+      "char_start": 102785,
+      "char_end": 106443,
+      "parent": "sec-F"
+    },
+    {
+      "id": "sec-F.3",
+      "title": "F.3 Fine-tuning on Adversarial Examples (cont.)",
+      "level": 2,
+      "line_start": 654,
+      "line_end": 659,
+      "char_start": 106443,
+      "char_end": 108389,
+      "parent": "sec-F"
+    },
+    {
+      "id": "sec-F.4",
+      "title": "F.4 Transferred Adversarial Examples",
+      "level": 2,
+      "line_start": 660,
+      "line_end": 813,
+      "char_start": 108389,
+      "char_end": 123180,
+      "parent": "sec-F"
+    },
+    {
+      "id": "sec-F.5",
+      "title": "F.5 Weak Attacks",
+      "level": 2,
+      "line_start": 814,
+      "line_end": 825,
+      "char_start": 123180,
+      "char_end": 128490,
+      "parent": "sec-F"
+    },
+    {
+      "id": "sec-G",
+      "title": "G Comparison Using Prior Evaluation Methods",
+      "level": 1,
+      "line_start": 826,
+      "line_end": 837,
+      "char_start": 128490,
+      "char_end": 134953,
+      "parent": null
+    },
+    {
+      "id": "sec-H",
+      "title": "H Continuous Unlearning (cont.)",
+      "level": 1,
+      "line_start": 838,
+      "line_end": 856,
+      "char_start": 134953,
+      "char_end": 137720,
+      "parent": null
+    }
+  ],
+  "entities": {
+    "tables": [
+      {
+        "id": "table-1",
+        "label": "1",
+        "caption": "",
+        "first_mention_line": 197,
+        "context_lines": [
+          192,
+          217
+        ],
+        "in_section": "sec-5.2"
+      },
+      {
+        "id": "table-2",
+        "label": "2",
+        "caption": "",
+        "first_mention_line": 223,
+        "context_lines": [
+          218,
+          243
+        ],
+        "in_section": "sec-6.1"
+      },
+      {
+        "id": "table-7",
+        "label": "7",
+        "caption": "",
+        "first_mention_line": 288,
+        "context_lines": [
+          283,
+          308
+        ],
+        "in_section": "sec-6.2.2"
+      },
+      {
+        "id": "table-3",
+        "label": "3",
+        "caption": "",
+        "first_mention_line": 288,
+        "context_lines": [
+          283,
+          308
+        ],
+        "in_section": "sec-6.2.2"
+      },
+      {
+        "id": "table-6",
+        "label": "6",
+        "caption": "",
+        "first_mention_line": 288,
+        "context_lines": [
+          283,
+          308
+        ],
+        "in_section": "sec-6.2.2"
+      },
+      {
+        "id": "table-4",
+        "label": "4",
+        "caption": "",
+        "first_mention_line": 497,
+        "context_lines": [
+          492,
+          517
+        ],
+        "in_section": "sec-E"
+      },
+      {
+        "id": "table-5",
+        "label": "5",
+        "caption": "",
+        "first_mention_line": 497,
+        "context_lines": [
+          492,
+          517
+        ],
+        "in_section": "sec-E"
+      },
+      {
+        "id": "table-8",
+        "label": "8",
+        "caption": "",
+        "first_mention_line": 662,
+        "context_lines": [
+          657,
+          682
+        ],
+        "in_section": "sec-F.4"
+      },
+      {
+        "id": "table-9",
+        "label": "9",
+        "caption": "",
+        "first_mention_line": 816,
+        "context_lines": [
+          811,
+          836
+        ],
+        "in_section": "sec-F.5"
+      },
+      {
+        "id": "table-10",
+        "label": "10",
+        "caption": "Unlearning with access to $\\mathcal { D } _ { \\mathbf { R } } .$ . Comparing different unlearning methods in unlearning 10% and $5 0 \\%$ of D. Avg. Gap (see § 5.2), with MIS as the MIA score, is used for evaluation (lower is better). The lowest value is shown in bold while the second best is specified with underscore. As the results show, AMUN outperforms all other methods by achieving lowest Avg. Gap and $\\mathbf { A M U N } _ { S a l U n }$ achieves comparable results.",
+        "first_mention_line": 832,
+        "context_lines": [
+          827,
+          852
+        ],
+        "in_section": "sec-G"
+      },
+      {
+        "id": "table-11",
+        "label": "11",
+        "caption": "Unlearning with access to only ${ \\mathcal { D } } _ { \\mathbf { F } } .$ Comparing different unlearning methods in unlearning 10% and 50% of D. Avg. Gap (see § 5.2) is used for evaluation (lower is better) when only $\\mathcal { D } _ { \\mathrm { F } }$ is available during unlearning. As the results show, $\\mathbf { A M U N } _ { S a l U n }$ significantly outperforms all other methods, and AMUN achieves comparable results.",
+        "first_mention_line": 836,
+        "context_lines": [
+          831,
+          856
+        ],
+        "in_section": "sec-G"
+      }
+    ],
+    "figures": [
+      {
+        "id": "figure-3",
+        "label": "3",
+        "caption": "",
+        "first_mention_line": 67,
+        "context_lines": [
+          62,
+          87
+        ],
+        "in_section": "sec-3.1"
+      },
+      {
+        "id": "figure-1",
+        "label": "1",
+        "caption": "Effect of fine-tuning on adversarial examples. This figure shows the effect of fine-tuning on test accuracy of a ResNet-18 model that is trained on CIFAR-10, when the dataset for fine-tuning changes (see § 6.2 for details). Let $\\mathcal { D } _ { \\mathrm { F } }$ contain 10% of the samples in D and $\\mathcal { D } _ { \\mathrm { A } }$ be the set of adversarial examples constructed using Algorithm 1. Adv, from the left sub-figure to right one, shows the results when $\\mathcal { D } \\cup \\mathcal { D } _ { \\mathrm { A } } , \\mathcal { D } _ { \\mathrm { F } } \\cup \\mathcal { D } _ { \\mathrm { A } } ,$ and $\\mathcal { D } _ { \\mathrm { A } }$ is used for fine-tuning the model, respectively. $\\mathtt { O r i g , A d v \\mathrm { - } R S , A d v \\mathrm { - } R L , O r i g \\mathrm { - } R L }$ , and $\\begin{array} { r l } { { } } & { { } \\operatorname { O r i g - A d v I } } \\end{array}$ shows the results when $\\mathcal { D } _ { \\mathrm { A } }$ for each of these sub-figures is replace by $\\mathcal { D } _ { \\mathrm { F } } , \\mathcal { D } _ { \\mathrm { A } R S } , \\mathcal { D } _ { \\mathrm { A } R L } , \\mathcal { D } _ { R L }$ , and $\\mathcal { D } _ { A d v L }$ , accordingly. As the figure shows, the specific use of adversarial examples with the mis-predicted labels matters in keeping the model’s test accuracy because $\\mathcal { D } _ { \\mathrm { { A } } } ,$ , in contrast to the other constructed datasets belong to the natural distribution learned by the trained model.",
+        "first_mention_line": 121,
+        "context_lines": [
+          116,
+          141
+        ],
+        "in_section": "sec-3.2"
+      },
+      {
+        "id": "figure-6",
+        "label": "6",
+        "caption": "",
+        "first_mention_line": 129,
+        "context_lines": [
+          124,
+          149
+        ],
+        "in_section": "sec-3.2"
+      },
+      {
+        "id": "figure-2",
+        "label": "2",
+        "caption": "Multiple unlearning requests. This figure shows the evaluation of unlearning methods when they are used for unlearning for five times and each time on 2% of the training data. We train a ResNet-18 model on CIFAR-10 when $\\mathcal { D } _ { \\mathrm { R } }$ is available (left) and when it is not (right). After each step of the unlearning, we use the MIA scores generated by RMIA to derive the area under the ROC curve (AUC) for $\\mathcal { D } _ { \\mathrm { R } }$ vs. $\\mathcal { D } _ { \\mathrm { F } }$ and $\\mathcal { D } _ { \\mathrm { F } }$ vs. $\\mathcal { D } _ { \\mathrm { T } }$ . The values on the y-axis shows the difference of these two AUC scores. A high value for this gap means the samples in $\\mathcal { D } _ { \\mathrm { F } }$ are far more similar to $\\mathcal { D } _ { \\mathrm { T } }$ rather than $\\mathcal { D } _ { \\mathrm { R } }$ and shows a more effective unlearning.",
+        "first_mention_line": 253,
+        "context_lines": [
+          248,
+          273
+        ],
+        "in_section": "sec-6.1"
+      },
+      {
+        "id": "figure-4",
+        "label": "4",
+        "caption": "Each plot shows the portion of samples for final values of ϵ in Algorithm 1. The smallest value on the x-axis in each plot shows the initial ϵ value chosen for Algorithm 1 based on running this algorithm on a small subset of the dataset. The left-most plot shows this distribution for CIFAR-10 when the chosen attack algorithm is PGD-50. The two right-most plots show the distributions for the Tiny ImageNet dataset when PGD-10 and PGD-20 are used, respectively. Once the initial value is set, a run of PGD attack is performed on all the samples. For the ones that adversarial example is not found within that radius, we perform other runs of PGD attack until adversarial examples are found for all the samples. As the histograms show, the total work is equivalent to less than 3 runs of PGD attack on the whole dataset, which is not computationally expensive.",
+        "first_mention_line": 549,
+        "context_lines": [
+          544,
+          569
+        ],
+        "in_section": "sec-E"
+      },
+      {
+        "id": "figure-5",
+        "label": "5",
+        "caption": "The two left-most subplots show the confidence values before and after unlearning (using AMUN) of 10% of the training samples. The two right-most subplots show these confidence values for unlearning 50% of the training samples. In both cases, the confidence values of samples in $\\mathcal { D } _ { \\mathrm { F } }$ are similar to those of $\\mathcal { D } _ { \\mathrm { R } }$ and their fitted Gaussian distribution matches as expected. After using AMUN for unlearning the samples in $\\mathcal { D } _ { \\mathrm { F } }$ , the confidence values on this set gets more similar to the test (unseen) samples.",
+        "first_mention_line": 620,
+        "context_lines": [
+          615,
+          640
+        ],
+        "in_section": "sec-E.1"
+      },
+      {
+        "id": "figure-7",
+        "label": "7",
+        "caption": "",
+        "first_mention_line": 658,
+        "context_lines": [
+          653,
+          678
+        ],
+        "in_section": "sec-F.3"
+      },
+      {
+        "id": "figure-8",
+        "label": "8",
+        "caption": "This figure shows both FT AUC and RF AUC components of the plots presented in Figure 2. The two left-most sub-figures show these values along the number of unlearning requests for the case where there is access to $\\mathcal { D } _ { \\mathrm { R } }$ and the two right-most ones show these values when there is no access to $\\mathcal { D } _ { \\mathrm { R } }$ .",
+        "first_mention_line": 812,
+        "context_lines": [
+          807,
+          832
+        ],
+        "in_section": "sec-F.4"
+      },
+      {
+        "id": "figure-9",
+        "label": "9",
+        "caption": "",
+        "first_mention_line": 818,
+        "context_lines": [
+          813,
+          838
+        ],
+        "in_section": "sec-F.5"
+      }
+    ],
+    "algorithms": [
+      {
+        "id": "algorithm-1",
+        "label": "1",
+        "caption": "",
+        "first_mention_line": 121,
+        "context_lines": [
+          116,
+          141
+        ],
+        "in_section": "sec-3.2"
+      }
+    ],
+    "equations": []
+  }
+}

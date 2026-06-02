@@ -1,0 +1,276 @@
+{
+  "paper_id": "I0T",
+  "stages": [
+    {
+      "stage_id": "env-setup",
+      "name": "Environment Setup",
+      "stage_type": "setup",
+      "description": "Create repository, install dependencies, clone code",
+      "actions": [
+        "Create project directory structure with src/, data/, configs/, models/, logs/ directories.",
+        "Initialize git repository and create .gitignore for Python project.",
+        "Install Python dependencies from requirements.txt: torch, torchvision, clip, numpy, scipy, scikit-learn, transformers, Pillow.",
+        "Clone the official code repository (if available) into /official_repo/ for reference.",
+        "Download pretrained ViT-B/32 CLIP model weights into models/ directory.",
+        "Download BLIP model checkpoint into models/blip/ for non-CLIP baseline."
+      ],
+      "checklist_items_covered": [
+        "derived-ce-008",
+        "derived-ce-009",
+        "derived-pw-020",
+        "derived-pw-021"
+      ],
+      "depends_on": [],
+      "expected_artifacts": [
+        "repo_skeleton",
+        "requirements.txt"
+      ]
+    },
+    {
+      "stage_id": "data-prep",
+      "name": "Data Preparation",
+      "stage_type": "preprocessing",
+      "description": "Download and preprocess all required datasets",
+      "actions": [
+        "Write src/data/download_coco.sh to download COCO images and ShareGPT4V annotations.",
+        "Write src/data/download_flickr30k.py to download Flickr30k images and captions.",
+        "Write src/data/download_cifar100.py to download CIFAR-100 dataset.",
+        "Write src/data/download_cub200.py to download CUB-200-2011 dataset.",
+        "Write src/data/download_flickr8k_expert.py to download Flickr8k-Expert and Flickr8k-CF annotations.",
+        "Run python src/preprocess.py --dataset all --split train val test to generate data splits and serialized tensors.",
+        "Verify dataset integrity: check image counts and caption lengths."
+      ],
+      "checklist_items_covered": [
+        "derived-pw-014",
+        "derived-pw-015",
+        "derived-pw-016",
+        "derived-pw-017",
+        "derived-pw-018",
+        "derived-pw-019",
+        "derived-ce-010",
+        "derived-ce-011",
+        "derived-ce-012",
+        "derived-ce-013",
+        "derived-ce-014",
+        "derived-ce-015"
+      ],
+      "depends_on": [
+        "env-setup"
+      ],
+      "expected_artifacts": [
+        "downloaded_datasets"
+      ]
+    },
+    {
+      "stage_id": "baseline-training",
+      "name": "Train Baselines",
+      "stage_type": "training",
+      "description": "Implement and train all baseline methods for comparison",
+      "actions": [
+        "Write src/models/baselines.py with CLIP baseline model wrapper (original CLIP no modification).",
+        "Implement post-hoc embedding shift method MG (λ=0.375, 0.5, -0.5) in src/baselines/mg.py.",
+        "Implement CLOOB baseline loss in src/losses/cloob.py.",
+        "Implement Unif-Align loss in src/losses/unif_align.py.",
+        "Implement PAC-S metric calculation in src/metrics/pac_s.py.",
+        "Write config files configs/baseline/clip.yaml, mg_0375.yaml, mg_05.yaml, mg_-05.yaml, cloob.yaml, unif_align.yaml, pac_s.yaml.",
+        "Run training scripts: python train_baseline.py --config configs/baseline/<name>.yaml for each baseline requiring training.",
+        "Save all baseline model checkpoints and embeddings to outputs/baselines/."
+      ],
+      "checklist_items_covered": [
+        "derived-pw-022",
+        "derived-pw-023",
+        "derived-pw-024",
+        "derived-pw-025",
+        "derived-pw-026",
+        "derived-pw-027",
+        "derived-pw-028",
+        "derived-pw-029",
+        "derived-ci-012",
+        "derived-ci-013",
+        "derived-ci-014",
+        "derived-ci-015",
+        "derived-ci-016",
+        "derived-ci-017",
+        "derived-ci-018",
+        "derived-ci-019",
+        "derived-ce-016",
+        "derived-ce-017",
+        "derived-ce-018",
+        "derived-ce-019",
+        "derived-ce-020",
+        "derived-ce-021",
+        "derived-ce-022",
+        "derived-ce-023"
+      ],
+      "depends_on": [
+        "data-prep"
+      ],
+      "expected_artifacts": [
+        "baseline_models",
+        "baseline_checkpoints"
+      ]
+    },
+    {
+      "stage_id": "main-training",
+      "name": "Train Proposed Method",
+      "stage_type": "training",
+      "description": "Implement and train the proposed method",
+      "actions": [
+        "Write src/losses/cyclip.py implementing CyCLIP loss with in-modal and cross-modal cyclic consistency terms.",
+        "Create training config configs/cyclip_coco.yaml with lr 1e-6, weight_decay 1e-2, batch_size 128, temperature_log_scale 4.6052, epochs 3.",
+        "Run first-stage fine-tuning: python train.py --config configs/cyclip_coco.yaml --model ViT-B/32 --dataset coco_sharegpt4v --output models/lccom.pt",
+        "Write src/modules/embedding_shift.py implementing I0T_post standardization: subtract mean and normalize.",
+        "Write src/modules/bn_async.py implementing I0T_async setup: add BN layers after frozen encoders.",
+        "Implement MCSIE augmentation in src/augmentations/mcsie.py: apply dropout 0.1 to attention layers in ViT/transformer.",
+        "Write training script for async BN training: src/train_bn_async.py with MCSIE loss, moving averages alpha=0.1.",
+        "Run BN training: python src/train_bn_async.py --config configs/bn_async.yaml --base_model models/lccom.pt --output models/i0t_async.pt"
+      ],
+      "checklist_items_covered": [
+        "derived-pw-001",
+        "derived-pw-002",
+        "derived-pw-003",
+        "derived-pw-004",
+        "derived-pw-005",
+        "derived-pw-006",
+        "derived-pw-007",
+        "derived-pw-008",
+        "derived-pw-009",
+        "derived-pw-010",
+        "derived-pw-011",
+        "derived-pw-012",
+        "derived-pw-013",
+        "derived-pw-039",
+        "derived-pw-040",
+        "derived-pw-041",
+        "derived-pw-042",
+        "derived-pw-043",
+        "derived-pw-044",
+        "derived-pw-045",
+        "derived-pw-046",
+        "derived-ci-001",
+        "derived-ci-002",
+        "derived-ci-003",
+        "derived-ci-004",
+        "derived-ci-005",
+        "derived-ci-006",
+        "derived-ci-007",
+        "derived-ci-008",
+        "derived-ci-009",
+        "derived-ci-010",
+        "derived-ci-011",
+        "derived-ce-024",
+        "derived-ce-025"
+      ],
+      "depends_on": [
+        "baseline-training"
+      ],
+      "expected_artifacts": [
+        "trained_model",
+        "training_logs"
+      ]
+    },
+    {
+      "stage_id": "evaluation",
+      "name": "Evaluation",
+      "stage_type": "evaluation",
+      "description": "Run evaluation on all experiments and compute metrics",
+      "actions": [
+        "Write script src/eval/modality_gap.py to compute CD, LS, severity given embeddings.",
+        "Write script src/eval/retrieval.py to compute image-to-text and text-to-image Recall@1 on Flickr30k.",
+        "Write script src/eval/zeroshot_cls.py to compute top-1 accuracy on CIFAR-100 and CUB-200 using cosine similarity.",
+        "Write script src/eval/human_corr.py to compute Kendall's tau correlation with human judgments on Flickr8k-Expert and CF.",
+        "Run python src/eval/modality_gap.py --embeddings outputs/*/embeddings.npy to generate modality gap table.",
+        "Run python src/eval/retrieval.py --model i0t_async --dataset flickr30k to evaluate retrieval.",
+        "Run python src/eval/zeroshot_cls.py --model i0t_async --datasets cifar100 cub200 to evaluate classification.",
+        "Run python src/eval/human_corr.py --model i0t_async to evaluate correlation."
+      ],
+      "checklist_items_covered": [
+        "derived-pw-030",
+        "derived-pw-031",
+        "derived-pw-032",
+        "derived-pw-033",
+        "derived-pw-034",
+        "derived-pw-035",
+        "derived-pw-036",
+        "derived-pw-037",
+        "derived-pw-038",
+        "derived-ci-020",
+        "derived-ci-021",
+        "derived-ci-022",
+        "derived-ci-023",
+        "derived-ci-024",
+        "derived-ci-025",
+        "derived-ci-026",
+        "derived-ci-027",
+        "derived-ci-028",
+        "derived-ce-001",
+        "derived-ce-002",
+        "derived-ce-003",
+        "derived-ce-004",
+        "derived-ce-005",
+        "derived-ce-006",
+        "derived-ce-007",
+        "derived-rm-001",
+        "derived-rm-002",
+        "derived-rm-003",
+        "derived-rm-004",
+        "derived-rm-005",
+        "derived-rm-006",
+        "derived-rm-007"
+      ],
+      "depends_on": [
+        "main-training",
+        "baseline-training"
+      ],
+      "expected_artifacts": [
+        "evaluation_results",
+        "metric_tables"
+      ]
+    },
+    {
+      "stage_id": "final-verification",
+      "name": "Final Verification",
+      "stage_type": "verification",
+      "description": "Compare reproduced results against paper claims",
+      "actions": [
+        "Generate summary CSV tables for all metrics from evaluation outputs.",
+        "Write script src/verify/compare.py to compare reproduced numbers with paper's Table 1, 2, etc.",
+        "Run python src/verify/compare.py --reproduced results/summary.csv --paper paper_results.csv.",
+        "Produce verification report listing out-of-tolerance metrics.",
+        "Check that I0T_post CD < 0.02 and LS > 0.5.",
+        "Check that I0T_async CD < 0.48 and LS > 0.99.",
+        "Verify retrieval recall improvements over baselines."
+      ],
+      "checklist_items_covered": [
+        "derived-rm-008",
+        "derived-rm-009",
+        "derived-rm-010",
+        "derived-rm-011",
+        "derived-rm-012",
+        "derived-rm-013"
+      ],
+      "depends_on": [
+        "evaluation"
+      ],
+      "expected_artifacts": [
+        "verification_report"
+      ]
+    }
+  ],
+  "execution_order": [
+    "env-setup",
+    "data-prep",
+    "baseline-training",
+    "main-training",
+    "evaluation",
+    "final-verification"
+  ],
+  "coverage_stats": {
+    "total_derived_items": 160,
+    "paper_observation_items_excluded": 48,
+    "plannable_items": 112,
+    "covered_items": 112,
+    "coverage_ratio": 1.0,
+    "uncovered_item_ids": []
+  }
+}

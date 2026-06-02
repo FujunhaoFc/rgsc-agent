@@ -1,0 +1,1113 @@
+{
+  "paper_id": "I0T",
+  "title": "I0T: Embedding Standardization Method Towards Zero Modality Gap",
+  "venue": null,
+  "code_url": "https://github.com/xfactlab/I0T",
+  "problem_definition": {
+    "task": "Reducing the modality gap between image and text embeddings in CLIP-based vision-language models while preserving downstream task performance.",
+    "input": "Image and text embeddings from a pre-trained CLIP-based model.",
+    "output": "Transformed image and text embeddings with reduced modality gap (centroid distance near zero) while maintaining semantic representation quality.",
+    "evaluation_target": "Achieve low modality gap (CD < 0.19) without degrading retrieval, classification, and correlation with human judgment compared to existing methods."
+  },
+  "core_method": {
+    "name": "I0T",
+    "one_line": "Standardizing normalized embedding activations by subtracting modality-specific mean and re-normalizing (I0T_post) or training separate batch normalization layers asynchronously (I0T_async) to remove modality-specific characteristics.",
+    "atomic_steps": [
+      {
+        "id": "step-1",
+        "description": "First-stage fine-tuning: Fine-tune ViT-B/32 CLIP on COCO (ShareGPT4V) using CyCLIP loss (L_CLIP + 0.25 L_I-Cyclic + 0.25 L_C-Cyclic) with AdamW (lr 1e-6, weight decay 1e-2), batch size 128, temperature log scale 4.6052, for 3 epochs. Yields base model (Long-CyCLIP-only + MCSIE, LCCOM).",
+        "source_section": "sec-4.1",
+        "depends_on_method": null
+      },
+      {
+        "id": "step-2",
+        "description": "Extract normalized embeddings (L2-normalized) from frozen image and text encoders for a set of samples; compute modality-specific mean vectors (image mean \bar{x}, text mean \bar{y}).",
+        "source_section": "sec-4.2",
+        "depends_on_method": null
+      },
+      {
+        "id": "step-3",
+        "description": "I0T_post standardization: For each normalized embedding, subtract the corresponding modality mean and re-normalize by Frobenius norm: x_i' = Normalize(x_i - \bar{x}), y_i' = Normalize(y_i - \bar{y}).",
+        "source_section": "sec-4.2",
+        "depends_on_method": "I0T"
+      },
+      {
+        "id": "step-4",
+        "description": "I0T_async setup: After first-stage fine-tuning, freeze encoders and add independent batch normalization layers (BN_img, BN_txt) with learnable weights W and biases b after the normalized embedding outputs.",
+        "source_section": "sec-4.2",
+        "depends_on_method": "I0T"
+      },
+      {
+        "id": "step-5",
+        "description": "MCSIE augmentation: Apply dropout (rate 0.1) to every multi-head attention layer in the frozen image encoder (ViT) and text encoder (Transformer) to create augmented views of image and text embeddings.",
+        "source_section": "sec-4.2",
+        "depends_on_method": null
+      },
+      {
+        "id": "step-6",
+        "description": "Train BN layers asynchronously using MCSIE loss: contrastive learning over all pairs of (original/ augmented) image and text embeddings, using same optimizer settings as first stage, with frozen encoders.",
+        "source_section": "sec-4.2",
+        "depends_on_method": null
+      },
+      {
+        "id": "step-7",
+        "description": "During BN training, update running means of normalized embeddings per modality with averaging factor alpha=0.1: \bar{x}_{t+1} = alpha * \bar{x}_B + (1-alpha) * \bar{x}_t, similarly for text.",
+        "source_section": "sec-4.2",
+        "depends_on_method": null
+      },
+      {
+        "id": "step-8",
+        "description": "After BN training, acquire final train statistics: \bar{x}_train, \bar{y}_train and variances sigma_x, sigma_y (observed close to 1.0).",
+        "source_section": "sec-4.2",
+        "depends_on_method": null
+      },
+      {
+        "id": "step-9",
+        "description": "I0T_async inference: For each normalized embedding, subtract train mean, divide by sqrt(variance + epsilon=1e-5), apply BN linear transform (W, b), then re-normalize by Frobenius norm.",
+        "source_section": "sec-4.2",
+        "depends_on_method": "I0T"
+      },
+      {
+        "id": "step-10",
+        "description": "Compute modality gap metrics: Centroid Distance (CD) as Frobenius norm between mean normalized image and text embeddings; Linear Separability (LS) as 1 - MSE of linear regression classifying image vs. text embeddings; assign Severity Level (low if CD<0.19, moderate if 0.19<=CD<0.63, severe if CD>=0.63).",
+        "source_section": "sec-3",
+        "depends_on_method": null
+      },
+      {
+        "id": "step-11",
+        "description": "Evaluate downstream tasks: image-text retrieval (I2T, T2I Recall@1 on Flickr30k), zero-shot classification (top-1 accuracy on CIFAR100 and CUB-200), and relative correlation with human judgments (Flickr8k-Expert, Flickr8k-CF).",
+        "source_section": "sec-5.2",
+        "depends_on_method": null
+      }
+    ],
+    "settings": [
+      {
+        "id": "set-I0Tpost",
+        "name": "I0T_post",
+        "description": "Post-hoc embedding standardization: subtract mean vector of normalized embeddings per modality and re-normalize by Frobenius norm on frozen encoders from first-stage fine-tuning."
+      },
+      {
+        "id": "set-I0Tasync",
+        "name": "I0T_async",
+        "description": "Trainable method adding independent batch normalization layers for image and text encoders, trained asynchronously after first stage with MCSIE augmentation to learn modality-specific means/variances."
+      }
+    ],
+    "key_hyperparameters": [
+      {
+        "name": "learning_rate",
+        "value": "1e-6",
+        "source_section": "sec-4.1"
+      },
+      {
+        "name": "weight_decay",
+        "value": "1e-2",
+        "source_section": "sec-4.1"
+      },
+      {
+        "name": "batch_size",
+        "value": "128",
+        "source_section": "sec-4.1"
+      },
+      {
+        "name": "temperature_log_scale",
+        "value": "4.6052",
+        "source_section": "sec-4.1"
+      },
+      {
+        "name": "optimizer",
+        "value": "AdamW",
+        "source_section": "sec-4.1"
+      },
+      {
+        "name": "alpha (averaging factor for BN running means)",
+        "value": "0.1",
+        "source_section": "sec-4.2"
+      },
+      {
+        "name": "dropout_rate (for MCSIE augmentation)",
+        "value": "0.1",
+        "source_section": "sec-4.2"
+      },
+      {
+        "name": "eps",
+        "value": "1e-5",
+        "source_section": "sec-4.2"
+      }
+    ]
+  },
+  "datasets": [
+    {
+      "name": "COCO (ShareGPT4V)",
+      "splits": [
+        "train"
+      ],
+      "used_for": "fine-tuning of CLIP models with long captions",
+      "source_section": "sec-4.1"
+    },
+    {
+      "name": "Flickr30k",
+      "splits": [
+        "test"
+      ],
+      "used_for": "image-text retrieval evaluation (main benchmark)",
+      "source_section": "sec-5.2"
+    },
+    {
+      "name": "CIFAR100",
+      "splits": [
+        "test"
+      ],
+      "used_for": "image classification evaluation",
+      "source_section": "sec-5.2"
+    },
+    {
+      "name": "CUB-200 (Birds)",
+      "splits": [
+        "test"
+      ],
+      "used_for": "fine-grained classification evaluation",
+      "source_section": "sec-5.2"
+    },
+    {
+      "name": "Flickr8k-Expert",
+      "splits": [
+        "test"
+      ],
+      "used_for": "human correlation evaluation (Expert)",
+      "source_section": "sec-5.2"
+    },
+    {
+      "name": "Flickr8k-CF",
+      "splits": [
+        "test"
+      ],
+      "used_for": "human correlation evaluation (Composite)",
+      "source_section": "sec-5.2"
+    }
+  ],
+  "models": [
+    {
+      "name": "ViT-B/32-based Long-CLIP",
+      "role": "base vision-language model for I0T variants",
+      "source_section": "sec-4.1"
+    },
+    {
+      "name": "BLIP",
+      "role": "non-CLIP comparison model for efficiency and correlation",
+      "source_section": "sec-5.2"
+    }
+  ],
+  "baselines": [
+    {
+      "name": "CLIP",
+      "type": "original CLIP (no modification)",
+      "reference": null,
+      "source_section": "sec-5.2"
+    },
+    {
+      "name": "MG_{λ=0.375}",
+      "type": "post-hoc embedding shift",
+      "reference": null,
+      "source_section": "sec-5.2"
+    },
+    {
+      "name": "MG_{λ=0.5}",
+      "type": "post-hoc embedding shift",
+      "reference": null,
+      "source_section": "sec-5.2"
+    },
+    {
+      "name": "MG_{λ=-0.5}",
+      "type": "post-hoc embedding shift",
+      "reference": null,
+      "source_section": "sec-5.2"
+    },
+    {
+      "name": "CLOOB",
+      "type": "loss-based cross-modal learning",
+      "reference": null,
+      "source_section": "sec-5.2"
+    },
+    {
+      "name": "Unif-Align",
+      "type": "loss-based uniformity and alignment",
+      "reference": null,
+      "source_section": "sec-5.2"
+    },
+    {
+      "name": "PAC-S",
+      "type": "contrastive-based evaluation metric",
+      "reference": null,
+      "source_section": "sec-5.2"
+    },
+    {
+      "name": "BLIP",
+      "type": "non-CLIP vision-language model",
+      "reference": null,
+      "source_section": "sec-5.2"
+    }
+  ],
+  "metrics": [
+    {
+      "name": "Centroid Distance (CD)",
+      "definition": "Frobenius norm distance between mean normalized image embedding and mean normalized text embedding.",
+      "source_section": "sec-3"
+    },
+    {
+      "name": "Linear Separability (LS)",
+      "definition": "1 - Mean Squared Error of linear regression model trained to classify image vs. text embeddings.",
+      "source_section": "sec-3"
+    },
+    {
+      "name": "Severity Level",
+      "definition": "Categorized as severe (CD>=0.63), moderate (0.19<=CD<0.63), low (CD<0.19).",
+      "source_section": "sec-3.1"
+    },
+    {
+      "name": "Image-to-Text Retrieval (I2T)",
+      "definition": "Recall@1 on Flickr30k for image-to-text retrieval.",
+      "source_section": "sec-5.2"
+    },
+    {
+      "name": "Text-to-Image Retrieval (T2I)",
+      "definition": "Recall@1 on Flickr30k for text-to-image retrieval.",
+      "source_section": "sec-5.2"
+    },
+    {
+      "name": "Classification Accuracy (CIFAR100)",
+      "definition": "Top-1 accuracy on CIFAR100 using zero-shot CLIP classification.",
+      "source_section": "sec-5.2"
+    },
+    {
+      "name": "Classification Accuracy (Birds)",
+      "definition": "Top-1 accuracy on CUB-200 Birds dataset using zero-shot CLIP.",
+      "source_section": "sec-5.2"
+    },
+    {
+      "name": "Relative Correlation (Expert)",
+      "definition": "Correlation coefficient between predicted similarity scores and human judgments on Flickr8k-Expert.",
+      "source_section": "sec-5.2"
+    },
+    {
+      "name": "Relative Correlation (CF)",
+      "definition": "Correlation coefficient on Flickr8k-CF composite dataset.",
+      "source_section": "sec-5.2"
+    }
+  ],
+  "main_experiments": [
+    {
+      "id": "exp-table1",
+      "evidence_in_paper": "table-1",
+      "primary": false,
+      "claim": "Demonstrates the development process leading to I0T_async, showing that asynchronous BN training (+BN*) reduces modality gap to moderate level while maintaining downstream performance.",
+      "axes": {
+        "rows": [
+          "Long-CLIP",
+          "LCO",
+          "LCCO",
+          "LCCOM",
+          "+ LN",
+          "+ LN*",
+          "+ BN",
+          "+ BN* (IOTasync)"
+        ],
+        "cols": [
+          "# Par",
+          "Centroid Dist.",
+          "Linear Sep.",
+          "Sev. Level",
+          "I2T",
+          "T2I",
+          "CIFAR",
+          "Bird",
+          "Expert",
+          "CF"
+        ]
+      },
+      "settings_used": [
+        "set-I0Tasync"
+      ],
+      "datasets_used": [
+        "COCO (ShareGPT4V)",
+        "Flickr30k",
+        "CIFAR100",
+        "CUB-200 (Birds)",
+        "Flickr8k-Expert",
+        "Flickr8k-CF"
+      ],
+      "models_used": [
+        "ViT-B/32-based Long-CLIP"
+      ]
+    },
+    {
+      "id": "exp-table2",
+      "evidence_in_paper": "table-2",
+      "primary": true,
+      "claim": "I0T_post reduces modality gap to near-zero (CD 0.0102, LS 0.5374) and I0T_async to moderate (CD 0.4795, LS 0.9960), both without hurting overall downstream tasks; I0T_post achieves best retrieval scores.",
+      "axes": {
+        "rows": [
+          "CLIP",
+          "MG_{λ=0.375}",
+          "MG_{λ=0.5}",
+          "MG_{λ=-0.5}",
+          "CLOOB",
+          "Unif-Align",
+          "PAC-S",
+          "IOT_{async}",
+          "IOT_{post}"
+        ],
+        "cols": [
+          "#Par",
+          "Centroid Dist.",
+          "Linear Sep.",
+          "Sev.Level",
+          "I2T",
+          "T2I",
+          "CIFAR",
+          "Bird",
+          "Expert",
+          "CF",
+          "Rank"
+        ]
+      },
+      "settings_used": [
+        "set-I0Tpost",
+        "set-I0Tasync"
+      ],
+      "datasets_used": [
+        "COCO (ShareGPT4V)",
+        "Flickr30k",
+        "CIFAR100",
+        "CUB-200 (Birds)",
+        "Flickr8k-Expert",
+        "Flickr8k-CF"
+      ],
+      "models_used": [
+        "ViT-B/32-based Long-CLIP"
+      ]
+    },
+    {
+      "id": "exp-table3",
+      "evidence_in_paper": "table-3",
+      "primary": false,
+      "claim": "Using as few as 32 test samples for I0T_post already reduces modality gap to low severity (CD 0.1880) and achieves competitive retrieval, with performance saturating as more samples are used.",
+      "axes": {
+        "rows": [
+          "32",
+          "64",
+          "128",
+          "256",
+          "512",
+          "1k"
+        ],
+        "cols": [
+          "Centroid Distance",
+          "Severity Level",
+          "I2T",
+          "T2I"
+        ]
+      },
+      "settings_used": [
+        "set-I0Tpost"
+      ],
+      "datasets_used": [
+        "Flickr30k"
+      ],
+      "models_used": [
+        "ViT-B/32-based Long-CLIP"
+      ]
+    },
+    {
+      "id": "exp-figure3",
+      "evidence_in_paper": "figure-3",
+      "primary": false,
+      "claim": "I0T_post effectively removes peak activations and modality-specific characteristics, reducing CD to near zero, outperforming clipping and Mind-the-Gap in suppressing modality-specific patterns.",
+      "axes": {
+        "rows": [],
+        "cols": []
+      },
+      "settings_used": [
+        "set-I0Tpost"
+      ],
+      "datasets_used": [
+        "COCO (ShareGPT4V)"
+      ],
+      "models_used": [
+        "ViT-B/32-based Long-CLIP"
+      ]
+    },
+    {
+      "id": "exp-figure4",
+      "evidence_in_paper": "figure-4",
+      "primary": false,
+      "claim": "I0T methods achieve much lower centroid distance than BLIP with fewer parameters, while maintaining competitive correlation scores on Flickr8k-Expert.",
+      "axes": {
+        "rows": [
+          "BLIP",
+          "IOT_async",
+          "IOT_post"
+        ],
+        "cols": [
+          "# Parameters",
+          "Relative Correlation",
+          "Centroid Distance"
+        ]
+      },
+      "settings_used": [
+        "set-I0Tpost",
+        "set-I0Tasync"
+      ],
+      "datasets_used": [
+        "Flickr8k-Expert"
+      ],
+      "models_used": [
+        "ViT-B/32-based Long-CLIP",
+        "BLIP"
+      ]
+    },
+    {
+      "id": "exp-figure5",
+      "evidence_in_paper": "figure-5",
+      "primary": false,
+      "claim": "I0T-S (I0T_post) yields a wider cosine similarity distribution (range -0.349 to 0.660) with mean near zero, enabling more intuitive and explainable scoring compared to CLIP-S and PAC-S.",
+      "axes": {
+        "rows": [
+          "CLIP-S",
+          "PAC-S",
+          "IOT-S"
+        ],
+        "cols": [
+          "Min",
+          "Max"
+        ]
+      },
+      "settings_used": [
+        "set-I0Tpost"
+      ],
+      "datasets_used": [
+        "Flickr8k-Expert"
+      ],
+      "models_used": [
+        "ViT-B/32-based Long-CLIP"
+      ]
+    },
+    {
+      "id": "exp-table8",
+      "evidence_in_paper": "table-8",
+      "primary": false,
+      "claim": "Ablation shows that MCSIE loss further reduces modality gap during I0T_async training compared to training without it.",
+      "axes": {
+        "rows": [],
+        "cols": []
+      },
+      "settings_used": [
+        "set-I0Tasync"
+      ],
+      "datasets_used": [
+        "COCO (ShareGPT4V)",
+        "Flickr30k",
+        "CIFAR100",
+        "CUB-200 (Birds)",
+        "Flickr8k-Expert",
+        "Flickr8k-CF"
+      ],
+      "models_used": [
+        "ViT-B/32-based Long-CLIP"
+      ]
+    }
+  ],
+  "expected_claims": [
+    {
+      "id": "claim-1",
+      "claim_text": "I0T_post achieves low modality gap (CD 0.0102, LS 0.5374) while achieving T2I retrieval recall 76.30% on Flickr30k, outperforming CLIP's 67.10%.",
+      "evidence": "table-2",
+      "verification_hint": "Check CD, LS, and T2I values in Table 2 for I0T_post row."
+    },
+    {
+      "id": "claim-2",
+      "claim_text": "I0T_async reduces modality gap to moderate level (CD 0.4795, LS 0.9960) and improves T2I retrieval to 73.80% over CLIP.",
+      "evidence": "table-2",
+      "verification_hint": "Verify CD, LS, and T2I for I0T_async in Table 2."
+    },
+    {
+      "id": "claim-3",
+      "claim_text": "Post-hoc embedding standardization (I0T_post) eliminates peak activations and modality-specific characteristics, lowering CD to near zero, unlike clipping or Mind-the-Gap.",
+      "evidence": "figure-3",
+      "verification_hint": "Inspect Figure 3 activation patterns and annotated CD values for Long-CLIP, clipping, MG, and I0T."
+    },
+    {
+      "id": "claim-4",
+      "claim_text": "I0TScore (I0T_post) yields a non-skewed cosine similarity distribution with range [-0.349, 0.660] and mean near zero, enabling more intuitive scoring than CLIP-S and PAC-S.",
+      "evidence": "figure-5",
+      "verification_hint": "Compare cosine similarity histograms and range annotations in Figure 5."
+    },
+    {
+      "id": "claim-5",
+      "claim_text": "Using only 32 test samples with I0T_post reduces CD to low severity (<0.19) and achieves competitive retrieval (I2T 70.30%, T2I 73.00%).",
+      "evidence": "table-3",
+      "verification_hint": "Check row with 32 samples in Table 3 for CD and retrieval scores."
+    },
+    {
+      "id": "claim-6",
+      "claim_text": "The asynchronous BN training with MCSIE loss (I0T_async) further reduces modality gap compared to standard training, as shown in ablation.",
+      "evidence": "table-8",
+      "verification_hint": "Compare CD and downstream scores for with/without MCSIE in Table 8."
+    }
+  ],
+  "reproducibility_meta": {
+    "needs_training": true,
+    "estimated_compute": "single GPU, hours (3 epochs of ViT-B/32 fine-tuning and BN training)",
+    "data_availability": "public",
+    "code_partial_available": true,
+    "minimum_viable_experiments": [
+      "exp-table2"
+    ],
+    "deferred_experiments": [
+      "exp-table1",
+      "exp-table3",
+      "exp-figure3",
+      "exp-figure4",
+      "exp-figure5",
+      "exp-table8"
+    ]
+  },
+  "sections": [
+    {
+      "id": "sec-abstract",
+      "title": "Abstract",
+      "level": 1,
+      "line_start": 7,
+      "line_end": 10,
+      "char_start": 183,
+      "char_end": 1425,
+      "parent": null
+    },
+    {
+      "id": "sec-1",
+      "title": "1 Introduction",
+      "level": 1,
+      "line_start": 11,
+      "line_end": 47,
+      "char_start": 1425,
+      "char_end": 6918,
+      "parent": null
+    },
+    {
+      "id": "sec-2",
+      "title": "2 Related Works",
+      "level": 1,
+      "line_start": 48,
+      "line_end": 71,
+      "char_start": 6918,
+      "char_end": 10612,
+      "parent": null
+    },
+    {
+      "id": "sec-2.1",
+      "title": "2.1 CLIP-Based Models",
+      "level": 2,
+      "line_start": 50,
+      "line_end": 53,
+      "char_start": 6937,
+      "char_end": 8207,
+      "parent": "sec-2"
+    },
+    {
+      "id": "sec-2.2",
+      "title": "2.2 Modality Gap",
+      "level": 2,
+      "line_start": 54,
+      "line_end": 71,
+      "char_start": 8207,
+      "char_end": 10612,
+      "parent": "sec-2"
+    },
+    {
+      "id": "sec-3",
+      "title": "3 Preliminary Analyses",
+      "level": 1,
+      "line_start": 72,
+      "line_end": 96,
+      "char_start": 10612,
+      "char_end": 15837,
+      "parent": null
+    },
+    {
+      "id": "sec-3.1",
+      "title": "3.1 Severity Levels of Modality Gap",
+      "level": 2,
+      "line_start": 76,
+      "line_end": 83,
+      "char_start": 11998,
+      "char_end": 12860,
+      "parent": "sec-3"
+    },
+    {
+      "id": "sec-3.2",
+      "title": "3.2 Normalized Embedding Activations",
+      "level": 2,
+      "line_start": 84,
+      "line_end": 92,
+      "char_start": 12860,
+      "char_end": 14496,
+      "parent": "sec-3"
+    },
+    {
+      "id": "sec-3.3",
+      "title": "3.3 Contribution to Modality Gap",
+      "level": 2,
+      "line_start": 93,
+      "line_end": 96,
+      "char_start": 14496,
+      "char_end": 15837,
+      "parent": "sec-3"
+    },
+    {
+      "id": "sec-4",
+      "title": "4 Methodology",
+      "level": 1,
+      "line_start": 97,
+      "line_end": 132,
+      "char_start": 15837,
+      "char_end": 29372,
+      "parent": null
+    },
+    {
+      "id": "sec-4.1",
+      "title": "4.1 The First Stage of I0T",
+      "level": 2,
+      "line_start": 101,
+      "line_end": 106,
+      "char_start": 16304,
+      "char_end": 17808,
+      "parent": "sec-4"
+    },
+    {
+      "id": "sec-4.2",
+      "title": "4.2 The Second Stage of I0T",
+      "level": 2,
+      "line_start": 107,
+      "line_end": 132,
+      "char_start": 17808,
+      "char_end": 29372,
+      "parent": "sec-4"
+    },
+    {
+      "id": "sec-5",
+      "title": "5 Results",
+      "level": 1,
+      "line_start": 133,
+      "line_end": 192,
+      "char_start": 29372,
+      "char_end": 38756,
+      "parent": null
+    },
+    {
+      "id": "sec-5.1",
+      "title": "5.1 Reducing Modality Gap while Maintaining Semantic Representations",
+      "level": 2,
+      "line_start": 137,
+      "line_end": 156,
+      "char_start": 30073,
+      "char_end": 32425,
+      "parent": "sec-5"
+    },
+    {
+      "id": "sec-5.2",
+      "title": "5.2 Comparison across Different Methods",
+      "level": 2,
+      "line_start": 157,
+      "line_end": 178,
+      "char_start": 32425,
+      "char_end": 35353,
+      "parent": "sec-5"
+    },
+    {
+      "id": "sec-5.3",
+      "title": "5.3 Applicability as an Automatic Reference-free Evaluation Metric",
+      "level": 2,
+      "line_start": 179,
+      "line_end": 184,
+      "char_start": 35353,
+      "char_end": 36998,
+      "parent": "sec-5"
+    },
+    {
+      "id": "sec-5.4",
+      "title": "5.4 Performance Saturation Across Different Sample Sizes for $\\mathbf { I 0 T _ { p o s t } }$",
+      "level": 2,
+      "line_start": 185,
+      "line_end": 192,
+      "char_start": 36998,
+      "char_end": 38756,
+      "parent": "sec-5"
+    },
+    {
+      "id": "sec-6",
+      "title": "6 Discussion",
+      "level": 1,
+      "line_start": 193,
+      "line_end": 206,
+      "char_start": 38756,
+      "char_end": 42169,
+      "parent": null
+    },
+    {
+      "id": "sec-6.1",
+      "title": "6.1 The Relationship between Modality Gap and Downstream Performances",
+      "level": 2,
+      "line_start": 195,
+      "line_end": 200,
+      "char_start": 38772,
+      "char_end": 40831,
+      "parent": "sec-6"
+    },
+    {
+      "id": "sec-6.2",
+      "title": "6.2 Why is Batch Normalization Effective in Reducing the Modality Gap?",
+      "level": 2,
+      "line_start": 201,
+      "line_end": 206,
+      "char_start": 40831,
+      "char_end": 42169,
+      "parent": "sec-6"
+    },
+    {
+      "id": "sec-7",
+      "title": "7 Conclusion",
+      "level": 1,
+      "line_start": 207,
+      "line_end": 210,
+      "char_start": 42169,
+      "char_end": 43087,
+      "parent": null
+    },
+    {
+      "id": "sec-8",
+      "title": "8 Limitations",
+      "level": 1,
+      "line_start": 211,
+      "line_end": 214,
+      "char_start": 43087,
+      "char_end": 43830,
+      "parent": null
+    },
+    {
+      "id": "sec-9",
+      "title": "9 Ethical Statement",
+      "level": 1,
+      "line_start": 215,
+      "line_end": 218,
+      "char_start": 43830,
+      "char_end": 44075,
+      "parent": null
+    },
+    {
+      "id": "sec-acknowledgments",
+      "title": "Acknowledgments",
+      "level": 1,
+      "line_start": 219,
+      "line_end": 224,
+      "char_start": 44075,
+      "char_end": 44804,
+      "parent": null
+    },
+    {
+      "id": "sec-references",
+      "title": "References",
+      "level": 1,
+      "line_start": 225,
+      "line_end": 278,
+      "char_start": 44804,
+      "char_end": 55344,
+      "parent": null
+    },
+    {
+      "id": "sec-A",
+      "title": "A Categorization of Modality Gap Severity Levels",
+      "level": 1,
+      "line_start": 279,
+      "line_end": 290,
+      "char_start": 55344,
+      "char_end": 56484,
+      "parent": null
+    },
+    {
+      "id": "sec-B",
+      "title": "B Analyzing Normalized Embedding Activations",
+      "level": 1,
+      "line_start": 291,
+      "line_end": 305,
+      "char_start": 56484,
+      "char_end": 57186,
+      "parent": null
+    },
+    {
+      "id": "sec-C",
+      "title": "C Proof of Claim",
+      "level": 1,
+      "line_start": 306,
+      "line_end": 327,
+      "char_start": 57186,
+      "char_end": 61590,
+      "parent": null
+    },
+    {
+      "id": "sec-D",
+      "title": "D Experimental Design Details",
+      "level": 1,
+      "line_start": 328,
+      "line_end": 382,
+      "char_start": 61590,
+      "char_end": 67883,
+      "parent": null
+    },
+    {
+      "id": "sec-D.1",
+      "title": "D.1 Fine-tuning Dataset Selection",
+      "level": 2,
+      "line_start": 330,
+      "line_end": 353,
+      "char_start": 61623,
+      "char_end": 63853,
+      "parent": "sec-D"
+    },
+    {
+      "id": "sec-D.2",
+      "title": "D.2 Evaluation Downstream Tasks",
+      "level": 2,
+      "line_start": 354,
+      "line_end": 361,
+      "char_start": 63853,
+      "char_end": 65838,
+      "parent": "sec-D"
+    },
+    {
+      "id": "sec-D.3",
+      "title": "D.3 Comparison Methods",
+      "level": 2,
+      "line_start": 362,
+      "line_end": 382,
+      "char_start": 65838,
+      "char_end": 67883,
+      "parent": "sec-D"
+    },
+    {
+      "id": "sec-F",
+      "title": "F Additional Experiments",
+      "level": 1,
+      "line_start": 383,
+      "line_end": 420,
+      "char_start": 67883,
+      "char_end": 73494,
+      "parent": null
+    }
+  ],
+  "entities": {
+    "tables": [
+      {
+        "id": "table-1",
+        "label": "1",
+        "caption": "Comparison of modality gap and downstream tasks performances across variations of Long-CLIP-based models. ∗ indicates the asynchronous training method where we fine-tuned the frozen encoders from the first stage. The bolded and underlined values indicate the best and the second-best performances.",
+        "first_mention_line": 123,
+        "context_lines": [
+          118,
+          143
+        ],
+        "in_section": "sec-4.2"
+      },
+      {
+        "id": "table-2",
+        "label": "2",
+        "caption": "Comparison of modality gap and downstream performances across different ViT-B/32-based CLIP models. The bolded and underlined values indicate the best and the second-best performances.",
+        "first_mention_line": 127,
+        "context_lines": [
+          122,
+          147
+        ],
+        "in_section": "sec-4.2"
+      },
+      {
+        "id": "table-8",
+        "label": "8",
+        "caption": "",
+        "first_mention_line": 131,
+        "context_lines": [
+          126,
+          151
+        ],
+        "in_section": "sec-4.2"
+      },
+      {
+        "id": "table-3",
+        "label": "3",
+        "caption": "",
+        "first_mention_line": 187,
+        "context_lines": [
+          182,
+          207
+        ],
+        "in_section": "sec-5.4"
+      },
+      {
+        "id": "table-4",
+        "label": "4",
+        "caption": "Downstream performances of Long-CLIP (LC) and Long-CLIP-only (LCO) fine-tuned on three independent subsets of ShareGPT4V (LAION, COCO, SAM) and all together. The bolded and underlined values indicate the best and the second-best performances.",
+        "first_mention_line": 316,
+        "context_lines": [
+          311,
+          336
+        ],
+        "in_section": "sec-C"
+      },
+      {
+        "id": "table-5",
+        "label": "5",
+        "caption": "Comparison of retrieval scores using conventional five captions and proposed one caption. The bolded and underlined values indicate the best and the second-best performances.",
+        "first_mention_line": 320,
+        "context_lines": [
+          315,
+          340
+        ],
+        "in_section": "sec-C"
+      },
+      {
+        "id": "table-6",
+        "label": "6",
+        "caption": "18 templates for classifying images in CIFAR100.",
+        "first_mention_line": 324,
+        "context_lines": [
+          319,
+          344
+        ],
+        "in_section": "sec-C"
+      },
+      {
+        "id": "table-7",
+        "label": "7",
+        "caption": "",
+        "first_mention_line": 385,
+        "context_lines": [
+          380,
+          405
+        ],
+        "in_section": "sec-F"
+      },
+      {
+        "id": "table-9",
+        "label": "9",
+        "caption": "",
+        "first_mention_line": 391,
+        "context_lines": [
+          386,
+          411
+        ],
+        "in_section": "sec-F"
+      }
+    ],
+    "figures": [
+      {
+        "id": "figure-1",
+        "label": "1",
+        "caption": "Improved scoring system using our proposal (I0T-S) than CLIP-S. I0T-S assigns a higher similarity score for the correct image-text pair than for irrelevant pairs.",
+        "first_mention_line": 32,
+        "context_lines": [
+          27,
+          52
+        ],
+        "in_section": "sec-1"
+      },
+      {
+        "id": "figure-3",
+        "label": "3",
+        "caption": "",
+        "first_mention_line": 38,
+        "context_lines": [
+          33,
+          58
+        ],
+        "in_section": "sec-1"
+      },
+      {
+        "id": "figure-2",
+        "label": "2",
+        "caption": "Linear separability and minimum cosine distance (dashed line) vs. centroid distance illustrated with corresponding 3D-projected embeddings. The embeddings are categorized by three modality gap severity levels: severe, moderate, and low based on the fitted lines. The solid and dotted lines represent the fitted piecewise linear function of linear separability values (the first y-axis) and minimum cosine distance (the second y-axis) across varying centroid distances (x-axis) (details in Appendix A). The lambda (λ) values are the embedding shift values from Liang et al., 2022. Each color represents different sample results from the Flickr30k set with the same lambda value, ranging from 0.4 to 1.0.",
+        "first_mention_line": 70,
+        "context_lines": [
+          65,
+          90
+        ],
+        "in_section": "sec-2.2"
+      },
+      {
+        "id": "figure-6",
+        "label": "6",
+        "caption": "",
+        "first_mention_line": 91,
+        "context_lines": [
+          86,
+          111
+        ],
+        "in_section": "sec-3.2"
+      },
+      {
+        "id": "figure-4",
+        "label": "4",
+        "caption": "Comparison of non-CLIP-based model BLIP and ours on the efficiency and performance.",
+        "first_mention_line": 153,
+        "context_lines": [
+          148,
+          173
+        ],
+        "in_section": "sec-5.1"
+      },
+      {
+        "id": "figure-5",
+        "label": "5",
+        "caption": "A wider range of cosine similarity distribution with mean close to 0 using I0T-S compared to CLIP-S and PAC-S without the scaling factor $( i . e . , \\omega = 1 )$ , contributing to more explainable similarity scores for positive and negative pair of image and caption.",
+        "first_mention_line": 173,
+        "context_lines": [
+          168,
+          193
+        ],
+        "in_section": "sec-5.2"
+      },
+      {
+        "id": "figure-7",
+        "label": "7",
+        "caption": "Sample image-caption pairs and corresponding human scores from Flickr8k-Expert dataset.",
+        "first_mention_line": 350,
+        "context_lines": [
+          345,
+          370
+        ],
+        "in_section": "sec-D.1"
+      },
+      {
+        "id": "figure-8",
+        "label": "8",
+        "caption": "",
+        "first_mention_line": 389,
+        "context_lines": [
+          384,
+          409
+        ],
+        "in_section": "sec-F"
+      }
+    ],
+    "algorithms": [
+      {
+        "id": "algorithm-1",
+        "label": "1",
+        "caption": "",
+        "first_mention_line": 119,
+        "context_lines": [
+          114,
+          139
+        ],
+        "in_section": "sec-4.2"
+      }
+    ],
+    "equations": []
+  }
+}

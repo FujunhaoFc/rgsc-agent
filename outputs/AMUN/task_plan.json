@@ -1,0 +1,236 @@
+{
+  "paper_id": "AMUN",
+  "stages": [
+    {
+      "stage_id": "env-setup",
+      "name": "Environment Setup",
+      "stage_type": "setup",
+      "description": "Create repository, install dependencies, download datasets and models",
+      "actions": [
+        "Create repository skeleton with directories src/, data/, configs/, and models/.",
+        "Install dependencies: pip install torch torchvision numpy matplotlib tqdm.",
+        "Download CIFAR-10 dataset and extract into data/cifar10/.",
+        "Download Tiny Imagenet dataset and extract into data/tiny-imagenet/.",
+        "Clone the official repository into external/AMUN/ and inspect code structure.",
+        "Set up a ResNet-18 model definition in src/models/resnet18.py.",
+        "Set up a VGG-19 model definition in src/models/vgg19.py."
+      ],
+      "checklist_items_covered": [
+        "derived-pw-014",
+        "derived-pw-015",
+        "derived-pw-016",
+        "derived-pw-017",
+        "derived-pw-018",
+        "derived-pw-019",
+        "derived-ce-010",
+        "derived-ce-011",
+        "derived-ce-012",
+        "derived-ce-013"
+      ],
+      "depends_on": [],
+      "expected_artifacts": [
+        "repo_skeleton",
+        "requirements.txt",
+        "downloaded_datasets"
+      ]
+    },
+    {
+      "stage_id": "baseline-training",
+      "name": "Train Baselines",
+      "stage_type": "training",
+      "description": "Implement and train all baseline methods for comparison",
+      "actions": [
+        "Write a shared training harness src/train_utils.py with dataloaders, training loop, and metric logging.",
+        "Implement Retrain baseline script baselines/retrain.py: train new model on D_R only.",
+        "Implement FT baseline script baselines/ft.py: fine-tune pretrained model on D_R.",
+        "Implement RL baseline script baselines/rl.py: fine-tune on D_F with random labels.",
+        "Implement GA baseline script baselines/ga.py: gradient ascent on D_F to maximize forget error.",
+        "Implement BS baseline script baselines/bs.py: boundary shifting with mislabeling.",
+        "Implement l1-Sparse baseline script baselines/l1_sparse.py: fine-tune with L1 reg.",
+        "Implement SalUn baseline script baselines/salun.py: compute saliency mask and masked fine-tune on D_R."
+      ],
+      "checklist_items_covered": [
+        "derived-pw-020",
+        "derived-pw-021",
+        "derived-pw-022",
+        "derived-pw-023",
+        "derived-pw-024",
+        "derived-pw-025",
+        "derived-pw-026",
+        "derived-ci-011",
+        "derived-ci-012",
+        "derived-ci-013",
+        "derived-ci-014",
+        "derived-ci-015",
+        "derived-ci-016",
+        "derived-ci-017",
+        "derived-ce-014",
+        "derived-ce-015",
+        "derived-ce-016",
+        "derived-ce-017",
+        "derived-ce-018",
+        "derived-ce-019",
+        "derived-ce-020"
+      ],
+      "depends_on": [
+        "env-setup"
+      ],
+      "expected_artifacts": [
+        "baseline_models",
+        "baseline_checkpoints"
+      ]
+    },
+    {
+      "stage_id": "main-training",
+      "name": "Train Proposed Method",
+      "stage_type": "training",
+      "description": "Implement and train the proposed method",
+      "actions": [
+        "Write script main/initial_train.py to train classifier on full dataset and save checkpoint.",
+        "Write script main/partition.py to split data into D_F, D_R, D_T given forget percentage.",
+        "Write script main/adversarial_dataset.py to generate adversarial examples from D_F using PGD-50 with adaptive L2 epsilon.",
+        "Write script main/assemble_dataset.py to combine D_R, D_F, D_A according to availability rules.",
+        "Write script main/fine_tune.py to fine-tune model on assembled dataset for 10 epochs with cross-entropy, learning rate grid search, and optional saliency mask.",
+        "Run python main/initial_train.py --dataset cifar10 --arch resnet18 to obtain pretrained model f.",
+        "Run python main/partition.py --forget_percent 10 to create data splits.",
+        "Run python main/main_pipeline.py to execute adversarial generation, dataset assembly, and fine-tuning end-to-end."
+      ],
+      "checklist_items_covered": [
+        "derived-pw-001",
+        "derived-pw-002",
+        "derived-pw-003",
+        "derived-pw-004",
+        "derived-pw-005",
+        "derived-pw-006",
+        "derived-pw-007",
+        "derived-pw-008",
+        "derived-pw-009",
+        "derived-pw-010",
+        "derived-pw-011",
+        "derived-pw-012",
+        "derived-pw-013",
+        "derived-pw-033",
+        "derived-pw-034",
+        "derived-pw-035",
+        "derived-pw-036",
+        "derived-pw-037",
+        "derived-ci-001",
+        "derived-ci-002",
+        "derived-ci-003",
+        "derived-ci-004",
+        "derived-ci-005",
+        "derived-ci-006",
+        "derived-ci-007",
+        "derived-ci-008",
+        "derived-ci-009",
+        "derived-ci-010",
+        "derived-ce-021",
+        "derived-ce-022",
+        "derived-ce-023"
+      ],
+      "depends_on": [
+        "env-setup"
+      ],
+      "expected_artifacts": [
+        "trained_model",
+        "training_logs"
+      ]
+    },
+    {
+      "stage_id": "evaluation",
+      "name": "Evaluation",
+      "stage_type": "evaluation",
+      "description": "Run evaluation on all experiments and compute metrics",
+      "actions": [
+        "Run python eval/unlearn_eval.py to compute Unlearn, Retain, and Test accuracies for all trained models.",
+        "Run python eval/run_rmia.py --method RMIA to compute FT AUC for each unlearned model.",
+        "Write script eval/average_gap.py to compute Average Gap between each method and the Retrain baseline metrics.",
+        "Run python eval/average_gap.py to generate gap comparison tables.",
+        "Generate comparison plots for Average Gap across methods using scripts/eval_plots.py.",
+        "Compile all metrics into a single CSV file results/AMUN_summary.csv."
+      ],
+      "checklist_items_covered": [
+        "derived-pw-027",
+        "derived-pw-028",
+        "derived-pw-029",
+        "derived-pw-030",
+        "derived-pw-031",
+        "derived-pw-032",
+        "derived-ci-018",
+        "derived-ci-019",
+        "derived-ci-020",
+        "derived-ci-021",
+        "derived-ci-022",
+        "derived-ci-023",
+        "derived-ce-001",
+        "derived-ce-002",
+        "derived-ce-003",
+        "derived-ce-004",
+        "derived-ce-005",
+        "derived-ce-006",
+        "derived-ce-007",
+        "derived-ce-008",
+        "derived-ce-009",
+        "derived-rm-001",
+        "derived-rm-002",
+        "derived-rm-003",
+        "derived-rm-004",
+        "derived-rm-005",
+        "derived-rm-006",
+        "derived-rm-007",
+        "derived-rm-008",
+        "derived-rm-009"
+      ],
+      "depends_on": [
+        "baseline-training",
+        "main-training"
+      ],
+      "expected_artifacts": [
+        "evaluation_results",
+        "metric_tables"
+      ]
+    },
+    {
+      "stage_id": "final-verification",
+      "name": "Final Verification",
+      "stage_type": "verification",
+      "description": "Compare reproduced results against paper claims",
+      "actions": [
+        "Compare reproduced Average Gap values with Table 1 of the paper, flagging deviations > 1%.",
+        "Verify that AMUN achieves smallest Average Gap among approximate methods when D_R is available.",
+        "Verify that AMUN outperforms other methods without D_R access by checking gap table.",
+        "Check that RMIA AUC for AMUN after 10% unlearning is near 0.5 (random) using eval output.",
+        "Confirm test accuracy drop after unlearning does not exceed reported values in paper.",
+        "Run continuous unlearning simulation (5 sequential requests of 2%) and compare with paper results."
+      ],
+      "checklist_items_covered": [
+        "derived-rm-010",
+        "derived-rm-011",
+        "derived-rm-012",
+        "derived-rm-013",
+        "derived-rm-014"
+      ],
+      "depends_on": [
+        "evaluation"
+      ],
+      "expected_artifacts": [
+        "verification_report"
+      ]
+    }
+  ],
+  "execution_order": [
+    "env-setup",
+    "baseline-training",
+    "main-training",
+    "evaluation",
+    "final-verification"
+  ],
+  "coverage_stats": {
+    "total_derived_items": 156,
+    "paper_observation_items_excluded": 59,
+    "plannable_items": 97,
+    "covered_items": 97,
+    "coverage_ratio": 1.0,
+    "uncovered_item_ids": []
+  }
+}

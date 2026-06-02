@@ -1,0 +1,723 @@
+{
+  "paper": "INCLINE",
+  "by_type": {
+    "Paper Observation": {
+      "total": 13,
+      "hit": 13,
+      "partial": 0,
+      "miss": 0
+    },
+    "Plan Writing": {
+      "total": 22,
+      "hit": 6,
+      "partial": 11,
+      "miss": 5
+    },
+    "Code Implementation": {
+      "total": 22,
+      "hit": 4,
+      "partial": 6,
+      "miss": 12
+    },
+    "Command Execution": {
+      "total": 9,
+      "hit": 2,
+      "partial": 0,
+      "miss": 7
+    },
+    "Result Matching": {
+      "total": 10,
+      "hit": 10,
+      "partial": 0,
+      "miss": 0
+    }
+  },
+  "results": [
+    {
+      "rubric_idx": 0,
+      "rubric_type": "Paper Observation",
+      "rubric_criteria": "The agent has read section 3.1 completely to understand the core methodology of Cross-Lingual Alignment.",
+      "verdict": "hit",
+      "matched_id": "derived-po-004",
+      "method": "llm",
+      "reason": "derived-po-004 exactly matches reading Section 3.1 to understand cross-lingual alignment methodology"
+    },
+    {
+      "rubric_idx": 1,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The plan includes the preparation of source and target language sentences.",
+      "verdict": "hit",
+      "matched_id": "derived-pw-001",
+      "method": "llm",
+      "reason": "derived-pw-001 describes sampling parallel sentences, preparing source/target language sentences."
+    },
+    {
+      "rubric_idx": 2,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The plan includes the steps to calculate the optimal cross-lingual alignment matrix.",
+      "verdict": "hit",
+      "matched_id": "derived-pw-004",
+      "method": "llm",
+      "reason": "derived-pw-004 computes optimal cross-lingual alignment matrix via least-squares solver"
+    },
+    {
+      "rubric_idx": 3,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The code for the extraction of source and target sentences by taking the hidden state of the last token been implemented",
+      "verdict": "hit",
+      "matched_id": "derived-ci-002",
+      "method": "llm",
+      "reason": "describes extracting hidden states of the last token for source and target sentences"
+    },
+    {
+      "rubric_idx": 4,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The code has been implemented as equation (2) to derive the cross-lingual alignment matrix.",
+      "verdict": "hit",
+      "matched_id": "derived-ci-004",
+      "method": "llm",
+      "reason": "candidate directly implements equation (2) for alignment matrix"
+    },
+    {
+      "rubric_idx": 5,
+      "rubric_type": "Paper Observation",
+      "rubric_criteria": "The agent has read section 3.2 completely to understand the core methodology of Inference-Time Transformation.",
+      "verdict": "hit",
+      "matched_id": "derived-po-005",
+      "method": "llm",
+      "reason": "direct match: both require reading Section 3.2 on Inference-Time Transformation"
+    },
+    {
+      "rubric_idx": 6,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The plan includes the calculation of the intervention vector with the cross-lingual alignment matrix.",
+      "verdict": "hit",
+      "matched_id": "derived-pw-007",
+      "method": "llm",
+      "reason": "Projects source hidden state with alignment matrix, yielding intervention vector."
+    },
+    {
+      "rubric_idx": 7,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The plan includes the adjustment of blending with the hidden state in target language, controlled by ther hyperparameter $\\alpha$",
+      "verdict": "hit",
+      "matched_id": "derived-pw-008",
+      "method": "llm",
+      "reason": "derived-pw-008 directly describes blending hidden state with projected target state using hyperparameter α"
+    },
+    {
+      "rubric_idx": 8,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The code for the calculation of the intervention vector is implemented as equation (3).",
+      "verdict": "hit",
+      "matched_id": "derived-ci-007",
+      "method": "llm",
+      "reason": "derived-ci-007 computes the projected vector ŷ, corresponding to the intervention vector calculation per eq. (3)."
+    },
+    {
+      "rubric_idx": 9,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The code for the adjustment of the intervention vector towards the target language is implemented as equation (4).",
+      "verdict": "hit",
+      "matched_id": "derived-ci-008",
+      "method": "llm",
+      "reason": "directly implements blending equation (4) as described"
+    },
+    {
+      "rubric_idx": 10,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The agents have planned to implement the INCLINE method.",
+      "verdict": "hit",
+      "matched_id": "derived-pw-012",
+      "method": "llm",
+      "reason": "derived-pw-012 explicitly plans to implement INCLINE (INCLINE-HIDDEN setting)"
+    },
+    {
+      "rubric_idx": 11,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The main process of INCLINE method is coded by the agents.",
+      "verdict": "partial",
+      "matched_id": "derived-ci-001",
+      "method": "llm",
+      "reason": "candidates collectively list all INCLINE steps, rubric asks main process coded — partial union match"
+    },
+    {
+      "rubric_idx": 12,
+      "rubric_type": "Paper Observation",
+      "rubric_criteria": "The agent has read section 4.1 completely to check the experiment settings.",
+      "verdict": "hit",
+      "matched_id": "derived-po-007",
+      "method": "llm",
+      "reason": "derived-po-007 directly reads section 4.1, matching rubric's requirement to check experiment settings"
+    },
+    {
+      "rubric_idx": 13,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The datasets of discriminative tasks (XCOPA, XStoryCloze, XWinograd, XCSQA, XNLI) are planned to be collected and implemented.",
+      "verdict": "partial",
+      "matched_id": "derived-pw-021",
+      "method": "llm",
+      "reason": "candidates 021-025 each cover one dataset, union satisfies rubric"
+    },
+    {
+      "rubric_idx": 14,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The datasets of generative tasks (MZsRE, Flores, WMT23, MGSM) are planned to be collected and implemented.",
+      "verdict": "partial",
+      "matched_id": "derived-pw-026",
+      "method": "llm",
+      "reason": "candidates 026-029 each mention one dataset, union covers all four required generative tasks"
+    },
+    {
+      "rubric_idx": 15,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The agents have coded the program to collect and load datasets of discriminative tasks (XCOPA, XStoryCloze, XWinograd, XCSQA, XNLI).",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "No candidate mentions loading XCOPA, XStoryCloze, XWinograd, XCSQA, XNLI datasets."
+    },
+    {
+      "rubric_idx": 16,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The agents have coded the program to collect and load datasets of generative tasks (MZsRE, Flores, WMT23, MGSM).",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "no candidate mentions MZsRE, Flores, WMT23, or MGSM dataset loading"
+    },
+    {
+      "rubric_idx": 17,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The BLOOMZ-7B1-MT model is planned to be implemented.",
+      "verdict": "hit",
+      "matched_id": "derived-pw-030",
+      "method": "llm",
+      "reason": "derived-pw-030 explicitly plans to use BLOOMZ-7B1-MT model"
+    },
+    {
+      "rubric_idx": 18,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The additional models (LLAMA3-8B-INSTRUCT, LLAMA2-7B-CHAT, MISTRAL-7B-INSTRUCT, FALCON-7B-INSTRUCT) are planned to be implemented.",
+      "verdict": "partial",
+      "matched_id": "derived-pw-031",
+      "method": "llm",
+      "reason": "LLAMA3.1-8B instead of LLAMA3-8B, other three models match exactly"
+    },
+    {
+      "rubric_idx": 19,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The agents have coded the program to collect and implement the BLOOMZ-7B1-MT model.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 20,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The agents have coded the program to collect and implement the additional models (LLAMA3-8B-INSTRUCT, LLAMA2-7B-CHAT, MISTRAL-7B-INSTRUCT, FALCON-7B-INSTRUCT).",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "no candidate mentions LLAMA3, LLAMA2, Mistral, or Falcon models"
+    },
+    {
+      "rubric_idx": 21,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The naive baselines (vanilla model, MT-GOOGLE, MT-LLM) are planned to be implemented.",
+      "verdict": "partial",
+      "matched_id": "derived-pw-040",
+      "method": "llm",
+      "reason": "candidates implement each baseline individually, rubric asks union"
+    },
+    {
+      "rubric_idx": 22,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The Supervised Fine-Tuning (SFT) baseline is planned to be implemented with hyperparameters in Appendix B.",
+      "verdict": "partial",
+      "matched_id": "derived-pw-043",
+      "method": "llm",
+      "reason": "mentions SFT baseline, but omits hyperparameters from Appendix B requirement"
+    },
+    {
+      "rubric_idx": 23,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The intervention method baselines (ITI, CAA) are planned to be implemented.",
+      "verdict": "partial",
+      "matched_id": "derived-pw-044",
+      "method": "llm",
+      "reason": "derived-pw-044 covers ITI, derived-pw-045 covers CAA, compound rubric"
+    },
+    {
+      "rubric_idx": 24,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The agents have coded the program to collect outputs from naive baselines (vanilla model, MT-GOOGLE, MT-LLM).",
+      "verdict": "partial",
+      "matched_id": "derived-ci-012",
+      "method": "llm",
+      "reason": "candidates implement baselines individually; union satisfies rubric's requirement"
+    },
+    {
+      "rubric_idx": 25,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The agents have coded the program to implement the Supervised Fine-Tuning (SFT) with hyperparameters in Appendix B.",
+      "verdict": "partial",
+      "matched_id": "derived-ci-015",
+      "method": "llm",
+      "reason": "candidate implements SFT baseline but omits hyperparameters in Appendix B"
+    },
+    {
+      "rubric_idx": 26,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The agents have coded the program to implement the intervention method baselines (ITI, CAA)",
+      "verdict": "partial",
+      "matched_id": "derived-ci-016",
+      "method": "llm",
+      "reason": "candidates implement ITI and CAA separately, union satisfies rubric"
+    },
+    {
+      "rubric_idx": 27,
+      "rubric_type": "Paper Observation",
+      "rubric_criteria": "The agent has read section 4.2 completely to check the experiment results.",
+      "verdict": "hit",
+      "matched_id": "derived-po-008",
+      "method": "llm",
+      "reason": "derived-po-008 reads section 4.2 to understand content, which checks experiment results."
+    },
+    {
+      "rubric_idx": 28,
+      "rubric_type": "Paper Observation",
+      "rubric_criteria": "The agent has read Table 1 to check the experiment settings on discriminative tasks.",
+      "verdict": "hit",
+      "matched_id": "derived-po-020",
+      "method": "anchor",
+      "reason": "anchor match"
+    },
+    {
+      "rubric_idx": 29,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The experiments of all baselines and the INCLINE method on discriminative tasks (XCOPA, XStoryCloze, XWinograd, XCSQA, XNLI) are planned.",
+      "verdict": "partial",
+      "matched_id": "derived-pw-011",
+      "method": "llm",
+      "reason": "candidate derived-pw-011 plans evaluation on discriminative tasks; union of baseline/dataset items covers rubric"
+    },
+    {
+      "rubric_idx": 30,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The experiments of the SFT + INCLINE setting are additionally planned on discriminative tasks (XCOPA, XStoryCloze, XWinograd, XCSQA, XNLI).",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 31,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The code for all baselines and the INCLINE method on discriminative tasks (XCOPA, XStoryCloze, XWinograd, XCSQA, XNLI) are implemented.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: {\"verdict\": \"partial\", \"matched_id\": \"derived-ci-012\","
+    },
+    {
+      "rubric_idx": 32,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The code for the SFT + INCLINE setting on discriminative tasks (XCOPA, XStoryCloze, XWinograd, XCSQA, XNLI) are implemented.",
+      "verdict": "partial",
+      "matched_id": "derived-ci-015",
+      "method": "llm",
+      "reason": "SFT baseline (015) and INCLINE steps (001-011) together cover SFT+INCLINE; no single candidate combines them."
+    },
+    {
+      "rubric_idx": 33,
+      "rubric_type": "Command Execution",
+      "rubric_criteria": "The code for all baselines, the INCLINE method, and SFT + INCLINE has been executed successfully without errors on discriminative tasks.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 34,
+      "rubric_type": "Result Matching",
+      "rubric_criteria": "The execution outcomes match the results in Table 1: the INCLINE method consistently outperforms previous intervention methods (ITI, CAA) on discriminative tasks.",
+      "verdict": "hit",
+      "matched_id": "derived-rm-001",
+      "method": "anchor",
+      "reason": "anchor match"
+    },
+    {
+      "rubric_idx": 35,
+      "rubric_type": "Result Matching",
+      "rubric_criteria": "The execution outcomes match the results in Table 1: the SFT + INCLINE method consistently outperforms the SFT baseline alone on discriminative tasks.",
+      "verdict": "hit",
+      "matched_id": "derived-rm-001",
+      "method": "anchor",
+      "reason": "anchor match"
+    },
+    {
+      "rubric_idx": 36,
+      "rubric_type": "Paper Observation",
+      "rubric_criteria": "The agent has read Table 2 to check the experiment settings on discriminative tasks.",
+      "verdict": "hit",
+      "matched_id": "derived-po-021",
+      "method": "anchor",
+      "reason": "anchor match"
+    },
+    {
+      "rubric_idx": 37,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The experiments of all baselines and the INCLINE method on generative tasks (MZsRE, Flores, WMT23, MGSM) are planned.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 38,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The code for all baselines and the INCLINE method on generative tasks (MZsRE, Flores, WMT23, MGSM) are implemented.",
+      "verdict": "partial",
+      "matched_id": "derived-ci-012",
+      "method": "llm",
+      "reason": "no single candidate covers both baselines and INCLINE method; union needed."
+    },
+    {
+      "rubric_idx": 39,
+      "rubric_type": "Command Execution",
+      "rubric_criteria": "The code for all baselines and the INCLINE method has been executed successfully without errors on generative tasks.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 40,
+      "rubric_type": "Result Matching",
+      "rubric_criteria": "The execution outcomes match the results in Table 2: the INCLINE method consistently outperforms previous intervention methods (ITI, CAA) on generative tasks.",
+      "verdict": "hit",
+      "matched_id": "derived-rm-002",
+      "method": "anchor",
+      "reason": "anchor match"
+    },
+    {
+      "rubric_idx": 41,
+      "rubric_type": "Paper Observation",
+      "rubric_criteria": "The agent has read Figure 3(a) to check the experiments about the training cost of INCLINE with regard to the number of parallel sentences.",
+      "verdict": "hit",
+      "matched_id": "derived-po-031",
+      "method": "anchor",
+      "reason": "anchor match"
+    },
+    {
+      "rubric_idx": 42,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The experiments for the training costs of INCLINE with regard to the number of parallel sentences are planned with different amounts of sentences on the XStoryCloze dataset in Swahili.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "no candidate mentions varying parallel sentences for training cost on XStoryCloze Swahili"
+    },
+    {
+      "rubric_idx": 43,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The code for the experiments for the training costs of INCLINE with regard to the number of parallel sentences is implemented ith different amounts of sentences on the XStoryCloze dataset in Swahili.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "No candidate mentions training costs, varying sentence amounts, or XStoryCloze Swahili."
+    },
+    {
+      "rubric_idx": 44,
+      "rubric_type": "Command Execution",
+      "rubric_criteria": "The code for the training cost experiment has been executed successfully without errors.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "no candidate mentions training cost experiment"
+    },
+    {
+      "rubric_idx": 45,
+      "rubric_type": "Result Matching",
+      "rubric_criteria": "The execution outcomes match the results in Figure 3(a): the accuracy initially improves as the number of training sentences increases, but declines once the dataset becomes too large.",
+      "verdict": "hit",
+      "matched_id": "derived-rm-006",
+      "method": "anchor",
+      "reason": "anchor match"
+    },
+    {
+      "rubric_idx": 46,
+      "rubric_type": "Paper Observation",
+      "rubric_criteria": "The agent has read Figure 3(b) to check the Correct Prediction Consistency experiment settings.",
+      "verdict": "hit",
+      "matched_id": "derived-po-031",
+      "method": "anchor",
+      "reason": "anchor match"
+    },
+    {
+      "rubric_idx": 47,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The Correct Prediction Consistency experiments are planned to be implemented on the XStoryCloze dataset.",
+      "verdict": "partial",
+      "matched_id": "derived-pw-022",
+      "method": "llm",
+      "reason": "candidate mentions XStoryCloze dataset but not Correct Prediction Consistency experiments"
+    },
+    {
+      "rubric_idx": 48,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The code for the experiments for the Correct Prediction Consistency experiments is implemented on the XStoryCloze dataset.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "No candidate mentions XStoryCloze or Correct Prediction Consistency experiments."
+    },
+    {
+      "rubric_idx": 49,
+      "rubric_type": "Command Execution",
+      "rubric_criteria": "The code for the training cost experiment has been executed successfully without errors.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "no candidate mentions training cost experiment execution"
+    },
+    {
+      "rubric_idx": 50,
+      "rubric_type": "Result Matching",
+      "rubric_criteria": "The execution outcomes match the results in Figure 3(b): the consistency of INCLINE consistently outperforms the baselines across languages.",
+      "verdict": "hit",
+      "matched_id": "derived-rm-006",
+      "method": "anchor",
+      "reason": "anchor match"
+    },
+    {
+      "rubric_idx": 51,
+      "rubric_type": "Paper Observation",
+      "rubric_criteria": "The agent has read Table 3 to check experiment settings of intervening different components",
+      "verdict": "hit",
+      "matched_id": "derived-po-023",
+      "method": "anchor",
+      "reason": "anchor match"
+    },
+    {
+      "rubric_idx": 52,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The component intervention experiments are planned on four different components: hidden states, attention heads, FFN blocks, and embeddings.",
+      "verdict": "partial",
+      "matched_id": "derived-pw-012",
+      "method": "llm",
+      "reason": "candidates separately plan interventions on hidden states, attention, FFN, embeddings — union covers rubric."
+    },
+    {
+      "rubric_idx": 53,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The code for the intervention on four different components (hidden states, attention heads, FFN blocks, and embeddings) is implemented.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "No candidate implements intervention on attention heads, FFN blocks, or embeddings; only hidden states are covered."
+    },
+    {
+      "rubric_idx": 54,
+      "rubric_type": "Command Execution",
+      "rubric_criteria": "The code for the intervention experiments has been executed successfully without errors on XStoryCloze, XCSQA, Flores, MGSM dataset with BLOOMZ-7B1-MT.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 55,
+      "rubric_type": "Result Matching",
+      "rubric_criteria": "The execution outcomes match the results in Table 3: the consistency of INCLINE consistently outperforms the baselines across languages.",
+      "verdict": "hit",
+      "matched_id": "derived-rm-003",
+      "method": "anchor",
+      "reason": "anchor match"
+    },
+    {
+      "rubric_idx": 56,
+      "rubric_type": "Paper Observation",
+      "rubric_criteria": "The agent has read Figure 4 to check the experiment settings of different $\\alpha$ values.",
+      "verdict": "hit",
+      "matched_id": "derived-po-032",
+      "method": "anchor",
+      "reason": "anchor match"
+    },
+    {
+      "rubric_idx": 57,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The experiments with different $\\alpha$ values between -1 and 1 are planned on the XStoryCloze task with BLOOMZ-7B1-MT in Spanish and Chinese.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 58,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The code for experiments with different $\\alpha$ values between -1 and 1 is implemented on the XStoryCloze task with BLOOMZ-7B1-MT in Spanish and Chinese.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 59,
+      "rubric_type": "Command Execution",
+      "rubric_criteria": "The code for experiments with different $\\alpha$ values is executed successfully without errors on the XStoryCloze task with BLOOMZ-7B1-MT in Spanish and Chinese.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: {\"verdict\": \"miss\", \"matched_id\": null, \"reason\": \""
+    },
+    {
+      "rubric_idx": 60,
+      "rubric_type": "Result Matching",
+      "rubric_criteria": "The execution outcomes match the results in Figure 4: positive $\\alpha$ values work better in Spanish and negative $\\alpha$ values work better in Chinese.",
+      "verdict": "hit",
+      "matched_id": "derived-rm-008",
+      "method": "anchor",
+      "reason": "anchor match"
+    },
+    {
+      "rubric_idx": 61,
+      "rubric_type": "Paper Observation",
+      "rubric_criteria": "The agent has read Table 4 to check the experiment settings with various backbone models.",
+      "verdict": "hit",
+      "matched_id": "derived-po-024",
+      "method": "anchor",
+      "reason": "anchor match"
+    },
+    {
+      "rubric_idx": 62,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The experiments with various backbone models (BLOOMZ-7B1-MT, LAMA3-8B-INSTRUCT, LAMA2-7B-CHAT, MISTRAL-7B-INSTRUCT, FALCON-7B-INSTRUCT) are planned.",
+      "verdict": "partial",
+      "matched_id": "derived-pw-030",
+      "method": "llm",
+      "reason": "candidates individually mention each required backbone model, union needed for full coverage"
+    },
+    {
+      "rubric_idx": 63,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The code for experiments with various backbone models (BLOOMZ-7B1-MT, LAMA3-8B-INSTRUCT, LAMA2-7B-CHAT, MISTRAL-7B-INSTRUCT, FALCON-7B-INSTRUCT) is implemented completely.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "No candidate mentions implementing experiments for the specific backbone models listed."
+    },
+    {
+      "rubric_idx": 64,
+      "rubric_type": "Command Execution",
+      "rubric_criteria": "The code for experiments with various backbone models (BLOOMZ-7B1-MT, LAMA3-8B-INSTRUCT, LAMA2-7B-CHAT, MISTRAL-7B-INSTRUCT, FALCON-7B-INSTRUCT) is executed successfully without errors on the XStoryCl",
+      "verdict": "hit",
+      "matched_id": "derived-ce-004",
+      "method": "llm",
+      "reason": "Table 4 corresponds to XStoryCloze across the required five LLMs"
+    },
+    {
+      "rubric_idx": 65,
+      "rubric_type": "Result Matching",
+      "rubric_criteria": "The execution outcomes match the results in Table 4: INCLINE consistently outperforms the baseline across models.",
+      "verdict": "hit",
+      "matched_id": "derived-rm-004",
+      "method": "anchor",
+      "reason": "anchor match"
+    },
+    {
+      "rubric_idx": 66,
+      "rubric_type": "Paper Observation",
+      "rubric_criteria": "The agent has read Figure 5(a) to check the experiment settings with different model sizes.",
+      "verdict": "hit",
+      "matched_id": "derived-po-033",
+      "method": "anchor",
+      "reason": "anchor match"
+    },
+    {
+      "rubric_idx": 67,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The experiments with various BLOOMZ model sizes (0.56b, 1b, 3b, 7.1b) are planned.",
+      "verdict": "partial",
+      "matched_id": "derived-pw-036",
+      "method": "llm",
+      "reason": "individual items list each BLOOMZ size; together they cover required sizes"
+    },
+    {
+      "rubric_idx": 68,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The code for experiments with various BLOOMZ model sizes (0.56b, 1b, 3b, 7.1b) is implemented.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "no derived item mentions implementing experiments with various BLOOMZ sizes"
+    },
+    {
+      "rubric_idx": 69,
+      "rubric_type": "Command Execution",
+      "rubric_criteria": "The code for experiments with various BLOOMZ model sizes (0.56b, 1b, 3b, 7.1b) is executed successfully without errors on MZsRE dataset.",
+      "verdict": "hit",
+      "matched_id": "derived-ce-009",
+      "method": "llm",
+      "reason": "covers Figure 5, which shows various BLOOMZ model sizes on MZsRE, matching the required experiment"
+    },
+    {
+      "rubric_idx": 70,
+      "rubric_type": "Result Matching",
+      "rubric_criteria": "The execution outcomes match the results in Figure 5(a): larger models in the BLOOMZ series exhibit more significant enhancements when INCLINE is applied.",
+      "verdict": "hit",
+      "matched_id": "derived-rm-009",
+      "method": "anchor",
+      "reason": "anchor match"
+    },
+    {
+      "rubric_idx": 71,
+      "rubric_type": "Paper Observation",
+      "rubric_criteria": "The agent has read Figure 5(a) to check the In-Context Learning experiment settings.",
+      "verdict": "hit",
+      "matched_id": "derived-po-033",
+      "method": "anchor",
+      "reason": "anchor match"
+    },
+    {
+      "rubric_idx": 72,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The experiments of In-Context Learning with different shot numbers (0-shot, 2-shot, 4-shot) are planned.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "No candidate mentions In-Context Learning with different shot numbers (0-shot, 2-shot, 4-shot)."
+    },
+    {
+      "rubric_idx": 73,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The code for experiments of In-Context Learning with different shot numbers (0-shot, 2-shot, 4-shot) is implemented.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "no candidate mentions in-context learning or varying shot numbers (0/2/4-shot)"
+    },
+    {
+      "rubric_idx": 74,
+      "rubric_type": "Command Execution",
+      "rubric_criteria": "The code for experiments of In-Context Learning with different shot numbers (0-shot, 2-shot, 4-shot) is executed successfully without errors on MZsRE dataset with BLOOMZ-7B1-MT.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 75,
+      "rubric_type": "Result Matching",
+      "rubric_criteria": "The execution outcomes match the results in Figure 5(a): INCLINE can further enhance model performance when combined with in-context learning.",
+      "verdict": "hit",
+      "matched_id": "derived-rm-009",
+      "method": "anchor",
+      "reason": "anchor match"
+    }
+  ],
+  "llm_input_tokens": 101734,
+  "llm_output_tokens": 38665
+}

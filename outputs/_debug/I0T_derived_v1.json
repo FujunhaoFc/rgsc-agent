@@ -1,0 +1,1422 @@
+[
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 1 (Introduction) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-1"
+    },
+    "anchor": null,
+    "id": "derived-po-001"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 2 (Related Works) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-2"
+    },
+    "anchor": null,
+    "id": "derived-po-002"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 2.1 (CLIP-Based Models) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-2.1"
+    },
+    "anchor": null,
+    "id": "derived-po-003"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 2.2 (Modality Gap) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-2.2"
+    },
+    "anchor": null,
+    "id": "derived-po-004"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 3 (Preliminary Analyses) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-3"
+    },
+    "anchor": null,
+    "id": "derived-po-005"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 3.1 (Severity Levels of Modality Gap) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-3.1"
+    },
+    "anchor": null,
+    "id": "derived-po-006"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 3.2 (Normalized Embedding Activations) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-3.2"
+    },
+    "anchor": null,
+    "id": "derived-po-007"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 3.3 (Contribution to Modality Gap) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-3.3"
+    },
+    "anchor": null,
+    "id": "derived-po-008"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 4 (Methodology) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-4"
+    },
+    "anchor": null,
+    "id": "derived-po-009"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 4.1 (The First Stage of I0T) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-4.1"
+    },
+    "anchor": null,
+    "id": "derived-po-010"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 4.2 (The Second Stage of I0T) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-4.2"
+    },
+    "anchor": null,
+    "id": "derived-po-011"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 5 (Results) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-5"
+    },
+    "anchor": null,
+    "id": "derived-po-012"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 5.1 (Reducing Modality Gap while Maintaining Semantic Representations) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-5.1"
+    },
+    "anchor": null,
+    "id": "derived-po-013"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 5.2 (Comparison across Different Methods) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-5.2"
+    },
+    "anchor": null,
+    "id": "derived-po-014"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 5.3 (Applicability as an Automatic Reference-free Evaluation Metric) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-5.3"
+    },
+    "anchor": null,
+    "id": "derived-po-015"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 5.4 (Performance Saturation Across Different Sample Sizes for $\\mathbf { I 0 T _ { p o s t } }$) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-5.4"
+    },
+    "anchor": null,
+    "id": "derived-po-016"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 6 (Discussion) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-6"
+    },
+    "anchor": null,
+    "id": "derived-po-017"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 6.1 (The Relationship between Modality Gap and Downstream Performances) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-6.1"
+    },
+    "anchor": null,
+    "id": "derived-po-018"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 6.2 (Why is Batch Normalization Effective in Reducing the Modality Gap?) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-6.2"
+    },
+    "anchor": null,
+    "id": "derived-po-019"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 7 (Conclusion) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-7"
+    },
+    "anchor": null,
+    "id": "derived-po-020"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 8 (Limitations) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-8"
+    },
+    "anchor": null,
+    "id": "derived-po-021"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 9 (Ethical Statement) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-9"
+    },
+    "anchor": null,
+    "id": "derived-po-022"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section A (Categorization of Modality Gap Severity Levels) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-A"
+    },
+    "anchor": null,
+    "id": "derived-po-023"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section B (Analyzing Normalized Embedding Activations) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-B"
+    },
+    "anchor": null,
+    "id": "derived-po-024"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section C (Proof of Claim) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-C"
+    },
+    "anchor": null,
+    "id": "derived-po-025"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section D (Experimental Design Details) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-D"
+    },
+    "anchor": null,
+    "id": "derived-po-026"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section D.1 (Fine-tuning Dataset Selection) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-D.1"
+    },
+    "anchor": null,
+    "id": "derived-po-027"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section D.2 (Evaluation Downstream Tasks) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-D.2"
+    },
+    "anchor": null,
+    "id": "derived-po-028"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section D.3 (Comparison Methods) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-D.3"
+    },
+    "anchor": null,
+    "id": "derived-po-029"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section F (Additional Experiments) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-F"
+    },
+    "anchor": null,
+    "id": "derived-po-030"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Table 1 and understood the information it presents.",
+    "source": {
+      "field": "entities.tables",
+      "ref": "table-1"
+    },
+    "anchor": "table-1",
+    "id": "derived-po-031"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Table 2 and understood the information it presents.",
+    "source": {
+      "field": "entities.tables",
+      "ref": "table-2"
+    },
+    "anchor": "table-2",
+    "id": "derived-po-032"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Table 8 and understood the information it presents.",
+    "source": {
+      "field": "entities.tables",
+      "ref": "table-8"
+    },
+    "anchor": "table-8",
+    "id": "derived-po-033"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Table 3 and understood the information it presents.",
+    "source": {
+      "field": "entities.tables",
+      "ref": "table-3"
+    },
+    "anchor": "table-3",
+    "id": "derived-po-034"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Table 4 and understood the information it presents.",
+    "source": {
+      "field": "entities.tables",
+      "ref": "table-4"
+    },
+    "anchor": "table-4",
+    "id": "derived-po-035"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Table 5 and understood the information it presents.",
+    "source": {
+      "field": "entities.tables",
+      "ref": "table-5"
+    },
+    "anchor": "table-5",
+    "id": "derived-po-036"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Table 6 and understood the information it presents.",
+    "source": {
+      "field": "entities.tables",
+      "ref": "table-6"
+    },
+    "anchor": "table-6",
+    "id": "derived-po-037"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Table 7 and understood the information it presents.",
+    "source": {
+      "field": "entities.tables",
+      "ref": "table-7"
+    },
+    "anchor": "table-7",
+    "id": "derived-po-038"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Table 9 and understood the information it presents.",
+    "source": {
+      "field": "entities.tables",
+      "ref": "table-9"
+    },
+    "anchor": "table-9",
+    "id": "derived-po-039"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Figure 1 and understood the information it presents.",
+    "source": {
+      "field": "entities.figures",
+      "ref": "figure-1"
+    },
+    "anchor": "figure-1",
+    "id": "derived-po-040"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Figure 3 and understood the information it presents.",
+    "source": {
+      "field": "entities.figures",
+      "ref": "figure-3"
+    },
+    "anchor": "figure-3",
+    "id": "derived-po-041"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Figure 2 and understood the information it presents.",
+    "source": {
+      "field": "entities.figures",
+      "ref": "figure-2"
+    },
+    "anchor": "figure-2",
+    "id": "derived-po-042"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Figure 6 and understood the information it presents.",
+    "source": {
+      "field": "entities.figures",
+      "ref": "figure-6"
+    },
+    "anchor": "figure-6",
+    "id": "derived-po-043"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Figure 4 and understood the information it presents.",
+    "source": {
+      "field": "entities.figures",
+      "ref": "figure-4"
+    },
+    "anchor": "figure-4",
+    "id": "derived-po-044"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Figure 5 and understood the information it presents.",
+    "source": {
+      "field": "entities.figures",
+      "ref": "figure-5"
+    },
+    "anchor": "figure-5",
+    "id": "derived-po-045"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Figure 7 and understood the information it presents.",
+    "source": {
+      "field": "entities.figures",
+      "ref": "figure-7"
+    },
+    "anchor": "figure-7",
+    "id": "derived-po-046"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Figure 8 and understood the information it presents.",
+    "source": {
+      "field": "entities.figures",
+      "ref": "figure-8"
+    },
+    "anchor": "figure-8",
+    "id": "derived-po-047"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Algorithm 1 and understood the information it presents.",
+    "source": {
+      "field": "entities.algorithms",
+      "ref": "algorithm-1"
+    },
+    "anchor": "algorithm-1",
+    "id": "derived-po-048"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes first-stage fine-tuning: Fine-tune ViT-B/32 CLIP on COCO (ShareGPT4V) using CyCLIP loss (L_CLIP + 0.25 L_I-Cyclic + 0.25 L_C-Cyclic) with AdamW (lr 1e-6, weight decay 1e-2), batch size 128, temperature log scale 4.6052, for 3 epochs. Yields base model (Long-CyCLIP-only + MCSIE, LCCOM).",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-1"
+    },
+    "anchor": null,
+    "id": "derived-pw-001"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes extract normalized embeddings (L2-normalized) from frozen image and text encoders for a set of samples; compute modality-specific mean vectors (image mean \bar{x}, text mean \bar{y}).",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-2"
+    },
+    "anchor": null,
+    "id": "derived-pw-002"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes i0T_post standardization: For each normalized embedding, subtract the corresponding modality mean and re-normalize by Frobenius norm: x_i' = Normalize(x_i - \bar{x}), y_i' = Normalize(y_i - \bar{y}).",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-3"
+    },
+    "anchor": null,
+    "id": "derived-pw-003"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes i0T_async setup: After first-stage fine-tuning, freeze encoders and add independent batch normalization layers (BN_img, BN_txt) with learnable weights W and biases b after the normalized embedding outputs.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-4"
+    },
+    "anchor": null,
+    "id": "derived-pw-004"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes mCSIE augmentation: Apply dropout (rate 0.1) to every multi-head attention layer in the frozen image encoder (ViT) and text encoder (Transformer) to create augmented views of image and text embeddings.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-5"
+    },
+    "anchor": null,
+    "id": "derived-pw-005"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes train BN layers asynchronously using MCSIE loss: contrastive learning over all pairs of (original/ augmented) image and text embeddings, using same optimizer settings as first stage, with frozen encoders.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-6"
+    },
+    "anchor": null,
+    "id": "derived-pw-006"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes during BN training, update running means of normalized embeddings per modality with averaging factor alpha=0.1: \bar{x}_{t+1} = alpha * \bar{x}_B + (1-alpha) * \bar{x}_t, similarly for text.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-7"
+    },
+    "anchor": null,
+    "id": "derived-pw-007"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes after BN training, acquire final train statistics: \bar{x}_train, \bar{y}_train and variances sigma_x, sigma_y (observed close to 1.0).",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-8"
+    },
+    "anchor": null,
+    "id": "derived-pw-008"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes i0T_async inference: For each normalized embedding, subtract train mean, divide by sqrt(variance + epsilon=1e-5), apply BN linear transform (W, b), then re-normalize by Frobenius norm.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-9"
+    },
+    "anchor": null,
+    "id": "derived-pw-009"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes compute modality gap metrics: Centroid Distance (CD) as Frobenius norm between mean normalized image and text embeddings; Linear Separability (LS) as 1 - MSE of linear regression classifying image vs. text embeddings; assign Severity Level (low if CD<0.19, moderate if 0.19<=CD<0.63, severe if CD>=0.63).",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-10"
+    },
+    "anchor": null,
+    "id": "derived-pw-010"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes evaluate downstream tasks: image-text retrieval (I2T, T2I Recall@1 on Flickr30k), zero-shot classification (top-1 accuracy on CIFAR100 and CUB-200), and relative correlation with human judgments (Flickr8k-Expert, Flickr8k-CF).",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-11"
+    },
+    "anchor": null,
+    "id": "derived-pw-011"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the setting 'I0T_post': Post-hoc embedding standardization: subtract mean vector of normalized embeddings per modality and re-normalize by Frobenius norm on frozen encoders from first-stage fine-tuning.",
+    "source": {
+      "field": "core_method.settings",
+      "ref": "set-I0Tpost"
+    },
+    "anchor": null,
+    "id": "derived-pw-012"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the setting 'I0T_async': Trainable method adding independent batch normalization layers for image and text encoders, trained asynchronously after first stage with MCSIE augmentation to learn modality-specific means/variances.",
+    "source": {
+      "field": "core_method.settings",
+      "ref": "set-I0Tasync"
+    },
+    "anchor": null,
+    "id": "derived-pw-013"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the use of the COCO (ShareGPT4V) dataset.",
+    "source": {
+      "field": "datasets",
+      "ref": "COCO (ShareGPT4V)"
+    },
+    "anchor": null,
+    "id": "derived-pw-014"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the use of the Flickr30k dataset.",
+    "source": {
+      "field": "datasets",
+      "ref": "Flickr30k"
+    },
+    "anchor": null,
+    "id": "derived-pw-015"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the use of the CIFAR100 dataset.",
+    "source": {
+      "field": "datasets",
+      "ref": "CIFAR100"
+    },
+    "anchor": null,
+    "id": "derived-pw-016"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the use of the CUB-200 (Birds) dataset.",
+    "source": {
+      "field": "datasets",
+      "ref": "CUB-200 (Birds)"
+    },
+    "anchor": null,
+    "id": "derived-pw-017"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the use of the Flickr8k-Expert dataset.",
+    "source": {
+      "field": "datasets",
+      "ref": "Flickr8k-Expert"
+    },
+    "anchor": null,
+    "id": "derived-pw-018"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the use of the Flickr8k-CF dataset.",
+    "source": {
+      "field": "datasets",
+      "ref": "Flickr8k-CF"
+    },
+    "anchor": null,
+    "id": "derived-pw-019"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the use of the ViT-B/32-based Long-CLIP model.",
+    "source": {
+      "field": "models",
+      "ref": "ViT-B/32-based Long-CLIP"
+    },
+    "anchor": null,
+    "id": "derived-pw-020"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the use of the BLIP model.",
+    "source": {
+      "field": "models",
+      "ref": "BLIP"
+    },
+    "anchor": null,
+    "id": "derived-pw-021"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the CLIP baseline for comparison.",
+    "source": {
+      "field": "baselines",
+      "ref": "CLIP"
+    },
+    "anchor": null,
+    "id": "derived-pw-022"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the MG_{λ=0.375} baseline for comparison.",
+    "source": {
+      "field": "baselines",
+      "ref": "MG_{λ=0.375}"
+    },
+    "anchor": null,
+    "id": "derived-pw-023"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the MG_{λ=0.5} baseline for comparison.",
+    "source": {
+      "field": "baselines",
+      "ref": "MG_{λ=0.5}"
+    },
+    "anchor": null,
+    "id": "derived-pw-024"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the MG_{λ=-0.5} baseline for comparison.",
+    "source": {
+      "field": "baselines",
+      "ref": "MG_{λ=-0.5}"
+    },
+    "anchor": null,
+    "id": "derived-pw-025"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the CLOOB baseline for comparison.",
+    "source": {
+      "field": "baselines",
+      "ref": "CLOOB"
+    },
+    "anchor": null,
+    "id": "derived-pw-026"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the Unif-Align baseline for comparison.",
+    "source": {
+      "field": "baselines",
+      "ref": "Unif-Align"
+    },
+    "anchor": null,
+    "id": "derived-pw-027"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the PAC-S baseline for comparison.",
+    "source": {
+      "field": "baselines",
+      "ref": "PAC-S"
+    },
+    "anchor": null,
+    "id": "derived-pw-028"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the BLIP baseline for comparison.",
+    "source": {
+      "field": "baselines",
+      "ref": "BLIP"
+    },
+    "anchor": null,
+    "id": "derived-pw-029"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the Centroid Distance (CD) evaluation metric.",
+    "source": {
+      "field": "metrics",
+      "ref": "Centroid Distance (CD)"
+    },
+    "anchor": null,
+    "id": "derived-pw-030"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the Linear Separability (LS) evaluation metric.",
+    "source": {
+      "field": "metrics",
+      "ref": "Linear Separability (LS)"
+    },
+    "anchor": null,
+    "id": "derived-pw-031"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the Severity Level evaluation metric.",
+    "source": {
+      "field": "metrics",
+      "ref": "Severity Level"
+    },
+    "anchor": null,
+    "id": "derived-pw-032"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the Image-to-Text Retrieval (I2T) evaluation metric.",
+    "source": {
+      "field": "metrics",
+      "ref": "Image-to-Text Retrieval (I2T)"
+    },
+    "anchor": null,
+    "id": "derived-pw-033"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the Text-to-Image Retrieval (T2I) evaluation metric.",
+    "source": {
+      "field": "metrics",
+      "ref": "Text-to-Image Retrieval (T2I)"
+    },
+    "anchor": null,
+    "id": "derived-pw-034"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the Classification Accuracy (CIFAR100) evaluation metric.",
+    "source": {
+      "field": "metrics",
+      "ref": "Classification Accuracy (CIFAR100)"
+    },
+    "anchor": null,
+    "id": "derived-pw-035"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the Classification Accuracy (Birds) evaluation metric.",
+    "source": {
+      "field": "metrics",
+      "ref": "Classification Accuracy (Birds)"
+    },
+    "anchor": null,
+    "id": "derived-pw-036"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the Relative Correlation (Expert) evaluation metric.",
+    "source": {
+      "field": "metrics",
+      "ref": "Relative Correlation (Expert)"
+    },
+    "anchor": null,
+    "id": "derived-pw-037"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the Relative Correlation (CF) evaluation metric.",
+    "source": {
+      "field": "metrics",
+      "ref": "Relative Correlation (CF)"
+    },
+    "anchor": null,
+    "id": "derived-pw-038"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan specifies the hyperparameter 'learning_rate' with value 1e-6.",
+    "source": {
+      "field": "core_method.key_hyperparameters",
+      "ref": "learning_rate"
+    },
+    "anchor": null,
+    "id": "derived-pw-039"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan specifies the hyperparameter 'weight_decay' with value 1e-2.",
+    "source": {
+      "field": "core_method.key_hyperparameters",
+      "ref": "weight_decay"
+    },
+    "anchor": null,
+    "id": "derived-pw-040"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan specifies the hyperparameter 'batch_size' with value 128.",
+    "source": {
+      "field": "core_method.key_hyperparameters",
+      "ref": "batch_size"
+    },
+    "anchor": null,
+    "id": "derived-pw-041"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan specifies the hyperparameter 'temperature_log_scale' with value 4.6052.",
+    "source": {
+      "field": "core_method.key_hyperparameters",
+      "ref": "temperature_log_scale"
+    },
+    "anchor": null,
+    "id": "derived-pw-042"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan specifies the hyperparameter 'optimizer' with value AdamW.",
+    "source": {
+      "field": "core_method.key_hyperparameters",
+      "ref": "optimizer"
+    },
+    "anchor": null,
+    "id": "derived-pw-043"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan specifies the hyperparameter 'alpha (averaging factor for BN running means)' with value 0.1.",
+    "source": {
+      "field": "core_method.key_hyperparameters",
+      "ref": "alpha (averaging factor for BN running means)"
+    },
+    "anchor": null,
+    "id": "derived-pw-044"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan specifies the hyperparameter 'dropout_rate (for MCSIE augmentation)' with value 0.1.",
+    "source": {
+      "field": "core_method.key_hyperparameters",
+      "ref": "dropout_rate (for MCSIE augmentation)"
+    },
+    "anchor": null,
+    "id": "derived-pw-045"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan specifies the hyperparameter 'eps' with value 1e-5.",
+    "source": {
+      "field": "core_method.key_hyperparameters",
+      "ref": "eps"
+    },
+    "anchor": null,
+    "id": "derived-pw-046"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code implementing the following step is present: First-stage fine-tuning: Fine-tune ViT-B/32 CLIP on COCO (ShareGPT4V) using CyCLIP loss (L_CLIP + 0.25 L_I-Cyclic + 0.25 L_C-Cyclic) with AdamW (lr 1e-6, weight decay 1e-2), batch size 128, temperature log scale 4.6052, for 3 epochs. Yields base model (Long-CyCLIP-only + MCSIE, LCCOM).",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-1"
+    },
+    "anchor": null,
+    "id": "derived-ci-001"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code implementing the following step is present: Extract normalized embeddings (L2-normalized) from frozen image and text encoders for a set of samples; compute modality-specific mean vectors (image mean \bar{x}, text mean \bar{y}).",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-2"
+    },
+    "anchor": null,
+    "id": "derived-ci-002"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code implementing the following step is present: I0T_post standardization: For each normalized embedding, subtract the corresponding modality mean and re-normalize by Frobenius norm: x_i' = Normalize(x_i - \bar{x}), y_i' = Normalize(y_i - \bar{y}).",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-3"
+    },
+    "anchor": null,
+    "id": "derived-ci-003"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code implementing the following step is present: I0T_async setup: After first-stage fine-tuning, freeze encoders and add independent batch normalization layers (BN_img, BN_txt) with learnable weights W and biases b after the normalized embedding outputs.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-4"
+    },
+    "anchor": null,
+    "id": "derived-ci-004"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code implementing the following step is present: MCSIE augmentation: Apply dropout (rate 0.1) to every multi-head attention layer in the frozen image encoder (ViT) and text encoder (Transformer) to create augmented views of image and text embeddings.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-5"
+    },
+    "anchor": null,
+    "id": "derived-ci-005"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code implementing the following step is present: Train BN layers asynchronously using MCSIE loss: contrastive learning over all pairs of (original/ augmented) image and text embeddings, using same optimizer settings as first stage, with frozen encoders.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-6"
+    },
+    "anchor": null,
+    "id": "derived-ci-006"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code implementing the following step is present: During BN training, update running means of normalized embeddings per modality with averaging factor alpha=0.1: \bar{x}_{t+1} = alpha * \bar{x}_B + (1-alpha) * \bar{x}_t, similarly for text.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-7"
+    },
+    "anchor": null,
+    "id": "derived-ci-007"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code implementing the following step is present: After BN training, acquire final train statistics: \bar{x}_train, \bar{y}_train and variances sigma_x, sigma_y (observed close to 1.0).",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-8"
+    },
+    "anchor": null,
+    "id": "derived-ci-008"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code implementing the following step is present: I0T_async inference: For each normalized embedding, subtract train mean, divide by sqrt(variance + epsilon=1e-5), apply BN linear transform (W, b), then re-normalize by Frobenius norm.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-9"
+    },
+    "anchor": null,
+    "id": "derived-ci-009"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code implementing the following step is present: Compute modality gap metrics: Centroid Distance (CD) as Frobenius norm between mean normalized image and text embeddings; Linear Separability (LS) as 1 - MSE of linear regression classifying image vs. text embeddings; assign Severity Level (low if CD<0.19, moderate if 0.19<=CD<0.63, severe if CD>=0.63).",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-10"
+    },
+    "anchor": null,
+    "id": "derived-ci-010"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code implementing the following step is present: Evaluate downstream tasks: image-text retrieval (I2T, T2I Recall@1 on Flickr30k), zero-shot classification (top-1 accuracy on CIFAR100 and CUB-200), and relative correlation with human judgments (Flickr8k-Expert, Flickr8k-CF).",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-11"
+    },
+    "anchor": null,
+    "id": "derived-ci-011"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code for the CLIP baseline is implemented.",
+    "source": {
+      "field": "baselines",
+      "ref": "CLIP"
+    },
+    "anchor": null,
+    "id": "derived-ci-012"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code for the MG_{λ=0.375} baseline is implemented.",
+    "source": {
+      "field": "baselines",
+      "ref": "MG_{λ=0.375}"
+    },
+    "anchor": null,
+    "id": "derived-ci-013"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code for the MG_{λ=0.5} baseline is implemented.",
+    "source": {
+      "field": "baselines",
+      "ref": "MG_{λ=0.5}"
+    },
+    "anchor": null,
+    "id": "derived-ci-014"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code for the MG_{λ=-0.5} baseline is implemented.",
+    "source": {
+      "field": "baselines",
+      "ref": "MG_{λ=-0.5}"
+    },
+    "anchor": null,
+    "id": "derived-ci-015"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code for the CLOOB baseline is implemented.",
+    "source": {
+      "field": "baselines",
+      "ref": "CLOOB"
+    },
+    "anchor": null,
+    "id": "derived-ci-016"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code for the Unif-Align baseline is implemented.",
+    "source": {
+      "field": "baselines",
+      "ref": "Unif-Align"
+    },
+    "anchor": null,
+    "id": "derived-ci-017"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code for the PAC-S baseline is implemented.",
+    "source": {
+      "field": "baselines",
+      "ref": "PAC-S"
+    },
+    "anchor": null,
+    "id": "derived-ci-018"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code for the BLIP baseline is implemented.",
+    "source": {
+      "field": "baselines",
+      "ref": "BLIP"
+    },
+    "anchor": null,
+    "id": "derived-ci-019"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code computing the Centroid Distance (CD) metric is implemented.",
+    "source": {
+      "field": "metrics",
+      "ref": "Centroid Distance (CD)"
+    },
+    "anchor": null,
+    "id": "derived-ci-020"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code computing the Linear Separability (LS) metric is implemented.",
+    "source": {
+      "field": "metrics",
+      "ref": "Linear Separability (LS)"
+    },
+    "anchor": null,
+    "id": "derived-ci-021"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code computing the Severity Level metric is implemented.",
+    "source": {
+      "field": "metrics",
+      "ref": "Severity Level"
+    },
+    "anchor": null,
+    "id": "derived-ci-022"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code computing the Image-to-Text Retrieval (I2T) metric is implemented.",
+    "source": {
+      "field": "metrics",
+      "ref": "Image-to-Text Retrieval (I2T)"
+    },
+    "anchor": null,
+    "id": "derived-ci-023"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code computing the Text-to-Image Retrieval (T2I) metric is implemented.",
+    "source": {
+      "field": "metrics",
+      "ref": "Text-to-Image Retrieval (T2I)"
+    },
+    "anchor": null,
+    "id": "derived-ci-024"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code computing the Classification Accuracy (CIFAR100) metric is implemented.",
+    "source": {
+      "field": "metrics",
+      "ref": "Classification Accuracy (CIFAR100)"
+    },
+    "anchor": null,
+    "id": "derived-ci-025"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code computing the Classification Accuracy (Birds) metric is implemented.",
+    "source": {
+      "field": "metrics",
+      "ref": "Classification Accuracy (Birds)"
+    },
+    "anchor": null,
+    "id": "derived-ci-026"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code computing the Relative Correlation (Expert) metric is implemented.",
+    "source": {
+      "field": "metrics",
+      "ref": "Relative Correlation (Expert)"
+    },
+    "anchor": null,
+    "id": "derived-ci-027"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code computing the Relative Correlation (CF) metric is implemented.",
+    "source": {
+      "field": "metrics",
+      "ref": "Relative Correlation (CF)"
+    },
+    "anchor": null,
+    "id": "derived-ci-028"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The agent has executed the command(s) that produce the results shown in Table 1 (Demonstrates the development process leading to I0T_async, showing that asynchro...).",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-table1"
+    },
+    "anchor": "table-1",
+    "id": "derived-ce-001"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The agent has executed the command(s) that produce the results shown in Table 2 (I0T_post reduces modality gap to near-zero (CD 0.0102, LS 0.5374) and I0T_async ...).",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-table2"
+    },
+    "anchor": "table-2",
+    "id": "derived-ce-002"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The agent has executed the command(s) that produce the results shown in Table 3 (Using as few as 32 test samples for I0T_post already reduces modality gap to low...).",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-table3"
+    },
+    "anchor": "table-3",
+    "id": "derived-ce-003"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The agent has executed the command(s) that produce the results shown in Figure 3 (I0T_post effectively removes peak activations and modality-specific characterist...).",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-figure3"
+    },
+    "anchor": "figure-3",
+    "id": "derived-ce-004"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The agent has executed the command(s) that produce the results shown in Figure 4 (I0T methods achieve much lower centroid distance than BLIP with fewer parameters...).",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-figure4"
+    },
+    "anchor": "figure-4",
+    "id": "derived-ce-005"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The agent has executed the command(s) that produce the results shown in Figure 5 (I0T-S (I0T_post) yields a wider cosine similarity distribution (range -0.349 to ...).",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-figure5"
+    },
+    "anchor": "figure-5",
+    "id": "derived-ce-006"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The agent has executed the command(s) that produce the results shown in Table 8 (Ablation shows that MCSIE loss further reduces modality gap during I0T_async tra...).",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-table8"
+    },
+    "anchor": "table-8",
+    "id": "derived-ce-007"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the results in Table 1: Demonstrates the development process leading to I0T_async, showing that asynchronous BN training (+BN*) reduces modality gap to moderate level while maintaining downstream performance.",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-table1"
+    },
+    "anchor": "table-1",
+    "id": "derived-rm-001"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the results in Table 2: I0T_post reduces modality gap to near-zero (CD 0.0102, LS 0.5374) and I0T_async to moderate (CD 0.4795, LS 0.9960), both without hurting overall downstream tasks; I0T_post achieves best retrieval scores.",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-table2"
+    },
+    "anchor": "table-2",
+    "id": "derived-rm-002"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the results in Table 3: Using as few as 32 test samples for I0T_post already reduces modality gap to low severity (CD 0.1880) and achieves competitive retrieval, with performance saturating as more samples are used.",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-table3"
+    },
+    "anchor": "table-3",
+    "id": "derived-rm-003"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the results in Figure 3: I0T_post effectively removes peak activations and modality-specific characteristics, reducing CD to near zero, outperforming clipping and Mind-the-Gap in suppressing modality-specific patterns.",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-figure3"
+    },
+    "anchor": "figure-3",
+    "id": "derived-rm-004"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the results in Figure 4: I0T methods achieve much lower centroid distance than BLIP with fewer parameters, while maintaining competitive correlation scores on Flickr8k-Expert.",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-figure4"
+    },
+    "anchor": "figure-4",
+    "id": "derived-rm-005"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the results in Figure 5: I0T-S (I0T_post) yields a wider cosine similarity distribution (range -0.349 to 0.660) with mean near zero, enabling more intuitive and explainable scoring compared to CLIP-S and PAC-S.",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-figure5"
+    },
+    "anchor": "figure-5",
+    "id": "derived-rm-006"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the results in Table 8: Ablation shows that MCSIE loss further reduces modality gap during I0T_async training compared to training without it.",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-table8"
+    },
+    "anchor": "table-8",
+    "id": "derived-rm-007"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the specific claim (based on Table 2): I0T_post achieves low modality gap (CD 0.0102, LS 0.5374) while achieving T2I retrieval recall 76.30% on Flickr30k, outperforming CLIP's 67.10%.",
+    "source": {
+      "field": "expected_claims",
+      "ref": "claim-1"
+    },
+    "anchor": "table-2",
+    "id": "derived-rm-008"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the specific claim (based on Table 2): I0T_async reduces modality gap to moderate level (CD 0.4795, LS 0.9960) and improves T2I retrieval to 73.80% over CLIP.",
+    "source": {
+      "field": "expected_claims",
+      "ref": "claim-2"
+    },
+    "anchor": "table-2",
+    "id": "derived-rm-009"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the specific claim (based on Figure 3): Post-hoc embedding standardization (I0T_post) eliminates peak activations and modality-specific characteristics, lowering CD to near zero, unlike clipping or Mind-the-Gap.",
+    "source": {
+      "field": "expected_claims",
+      "ref": "claim-3"
+    },
+    "anchor": "figure-3",
+    "id": "derived-rm-010"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the specific claim (based on Figure 5): I0TScore (I0T_post) yields a non-skewed cosine similarity distribution with range [-0.349, 0.660] and mean near zero, enabling more intuitive scoring than CLIP-S and PAC-S.",
+    "source": {
+      "field": "expected_claims",
+      "ref": "claim-4"
+    },
+    "anchor": "figure-5",
+    "id": "derived-rm-011"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the specific claim (based on Table 3): Using only 32 test samples with I0T_post reduces CD to low severity (<0.19) and achieves competitive retrieval (I2T 70.30%, T2I 73.00%).",
+    "source": {
+      "field": "expected_claims",
+      "ref": "claim-5"
+    },
+    "anchor": "table-3",
+    "id": "derived-rm-012"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the specific claim (based on Table 8): The asynchronous BN training with MCSIE loss (I0T_async) further reduces modality gap compared to standard training, as shown in ablation.",
+    "source": {
+      "field": "expected_claims",
+      "ref": "claim-6"
+    },
+    "anchor": "table-8",
+    "id": "derived-rm-013"
+  }
+]

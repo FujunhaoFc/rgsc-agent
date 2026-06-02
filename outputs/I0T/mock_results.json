@@ -1,0 +1,359 @@
+{
+  "paper_id": "I0T",
+  "experiments": {
+    "exp-table1": {
+      "evidence_in_paper": "table-1",
+      "axes": {
+        "rows": [
+          "Long-CLIP",
+          "LCO",
+          "LCCO",
+          "LCCOM",
+          "+ LN",
+          "+ LN*",
+          "+ BN",
+          "+ BN* (IOTasync)"
+        ],
+        "cols": [
+          "# Par",
+          "Centroid Dist.",
+          "Linear Sep.",
+          "Sev. Level",
+          "I2T",
+          "T2I",
+          "CIFAR",
+          "Bird",
+          "Expert",
+          "CF"
+        ]
+      },
+      "values": [
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "exp-table2": {
+      "evidence_in_paper": "table-2",
+      "axes": {
+        "rows": [
+          "CLIP",
+          "MG_{λ=0.375}",
+          "MG_{λ=0.5}",
+          "MG_{λ=-0.5}",
+          "CLOOB",
+          "Unif-Align",
+          "PAC-S",
+          "IOT_{async}",
+          "IOT_{post}"
+        ],
+        "cols": [
+          "#Par",
+          "Centroid Dist.",
+          "Linear Sep.",
+          "Sev.Level",
+          "I2T",
+          "T2I",
+          "CIFAR",
+          "Bird",
+          "Expert",
+          "CF",
+          "Rank"
+        ]
+      },
+      "values": [
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "exp-table3": {
+      "evidence_in_paper": "table-3",
+      "axes": {
+        "rows": [
+          "32",
+          "64",
+          "128",
+          "256",
+          "512",
+          "1k"
+        ],
+        "cols": [
+          "Centroid Distance",
+          "Severity Level",
+          "I2T",
+          "T2I"
+        ]
+      },
+      "values": [
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "exp-figure3": {
+      "evidence_in_paper": "figure-3",
+      "summary": "[PLACEHOLDER - 待手工填充]"
+    },
+    "exp-figure4": {
+      "evidence_in_paper": "figure-4",
+      "summary": "[PLACEHOLDER - 待手工填充]"
+    },
+    "exp-figure5": {
+      "evidence_in_paper": "figure-5",
+      "summary": "[PLACEHOLDER - 待手工填充]"
+    },
+    "exp-table8": {
+      "evidence_in_paper": "table-8",
+      "axes": {
+        "rows": [],
+        "cols": []
+      },
+      "values": [
+        [
+          null
+        ]
+      ]
+    }
+  }
+}

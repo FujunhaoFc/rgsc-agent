@@ -1,0 +1,322 @@
+{
+  "paper_id": "Beyond-Ngram",
+  "experiments": {
+    "exp-figure1": {
+      "evidence_in_paper": "figure-1",
+      "summary": "[PLACEHOLDER - 待手工填充]"
+    },
+    "exp-table5": {
+      "evidence_in_paper": "table-5",
+      "axes": {
+        "rows": [
+          "ROUGE-1",
+          "ROUGE-2",
+          "ROUGE-3",
+          "ROUGE-L",
+          "BLEU",
+          "CHRF",
+          "ROUGE-1 (mBERT Tokenizer)",
+          "ROUGE-2 (mBERT Tokenizer)",
+          "ROUGE-3 (mBERT Tokenizer)",
+          "ROUGE-L (mBERT Tokenizer)",
+          "ROUGE-1 (Monolingual Tokenizer)",
+          "ROUGE-2 (Monolingual Tokenizer)",
+          "ROUGE-3 (Monolingual Tokenizer)",
+          "ROUGE-L (Monolingual Tokenizer)",
+          "BLEU (Lemmatized Form)",
+          "Gemini as a Judge",
+          "MoverScore",
+          "BERTScore (mBERT)",
+          "BERTScore (Monolingual)",
+          "COMET"
+        ],
+        "cols": [
+          "Coherence (Isolating)",
+          "Coherence (Agglutinative)",
+          "Coherence (Low Fusional)",
+          "Coherence (High Fusional)",
+          "Completeness (Isolating)",
+          "Completeness (Agglutinative)",
+          "Completeness (Low Fusional)",
+          "Completeness (High Fusional)"
+        ]
+      },
+      "values": [
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "exp-table6": {
+      "evidence_in_paper": "table-6",
+      "axes": {
+        "rows": [
+          "Gemini as a Judge",
+          "MoverScore",
+          "BERTScore (mBERT)",
+          "BERTScore (Monolingual)",
+          "COMET"
+        ],
+        "cols": [
+          "Coherence (High)",
+          "Coherence (Low)",
+          "Completeness (High)",
+          "Completeness (Low)"
+        ]
+      },
+      "values": [
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "exp-perlang-corr-coh": {
+      "evidence_in_paper": "table-10",
+      "axes": {
+        "rows": [],
+        "cols": []
+      },
+      "values": [
+        [
+          null
+        ]
+      ]
+    },
+    "exp-perlang-corr-com": {
+      "evidence_in_paper": "table-11",
+      "axes": {
+        "rows": [],
+        "cols": []
+      },
+      "values": [
+        [
+          null
+        ]
+      ]
+    }
+  }
+}

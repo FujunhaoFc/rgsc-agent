@@ -1,0 +1,97 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "results",
+  "description": "Executor output — reproduced experimental results keyed by paper_state.main_experiments id. v1 schema.",
+  "type": "object",
+  "required": ["paper_id", "experiments"],
+  "additionalProperties": false,
+  "properties": {
+    "paper_id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Paper identifier, matches the directory name."
+    },
+    "experiments": {
+      "type": "object",
+      "description": "Results keyed by main_experiments[].id (e.g. 'exp-table1'). Each entry is either a table-type or figure-type experiment.",
+      "additionalProperties": false,
+      "patternProperties": {
+        "^exp-": {
+          "oneOf": [
+            {
+              "type": "object",
+              "required": ["evidence_in_paper", "axes", "values"],
+              "properties": {
+                "evidence_in_paper": {
+                  "type": "string",
+                  "minLength": 1,
+                  "description": "Entity id from paper_state.entities (e.g. 'table-1', 'figure-2')."
+                },
+                "axes": {
+                  "type": "object",
+                  "required": ["rows", "cols"],
+                  "properties": {
+                    "rows": {
+                      "type": "array",
+                      "description": "Row labels (method names, settings, etc.).",
+                      "items": { "type": "string" }
+                    },
+                    "cols": {
+                      "type": "array",
+                      "description": "Column labels (metric names, etc.).",
+                      "items": { "type": "string" }
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "values": {
+                  "type": "array",
+                  "description": "2D array of numeric results. shape = (len(rows), len(cols)). Each entry is a number or null (placeholder).",
+                  "items": {
+                    "type": "array",
+                    "items": {
+                      "oneOf": [
+                        { "type": "number" },
+                        { "type": "null" }
+                      ]
+                    }
+                  }
+                }
+              },
+              "additionalProperties": true
+            },
+            {
+              "type": "object",
+              "required": ["evidence_in_paper", "summary"],
+              "properties": {
+                "evidence_in_paper": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "summary": {
+                  "type": "string",
+                  "maxLength": 1000,
+                  "description": "Qualitative summary of the figure evidence (≤200 chars)."
+                },
+                "data_points": {
+                  "type": "array",
+                  "description": "Optional numeric data extracted from the figure.",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "label": { "type": "string" },
+                      "x": { "type": "number" },
+                      "y": { "type": "number" }
+                    },
+                    "additionalProperties": true
+                  }
+                }
+              },
+              "additionalProperties": true
+            }
+          ]
+        }
+      }
+    }
+  }
+}

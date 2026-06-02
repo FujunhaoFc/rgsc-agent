@@ -8,8 +8,9 @@
 2026-05-27 | Stage Planner 规则微调 | planner.py Steps 1-4 + 大 stage 拆分 + preprocessing 类型 | 5 篇平均 5.6 stages, coverage 100%, min-p has_training=False 正确, Beyond-Ngram baseline-training(60 items) 按 type 拆为 plan/impl/exec 三个子 stage
 2026-05-29 | Stage Planner Step 5 LLM refine 收尾 | planner.py: _llm_refine_stages() + _debug 落盘 + max_tokens 4000→8000; prompt stage_refinement.txt; tests/test_stage_planner.py (10 tests × 5 fixtures = 46 passed) | max_tokens=8000 决策依据: 4000 下 Beyond-Ngram (7 stages, 17k prompt) 100% 失败回退 rule-based, 8000 下 5/5 全过 (4/5 一次过, Beyond-Ngram 需 2-3 attempts). atomic_step_assignment 字段 LLM 实际输出为空, 分配信息隐式在 actions 里. 5 篇最终成本 ~$0.10 (含重跑). Phase 2 Stage Planner 总成本 ~$0.10, Phase 1 Paper Observer ~$0.80 + Coverage Diagnostic ~$6.20
 
-技术债务记录:
-- pipeline/stage_planner/planner.py 重复实现了 LLM client (复用了 paper_observer/llm_summarizer.py 的设计但没复用代码). Phase 3 启动时统一抽到 pipeline/common/llm.py
+2026-06-02 | Verifier Phase 3.1 | verifier.py 主流程 + placeholder mock + 2 schema + tests | 5 篇 mock 全 skipped, 0 LLM call, 14/14 test pass; claim_judge prompt 待 web Claude 提供
+2026-06-02 | Verifier 加固 | LLM malformed JSON 3 retry → fail (不再 skipped); 删 mock notes 字段; claim_judge.txt 加 trust-numeric 规则(rule 8) | AMUN broken overall=0.8 (4P/1F), real overall=1.0 (5P, 3rd run), pytest 14/14 pass. Known: DeepSeek V4 偶尔返回 {} / 残缺 JSON (claim-2 两次 non-deterministic failure, 3rd run pass), retry prompt 只让 LLM 修提到的错误而漏掉其他 required fields
 
 技术债务记录:
 - pipeline/stage_planner/planner.py 重复实现了 LLM client (复用了 paper_observer/llm_summarizer.py 的设计但没复用代码). Phase 3 启动时统一抽到 pipeline/common/llm.py
+- pipeline/verifier/verifier.py 同样重复实现了 _call_llm (遵循 planner.py 模式). Phase 3 后期 Executor 时统一抽取.

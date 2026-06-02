@@ -1,0 +1,1562 @@
+[
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 1 (Introduction) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-1"
+    },
+    "anchor": null,
+    "id": "derived-po-001"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 1.1 (Related Work) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-1.1"
+    },
+    "anchor": null,
+    "id": "derived-po-002"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 2 (Preliminaries) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-2"
+    },
+    "anchor": null,
+    "id": "derived-po-003"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 2.1 (Notation) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-2.1"
+    },
+    "anchor": null,
+    "id": "derived-po-004"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 2.2 (Definitions) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-2.2"
+    },
+    "anchor": null,
+    "id": "derived-po-005"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 2.3 (Approximate Unlearning) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-2.3"
+    },
+    "anchor": null,
+    "id": "derived-po-006"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 2.4 (Unlearning Settings) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-2.4"
+    },
+    "anchor": null,
+    "id": "derived-po-007"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 3 (Motivation) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-3"
+    },
+    "anchor": null,
+    "id": "derived-po-008"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 3.1 (A Guiding Observation) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-3.1"
+    },
+    "anchor": null,
+    "id": "derived-po-009"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 3.2 (Fine-tuning on Adversarial Examples) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-3.2"
+    },
+    "anchor": null,
+    "id": "derived-po-010"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 4 (Adversarial Machine UNlearning (AMUN)) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-4"
+    },
+    "anchor": null,
+    "id": "derived-po-011"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 4.1 (Influencing Factors) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-4.1"
+    },
+    "anchor": null,
+    "id": "derived-po-012"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 5 (Evaluation Setup) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-5"
+    },
+    "anchor": null,
+    "id": "derived-po-013"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 5.1 (Baseline Methods) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-5.1"
+    },
+    "anchor": null,
+    "id": "derived-po-014"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 5.2 (Evaluation Metrics) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-5.2"
+    },
+    "anchor": null,
+    "id": "derived-po-015"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 5.3 (Unlearning Settings) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-5.3"
+    },
+    "anchor": null,
+    "id": "derived-po-016"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 6 (Experiments) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-6"
+    },
+    "anchor": null,
+    "id": "derived-po-017"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 6.1 (Effectiveness of AMUN) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-6.1"
+    },
+    "anchor": null,
+    "id": "derived-po-018"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 6.2 (Ablation Studies) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-6.2"
+    },
+    "anchor": null,
+    "id": "derived-po-019"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 6.2.1 (FINE-TUNING ON ADVERSARIAL EXAMPLES) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-6.2.1"
+    },
+    "anchor": null,
+    "id": "derived-po-020"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 6.2.2 (ADVERSARIALLY ROBUST MODELS) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-6.2.2"
+    },
+    "anchor": null,
+    "id": "derived-po-021"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 6.3 (Continuous Unlearning) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-6.3"
+    },
+    "anchor": null,
+    "id": "derived-po-022"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 7 (Conclusions) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-7"
+    },
+    "anchor": null,
+    "id": "derived-po-023"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section A (Proofs) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-A"
+    },
+    "anchor": null,
+    "id": "derived-po-024"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section B (Related Works (cont.)) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-B"
+    },
+    "anchor": null,
+    "id": "derived-po-025"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section C (Implementation Details) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-C"
+    },
+    "anchor": null,
+    "id": "derived-po-026"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section D (AMUN + SalUn) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-D"
+    },
+    "anchor": null,
+    "id": "derived-po-027"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section E (Effectiveness of AMUN (cont.)) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-E"
+    },
+    "anchor": null,
+    "id": "derived-po-028"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section E.1 (Computational Cost) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-E.1"
+    },
+    "anchor": null,
+    "id": "derived-po-029"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section F (Ablation Study (cont.)) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-F"
+    },
+    "anchor": null,
+    "id": "derived-po-030"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section F.1 (Empirical Behavior of Retrained Models) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-F.1"
+    },
+    "anchor": null,
+    "id": "derived-po-031"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section F.1.1 (CONFIDENCE VALUES IN UNLEARNED MODELS) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-F.1.1"
+    },
+    "anchor": null,
+    "id": "derived-po-032"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section F.2 (Adversarially Robust Models (cont.)) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-F.2"
+    },
+    "anchor": null,
+    "id": "derived-po-033"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section F.3 (Fine-tuning on Adversarial Examples (cont.)) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-F.3"
+    },
+    "anchor": null,
+    "id": "derived-po-034"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section F.4 (Transferred Adversarial Examples) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-F.4"
+    },
+    "anchor": null,
+    "id": "derived-po-035"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section F.5 (Weak Attacks) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-F.5"
+    },
+    "anchor": null,
+    "id": "derived-po-036"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section G (Comparison Using Prior Evaluation Methods) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-G"
+    },
+    "anchor": null,
+    "id": "derived-po-037"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section H (Continuous Unlearning (cont.)) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-H"
+    },
+    "anchor": null,
+    "id": "derived-po-038"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Table 1 and understood the information it presents.",
+    "source": {
+      "field": "entities.tables",
+      "ref": "table-1"
+    },
+    "anchor": "table-1",
+    "id": "derived-po-039"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Table 2 and understood the information it presents.",
+    "source": {
+      "field": "entities.tables",
+      "ref": "table-2"
+    },
+    "anchor": "table-2",
+    "id": "derived-po-040"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Table 7 and understood the information it presents.",
+    "source": {
+      "field": "entities.tables",
+      "ref": "table-7"
+    },
+    "anchor": "table-7",
+    "id": "derived-po-041"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Table 3 and understood the information it presents.",
+    "source": {
+      "field": "entities.tables",
+      "ref": "table-3"
+    },
+    "anchor": "table-3",
+    "id": "derived-po-042"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Table 6 and understood the information it presents.",
+    "source": {
+      "field": "entities.tables",
+      "ref": "table-6"
+    },
+    "anchor": "table-6",
+    "id": "derived-po-043"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Table 4 and understood the information it presents.",
+    "source": {
+      "field": "entities.tables",
+      "ref": "table-4"
+    },
+    "anchor": "table-4",
+    "id": "derived-po-044"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Table 5 and understood the information it presents.",
+    "source": {
+      "field": "entities.tables",
+      "ref": "table-5"
+    },
+    "anchor": "table-5",
+    "id": "derived-po-045"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Table 8 and understood the information it presents.",
+    "source": {
+      "field": "entities.tables",
+      "ref": "table-8"
+    },
+    "anchor": "table-8",
+    "id": "derived-po-046"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Table 9 and understood the information it presents.",
+    "source": {
+      "field": "entities.tables",
+      "ref": "table-9"
+    },
+    "anchor": "table-9",
+    "id": "derived-po-047"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Table 10 and understood the information it presents.",
+    "source": {
+      "field": "entities.tables",
+      "ref": "table-10"
+    },
+    "anchor": "table-10",
+    "id": "derived-po-048"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Table 11 and understood the information it presents.",
+    "source": {
+      "field": "entities.tables",
+      "ref": "table-11"
+    },
+    "anchor": "table-11",
+    "id": "derived-po-049"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Figure 3 and understood the information it presents.",
+    "source": {
+      "field": "entities.figures",
+      "ref": "figure-3"
+    },
+    "anchor": "figure-3",
+    "id": "derived-po-050"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Figure 1 and understood the information it presents.",
+    "source": {
+      "field": "entities.figures",
+      "ref": "figure-1"
+    },
+    "anchor": "figure-1",
+    "id": "derived-po-051"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Figure 6 and understood the information it presents.",
+    "source": {
+      "field": "entities.figures",
+      "ref": "figure-6"
+    },
+    "anchor": "figure-6",
+    "id": "derived-po-052"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Figure 2 and understood the information it presents.",
+    "source": {
+      "field": "entities.figures",
+      "ref": "figure-2"
+    },
+    "anchor": "figure-2",
+    "id": "derived-po-053"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Figure 4 and understood the information it presents.",
+    "source": {
+      "field": "entities.figures",
+      "ref": "figure-4"
+    },
+    "anchor": "figure-4",
+    "id": "derived-po-054"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Figure 5 and understood the information it presents.",
+    "source": {
+      "field": "entities.figures",
+      "ref": "figure-5"
+    },
+    "anchor": "figure-5",
+    "id": "derived-po-055"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Figure 7 and understood the information it presents.",
+    "source": {
+      "field": "entities.figures",
+      "ref": "figure-7"
+    },
+    "anchor": "figure-7",
+    "id": "derived-po-056"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Figure 8 and understood the information it presents.",
+    "source": {
+      "field": "entities.figures",
+      "ref": "figure-8"
+    },
+    "anchor": "figure-8",
+    "id": "derived-po-057"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Figure 9 and understood the information it presents.",
+    "source": {
+      "field": "entities.figures",
+      "ref": "figure-9"
+    },
+    "anchor": "figure-9",
+    "id": "derived-po-058"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Algorithm 1 and understood the information it presents.",
+    "source": {
+      "field": "entities.algorithms",
+      "ref": "algorithm-1"
+    },
+    "anchor": "algorithm-1",
+    "id": "derived-po-059"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes train initial model f on full dataset D (or load a pretrained classifier).",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-1"
+    },
+    "anchor": null,
+    "id": "derived-pw-001"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes partition dataset into forget set D_F, retain set D_R, and test set D_T according to the target forget percentage.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-2"
+    },
+    "anchor": null,
+    "id": "derived-pw-002"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes for each sample x in D_F, generate adversarial example x_adv using PGD-50 attack with L2 norm bound; start with a small epsilon and double it until the model prediction is different from the original label.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-3"
+    },
+    "anchor": null,
+    "id": "derived-pw-003"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes assign a random wrong label y_wrong (any class other than the ground truth) to each x_adv to form the adversarial dataset D_A.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-4"
+    },
+    "anchor": null,
+    "id": "derived-pw-004"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes (Optional, for AMUN+SalUn) Compute weight saliency mask on f by gradient-based importance estimation using D_F to restrict parameter updates.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-5"
+    },
+    "anchor": null,
+    "id": "derived-pw-005"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes assemble fine-tuning dataset: if D_R is available use D_R ∪ D_F ∪ D_A; if only D_F is accessible use D_F ∪ D_A; for very large D_F, use D_R ∪ D_A or only D_A.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-6"
+    },
+    "anchor": null,
+    "id": "derived-pw-006"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes fine-tune f on the assembled dataset for 10 epochs using cross-entropy loss and a learning rate chosen by grid search over [10^{-6}, 10^{-1}]; apply saliency mask from step-5 for AMUN+SalUn.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-7"
+    },
+    "anchor": null,
+    "id": "derived-pw-007"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes evaluate unlearned model on D_F, D_R, D_T to compute Unlearn Accuracy, Retain Accuracy, and Test Accuracy.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-8"
+    },
+    "anchor": null,
+    "id": "derived-pw-008"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes run membership inference attack (RMIA) on the unlearned model to compute FT AUC (or MIS for legacy comparisons) between D_F and D_T.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-9"
+    },
+    "anchor": null,
+    "id": "derived-pw-009"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes compute Average Gap as the mean absolute difference between the unlearned model and the Retrain baseline for Unlearn Acc, Retain Acc, Test Acc, and FT AUC (or MIS).",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-10"
+    },
+    "anchor": null,
+    "id": "derived-pw-010"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the setting 'with remain set': Fine-tune on D_R ∪ D_F ∪ D_A when D_R is available; for very large D_F, use D_R ∪ D_A.",
+    "source": {
+      "field": "core_method.settings",
+      "ref": "set-with-remain"
+    },
+    "anchor": null,
+    "id": "derived-pw-011"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the setting 'without remain set': Fine-tune on D_F ∪ D_A when only D_F is accessible; for very large D_F, use only D_A.",
+    "source": {
+      "field": "core_method.settings",
+      "ref": "set-without-remain"
+    },
+    "anchor": null,
+    "id": "derived-pw-012"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the setting 'AMUN+SalUn': AMUN combined with weight saliency masking from SalUn to restrict parameter changes during fine-tuning, applicable in both with- and without-remain settings.",
+    "source": {
+      "field": "core_method.settings",
+      "ref": "set-amun-salun"
+    },
+    "anchor": null,
+    "id": "derived-pw-013"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the use of the CIFAR-10 dataset.",
+    "source": {
+      "field": "datasets",
+      "ref": "CIFAR-10"
+    },
+    "anchor": null,
+    "id": "derived-pw-014"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the use of the Tiny Imagenet dataset.",
+    "source": {
+      "field": "datasets",
+      "ref": "Tiny Imagenet"
+    },
+    "anchor": null,
+    "id": "derived-pw-015"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the use of the ResNet-18 model.",
+    "source": {
+      "field": "models",
+      "ref": "ResNet-18"
+    },
+    "anchor": null,
+    "id": "derived-pw-016"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the use of the VGG19 model.",
+    "source": {
+      "field": "models",
+      "ref": "VGG19"
+    },
+    "anchor": null,
+    "id": "derived-pw-017"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the use of the Adversarially trained ResNet-18 (TRADES) model.",
+    "source": {
+      "field": "models",
+      "ref": "Adversarially trained ResNet-18 (TRADES)"
+    },
+    "anchor": null,
+    "id": "derived-pw-018"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the use of the Clipped ResNet-18 (Lipschitz-regularized) model.",
+    "source": {
+      "field": "models",
+      "ref": "Clipped ResNet-18 (Lipschitz-regularized)"
+    },
+    "anchor": null,
+    "id": "derived-pw-019"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the Retrain baseline for comparison.",
+    "source": {
+      "field": "baselines",
+      "ref": "Retrain"
+    },
+    "anchor": null,
+    "id": "derived-pw-020"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the FT baseline for comparison.",
+    "source": {
+      "field": "baselines",
+      "ref": "FT"
+    },
+    "anchor": null,
+    "id": "derived-pw-021"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the RL baseline for comparison.",
+    "source": {
+      "field": "baselines",
+      "ref": "RL"
+    },
+    "anchor": null,
+    "id": "derived-pw-022"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the GA baseline for comparison.",
+    "source": {
+      "field": "baselines",
+      "ref": "GA"
+    },
+    "anchor": null,
+    "id": "derived-pw-023"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the BS baseline for comparison.",
+    "source": {
+      "field": "baselines",
+      "ref": "BS"
+    },
+    "anchor": null,
+    "id": "derived-pw-024"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the l1-Sparse baseline for comparison.",
+    "source": {
+      "field": "baselines",
+      "ref": "l1-Sparse"
+    },
+    "anchor": null,
+    "id": "derived-pw-025"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the SalUn baseline for comparison.",
+    "source": {
+      "field": "baselines",
+      "ref": "SalUn"
+    },
+    "anchor": null,
+    "id": "derived-pw-026"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the Unlearn Accuracy evaluation metric.",
+    "source": {
+      "field": "metrics",
+      "ref": "Unlearn Accuracy"
+    },
+    "anchor": null,
+    "id": "derived-pw-027"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the Retain Accuracy evaluation metric.",
+    "source": {
+      "field": "metrics",
+      "ref": "Retain Accuracy"
+    },
+    "anchor": null,
+    "id": "derived-pw-028"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the Test Accuracy evaluation metric.",
+    "source": {
+      "field": "metrics",
+      "ref": "Test Accuracy"
+    },
+    "anchor": null,
+    "id": "derived-pw-029"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the FT AUC evaluation metric.",
+    "source": {
+      "field": "metrics",
+      "ref": "FT AUC"
+    },
+    "anchor": null,
+    "id": "derived-pw-030"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the MIS evaluation metric.",
+    "source": {
+      "field": "metrics",
+      "ref": "MIS"
+    },
+    "anchor": null,
+    "id": "derived-pw-031"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the Average Gap evaluation metric.",
+    "source": {
+      "field": "metrics",
+      "ref": "Average Gap"
+    },
+    "anchor": null,
+    "id": "derived-pw-032"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan specifies the hyperparameter 'Adversarial attack method' with value PGD-50 with ℓ₂ norm bound.",
+    "source": {
+      "field": "core_method.key_hyperparameters",
+      "ref": "Adversarial attack method"
+    },
+    "anchor": null,
+    "id": "derived-pw-033"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan specifies the hyperparameter 'Initial epsilon (ϵ_init)' with value small (unspecified); doubled until adversarial example found.",
+    "source": {
+      "field": "core_method.key_hyperparameters",
+      "ref": "Initial epsilon (ϵ_init)"
+    },
+    "anchor": null,
+    "id": "derived-pw-034"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan specifies the hyperparameter 'PGD step size' with value 0.1 × ϵ.",
+    "source": {
+      "field": "core_method.key_hyperparameters",
+      "ref": "PGD step size"
+    },
+    "anchor": null,
+    "id": "derived-pw-035"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan specifies the hyperparameter 'Fine-tuning epochs' with value 10.",
+    "source": {
+      "field": "core_method.key_hyperparameters",
+      "ref": "Fine-tuning epochs"
+    },
+    "anchor": null,
+    "id": "derived-pw-036"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan specifies the hyperparameter 'Learning rate' with value grid search in [10⁻⁶, 10⁻¹].",
+    "source": {
+      "field": "core_method.key_hyperparameters",
+      "ref": "Learning rate"
+    },
+    "anchor": null,
+    "id": "derived-pw-037"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code implementing the following step is present: Train initial model f on full dataset D (or load a pretrained classifier).",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-1"
+    },
+    "anchor": null,
+    "id": "derived-ci-001"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code implementing the following step is present: Partition dataset into forget set D_F, retain set D_R, and test set D_T according to the target forget percentage.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-2"
+    },
+    "anchor": null,
+    "id": "derived-ci-002"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code implementing the following step is present: For each sample x in D_F, generate adversarial example x_adv using PGD-50 attack with L2 norm bound; start with a small epsilon and double it until the model prediction is different from the original label.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-3"
+    },
+    "anchor": null,
+    "id": "derived-ci-003"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code implementing the following step is present: Assign a random wrong label y_wrong (any class other than the ground truth) to each x_adv to form the adversarial dataset D_A.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-4"
+    },
+    "anchor": null,
+    "id": "derived-ci-004"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code implementing the following step is present: (Optional, for AMUN+SalUn) Compute weight saliency mask on f by gradient-based importance estimation using D_F to restrict parameter updates.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-5"
+    },
+    "anchor": null,
+    "id": "derived-ci-005"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code implementing the following step is present: Assemble fine-tuning dataset: if D_R is available use D_R ∪ D_F ∪ D_A; if only D_F is accessible use D_F ∪ D_A; for very large D_F, use D_R ∪ D_A or only D_A.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-6"
+    },
+    "anchor": null,
+    "id": "derived-ci-006"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code implementing the following step is present: Fine-tune f on the assembled dataset for 10 epochs using cross-entropy loss and a learning rate chosen by grid search over [10^{-6}, 10^{-1}]; apply saliency mask from step-5 for AMUN+SalUn.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-7"
+    },
+    "anchor": null,
+    "id": "derived-ci-007"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code implementing the following step is present: Evaluate unlearned model on D_F, D_R, D_T to compute Unlearn Accuracy, Retain Accuracy, and Test Accuracy.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-8"
+    },
+    "anchor": null,
+    "id": "derived-ci-008"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code implementing the following step is present: Run membership inference attack (RMIA) on the unlearned model to compute FT AUC (or MIS for legacy comparisons) between D_F and D_T.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-9"
+    },
+    "anchor": null,
+    "id": "derived-ci-009"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code implementing the following step is present: Compute Average Gap as the mean absolute difference between the unlearned model and the Retrain baseline for Unlearn Acc, Retain Acc, Test Acc, and FT AUC (or MIS).",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-10"
+    },
+    "anchor": null,
+    "id": "derived-ci-010"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code for the Retrain baseline is implemented.",
+    "source": {
+      "field": "baselines",
+      "ref": "Retrain"
+    },
+    "anchor": null,
+    "id": "derived-ci-011"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code for the FT baseline is implemented.",
+    "source": {
+      "field": "baselines",
+      "ref": "FT"
+    },
+    "anchor": null,
+    "id": "derived-ci-012"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code for the RL baseline is implemented.",
+    "source": {
+      "field": "baselines",
+      "ref": "RL"
+    },
+    "anchor": null,
+    "id": "derived-ci-013"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code for the GA baseline is implemented.",
+    "source": {
+      "field": "baselines",
+      "ref": "GA"
+    },
+    "anchor": null,
+    "id": "derived-ci-014"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code for the BS baseline is implemented.",
+    "source": {
+      "field": "baselines",
+      "ref": "BS"
+    },
+    "anchor": null,
+    "id": "derived-ci-015"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code for the l1-Sparse baseline is implemented.",
+    "source": {
+      "field": "baselines",
+      "ref": "l1-Sparse"
+    },
+    "anchor": null,
+    "id": "derived-ci-016"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code for the SalUn baseline is implemented.",
+    "source": {
+      "field": "baselines",
+      "ref": "SalUn"
+    },
+    "anchor": null,
+    "id": "derived-ci-017"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code computing the Unlearn Accuracy metric is implemented.",
+    "source": {
+      "field": "metrics",
+      "ref": "Unlearn Accuracy"
+    },
+    "anchor": null,
+    "id": "derived-ci-018"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code computing the Retain Accuracy metric is implemented.",
+    "source": {
+      "field": "metrics",
+      "ref": "Retain Accuracy"
+    },
+    "anchor": null,
+    "id": "derived-ci-019"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code computing the Test Accuracy metric is implemented.",
+    "source": {
+      "field": "metrics",
+      "ref": "Test Accuracy"
+    },
+    "anchor": null,
+    "id": "derived-ci-020"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code computing the FT AUC metric is implemented.",
+    "source": {
+      "field": "metrics",
+      "ref": "FT AUC"
+    },
+    "anchor": null,
+    "id": "derived-ci-021"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code computing the MIS metric is implemented.",
+    "source": {
+      "field": "metrics",
+      "ref": "MIS"
+    },
+    "anchor": null,
+    "id": "derived-ci-022"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code computing the Average Gap metric is implemented.",
+    "source": {
+      "field": "metrics",
+      "ref": "Average Gap"
+    },
+    "anchor": null,
+    "id": "derived-ci-023"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The agent has executed the command(s) that produce the results shown in Table 1 (AMUN achieves the lowest Average Gap, outperforming all baselines when the remai...).",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-table1"
+    },
+    "anchor": "table-1",
+    "id": "derived-ce-001"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The agent has executed the command(s) that produce the results shown in Table 2 (AMUN dominates prior methods when only the forget set D_F is available, and AMUN...).",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-table2"
+    },
+    "anchor": "table-2",
+    "id": "derived-ce-002"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The agent has executed the command(s) that produce the results shown in Figure 2 (AMUN outperforms other methods in continuous unlearning (multiple sequential req...).",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-figure2"
+    },
+    "anchor": "figure-2",
+    "id": "derived-ce-003"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The agent has executed the command(s) that produce the results shown in Table 4 (AMUN and AMUN+SalUn outperform baselines on Tiny Imagenet (VGG19) when D_R is ac...).",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-table4"
+    },
+    "anchor": "table-4",
+    "id": "derived-ce-004"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The agent has executed the command(s) that produce the results shown in Table 5 (AMUN and AMUN+SalUn significantly outperform baselines on Tiny Imagenet when onl...).",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-table5"
+    },
+    "anchor": "table-5",
+    "id": "derived-ce-005"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The agent has executed the command(s) that produce the results shown in Table 3 (AMUN remains effective on adversarially robust (clipped) ResNet-18 models even w...).",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-table3"
+    },
+    "anchor": "table-3",
+    "id": "derived-ce-006"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The agent has executed the command(s) that produce the results shown in Table 6 (AMUN is effective on clipped robust models when D_R is available.).",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-table6"
+    },
+    "anchor": "table-6",
+    "id": "derived-ce-007"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The agent has executed the command(s) that produce the results shown in Table 7 (AMUN is effective on adversarially trained ResNet-18 models (TRADES) when D_R is...).",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-table7"
+    },
+    "anchor": "table-7",
+    "id": "derived-ce-008"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The agent has executed the command(s) that produce the results shown in Figure 1 (Using adversarial examples with wrong labels (D_A) preserves test accuracy durin...).",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-figure1"
+    },
+    "anchor": "figure-1",
+    "id": "derived-ce-009"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The training process for AMUN has been successfully executed and finished without errors.",
+    "source": {
+      "field": "reproducibility_meta",
+      "ref": "training"
+    },
+    "anchor": null,
+    "id": "derived-ce-010"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The evaluation pipeline for AMUN has been successfully executed and finished without errors.",
+    "source": {
+      "field": "reproducibility_meta",
+      "ref": "evaluation"
+    },
+    "anchor": null,
+    "id": "derived-ce-011"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The evaluation on the CIFAR-10 dataset has been successfully executed without errors.",
+    "source": {
+      "field": "datasets",
+      "ref": "CIFAR-10"
+    },
+    "anchor": null,
+    "id": "derived-ce-012"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The evaluation on the Tiny Imagenet dataset has been successfully executed without errors.",
+    "source": {
+      "field": "datasets",
+      "ref": "Tiny Imagenet"
+    },
+    "anchor": null,
+    "id": "derived-ce-013"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The Retrain baseline has been successfully executed and produced its expected output.",
+    "source": {
+      "field": "baselines",
+      "ref": "Retrain"
+    },
+    "anchor": null,
+    "id": "derived-ce-014"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The FT baseline has been successfully executed and produced its expected output.",
+    "source": {
+      "field": "baselines",
+      "ref": "FT"
+    },
+    "anchor": null,
+    "id": "derived-ce-015"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The RL baseline has been successfully executed and produced its expected output.",
+    "source": {
+      "field": "baselines",
+      "ref": "RL"
+    },
+    "anchor": null,
+    "id": "derived-ce-016"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The GA baseline has been successfully executed and produced its expected output.",
+    "source": {
+      "field": "baselines",
+      "ref": "GA"
+    },
+    "anchor": null,
+    "id": "derived-ce-017"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The BS baseline has been successfully executed and produced its expected output.",
+    "source": {
+      "field": "baselines",
+      "ref": "BS"
+    },
+    "anchor": null,
+    "id": "derived-ce-018"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The l1-Sparse baseline has been successfully executed and produced its expected output.",
+    "source": {
+      "field": "baselines",
+      "ref": "l1-Sparse"
+    },
+    "anchor": null,
+    "id": "derived-ce-019"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The SalUn baseline has been successfully executed and produced its expected output.",
+    "source": {
+      "field": "baselines",
+      "ref": "SalUn"
+    },
+    "anchor": null,
+    "id": "derived-ce-020"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The experiment under the 'with remain set' setting has been successfully executed and produced its expected output.",
+    "source": {
+      "field": "core_method.settings",
+      "ref": "set-with-remain"
+    },
+    "anchor": null,
+    "id": "derived-ce-021"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The experiment under the 'without remain set' setting has been successfully executed and produced its expected output.",
+    "source": {
+      "field": "core_method.settings",
+      "ref": "set-without-remain"
+    },
+    "anchor": null,
+    "id": "derived-ce-022"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The experiment under the 'AMUN+SalUn' setting has been successfully executed and produced its expected output.",
+    "source": {
+      "field": "core_method.settings",
+      "ref": "set-amun-salun"
+    },
+    "anchor": null,
+    "id": "derived-ce-023"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the results in Table 1: AMUN achieves the lowest Average Gap, outperforming all baselines when the remain set D_R is available during unlearning (CIFAR-10, 10% and 50% forget sizes).",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-table1"
+    },
+    "anchor": "table-1",
+    "id": "derived-rm-001"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the results in Table 2: AMUN dominates prior methods when only the forget set D_F is available, and AMUN+SalUn further improves the Average Gap (CIFAR-10, 10% and 50% forget sizes).",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-table2"
+    },
+    "anchor": "table-2",
+    "id": "derived-rm-002"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the results in Figure 2: AMUN outperforms other methods in continuous unlearning (multiple sequential requests) by maintaining a larger gap between D_R vs D_F and D_F vs D_T AUCs.",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-figure2"
+    },
+    "anchor": "figure-2",
+    "id": "derived-rm-003"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the results in Table 4: AMUN and AMUN+SalUn outperform baselines on Tiny Imagenet (VGG19) when D_R is accessible.",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-table4"
+    },
+    "anchor": "table-4",
+    "id": "derived-rm-004"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the results in Table 5: AMUN and AMUN+SalUn significantly outperform baselines on Tiny Imagenet when only D_F is accessible.",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-table5"
+    },
+    "anchor": "table-5",
+    "id": "derived-rm-005"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the results in Table 3: AMUN remains effective on adversarially robust (clipped) ResNet-18 models even without access to D_R; FT AUC stays near random guessing.",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-table3"
+    },
+    "anchor": "table-3",
+    "id": "derived-rm-006"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the results in Table 6: AMUN is effective on clipped robust models when D_R is available.",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-table6"
+    },
+    "anchor": "table-6",
+    "id": "derived-rm-007"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the results in Table 7: AMUN is effective on adversarially trained ResNet-18 models (TRADES) when D_R is available.",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-table7"
+    },
+    "anchor": "table-7",
+    "id": "derived-rm-008"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the results in Figure 1: Using adversarial examples with wrong labels (D_A) preserves test accuracy during fine-tuning; replacing D_A with random-location or random-label datasets leads to accuracy degradation, especially without D_R.",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-figure1"
+    },
+    "anchor": "figure-1",
+    "id": "derived-rm-009"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the specific claim (based on Table 1): AMUN achieves the smallest Average Gap among approximate methods when D_R is available, significantly closing the gap to retrained models.",
+    "source": {
+      "field": "expected_claims",
+      "ref": "claim-1"
+    },
+    "anchor": "table-1",
+    "id": "derived-rm-010"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the specific claim (based on Table 2): Without access to D_R, AMUN (and AMUN+SalUn) substantially outperforms other methods, while other methods fail (GA degrades, RL/BS/SalUn produce near-perfect accuracy but poor MIA scores).",
+    "source": {
+      "field": "expected_claims",
+      "ref": "claim-2"
+    },
+    "anchor": "table-2",
+    "id": "derived-rm-011"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the specific claim (based on Table 1): After unlearning 10% of CIFAR-10 with AMUN, the SOTA membership inference attack RMIA cannot distinguish forget samples from test samples (AUC ≈ 50%).",
+    "source": {
+      "field": "expected_claims",
+      "ref": "claim-3"
+    },
+    "anchor": "table-1",
+    "id": "derived-rm-012"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the specific claim (based on Figure 1): Fine-tuning on adversarial examples does not cause catastrophic forgetting of test accuracy.",
+    "source": {
+      "field": "expected_claims",
+      "ref": "claim-4"
+    },
+    "anchor": "figure-1",
+    "id": "derived-rm-013"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the specific claim (based on Figure 2): AMUN handles continuous unlearning requests effectively; after 5 sequential unlearnings of 2% each, the gap between D_R vs D_F and D_F vs D_T AUCs remains large (better than baselines).",
+    "source": {
+      "field": "expected_claims",
+      "ref": "claim-5"
+    },
+    "anchor": "figure-2",
+    "id": "derived-rm-014"
+  }
+]

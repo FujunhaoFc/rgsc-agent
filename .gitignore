@@ -7,8 +7,7 @@ data/train_valid/
 data/example_repo/
 data/official_tools/
 data/OFFICIAL_README.md
-outputs/*/
-!outputs/.gitkeep
+outputs/*/_debug/
+outputs/*/verification_report.json
 .DS_Store
 *.log
-outputs/*/_debug/

@@ -1,0 +1,1362 @@
+[
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 1 (Introduction) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-1"
+    },
+    "anchor": null,
+    "id": "derived-po-001"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 2 (Limitations of Current Generation Evaluation in Diverse Languages) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-2"
+    },
+    "anchor": null,
+    "id": "derived-po-002"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 2.1 (The Limitations and Shortcomings of Current Generation Evaluation) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-2.1"
+    },
+    "anchor": null,
+    "id": "derived-po-003"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 2.2 (Generation Evaluation in the Face of Language Diversity) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-2.2"
+    },
+    "anchor": null,
+    "id": "derived-po-004"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 3 (Our Approach: Systematic Evaluation of Summarization Across Languages) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-3"
+    },
+    "anchor": null,
+    "id": "derived-po-005"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 4 (Data Collection) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-4"
+    },
+    "anchor": null,
+    "id": "derived-po-006"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 4.1 (The Generated Summaries) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-4.1"
+    },
+    "anchor": null,
+    "id": "derived-po-007"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 4.2 (The Task: Ranking the Generated Summaries) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-4.2"
+    },
+    "anchor": null,
+    "id": "derived-po-008"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 4.3 (Ensuring High Annotation Consistency) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-4.3"
+    },
+    "anchor": null,
+    "id": "derived-po-009"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 5 (Correlation Analysis Settings) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-5"
+    },
+    "anchor": null,
+    "id": "derived-po-010"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 5.1 (Data Analysis) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-5.1"
+    },
+    "anchor": null,
+    "id": "derived-po-011"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 5.2 (Assessed Metrics for Summarization) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-5.2"
+    },
+    "anchor": null,
+    "id": "derived-po-012"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 6 (Results and Analysis) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-6"
+    },
+    "anchor": null,
+    "id": "derived-po-013"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 7 (Conclusion) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-7"
+    },
+    "anchor": null,
+    "id": "derived-po-014"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section A (Data Collection) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-A"
+    },
+    "anchor": null,
+    "id": "derived-po-015"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section A.1 (Language Selection) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-A.1"
+    },
+    "anchor": null,
+    "id": "derived-po-016"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section A.2 (Power Analysis for Sample Size) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-A.2"
+    },
+    "anchor": null,
+    "id": "derived-po-017"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section A.3 (Participant Interface) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-A.3"
+    },
+    "anchor": null,
+    "id": "derived-po-018"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section A.4 (Data Collection Details) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-A.4"
+    },
+    "anchor": null,
+    "id": "derived-po-019"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section A.5 (Data Corruption) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-A.5"
+    },
+    "anchor": null,
+    "id": "derived-po-020"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section A.6 (Qualification Task) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-A.6"
+    },
+    "anchor": null,
+    "id": "derived-po-021"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section B (Correlation Analysis) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-B"
+    },
+    "anchor": null,
+    "id": "derived-po-022"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section B.1 (Implementation Details) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-B.1"
+    },
+    "anchor": null,
+    "id": "derived-po-023"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section B.2 (Results) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-B.2"
+    },
+    "anchor": null,
+    "id": "derived-po-024"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Table 1 and understood the information it presents.",
+    "source": {
+      "field": "entities.tables",
+      "ref": "table-1"
+    },
+    "anchor": "table-1",
+    "id": "derived-po-025"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Table 2 and understood the information it presents.",
+    "source": {
+      "field": "entities.tables",
+      "ref": "table-2"
+    },
+    "anchor": "table-2",
+    "id": "derived-po-026"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Table 3 and understood the information it presents.",
+    "source": {
+      "field": "entities.tables",
+      "ref": "table-3"
+    },
+    "anchor": "table-3",
+    "id": "derived-po-027"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Table 4 and understood the information it presents.",
+    "source": {
+      "field": "entities.tables",
+      "ref": "table-4"
+    },
+    "anchor": "table-4",
+    "id": "derived-po-028"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Table 5 and understood the information it presents.",
+    "source": {
+      "field": "entities.tables",
+      "ref": "table-5"
+    },
+    "anchor": "table-5",
+    "id": "derived-po-029"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Table 6 and understood the information it presents.",
+    "source": {
+      "field": "entities.tables",
+      "ref": "table-6"
+    },
+    "anchor": "table-6",
+    "id": "derived-po-030"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Table 8 and understood the information it presents.",
+    "source": {
+      "field": "entities.tables",
+      "ref": "table-8"
+    },
+    "anchor": "table-8",
+    "id": "derived-po-031"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Table 9 and understood the information it presents.",
+    "source": {
+      "field": "entities.tables",
+      "ref": "table-9"
+    },
+    "anchor": "table-9",
+    "id": "derived-po-032"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Table 7 and understood the information it presents.",
+    "source": {
+      "field": "entities.tables",
+      "ref": "table-7"
+    },
+    "anchor": "table-7",
+    "id": "derived-po-033"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Table 11 and understood the information it presents.",
+    "source": {
+      "field": "entities.tables",
+      "ref": "table-11"
+    },
+    "anchor": "table-11",
+    "id": "derived-po-034"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Table 10 and understood the information it presents.",
+    "source": {
+      "field": "entities.tables",
+      "ref": "table-10"
+    },
+    "anchor": "table-10",
+    "id": "derived-po-035"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Figure 1 and understood the information it presents.",
+    "source": {
+      "field": "entities.figures",
+      "ref": "figure-1"
+    },
+    "anchor": "figure-1",
+    "id": "derived-po-036"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Figure 6 and understood the information it presents.",
+    "source": {
+      "field": "entities.figures",
+      "ref": "figure-6"
+    },
+    "anchor": "figure-6",
+    "id": "derived-po-037"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Figure 2 and understood the information it presents.",
+    "source": {
+      "field": "entities.figures",
+      "ref": "figure-2"
+    },
+    "anchor": "figure-2",
+    "id": "derived-po-038"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Figure 3 and understood the information it presents.",
+    "source": {
+      "field": "entities.figures",
+      "ref": "figure-3"
+    },
+    "anchor": "figure-3",
+    "id": "derived-po-039"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Figure 4 and understood the information it presents.",
+    "source": {
+      "field": "entities.figures",
+      "ref": "figure-4"
+    },
+    "anchor": "figure-4",
+    "id": "derived-po-040"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Figure 5 and understood the information it presents.",
+    "source": {
+      "field": "entities.figures",
+      "ref": "figure-5"
+    },
+    "anchor": "figure-5",
+    "id": "derived-po-041"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes select 8 languages from 4 typological families (Isolating: Chinese, Yoruba; Agglutinative: Japanese, Turkish; Low Fusional: Arabic, Spanish; High Fusional: Hebrew, Ukrainian) and group by resource level (High/Low) based on GPT-3 pre-training data proportions.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-1"
+    },
+    "anchor": null,
+    "id": "derived-pw-001"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes sample 400 test articles and reference summaries per language from XL-Sum (for 7 languages) and HeSum (for Hebrew).",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-2"
+    },
+    "anchor": null,
+    "id": "derived-pw-002"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes generate system summaries for all 400 samples per language using GPT-3.5-Turbo-0125 and Gemini-1.0-Pro, yielding two summaries per article.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-3"
+    },
+    "anchor": null,
+    "id": "derived-pw-003"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes corrupt a subset of generated summaries using language-specific strategies: for coherence, replace verbs with lemmas, replace conjunctions, or reorder non-adjacent sentences; for completeness, shuffle named entities with the same label and insert an irrelevant sentence from another article.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-4"
+    },
+    "anchor": null,
+    "id": "derived-pw-004"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes design the MTurk annotation task: each HIT displays an article, a qualification question, and two system summaries (one from each model); annotators rate each summary on coherence and completeness using a 1–4 Likert scale, with descriptions of each quality criterion.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-5"
+    },
+    "anchor": null,
+    "id": "derived-pw-005"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes recruit crowd workers via Amazon Mechanical Turk, with 3 annotators per summary pair, and collect ~20,000 total annotations (400 samples × 3 annotators × 2 models per language).",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-6"
+    },
+    "anchor": null,
+    "id": "derived-pw-006"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes aggregate human ratings per summary (e.g., mean of the 3 annotators) to obtain final Likert scores for coherence and completeness.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-7"
+    },
+    "anchor": null,
+    "id": "derived-pw-007"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes compute n-gram metric scores for all system summaries against gold references: ROUGE-1/2/3/L with default space tokenization, BLEU, CHRF, ROUGE variants with mBERT tokenizer and with language‑specific monolingual tokenizer, and BLEU computed on lemmatized text for fusional languages.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-8a"
+    },
+    "anchor": null,
+    "id": "derived-pw-008"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes compute neural metric scores: MoverScore (with mBERT embeddings), BERTScore (using mBERT and language‑specific BERT models per language), Gemini-as-a-judge (Gemini 1.0 Pro with same prompt as annotators), and COMET (using wmt22‑comet‑da, excluding source input to adapt for summarization).",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-8b"
+    },
+    "anchor": null,
+    "id": "derived-pw-009"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes calculate Pearson correlation coefficient between each metric’s scores and the aggregated human Likert ratings, separately for coherence and completeness.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-9"
+    },
+    "anchor": null,
+    "id": "derived-pw-010"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes group correlations by typological family: Isolating (Chinese, Yoruba), Agglutinative (Japanese, Turkish), Low Fusional (Arabic, Spanish), High Fusional (Hebrew, Ukrainian); compute per‑family averages.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-10"
+    },
+    "anchor": null,
+    "id": "derived-pw-011"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes group correlations by resource level: High (Chinese, Japanese, Arabic, Spanish) and Low (Yoruba, Turkish, Hebrew, Ukrainian) based on GPT-3 token proportions; compute per‑resource averages.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-11"
+    },
+    "anchor": null,
+    "id": "derived-pw-012"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes report Pearson r values with statistical significance markers (*p<0.05, **p<0.01).",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-12"
+    },
+    "anchor": null,
+    "id": "derived-pw-013"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the setting 'full correlation analysis': Evaluation of 21 automatic metrics (n-gram and neural, including tokenizer-adapted variants) using 400 samples per language, 3 annotators per summary, Likert-scale ratings for coherence and completeness, with Pearson correlation and p-value significance testing.",
+    "source": {
+      "field": "core_method.settings",
+      "ref": "set-1"
+    },
+    "anchor": null,
+    "id": "derived-pw-014"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the use of the XL-Sum dataset.",
+    "source": {
+      "field": "datasets",
+      "ref": "XL-Sum"
+    },
+    "anchor": null,
+    "id": "derived-pw-015"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the use of the HeSum dataset.",
+    "source": {
+      "field": "datasets",
+      "ref": "HeSum"
+    },
+    "anchor": null,
+    "id": "derived-pw-016"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the use of the GPT-3.5-Turbo-0125 model.",
+    "source": {
+      "field": "models",
+      "ref": "GPT-3.5-Turbo-0125"
+    },
+    "anchor": null,
+    "id": "derived-pw-017"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the use of the Gemini-1.0-Pro model.",
+    "source": {
+      "field": "models",
+      "ref": "Gemini-1.0-Pro"
+    },
+    "anchor": null,
+    "id": "derived-pw-018"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the ROUGE-1 baseline for comparison.",
+    "source": {
+      "field": "baselines",
+      "ref": "ROUGE-1"
+    },
+    "anchor": null,
+    "id": "derived-pw-019"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the ROUGE-2 baseline for comparison.",
+    "source": {
+      "field": "baselines",
+      "ref": "ROUGE-2"
+    },
+    "anchor": null,
+    "id": "derived-pw-020"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the ROUGE-3 baseline for comparison.",
+    "source": {
+      "field": "baselines",
+      "ref": "ROUGE-3"
+    },
+    "anchor": null,
+    "id": "derived-pw-021"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the ROUGE-L baseline for comparison.",
+    "source": {
+      "field": "baselines",
+      "ref": "ROUGE-L"
+    },
+    "anchor": null,
+    "id": "derived-pw-022"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the BLEU baseline for comparison.",
+    "source": {
+      "field": "baselines",
+      "ref": "BLEU"
+    },
+    "anchor": null,
+    "id": "derived-pw-023"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the CHRF baseline for comparison.",
+    "source": {
+      "field": "baselines",
+      "ref": "CHRF"
+    },
+    "anchor": null,
+    "id": "derived-pw-024"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the ROUGE-1 (mBERT Tokenizer) baseline for comparison.",
+    "source": {
+      "field": "baselines",
+      "ref": "ROUGE-1 (mBERT Tokenizer)"
+    },
+    "anchor": null,
+    "id": "derived-pw-025"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the ROUGE-2 (mBERT Tokenizer) baseline for comparison.",
+    "source": {
+      "field": "baselines",
+      "ref": "ROUGE-2 (mBERT Tokenizer)"
+    },
+    "anchor": null,
+    "id": "derived-pw-026"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the ROUGE-3 (mBERT Tokenizer) baseline for comparison.",
+    "source": {
+      "field": "baselines",
+      "ref": "ROUGE-3 (mBERT Tokenizer)"
+    },
+    "anchor": null,
+    "id": "derived-pw-027"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the ROUGE-L (mBERT Tokenizer) baseline for comparison.",
+    "source": {
+      "field": "baselines",
+      "ref": "ROUGE-L (mBERT Tokenizer)"
+    },
+    "anchor": null,
+    "id": "derived-pw-028"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the ROUGE-1 (Monolingual Tokenizer) baseline for comparison.",
+    "source": {
+      "field": "baselines",
+      "ref": "ROUGE-1 (Monolingual Tokenizer)"
+    },
+    "anchor": null,
+    "id": "derived-pw-029"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the ROUGE-2 (Monolingual Tokenizer) baseline for comparison.",
+    "source": {
+      "field": "baselines",
+      "ref": "ROUGE-2 (Monolingual Tokenizer)"
+    },
+    "anchor": null,
+    "id": "derived-pw-030"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the ROUGE-3 (Monolingual Tokenizer) baseline for comparison.",
+    "source": {
+      "field": "baselines",
+      "ref": "ROUGE-3 (Monolingual Tokenizer)"
+    },
+    "anchor": null,
+    "id": "derived-pw-031"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the ROUGE-L (Monolingual Tokenizer) baseline for comparison.",
+    "source": {
+      "field": "baselines",
+      "ref": "ROUGE-L (Monolingual Tokenizer)"
+    },
+    "anchor": null,
+    "id": "derived-pw-032"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the BLEU (Lemmatized Form) baseline for comparison.",
+    "source": {
+      "field": "baselines",
+      "ref": "BLEU (Lemmatized Form)"
+    },
+    "anchor": null,
+    "id": "derived-pw-033"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the Gemini as a Judge baseline for comparison.",
+    "source": {
+      "field": "baselines",
+      "ref": "Gemini as a Judge"
+    },
+    "anchor": null,
+    "id": "derived-pw-034"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the MoverScore baseline for comparison.",
+    "source": {
+      "field": "baselines",
+      "ref": "MoverScore"
+    },
+    "anchor": null,
+    "id": "derived-pw-035"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the BERTScore (mBERT) baseline for comparison.",
+    "source": {
+      "field": "baselines",
+      "ref": "BERTScore (mBERT)"
+    },
+    "anchor": null,
+    "id": "derived-pw-036"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the BERTScore (Monolingual) baseline for comparison.",
+    "source": {
+      "field": "baselines",
+      "ref": "BERTScore (Monolingual)"
+    },
+    "anchor": null,
+    "id": "derived-pw-037"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the COMET baseline for comparison.",
+    "source": {
+      "field": "baselines",
+      "ref": "COMET"
+    },
+    "anchor": null,
+    "id": "derived-pw-038"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the Pearson correlation evaluation metric.",
+    "source": {
+      "field": "metrics",
+      "ref": "Pearson correlation"
+    },
+    "anchor": null,
+    "id": "derived-pw-039"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan specifies the hyperparameter 'samples_per_language' with value 400.",
+    "source": {
+      "field": "core_method.key_hyperparameters",
+      "ref": "samples_per_language"
+    },
+    "anchor": null,
+    "id": "derived-pw-040"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan specifies the hyperparameter 'annotators_per_summary' with value 3.",
+    "source": {
+      "field": "core_method.key_hyperparameters",
+      "ref": "annotators_per_summary"
+    },
+    "anchor": null,
+    "id": "derived-pw-041"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan specifies the hyperparameter 'rating_scale' with value 1-4 Likert.",
+    "source": {
+      "field": "core_method.key_hyperparameters",
+      "ref": "rating_scale"
+    },
+    "anchor": null,
+    "id": "derived-pw-042"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan specifies the hyperparameter 'quality_criteria' with value Coherence, Completeness.",
+    "source": {
+      "field": "core_method.key_hyperparameters",
+      "ref": "quality_criteria"
+    },
+    "anchor": null,
+    "id": "derived-pw-043"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan specifies the hyperparameter 'generation_models' with value GPT-3.5-Turbo-0125, Gemini 1.0 Pro.",
+    "source": {
+      "field": "core_method.key_hyperparameters",
+      "ref": "generation_models"
+    },
+    "anchor": null,
+    "id": "derived-pw-044"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan specifies the hyperparameter 'correlation_metric' with value Pearson r.",
+    "source": {
+      "field": "core_method.key_hyperparameters",
+      "ref": "correlation_metric"
+    },
+    "anchor": null,
+    "id": "derived-pw-045"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan specifies the hyperparameter 'significance_testing' with value p-values reported (*p<0.05, **p<0.01).",
+    "source": {
+      "field": "core_method.key_hyperparameters",
+      "ref": "significance_testing"
+    },
+    "anchor": null,
+    "id": "derived-pw-046"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code implementing the following step is present: Select 8 languages from 4 typological families (Isolating: Chinese, Yoruba; Agglutinative: Japanese, Turkish; Low Fusional: Arabic, Spanish; High Fusional: Hebrew, Ukrainian) and group by resource level (High/Low) based on GPT-3 pre-training data proportions.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-1"
+    },
+    "anchor": null,
+    "id": "derived-ci-001"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code implementing the following step is present: Sample 400 test articles and reference summaries per language from XL-Sum (for 7 languages) and HeSum (for Hebrew).",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-2"
+    },
+    "anchor": null,
+    "id": "derived-ci-002"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code implementing the following step is present: Generate system summaries for all 400 samples per language using GPT-3.5-Turbo-0125 and Gemini-1.0-Pro, yielding two summaries per article.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-3"
+    },
+    "anchor": null,
+    "id": "derived-ci-003"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code implementing the following step is present: Corrupt a subset of generated summaries using language-specific strategies: for coherence, replace verbs with lemmas, replace conjunctions, or reorder non-adjacent sentences; for completeness, shuffle named entities with the same label and insert an irrelevant sentence from another article.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-4"
+    },
+    "anchor": null,
+    "id": "derived-ci-004"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code implementing the following step is present: Design the MTurk annotation task: each HIT displays an article, a qualification question, and two system summaries (one from each model); annotators rate each summary on coherence and completeness using a 1–4 Likert scale, with descriptions of each quality criterion.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-5"
+    },
+    "anchor": null,
+    "id": "derived-ci-005"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code implementing the following step is present: Recruit crowd workers via Amazon Mechanical Turk, with 3 annotators per summary pair, and collect ~20,000 total annotations (400 samples × 3 annotators × 2 models per language).",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-6"
+    },
+    "anchor": null,
+    "id": "derived-ci-006"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code implementing the following step is present: Aggregate human ratings per summary (e.g., mean of the 3 annotators) to obtain final Likert scores for coherence and completeness.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-7"
+    },
+    "anchor": null,
+    "id": "derived-ci-007"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code implementing the following step is present: Compute n-gram metric scores for all system summaries against gold references: ROUGE-1/2/3/L with default space tokenization, BLEU, CHRF, ROUGE variants with mBERT tokenizer and with language‑specific monolingual tokenizer, and BLEU computed on lemmatized text for fusional languages.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-8a"
+    },
+    "anchor": null,
+    "id": "derived-ci-008"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code implementing the following step is present: Compute neural metric scores: MoverScore (with mBERT embeddings), BERTScore (using mBERT and language‑specific BERT models per language), Gemini-as-a-judge (Gemini 1.0 Pro with same prompt as annotators), and COMET (using wmt22‑comet‑da, excluding source input to adapt for summarization).",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-8b"
+    },
+    "anchor": null,
+    "id": "derived-ci-009"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code implementing the following step is present: Calculate Pearson correlation coefficient between each metric’s scores and the aggregated human Likert ratings, separately for coherence and completeness.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-9"
+    },
+    "anchor": null,
+    "id": "derived-ci-010"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code implementing the following step is present: Group correlations by typological family: Isolating (Chinese, Yoruba), Agglutinative (Japanese, Turkish), Low Fusional (Arabic, Spanish), High Fusional (Hebrew, Ukrainian); compute per‑family averages.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-10"
+    },
+    "anchor": null,
+    "id": "derived-ci-011"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code implementing the following step is present: Group correlations by resource level: High (Chinese, Japanese, Arabic, Spanish) and Low (Yoruba, Turkish, Hebrew, Ukrainian) based on GPT-3 token proportions; compute per‑resource averages.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-11"
+    },
+    "anchor": null,
+    "id": "derived-ci-012"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code implementing the following step is present: Report Pearson r values with statistical significance markers (*p<0.05, **p<0.01).",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-12"
+    },
+    "anchor": null,
+    "id": "derived-ci-013"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code for the ROUGE-1 baseline is implemented.",
+    "source": {
+      "field": "baselines",
+      "ref": "ROUGE-1"
+    },
+    "anchor": null,
+    "id": "derived-ci-014"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code for the ROUGE-2 baseline is implemented.",
+    "source": {
+      "field": "baselines",
+      "ref": "ROUGE-2"
+    },
+    "anchor": null,
+    "id": "derived-ci-015"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code for the ROUGE-3 baseline is implemented.",
+    "source": {
+      "field": "baselines",
+      "ref": "ROUGE-3"
+    },
+    "anchor": null,
+    "id": "derived-ci-016"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code for the ROUGE-L baseline is implemented.",
+    "source": {
+      "field": "baselines",
+      "ref": "ROUGE-L"
+    },
+    "anchor": null,
+    "id": "derived-ci-017"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code for the BLEU baseline is implemented.",
+    "source": {
+      "field": "baselines",
+      "ref": "BLEU"
+    },
+    "anchor": null,
+    "id": "derived-ci-018"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code for the CHRF baseline is implemented.",
+    "source": {
+      "field": "baselines",
+      "ref": "CHRF"
+    },
+    "anchor": null,
+    "id": "derived-ci-019"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code for the ROUGE-1 (mBERT Tokenizer) baseline is implemented.",
+    "source": {
+      "field": "baselines",
+      "ref": "ROUGE-1 (mBERT Tokenizer)"
+    },
+    "anchor": null,
+    "id": "derived-ci-020"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code for the ROUGE-2 (mBERT Tokenizer) baseline is implemented.",
+    "source": {
+      "field": "baselines",
+      "ref": "ROUGE-2 (mBERT Tokenizer)"
+    },
+    "anchor": null,
+    "id": "derived-ci-021"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code for the ROUGE-3 (mBERT Tokenizer) baseline is implemented.",
+    "source": {
+      "field": "baselines",
+      "ref": "ROUGE-3 (mBERT Tokenizer)"
+    },
+    "anchor": null,
+    "id": "derived-ci-022"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code for the ROUGE-L (mBERT Tokenizer) baseline is implemented.",
+    "source": {
+      "field": "baselines",
+      "ref": "ROUGE-L (mBERT Tokenizer)"
+    },
+    "anchor": null,
+    "id": "derived-ci-023"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code for the ROUGE-1 (Monolingual Tokenizer) baseline is implemented.",
+    "source": {
+      "field": "baselines",
+      "ref": "ROUGE-1 (Monolingual Tokenizer)"
+    },
+    "anchor": null,
+    "id": "derived-ci-024"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code for the ROUGE-2 (Monolingual Tokenizer) baseline is implemented.",
+    "source": {
+      "field": "baselines",
+      "ref": "ROUGE-2 (Monolingual Tokenizer)"
+    },
+    "anchor": null,
+    "id": "derived-ci-025"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code for the ROUGE-3 (Monolingual Tokenizer) baseline is implemented.",
+    "source": {
+      "field": "baselines",
+      "ref": "ROUGE-3 (Monolingual Tokenizer)"
+    },
+    "anchor": null,
+    "id": "derived-ci-026"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code for the ROUGE-L (Monolingual Tokenizer) baseline is implemented.",
+    "source": {
+      "field": "baselines",
+      "ref": "ROUGE-L (Monolingual Tokenizer)"
+    },
+    "anchor": null,
+    "id": "derived-ci-027"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code for the BLEU (Lemmatized Form) baseline is implemented.",
+    "source": {
+      "field": "baselines",
+      "ref": "BLEU (Lemmatized Form)"
+    },
+    "anchor": null,
+    "id": "derived-ci-028"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code for the Gemini as a Judge baseline is implemented.",
+    "source": {
+      "field": "baselines",
+      "ref": "Gemini as a Judge"
+    },
+    "anchor": null,
+    "id": "derived-ci-029"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code for the MoverScore baseline is implemented.",
+    "source": {
+      "field": "baselines",
+      "ref": "MoverScore"
+    },
+    "anchor": null,
+    "id": "derived-ci-030"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code for the BERTScore (mBERT) baseline is implemented.",
+    "source": {
+      "field": "baselines",
+      "ref": "BERTScore (mBERT)"
+    },
+    "anchor": null,
+    "id": "derived-ci-031"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code for the BERTScore (Monolingual) baseline is implemented.",
+    "source": {
+      "field": "baselines",
+      "ref": "BERTScore (Monolingual)"
+    },
+    "anchor": null,
+    "id": "derived-ci-032"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code for the COMET baseline is implemented.",
+    "source": {
+      "field": "baselines",
+      "ref": "COMET"
+    },
+    "anchor": null,
+    "id": "derived-ci-033"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code computing the Pearson correlation metric is implemented.",
+    "source": {
+      "field": "metrics",
+      "ref": "Pearson correlation"
+    },
+    "anchor": null,
+    "id": "derived-ci-034"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The agent has executed the command(s) that produce the results shown in Figure 1 (Elo score trends from human evaluation: Gemini-generated summaries rank higher f...).",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-figure1"
+    },
+    "anchor": "figure-1",
+    "id": "derived-ce-001"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The agent has executed the command(s) that produce the results shown in Table 5 (Standard n-gram metrics show negative or weak correlations with human judgments ...).",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-table5"
+    },
+    "anchor": "table-5",
+    "id": "derived-ce-002"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The agent has executed the command(s) that produce the results shown in Table 6 (COMET yields the highest correlation with human judgments across resource levels...).",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-table6"
+    },
+    "anchor": "table-6",
+    "id": "derived-ce-003"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The agent has executed the command(s) that produce the results shown in Table 10 (Per-language Pearson correlations for coherence confirm the negative trends in f...).",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-perlang-corr-coh"
+    },
+    "anchor": "table-10",
+    "id": "derived-ce-004"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The agent has executed the command(s) that produce the results shown in Table 11 (Per-language completeness correlations mirror the typological patterns and show ...).",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-perlang-corr-com"
+    },
+    "anchor": "table-11",
+    "id": "derived-ce-005"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the results in Figure 1: Elo score trends from human evaluation: Gemini-generated summaries rank higher for high-fusional and low-resource languages, while GPT summaries rank higher for high-resource languages.",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-figure1"
+    },
+    "anchor": "figure-1",
+    "id": "derived-rm-001"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the results in Table 5: Standard n-gram metrics show negative or weak correlations with human judgments for fusional languages (e.g., ROUGE-L -0.23 for high-fusional coherence), while neural metrics like COMET consistently achieve stronger correlations across all typological families (e.g., 0.35 high-fusional coherence).",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-table5"
+    },
+    "anchor": "table-5",
+    "id": "derived-rm-002"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the results in Table 6: COMET yields the highest correlation with human judgments across resource levels; monolingual BERTScore outperforms multilingual BERTScore for high-resource languages and low-resource completeness.",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-table6"
+    },
+    "anchor": "table-6",
+    "id": "derived-rm-003"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the results in Table 10: Per-language Pearson correlations for coherence confirm the negative trends in fusional languages (Hebrew, Arabic) and the benefits of adapted tokenization/neural metrics.",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-perlang-corr-coh"
+    },
+    "anchor": "table-10",
+    "id": "derived-rm-004"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the results in Table 11: Per-language completeness correlations mirror the typological patterns and show that lemmatized BLEU improves high-fusional correlations dramatically (e.g., from -0.10 to 0.40).",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-perlang-corr-com"
+    },
+    "anchor": "table-11",
+    "id": "derived-rm-005"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the specific claim (based on Table 5): Standard ROUGE-L yields negative Pearson correlation for high-fusional languages: -0.23 for coherence and -0.18 for completeness.",
+    "source": {
+      "field": "expected_claims",
+      "ref": "claim-1"
+    },
+    "anchor": "table-5",
+    "id": "derived-rm-006"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the specific claim (based on Table 5): Using the mBERT tokenizer with ROUGE-L changes the correlation for high-fusional languages from negative to positive: -0.23 → 0.08 (coherence) and -0.18 → 0.12 (completeness).",
+    "source": {
+      "field": "expected_claims",
+      "ref": "claim-2"
+    },
+    "anchor": "table-5",
+    "id": "derived-rm-007"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the specific claim (based on Table 5): COMET achieves the highest correlation among all metrics across typological families, with 0.35 for high-fusional coherence and 0.24 for completeness.",
+    "source": {
+      "field": "expected_claims",
+      "ref": "claim-3"
+    },
+    "anchor": "table-5",
+    "id": "derived-rm-008"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the specific claim (based on Table 5): Applying BLEU on lemmatized text improves correlation for high-fusional completeness from -0.10 to 0.40.",
+    "source": {
+      "field": "expected_claims",
+      "ref": "claim-4"
+    },
+    "anchor": "table-5",
+    "id": "derived-rm-009"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the specific claim (based on Table 6): Monolingual BERTScore outperforms multilingual BERTScore for high-resource languages (coherence 0.27 vs 0.23) and low-resource completeness (0.21 vs 0.15).",
+    "source": {
+      "field": "expected_claims",
+      "ref": "claim-5"
+    },
+    "anchor": "table-6",
+    "id": "derived-rm-010"
+  }
+]

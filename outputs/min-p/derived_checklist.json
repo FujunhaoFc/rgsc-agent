@@ -1,0 +1,1692 @@
+[
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 1 (INTRODUCTION) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-1"
+    },
+    "anchor": null,
+    "id": "derived-po-001"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 2 (RELATED WORK) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-2"
+    },
+    "anchor": null,
+    "id": "derived-po-002"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 3 (MIN-p SAMPLING) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-3"
+    },
+    "anchor": null,
+    "id": "derived-po-003"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 3.1 (OVERVIEW OF MIN-p SAMPLING) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-3.1"
+    },
+    "anchor": null,
+    "id": "derived-po-004"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 3.2 (INTUITION BEHIND MIN-p SAMPLING) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-3.2"
+    },
+    "anchor": null,
+    "id": "derived-po-005"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 3.3 (ADVANTAGES OVER EXISTING METHODS) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-3.3"
+    },
+    "anchor": null,
+    "id": "derived-po-006"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 3.4 (IMPLEMENTATION DETAILS) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-3.4"
+    },
+    "anchor": null,
+    "id": "derived-po-007"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section parameter-selection-guidelines (Selection Guidelines.) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-parameter-selection-guidelines"
+    },
+    "anchor": null,
+    "id": "derived-po-008"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 4 (CASE STUDIES: ILLUSTRATIVE EXAMPLES) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-4"
+    },
+    "anchor": null,
+    "id": "derived-po-009"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 5 (EXPERIMENTS) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-5"
+    },
+    "anchor": null,
+    "id": "derived-po-010"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 5.1 (EXPERIMENTAL SETUP) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-5.1"
+    },
+    "anchor": null,
+    "id": "derived-po-011"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 5.2 (RESULTS) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-5.2"
+    },
+    "anchor": null,
+    "id": "derived-po-012"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 5.2.1 (GRADUATE-LEVEL REASONING (GPQA MAIN)) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-5.2.1"
+    },
+    "anchor": null,
+    "id": "derived-po-013"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 5.2.2 (GRADE SCHOOL MATH (GSM8K COT)) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-5.2.2"
+    },
+    "anchor": null,
+    "id": "derived-po-014"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 5.2.3 (CREATIVE WRITING) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-5.2.3"
+    },
+    "anchor": null,
+    "id": "derived-po-015"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 5.3 (ABLATION STUDY) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-5.3"
+    },
+    "anchor": null,
+    "id": "derived-po-016"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 6 (HUMAN EVALUATION) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-6"
+    },
+    "anchor": null,
+    "id": "derived-po-017"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 7 (CONCLUSION) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-7"
+    },
+    "anchor": null,
+    "id": "derived-po-018"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section A (IMPLEMENTATION DETAILS) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-A"
+    },
+    "anchor": null,
+    "id": "derived-po-019"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section A.1 (MIN-p IMPLEMENTATION (CODE LISTING)) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-A.1"
+    },
+    "anchor": null,
+    "id": "derived-po-020"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section A.2 (HYPERPARAMETERS SETTINGS (SELECTION METHODOLOGY)) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-A.2"
+    },
+    "anchor": null,
+    "id": "derived-po-021"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section A.3 (TEST TIME COMPUTE CHALLENGES) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-A.3"
+    },
+    "anchor": null,
+    "id": "derived-po-022"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section A.4 (HOW PERCENTAGES THRESHOLDS DIFFER FOR MIN-P AND TOP-P) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-A.4"
+    },
+    "anchor": null,
+    "id": "derived-po-023"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section A.5 (DETAILED COMMUNITY ADOPTION STATISTICS) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-A.5"
+    },
+    "anchor": null,
+    "id": "derived-po-024"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section B (BENCHMARK EVALUATION RESULTS) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-B"
+    },
+    "anchor": null,
+    "id": "derived-po-025"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section B.1 (ABLATION STUDY) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-B.1"
+    },
+    "anchor": null,
+    "id": "derived-po-026"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section B.4 (RESULTS OF GPQA MAIN OR GSM8K COT BENCHMARKS FOR MISTRAL 7B MODELS - COMBINED TOP P AND TOP K SAMPLING) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-B.4"
+    },
+    "anchor": null,
+    "id": "derived-po-027"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section C (ADDITIONAL EVALUATIONS) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-C"
+    },
+    "anchor": null,
+    "id": "derived-po-028"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section C.1 (ORIGINAL HUMAN EVALUATION SURVEY METHODOLOGY) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-C.1"
+    },
+    "anchor": null,
+    "id": "derived-po-029"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 1 (Participant Recruitment) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-1"
+    },
+    "anchor": null,
+    "id": "derived-po-030"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 2 (Recruitment Notice Participants were recruited with the following study description:) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-2"
+    },
+    "anchor": null,
+    "id": "derived-po-031"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 3 (Survey Structure) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-3"
+    },
+    "anchor": null,
+    "id": "derived-po-032"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 4 (Rating Criteria For each model in each section, participants provided two ratings:) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-4"
+    },
+    "anchor": null,
+    "id": "derived-po-033"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 5 (Sample Presentation) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-5"
+    },
+    "anchor": null,
+    "id": "derived-po-034"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 6 (Quality Control Measures) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-6"
+    },
+    "anchor": null,
+    "id": "derived-po-035"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 7 (Open-Ended Questions) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-7"
+    },
+    "anchor": null,
+    "id": "derived-po-036"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section 8 (Data Collection & Processing) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-8"
+    },
+    "anchor": null,
+    "id": "derived-po-037"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section C.2 (ADDITIONAL HUMAN EVALUATION WITH VLLM INFERENCE ENGINE) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-C.2"
+    },
+    "anchor": null,
+    "id": "derived-po-038"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section C.3 (ADDITIONAL LLM-AS-A-JUDGE EVALUATION FOR CREATIVE WRITING) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-C.3"
+    },
+    "anchor": null,
+    "id": "derived-po-039"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section C.3.1 (STRUCTURED GENERATION FRAMEWORK) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-C.3.1"
+    },
+    "anchor": null,
+    "id": "derived-po-040"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section C.3.2 (CREATIVE WRITING TASK) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-C.3.2"
+    },
+    "anchor": null,
+    "id": "derived-po-041"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section C.3.3 (SAMPLING PARAMETERS) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-C.3.3"
+    },
+    "anchor": null,
+    "id": "derived-po-042"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section C.3.4 (EVALUATION METHODOLOGY) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-C.3.4"
+    },
+    "anchor": null,
+    "id": "derived-po-043"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section C.3.5 (DATA COLLECTION AND ANALYSIS) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-C.3.5"
+    },
+    "anchor": null,
+    "id": "derived-po-044"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section C.3.6 (RESULTS OF CONSTRAINED LLM-AS-JUDGE EVALUATION) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-C.3.6"
+    },
+    "anchor": null,
+    "id": "derived-po-045"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section D (APPLICATIONS AND FUTURE WORK) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-D"
+    },
+    "anchor": null,
+    "id": "derived-po-046"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section D.1 (REAL-WORLD APPLICATIONS OF MIN-P SAMPLING) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-D.1"
+    },
+    "anchor": null,
+    "id": "derived-po-047"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Section D.2 (LIMITATIONS AND FUTURE RESEARCH DIRECTIONS) to understand its content.",
+    "source": {
+      "field": "sections",
+      "ref": "sec-D.2"
+    },
+    "anchor": null,
+    "id": "derived-po-048"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Table 13 and understood the information it presents.",
+    "source": {
+      "field": "entities.tables",
+      "ref": "table-13"
+    },
+    "anchor": "table-13",
+    "id": "derived-po-049"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Table 12 and understood the information it presents.",
+    "source": {
+      "field": "entities.tables",
+      "ref": "table-12"
+    },
+    "anchor": "table-12",
+    "id": "derived-po-050"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Table 1 and understood the information it presents.",
+    "source": {
+      "field": "entities.tables",
+      "ref": "table-1"
+    },
+    "anchor": "table-1",
+    "id": "derived-po-051"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Table 10 and understood the information it presents.",
+    "source": {
+      "field": "entities.tables",
+      "ref": "table-10"
+    },
+    "anchor": "table-10",
+    "id": "derived-po-052"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Table 2 and understood the information it presents.",
+    "source": {
+      "field": "entities.tables",
+      "ref": "table-2"
+    },
+    "anchor": "table-2",
+    "id": "derived-po-053"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Table 3a and understood the information it presents.",
+    "source": {
+      "field": "entities.tables",
+      "ref": "table-3a"
+    },
+    "anchor": "table-3a",
+    "id": "derived-po-054"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Table 8 and understood the information it presents.",
+    "source": {
+      "field": "entities.tables",
+      "ref": "table-8"
+    },
+    "anchor": "table-8",
+    "id": "derived-po-055"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Table 3b and understood the information it presents.",
+    "source": {
+      "field": "entities.tables",
+      "ref": "table-3b"
+    },
+    "anchor": "table-3b",
+    "id": "derived-po-056"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Table 7 and understood the information it presents.",
+    "source": {
+      "field": "entities.tables",
+      "ref": "table-7"
+    },
+    "anchor": "table-7",
+    "id": "derived-po-057"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Table 3 and understood the information it presents.",
+    "source": {
+      "field": "entities.tables",
+      "ref": "table-3"
+    },
+    "anchor": "table-3",
+    "id": "derived-po-058"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Table 4 and understood the information it presents.",
+    "source": {
+      "field": "entities.tables",
+      "ref": "table-4"
+    },
+    "anchor": "table-4",
+    "id": "derived-po-059"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Table 5 and understood the information it presents.",
+    "source": {
+      "field": "entities.tables",
+      "ref": "table-5"
+    },
+    "anchor": "table-5",
+    "id": "derived-po-060"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Table 6 and understood the information it presents.",
+    "source": {
+      "field": "entities.tables",
+      "ref": "table-6"
+    },
+    "anchor": "table-6",
+    "id": "derived-po-061"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Table 9 and understood the information it presents.",
+    "source": {
+      "field": "entities.tables",
+      "ref": "table-9"
+    },
+    "anchor": "table-9",
+    "id": "derived-po-062"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Table 11 and understood the information it presents.",
+    "source": {
+      "field": "entities.tables",
+      "ref": "table-11"
+    },
+    "anchor": "table-11",
+    "id": "derived-po-063"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Table 14 and understood the information it presents.",
+    "source": {
+      "field": "entities.tables",
+      "ref": "table-14"
+    },
+    "anchor": "table-14",
+    "id": "derived-po-064"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Table 15 and understood the information it presents.",
+    "source": {
+      "field": "entities.tables",
+      "ref": "table-15"
+    },
+    "anchor": "table-15",
+    "id": "derived-po-065"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Table 16 and understood the information it presents.",
+    "source": {
+      "field": "entities.tables",
+      "ref": "table-16"
+    },
+    "anchor": "table-16",
+    "id": "derived-po-066"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Table 17 and understood the information it presents.",
+    "source": {
+      "field": "entities.tables",
+      "ref": "table-17"
+    },
+    "anchor": "table-17",
+    "id": "derived-po-067"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Table 18 and understood the information it presents.",
+    "source": {
+      "field": "entities.tables",
+      "ref": "table-18"
+    },
+    "anchor": "table-18",
+    "id": "derived-po-068"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Figure 1 and understood the information it presents.",
+    "source": {
+      "field": "entities.figures",
+      "ref": "figure-1"
+    },
+    "anchor": "figure-1",
+    "id": "derived-po-069"
+  },
+  {
+    "type": "Paper Observation",
+    "description": "The agent has read Figure 2 and understood the information it presents.",
+    "source": {
+      "field": "entities.figures",
+      "ref": "figure-2"
+    },
+    "anchor": "figure-2",
+    "id": "derived-po-070"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes retrieve the unnormalized logits vector for the next token from the language model.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-1"
+    },
+    "anchor": null,
+    "id": "derived-pw-001"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes optionally divide logits by the temperature τ (if τ != 1.0) to control randomness.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-2"
+    },
+    "anchor": null,
+    "id": "derived-pw-002"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes convert the (temperature-scaled) logits to probabilities using softmax.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-3"
+    },
+    "anchor": null,
+    "id": "derived-pw-003"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes identify the maximum token probability p_max = max(probs).",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-4"
+    },
+    "anchor": null,
+    "id": "derived-pw-004"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes compute the dynamic truncation threshold scaled_min_p = p_base * p_max.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-5"
+    },
+    "anchor": null,
+    "id": "derived-pw-005"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes create a boolean mask marking tokens whose probability is less than scaled_min_p as candidates for removal.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-6"
+    },
+    "anchor": null,
+    "id": "derived-pw-006"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes sort token indices by original logit scores in descending order.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-7"
+    },
+    "anchor": null,
+    "id": "derived-pw-007"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes modify the removal mask to keep at least min_tokens_to_keep tokens (default 1) by setting the top min_tokens_to_keep positions in the sorted order to not be removed.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-8"
+    },
+    "anchor": null,
+    "id": "derived-pw-008"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes apply the final removal mask to the logits, setting the values of removed tokens to -inf (or a very low filter value).",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-9"
+    },
+    "anchor": null,
+    "id": "derived-pw-009"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes use the filtered logits for sampling (e.g., multinomial sampling) to select the next token.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-10"
+    },
+    "anchor": null,
+    "id": "derived-pw-010"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the setting 'min-p (p_base=0.05)': Base threshold 0.05 – higher diversity setting, recommended range for creative tasks.",
+    "source": {
+      "field": "core_method.settings",
+      "ref": "set-1"
+    },
+    "anchor": null,
+    "id": "derived-pw-011"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the setting 'min-p (p_base=0.1)': Base threshold 0.1 – balanced setting between coherence and diversity.",
+    "source": {
+      "field": "core_method.settings",
+      "ref": "set-2"
+    },
+    "anchor": null,
+    "id": "derived-pw-012"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the setting 'min-p (p_base=0.2)': Base threshold 0.2 – lower diversity, used in human evaluation for conservative sampling.",
+    "source": {
+      "field": "core_method.settings",
+      "ref": "set-3"
+    },
+    "anchor": null,
+    "id": "derived-pw-013"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the use of the GPQA Main dataset.",
+    "source": {
+      "field": "datasets",
+      "ref": "GPQA Main"
+    },
+    "anchor": null,
+    "id": "derived-pw-014"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the use of the GSM8K dataset.",
+    "source": {
+      "field": "datasets",
+      "ref": "GSM8K"
+    },
+    "anchor": null,
+    "id": "derived-pw-015"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the use of the AlpacaEval Creative Writing dataset.",
+    "source": {
+      "field": "datasets",
+      "ref": "AlpacaEval Creative Writing"
+    },
+    "anchor": null,
+    "id": "derived-pw-016"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the use of the Mistral 7B model.",
+    "source": {
+      "field": "models",
+      "ref": "Mistral 7B"
+    },
+    "anchor": null,
+    "id": "derived-pw-017"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the use of the Mistral Large (123B) model.",
+    "source": {
+      "field": "models",
+      "ref": "Mistral Large (123B)"
+    },
+    "anchor": null,
+    "id": "derived-pw-018"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the use of the Llama 3 (1B–70B) model.",
+    "source": {
+      "field": "models",
+      "ref": "Llama 3 (1B–70B)"
+    },
+    "anchor": null,
+    "id": "derived-pw-019"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the use of the Llama 3.2 70B model.",
+    "source": {
+      "field": "models",
+      "ref": "Llama 3.2 70B"
+    },
+    "anchor": null,
+    "id": "derived-pw-020"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the use of the Llama 3 70B model.",
+    "source": {
+      "field": "models",
+      "ref": "Llama 3 70B"
+    },
+    "anchor": null,
+    "id": "derived-pw-021"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the Temperature Only baseline for comparison.",
+    "source": {
+      "field": "baselines",
+      "ref": "Temperature Only"
+    },
+    "anchor": null,
+    "id": "derived-pw-022"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the Top-p baseline for comparison.",
+    "source": {
+      "field": "baselines",
+      "ref": "Top-p"
+    },
+    "anchor": null,
+    "id": "derived-pw-023"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the Top-k baseline for comparison.",
+    "source": {
+      "field": "baselines",
+      "ref": "Top-k"
+    },
+    "anchor": null,
+    "id": "derived-pw-024"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the η Sampling baseline for comparison.",
+    "source": {
+      "field": "baselines",
+      "ref": "η Sampling"
+    },
+    "anchor": null,
+    "id": "derived-pw-025"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the ε Sampling baseline for comparison.",
+    "source": {
+      "field": "baselines",
+      "ref": "ε Sampling"
+    },
+    "anchor": null,
+    "id": "derived-pw-026"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the Mirostat baseline for comparison.",
+    "source": {
+      "field": "baselines",
+      "ref": "Mirostat"
+    },
+    "anchor": null,
+    "id": "derived-pw-027"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the Standard Sampling (baseline for creative writing comparison) baseline for comparison.",
+    "source": {
+      "field": "baselines",
+      "ref": "Standard Sampling (baseline for creative writing comparison)"
+    },
+    "anchor": null,
+    "id": "derived-pw-028"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the Accuracy evaluation metric.",
+    "source": {
+      "field": "metrics",
+      "ref": "Accuracy"
+    },
+    "anchor": null,
+    "id": "derived-pw-029"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the Win Rate evaluation metric.",
+    "source": {
+      "field": "metrics",
+      "ref": "Win Rate"
+    },
+    "anchor": null,
+    "id": "derived-pw-030"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the Length-Controlled Win Rate (LC-Win Rate) evaluation metric.",
+    "source": {
+      "field": "metrics",
+      "ref": "Length-Controlled Win Rate (LC-Win Rate)"
+    },
+    "anchor": null,
+    "id": "derived-pw-031"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the Entropy of Correct Predictions evaluation metric.",
+    "source": {
+      "field": "metrics",
+      "ref": "Entropy of Correct Predictions"
+    },
+    "anchor": null,
+    "id": "derived-pw-032"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the Human Quality Rating evaluation metric.",
+    "source": {
+      "field": "metrics",
+      "ref": "Human Quality Rating"
+    },
+    "anchor": null,
+    "id": "derived-pw-033"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan includes the Human Diversity Rating evaluation metric.",
+    "source": {
+      "field": "metrics",
+      "ref": "Human Diversity Rating"
+    },
+    "anchor": null,
+    "id": "derived-pw-034"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan specifies the hyperparameter 'p_base' with value 0.05 or 0.1 (recommended); 0.2 used for low-diversity condition.",
+    "source": {
+      "field": "core_method.key_hyperparameters",
+      "ref": "p_base"
+    },
+    "anchor": null,
+    "id": "derived-pw-035"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan specifies the hyperparameter 'min_tokens_to_keep' with value 1 (default).",
+    "source": {
+      "field": "core_method.key_hyperparameters",
+      "ref": "min_tokens_to_keep"
+    },
+    "anchor": null,
+    "id": "derived-pw-036"
+  },
+  {
+    "type": "Plan Writing",
+    "description": "The plan specifies the hyperparameter 'temperature (τ)' with value 0.7 to 5.0 (main experiments use 0.7–4.0).",
+    "source": {
+      "field": "core_method.key_hyperparameters",
+      "ref": "temperature (τ)"
+    },
+    "anchor": null,
+    "id": "derived-pw-037"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code implementing the following step is present: Retrieve the unnormalized logits vector for the next token from the language model.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-1"
+    },
+    "anchor": null,
+    "id": "derived-ci-001"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code implementing the following step is present: Optionally divide logits by the temperature τ (if τ != 1.0) to control randomness.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-2"
+    },
+    "anchor": null,
+    "id": "derived-ci-002"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code implementing the following step is present: Convert the (temperature-scaled) logits to probabilities using softmax.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-3"
+    },
+    "anchor": null,
+    "id": "derived-ci-003"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code implementing the following step is present: Identify the maximum token probability p_max = max(probs).",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-4"
+    },
+    "anchor": null,
+    "id": "derived-ci-004"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code implementing the following step is present: Compute the dynamic truncation threshold scaled_min_p = p_base * p_max.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-5"
+    },
+    "anchor": null,
+    "id": "derived-ci-005"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code implementing the following step is present: Create a boolean mask marking tokens whose probability is less than scaled_min_p as candidates for removal.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-6"
+    },
+    "anchor": null,
+    "id": "derived-ci-006"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code implementing the following step is present: Sort token indices by original logit scores in descending order.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-7"
+    },
+    "anchor": null,
+    "id": "derived-ci-007"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code implementing the following step is present: Modify the removal mask to keep at least min_tokens_to_keep tokens (default 1) by setting the top min_tokens_to_keep positions in the sorted order to not be removed.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-8"
+    },
+    "anchor": null,
+    "id": "derived-ci-008"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code implementing the following step is present: Apply the final removal mask to the logits, setting the values of removed tokens to -inf (or a very low filter value).",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-9"
+    },
+    "anchor": null,
+    "id": "derived-ci-009"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code implementing the following step is present: Use the filtered logits for sampling (e.g., multinomial sampling) to select the next token.",
+    "source": {
+      "field": "core_method.atomic_steps",
+      "ref": "step-10"
+    },
+    "anchor": null,
+    "id": "derived-ci-010"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code for the Temperature Only baseline is implemented.",
+    "source": {
+      "field": "baselines",
+      "ref": "Temperature Only"
+    },
+    "anchor": null,
+    "id": "derived-ci-011"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code for the Top-p baseline is implemented.",
+    "source": {
+      "field": "baselines",
+      "ref": "Top-p"
+    },
+    "anchor": null,
+    "id": "derived-ci-012"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code for the Top-k baseline is implemented.",
+    "source": {
+      "field": "baselines",
+      "ref": "Top-k"
+    },
+    "anchor": null,
+    "id": "derived-ci-013"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code for the η Sampling baseline is implemented.",
+    "source": {
+      "field": "baselines",
+      "ref": "η Sampling"
+    },
+    "anchor": null,
+    "id": "derived-ci-014"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code for the ε Sampling baseline is implemented.",
+    "source": {
+      "field": "baselines",
+      "ref": "ε Sampling"
+    },
+    "anchor": null,
+    "id": "derived-ci-015"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code for the Mirostat baseline is implemented.",
+    "source": {
+      "field": "baselines",
+      "ref": "Mirostat"
+    },
+    "anchor": null,
+    "id": "derived-ci-016"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code for the Standard Sampling (baseline for creative writing comparison) baseline is implemented.",
+    "source": {
+      "field": "baselines",
+      "ref": "Standard Sampling (baseline for creative writing comparison)"
+    },
+    "anchor": null,
+    "id": "derived-ci-017"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code computing the Accuracy metric is implemented.",
+    "source": {
+      "field": "metrics",
+      "ref": "Accuracy"
+    },
+    "anchor": null,
+    "id": "derived-ci-018"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code computing the Win Rate metric is implemented.",
+    "source": {
+      "field": "metrics",
+      "ref": "Win Rate"
+    },
+    "anchor": null,
+    "id": "derived-ci-019"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code computing the Length-Controlled Win Rate (LC-Win Rate) metric is implemented.",
+    "source": {
+      "field": "metrics",
+      "ref": "Length-Controlled Win Rate (LC-Win Rate)"
+    },
+    "anchor": null,
+    "id": "derived-ci-020"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code computing the Entropy of Correct Predictions metric is implemented.",
+    "source": {
+      "field": "metrics",
+      "ref": "Entropy of Correct Predictions"
+    },
+    "anchor": null,
+    "id": "derived-ci-021"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code computing the Human Quality Rating metric is implemented.",
+    "source": {
+      "field": "metrics",
+      "ref": "Human Quality Rating"
+    },
+    "anchor": null,
+    "id": "derived-ci-022"
+  },
+  {
+    "type": "Code Implementation",
+    "description": "The code computing the Human Diversity Rating metric is implemented.",
+    "source": {
+      "field": "metrics",
+      "ref": "Human Diversity Rating"
+    },
+    "anchor": null,
+    "id": "derived-ci-023"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The agent has executed the command(s) that produce the results shown in Table 2 (Min-p sampling outperforms top-p, top-k, temperature-only, and entropy-based met...).",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-table2"
+    },
+    "anchor": "table-2",
+    "id": "derived-ce-001"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The agent has executed the command(s) that produce the results shown in Table 3a (Min-p's advantages persist with larger models; on Mistral Large (123B), min-p ma...).",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-table3a"
+    },
+    "anchor": "table-3a",
+    "id": "derived-ce-002"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The agent has executed the command(s) that produce the results shown in Table 3b (Min-p achieves higher win rates than top-p, mirostat, and ε-sampling on the Alpa...).",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-table3b"
+    },
+    "anchor": "table-3b",
+    "id": "derived-ce-003"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The agent has executed the command(s) that produce the results shown in Figure 2 (Min-p sampling yields a better accuracy–diversity trade-off than top-p on GSM8K ...).",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-figure2"
+    },
+    "anchor": "figure-2",
+    "id": "derived-ce-004"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The agent has executed the command(s) that produce the results shown in Table 4 (Human evaluators rate min-p outputs higher than top-p in both quality and divers...).",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-table4"
+    },
+    "anchor": "table-4",
+    "id": "derived-ce-005"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The agent has executed the command(s) that produce the results shown in Table 7 (Ablation on AlpacaEval Creative Writing shows min-p consistently outperforms top...).",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-table7"
+    },
+    "anchor": "table-7",
+    "id": "derived-ce-006"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The agent has executed the command(s) that produce the results shown in Table 9 (Min-p's benefits transfer across model families: on Llama 3.1 70B, min-p matches...).",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-table9"
+    },
+    "anchor": "table-9",
+    "id": "derived-ce-007"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The agent has executed the command(s) that produce the results shown in Table 12 (Combining min-p with other truncation methods (e.g., top-p + min-p) leads to dou...).",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-table12"
+    },
+    "anchor": "table-12",
+    "id": "derived-ce-008"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The agent has executed the command(s) that produce the results shown in Table 8 (Llama 3 models with min-p sampling outperform top-p on GPQA and GSM8K CoT benchm...).",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-table8"
+    },
+    "anchor": "table-8",
+    "id": "derived-ce-009"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The evaluation pipeline for min-p sampling has been successfully executed and finished without errors.",
+    "source": {
+      "field": "reproducibility_meta",
+      "ref": "evaluation"
+    },
+    "anchor": null,
+    "id": "derived-ce-010"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The evaluation on the GPQA Main dataset has been successfully executed without errors.",
+    "source": {
+      "field": "datasets",
+      "ref": "GPQA Main"
+    },
+    "anchor": null,
+    "id": "derived-ce-011"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The evaluation on the GSM8K dataset has been successfully executed without errors.",
+    "source": {
+      "field": "datasets",
+      "ref": "GSM8K"
+    },
+    "anchor": null,
+    "id": "derived-ce-012"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The evaluation on the AlpacaEval Creative Writing dataset has been successfully executed without errors.",
+    "source": {
+      "field": "datasets",
+      "ref": "AlpacaEval Creative Writing"
+    },
+    "anchor": null,
+    "id": "derived-ce-013"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The Temperature Only baseline has been successfully executed and produced its expected output.",
+    "source": {
+      "field": "baselines",
+      "ref": "Temperature Only"
+    },
+    "anchor": null,
+    "id": "derived-ce-014"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The Top-p baseline has been successfully executed and produced its expected output.",
+    "source": {
+      "field": "baselines",
+      "ref": "Top-p"
+    },
+    "anchor": null,
+    "id": "derived-ce-015"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The Top-k baseline has been successfully executed and produced its expected output.",
+    "source": {
+      "field": "baselines",
+      "ref": "Top-k"
+    },
+    "anchor": null,
+    "id": "derived-ce-016"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The η Sampling baseline has been successfully executed and produced its expected output.",
+    "source": {
+      "field": "baselines",
+      "ref": "η Sampling"
+    },
+    "anchor": null,
+    "id": "derived-ce-017"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The ε Sampling baseline has been successfully executed and produced its expected output.",
+    "source": {
+      "field": "baselines",
+      "ref": "ε Sampling"
+    },
+    "anchor": null,
+    "id": "derived-ce-018"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The Mirostat baseline has been successfully executed and produced its expected output.",
+    "source": {
+      "field": "baselines",
+      "ref": "Mirostat"
+    },
+    "anchor": null,
+    "id": "derived-ce-019"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The Standard Sampling (baseline for creative writing comparison) baseline has been successfully executed and produced its expected output.",
+    "source": {
+      "field": "baselines",
+      "ref": "Standard Sampling (baseline for creative writing comparison)"
+    },
+    "anchor": null,
+    "id": "derived-ce-020"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The experiment under the 'min-p (p_base=0.05)' setting has been successfully executed and produced its expected output.",
+    "source": {
+      "field": "core_method.settings",
+      "ref": "set-1"
+    },
+    "anchor": null,
+    "id": "derived-ce-021"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The experiment under the 'min-p (p_base=0.1)' setting has been successfully executed and produced its expected output.",
+    "source": {
+      "field": "core_method.settings",
+      "ref": "set-2"
+    },
+    "anchor": null,
+    "id": "derived-ce-022"
+  },
+  {
+    "type": "Command Execution",
+    "description": "The experiment under the 'min-p (p_base=0.2)' setting has been successfully executed and produced its expected output.",
+    "source": {
+      "field": "core_method.settings",
+      "ref": "set-3"
+    },
+    "anchor": null,
+    "id": "derived-ce-023"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the results in Table 2: Min-p sampling outperforms top-p, top-k, temperature-only, and entropy-based methods on GPQA Main and GSM8K CoT benchmarks, particularly at higher temperatures (τ ≥ 1.5), maintaining accuracy while baselines degrade sharply.",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-table2"
+    },
+    "anchor": "table-2",
+    "id": "derived-rm-001"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the results in Table 3a: Min-p's advantages persist with larger models; on Mistral Large (123B), min-p maintains high accuracy at temperatures up to τ=4.0 while top-p and temperature-only drop to near zero.",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-table3a"
+    },
+    "anchor": "table-3a",
+    "id": "derived-rm-002"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the results in Table 3b: Min-p achieves higher win rates than top-p, mirostat, and ε-sampling on the AlpacaEval Creative Writing benchmark, demonstrating superior creative writing quality.",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-table3b"
+    },
+    "anchor": "table-3b",
+    "id": "derived-rm-003"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the results in Figure 2: Min-p sampling yields a better accuracy–diversity trade-off than top-p on GSM8K CoT Self-Consistency, with configurations closer to the Pareto frontier and covering a wider range of hyperparameter sensitivity.",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-figure2"
+    },
+    "anchor": "figure-2",
+    "id": "derived-rm-004"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the results in Table 4: Human evaluators rate min-p outputs higher than top-p in both quality and diversity, especially at high temperatures, confirming real-world preference for min-p in creative writing.",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-table4"
+    },
+    "anchor": "table-4",
+    "id": "derived-rm-005"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the results in Table 7: Ablation on AlpacaEval Creative Writing shows min-p consistently outperforms top-p across different temperature and parameter configurations, with the highest winrate at τ=1.5 and p_base=0.1.",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-table7"
+    },
+    "anchor": "table-7",
+    "id": "derived-rm-006"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the results in Table 9: Min-p's benefits transfer across model families: on Llama 3.1 70B, min-p matches or exceeds top-p on GPQA Main and GSM8K CoT, particularly at elevated temperatures.",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-table9"
+    },
+    "anchor": "table-9",
+    "id": "derived-rm-007"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the results in Table 12: Combining min-p with other truncation methods (e.g., top-p + min-p) leads to double normalization issues and suboptimal performance, supporting the recommendation to use min-p as the sole truncation method.",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-table12"
+    },
+    "anchor": "table-12",
+    "id": "derived-rm-008"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the results in Table 8: Llama 3 models with min-p sampling outperform top-p on GPQA and GSM8K CoT benchmarks, especially at high temperatures (>1.0).",
+    "source": {
+      "field": "main_experiments",
+      "ref": "exp-table8"
+    },
+    "anchor": "table-8",
+    "id": "derived-rm-009"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the specific claim (based on Table 2): Min-p maintains substantially higher accuracy than top-p, temperature-only, and top-k on GPQA Main and GSM8K CoT at τ = 1.5, 2.0, and 3.0.",
+    "source": {
+      "field": "expected_claims",
+      "ref": "claim-1"
+    },
+    "anchor": "table-2",
+    "id": "derived-rm-010"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the specific claim (based on Figure 2): Min-p achieves a superior accuracy–diversity Pareto frontier compared to top-p on GSM8K CoT Self-Consistency.",
+    "source": {
+      "field": "expected_claims",
+      "ref": "claim-2"
+    },
+    "anchor": "figure-2",
+    "id": "derived-rm-011"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the specific claim (based on Table 4): In human evaluation, min-p scores higher than top-p on both quality and diversity across all temperature and diversity settings, with statistically significant differences at τ=3.0.",
+    "source": {
+      "field": "expected_claims",
+      "ref": "claim-3"
+    },
+    "anchor": "table-4",
+    "id": "derived-rm-012"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the specific claim (based on Table 3a): Min-p scales to large models (123B parameters), retaining GPQA Main accuracy above 22% at τ=3.0 while top-p and temperature-only fall below 3%.",
+    "source": {
+      "field": "expected_claims",
+      "ref": "claim-4"
+    },
+    "anchor": "table-3a",
+    "id": "derived-rm-013"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the specific claim (based on Table 3b): Min-p outperforms top-p on the AlpacaEval Creative Writing benchmark, achieving higher win rates at τ=1.0 and τ=1.5.",
+    "source": {
+      "field": "expected_claims",
+      "ref": "claim-5"
+    },
+    "anchor": "table-3b",
+    "id": "derived-rm-014"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the specific claim (based on Table 2): Min-p is computationally efficient compared to entropy-based methods (η/ε sampling) whose runtime grows exponentially with temperature and which fail entirely at τ ≥ 2.0.",
+    "source": {
+      "field": "expected_claims",
+      "ref": "claim-6"
+    },
+    "anchor": "table-2",
+    "id": "derived-rm-015"
+  },
+  {
+    "type": "Result Matching",
+    "description": "The execution outcomes match the specific claim (based on Table 1): Min-p dynamically adjusts its truncation threshold: in high-certainty contexts it preserves only top relevant tokens, while in low-certainty contexts it permits a diverse set, as illustrated by token probability comparisons in case studies.",
+    "source": {
+      "field": "expected_claims",
+      "ref": "claim-7"
+    },
+    "anchor": "table-1",
+    "id": "derived-rm-016"
+  }
+]

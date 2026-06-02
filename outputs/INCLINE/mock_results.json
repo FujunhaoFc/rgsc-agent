@@ -1,0 +1,547 @@
+{
+  "paper_id": "INCLINE",
+  "experiments": {
+    "exp-table1": {
+      "evidence_in_paper": "table-1",
+      "axes": {
+        "rows": [
+          "BASELINE",
+          "MT-GOOGLE",
+          "MT-LLM",
+          "ITI",
+          "CAA",
+          "INCLINE",
+          "SFT",
+          "SFT + INCLINE"
+        ],
+        "cols": [
+          "XCOPA µ_ALL",
+          "XCOPA µ_SEEN",
+          "XCOPA µ_UNSEEN",
+          "XStoryCloze µ_ALL",
+          "XStoryCloze µ_SEEN",
+          "XStoryCloze µ_UNSEEN",
+          "XWinograd µ_ALL",
+          "XWinograd µ_SEEN",
+          "XWinograd µ_UNSEEN",
+          "XCSQA µ_ALL",
+          "XCSQA µ_SEEN",
+          "XCSQA µ_UNSEEN",
+          "XNLI µ_ALL",
+          "XNLI µ_SEEN",
+          "XNLI µ_UNSEEN"
+        ]
+      },
+      "values": [
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "exp-table2": {
+      "evidence_in_paper": "table-2",
+      "axes": {
+        "rows": [
+          "BASELINE",
+          "MT-GOOGLE",
+          "MT-LLM",
+          "ITI",
+          "CAA",
+          "INCLINE"
+        ],
+        "cols": [
+          "MZsRE µ_ALL",
+          "MZsRE µ_SEEN",
+          "MZsRE µ_UNSEEN",
+          "Flores µ_ALL",
+          "Flores µ_SEEN",
+          "Flores µ_UNSEEN",
+          "WMT23 µ_ALL",
+          "WMT23 µ_SEEN",
+          "WMT23 µ_UNSEEN",
+          "MGSM µ_ALL",
+          "MGSM µ_SEEN",
+          "MGSM µ_UNSEEN"
+        ]
+      },
+      "values": [
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "exp-table3": {
+      "evidence_in_paper": "table-3",
+      "axes": {
+        "rows": [
+          "BASELINE",
+          "INCLINE-HIDDEN",
+          "INCLINE-ATTN",
+          "INCLINE-FFN",
+          "INCLINE-EMB"
+        ],
+        "cols": [
+          "XCOPA",
+          "XCSQA",
+          "Flores",
+          "MGSM"
+        ]
+      },
+      "values": [
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "exp-table4": {
+      "evidence_in_paper": "table-4",
+      "axes": {
+        "rows": [
+          "BLOOMZ-7B1-MT BASELINE",
+          "BLOOMZ-7B1-MT INCLINE",
+          "LLAMA3.1-8B-INSTRUCT BASELINE",
+          "LLAMA3.1-8B-INSTRUCT INCLINE",
+          "LLAMA2-7B-CHAT BASELINE",
+          "LLAMA2-7B-CHAT INCLINE",
+          "MISTRAL-7B-INSTRUCT BASELINE",
+          "MISTRAL-7B-INSTRUCT INCLINE",
+          "FALCON-7B-INSTRUCT BASELINE",
+          "FALCON-7B-INSTRUCT INCLINE"
+        ],
+        "cols": [
+          "ar",
+          "es",
+          "hi",
+          "id",
+          "ru",
+          "sw",
+          "zh",
+          "AVG"
+        ]
+      },
+      "values": [
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "exp-table5": {
+      "evidence_in_paper": "table-5",
+      "axes": {
+        "rows": [
+          "BASELINE",
+          "INCLINE",
+          "INCLINE-FDEV"
+        ],
+        "cols": [
+          "ar",
+          "el",
+          "es",
+          "fr",
+          "hi",
+          "ru",
+          "tr",
+          "vi",
+          "zh",
+          "AVG"
+        ]
+      },
+      "values": [
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "exp-fig3a": {
+      "evidence_in_paper": "figure-3",
+      "summary": "[PLACEHOLDER - 待手工填充]"
+    },
+    "exp-fig3b": {
+      "evidence_in_paper": "figure-3",
+      "summary": "[PLACEHOLDER - 待手工填充]"
+    },
+    "exp-fig4": {
+      "evidence_in_paper": "figure-4",
+      "summary": "[PLACEHOLDER - 待手工填充]"
+    },
+    "exp-fig5a": {
+      "evidence_in_paper": "figure-5",
+      "summary": "[PLACEHOLDER - 待手工填充]"
+    },
+    "exp-fig5b": {
+      "evidence_in_paper": "figure-5",
+      "summary": "[PLACEHOLDER - 待手工填充]"
+    }
+  }
+}

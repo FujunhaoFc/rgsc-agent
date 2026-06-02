@@ -1,0 +1,299 @@
+{
+  "paper_id": "Beyond-Ngram",
+  "stages": [
+    {
+      "stage_id": "env-setup",
+      "name": "Environment Setup",
+      "stage_type": "setup",
+      "description": "Create repository, install dependencies, download datasets and models",
+      "actions": [
+        "Create project skeleton with directories src/, data/, configs/, scripts/, models/, results/",
+        "Install required Python packages from requirements.txt (torch, transformers, datasets, rouge_score, sacrebleu, scipy, openai, google-generativeai)",
+        "Download XL-Sum dataset for all languages using datasets library, save to data/xlsum/",
+        "Download HeSum Hebrew dataset from source and extract into data/hesum/",
+        "Set environment variables OPENAI_API_KEY and GEMINI_API_KEY in .env file",
+        "Download pre-trained models (mBERT, language-specific BERTs, wmt22-comet-da) into models/pretrained/"
+      ],
+      "checklist_items_covered": [
+        "derived-pw-015",
+        "derived-pw-016",
+        "derived-pw-017",
+        "derived-pw-018",
+        "derived-ce-006",
+        "derived-ce-007",
+        "derived-ce-008"
+      ],
+      "depends_on": [],
+      "expected_artifacts": [
+        "repo_skeleton",
+        "requirements.txt",
+        "downloaded_datasets"
+      ]
+    },
+    {
+      "stage_id": "baseline-training-plan",
+      "name": "Train Baselines (Plan)",
+      "stage_type": "training",
+      "description": "Implement and train all baseline methods for comparison — plan phase",
+      "actions": [
+        "Create config/languages.yaml listing 8 languages with typological family and resource level assignment",
+        "Document sampling strategy: random seed 42, 400 articles per language from test splits in config/sampling.yaml",
+        "Write prompt templates for GPT-3.5 and Gemini summarization in configs/prompts/summarization.txt",
+        "Design MTurk HIT document: qualification question, instructions, 1-4 Likert scales for coherence/completeness in docs/mturk_design.md",
+        "Define metrics plan in configs/metrics.yaml listing all n-gram and neural metrics with tokenizer settings",
+        "Outline correlation analysis approach: Pearson between scores and human ratings, grouping, significance in analysis_plan.md"
+      ],
+      "checklist_items_covered": [
+        "derived-pw-019",
+        "derived-pw-020",
+        "derived-pw-021",
+        "derived-pw-022",
+        "derived-pw-023",
+        "derived-pw-024",
+        "derived-pw-025",
+        "derived-pw-026",
+        "derived-pw-027",
+        "derived-pw-028",
+        "derived-pw-029",
+        "derived-pw-030",
+        "derived-pw-031",
+        "derived-pw-032",
+        "derived-pw-033",
+        "derived-pw-034",
+        "derived-pw-035",
+        "derived-pw-036",
+        "derived-pw-037",
+        "derived-pw-038"
+      ],
+      "depends_on": [
+        "env-setup"
+      ],
+      "expected_artifacts": [
+        "baseline-training_plan_outputs"
+      ]
+    },
+    {
+      "stage_id": "baseline-training-impl",
+      "name": "Train Baselines (Impl)",
+      "stage_type": "training",
+      "description": "Implement and train all baseline methods for comparison — impl phase",
+      "actions": [
+        "Implement src/data/language_selection.py to load languages.yaml and provide language list",
+        "Write src/data/sample_articles.py to load datasets, sample 400 articles per language with seed 42",
+        "Implement src/generation/generate_summaries.py with functions calling OpenAI and Gemini APIs",
+        "Create src/corruption/coherence.py and src/corruption/completeness.py implementing strategies from design doc",
+        "Develop MTurk code: src/annotation/create_hits.py and process_results.py to manage HIT creation and retrieval",
+        "Implement src/metrics/ngram_metrics.py for ROUGE-1/2/3/L, BLEU, CHRF with default, mBERT, monolingual tokenizers",
+        "Implement src/metrics/neural_metrics.py for MoverScore, BERTScore, COMET, Gemini-as-judge",
+        "Write src/analysis/aggregate_human_ratings.py to average 3 annotator scores per summary"
+      ],
+      "checklist_items_covered": [
+        "derived-ci-014",
+        "derived-ci-015",
+        "derived-ci-016",
+        "derived-ci-017",
+        "derived-ci-018",
+        "derived-ci-019",
+        "derived-ci-020",
+        "derived-ci-021",
+        "derived-ci-022",
+        "derived-ci-023",
+        "derived-ci-024",
+        "derived-ci-025",
+        "derived-ci-026",
+        "derived-ci-027",
+        "derived-ci-028",
+        "derived-ci-029",
+        "derived-ci-030",
+        "derived-ci-031",
+        "derived-ci-032",
+        "derived-ci-033"
+      ],
+      "depends_on": [
+        "baseline-training-plan"
+      ],
+      "expected_artifacts": [
+        "baseline-training_impl_outputs"
+      ]
+    },
+    {
+      "stage_id": "baseline-training-exec",
+      "name": "Train Baselines (Exec)",
+      "stage_type": "training",
+      "description": "Implement and train all baseline methods for comparison — exec phase",
+      "actions": [
+        "Run python src/data/sample_articles.py --config config/sampling.yaml to produce data/sampled_articles.json",
+        "Run python src/generation/generate_summaries.py --input data/sampled_articles.json --output data/system_summaries.jsonl",
+        "Run python src/corruption/apply_corruptions.py --input data/system_summaries.jsonl --output data/corrupted_summaries/",
+        "Launch MTurk HITs via MTurk API using src/annotation/launch_hits.py, then fetch results with fetch_results.py saving to data/mturk_raw.csv",
+        "Run python src/analysis/aggregate_human_ratings.py --input data/mturk_raw.csv --output data/human_ratings.json",
+        "Run n-gram metric computation: python src/metrics/compute_all_metrics.py --metric ngram --summaries data/system_summaries.jsonl --references data/references.json --output data/ngram_scores.csv",
+        "Run neural metric computation: python src/metrics/compute_all_metrics.py --metric neural --summaries data/system_summaries.jsonl --references data/references.json --output data/neural_scores.csv",
+        "Combine all metric scores into data/metrics_scores.csv using merge script"
+      ],
+      "checklist_items_covered": [
+        "derived-ce-009",
+        "derived-ce-010",
+        "derived-ce-011",
+        "derived-ce-012",
+        "derived-ce-013",
+        "derived-ce-014",
+        "derived-ce-015",
+        "derived-ce-016",
+        "derived-ce-017",
+        "derived-ce-018",
+        "derived-ce-019",
+        "derived-ce-020",
+        "derived-ce-021",
+        "derived-ce-022",
+        "derived-ce-023",
+        "derived-ce-024",
+        "derived-ce-025",
+        "derived-ce-026",
+        "derived-ce-027",
+        "derived-ce-028"
+      ],
+      "depends_on": [
+        "baseline-training-impl",
+        "env-setup"
+      ],
+      "expected_artifacts": [
+        "baseline-training_exec_outputs"
+      ]
+    },
+    {
+      "stage_id": "main-training",
+      "name": "Train Proposed Method",
+      "stage_type": "training",
+      "description": "Implement and train the proposed method",
+      "actions": [
+        "Load human ratings (data/human_ratings.json) and system summaries (data/system_summaries.jsonl) in data preparation",
+        "Split data into training/validation/test sets using src/data/split_data.py",
+        "Train regression models to predict human ratings from metric scores using src/analysis/train_model.py",
+        "Perform correlation analysis between metrics and human ratings per language and corruption type using src/analysis/correlation.py",
+        "Store trained models in models/trained/ and results in results/tables/"
+      ],
+      "checklist_items_covered": [
+        "derived-pw-001",
+        "derived-pw-002",
+        "derived-pw-003",
+        "derived-pw-004",
+        "derived-pw-005",
+        "derived-pw-006",
+        "derived-pw-007",
+        "derived-pw-008",
+        "derived-pw-009",
+        "derived-pw-010",
+        "derived-pw-011",
+        "derived-pw-012",
+        "derived-pw-013",
+        "derived-pw-014",
+        "derived-pw-040",
+        "derived-pw-041",
+        "derived-pw-042",
+        "derived-pw-043",
+        "derived-pw-044",
+        "derived-pw-045",
+        "derived-pw-046",
+        "derived-ci-001",
+        "derived-ci-002",
+        "derived-ci-003",
+        "derived-ci-004",
+        "derived-ci-005",
+        "derived-ci-006",
+        "derived-ci-007",
+        "derived-ci-008",
+        "derived-ci-009",
+        "derived-ci-010",
+        "derived-ci-011",
+        "derived-ci-012",
+        "derived-ci-013"
+      ],
+      "depends_on": [
+        "baseline-training-exec"
+      ],
+      "expected_artifacts": [
+        "trained_model",
+        "training_logs"
+      ]
+    },
+    {
+      "stage_id": "evaluation",
+      "name": "Evaluation",
+      "stage_type": "evaluation",
+      "description": "Run evaluation on all experiments and compute metrics",
+      "actions": [
+        "Run trained regression models on held-out test set to obtain predicted human ratings",
+        "Compute final Pearson/Spearman correlations between predicted and actual human ratings by language, corruption, and overall",
+        "Perform statistical significance tests (e.g., bootstrap confidence intervals) on correlation differences",
+        "Generate comparison plots (bar charts, scatter plots) of metric correlations for report",
+        "Compile final leaderboard tables ranking metrics and regression models across evaluation dimensions",
+        "Save all evaluation outputs to results/evaluation/"
+      ],
+      "checklist_items_covered": [
+        "derived-pw-039",
+        "derived-ci-034",
+        "derived-ce-001",
+        "derived-ce-002",
+        "derived-ce-003",
+        "derived-ce-004",
+        "derived-ce-005",
+        "derived-rm-001",
+        "derived-rm-002",
+        "derived-rm-003",
+        "derived-rm-004",
+        "derived-rm-005"
+      ],
+      "depends_on": [
+        "main-training"
+      ],
+      "expected_artifacts": [
+        "evaluation_results",
+        "metric_tables"
+      ]
+    },
+    {
+      "stage_id": "final-verification",
+      "name": "Final Verification",
+      "stage_type": "verification",
+      "description": "Compare reproduced results against paper claims",
+      "actions": [
+        "Archive all result files, trained models, and logs into results/archive/",
+        "Write final project report summarizing methodology, results, and conclusions",
+        "Verify reproducibility by re-running a random subset of experiments from scratch using the archived scripts and data",
+        "Clean up temporary files and terminate API resources",
+        "Submit final deliverables as per project requirements"
+      ],
+      "checklist_items_covered": [
+        "derived-rm-006",
+        "derived-rm-007",
+        "derived-rm-008",
+        "derived-rm-009",
+        "derived-rm-010"
+      ],
+      "depends_on": [
+        "evaluation"
+      ],
+      "expected_artifacts": [
+        "verification_report"
+      ]
+    }
+  ],
+  "execution_order": [
+    "env-setup",
+    "baseline-training-plan",
+    "baseline-training-impl",
+    "baseline-training-exec",
+    "main-training",
+    "evaluation",
+    "final-verification"
+  ],
+  "coverage_stats": {
+    "total_derived_items": 159,
+    "paper_observation_items_excluded": 41,
+    "plannable_items": 118,
+    "covered_items": 118,
+    "coverage_ratio": 1.0,
+    "uncovered_item_ids": []
+  }
+}

@@ -1,0 +1,597 @@
+{
+  "paper": "Beyond-Ngram",
+  "by_type": {
+    "Paper Observation": {
+      "total": 8,
+      "hit": 5,
+      "partial": 2,
+      "miss": 1
+    },
+    "Plan Writing": {
+      "total": 22,
+      "hit": 11,
+      "partial": 2,
+      "miss": 9
+    },
+    "Code Implementation": {
+      "total": 21,
+      "hit": 8,
+      "partial": 4,
+      "miss": 9
+    },
+    "Command Execution": {
+      "total": 4,
+      "hit": 0,
+      "partial": 0,
+      "miss": 4
+    },
+    "Result Matching": {
+      "total": 7,
+      "hit": 7,
+      "partial": 0,
+      "miss": 0
+    }
+  },
+  "results": [
+    {
+      "rubric_idx": 0,
+      "rubric_type": "Paper Observation",
+      "rubric_criteria": "The agent has read Section 3 and Table 1 to identify the 8 evaluated languages categorized into 4 typological families (Isolating, Agglutinative, Low Fusional, High Fusional) and their resource availa",
+      "verdict": "hit",
+      "matched_id": "derived-po-025",
+      "method": "anchor",
+      "reason": "anchor match"
+    },
+    {
+      "rubric_idx": 1,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The plan includes selecting the 8 target languages: Chinese, Yoruba, Japanese, Turkish, Spanish, Ukrainian, Arabic, and Hebrew.",
+      "verdict": "hit",
+      "matched_id": "derived-pw-001",
+      "method": "llm",
+      "reason": "The candidate explicitly states selecting 8 languages from 4 typological families and lists exactly the 8 specified languages (Chinese, Yoruba, Japanese, Turkish, Spanish, Ukrainian, Arabic, Hebrew), which fully satisfies the rubric requirement."
+    },
+    {
+      "rubric_idx": 2,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The plan includes categorizing the selected languages into 4 typological families (Isolating, Agglutinative, Low Fusional, High Fusional) and defining their resource levels (High vs. Low) based on the",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 3,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The agent has coded data structures (e.g., dictionaries or mapping configurations) to correctly assign the 8 target languages to their respective typological families and High/Low resource levels",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 4,
+      "rubric_type": "Paper Observation",
+      "rubric_criteria": "The agent has read Section 4.1 to understand the data sources (XL-Sum, HeSum) and the models used for summary generation (GPT-3.5-Turbo, Gemini 1.0 Pro)",
+      "verdict": "hit",
+      "matched_id": "derived-po-007",
+      "method": "llm",
+      "reason": "Reading Section 4.1 to understand its content directly satisfies the requirement to read that section for the data sources and models listed, as the content includes those specifics."
+    },
+    {
+      "rubric_idx": 5,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The plan includes downloading and preparing the source news articles and human-generated reference summaries from the XL-Sum dataset and the HeSum dataset.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 6,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The plan outlines the steps to generate 400 parallel summaries for each language using the GPT-3.5-Turbo (0125) and Gemini 1.0 Pro models.",
+      "verdict": "hit",
+      "matched_id": "derived-pw-003",
+      "method": "llm",
+      "reason": "Derived item pw-003 describes generating 400 system summaries per language using GPT-3.5-Turbo-0125 and Gemini-1.0-Pro, which exactly matches the rubric's required step of generating 400 parallel summaries per language with those two models."
+    },
+    {
+      "rubric_idx": 7,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The agent has coded the data pipeline to successfully fetch and load the source articles and reference summaries from the XL-Sum and HeSum datasets using the Hugging Face datasets library",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "No candidate item describes the specific action of fetching and loading the source articles and reference summaries from the XL-Sum and HeSum datasets using the Hugging Face datasets library; the closest candidate mentions sampling but not the required loading step."
+    },
+    {
+      "rubric_idx": 8,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The agent has implemented the generation scripts with API integration for both GPT-3.5-Turbo and Gemini 1.0 Pro to successfully generate exactly 400 parallel summaries for each language.",
+      "verdict": "hit",
+      "matched_id": "derived-ci-003",
+      "method": "llm",
+      "reason": "This candidate describes code for generating system summaries using GPT-3.5-Turbo and Gemini 1.0 Pro for all 400 samples per language, directly matching the rubric's requirement of generation scripts with API integration to produce exactly 400 parallel summaries per language."
+    },
+    {
+      "rubric_idx": 9,
+      "rubric_type": "Command Execution",
+      "rubric_criteria": "The code for generating 400 parallel summaries per language using GPT-3.5-Turbo and Gemini 1.0 Pro APIs executes completely without unhandled rate-limit exceptions or timeout errors.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "The rubric requires executing code that generates 400 parallel summaries per language via GPT-3.5-Turbo and Gemini 1.0 Pro without errors. The candidates all refer to executing commands that produce evaluation results (figures and tables showing metrics/correlations), which is a different procedure from the API-based generation step."
+    },
+    {
+      "rubric_idx": 10,
+      "rubric_type": "Result Matching",
+      "rubric_criteria": "The execution outcomes match the Elo score trends in Figure 1: Gemini-generated summaries generally rank higher for high-fusional and low-resource languages, while GPT summaries rank higher for high-r",
+      "verdict": "hit",
+      "matched_id": "derived-rm-001",
+      "method": "anchor",
+      "reason": "anchor match"
+    },
+    {
+      "rubric_idx": 11,
+      "rubric_type": "Paper Observation",
+      "rubric_criteria": "The agent has read Section 4.1 and Appendix A.5 to understand the corruption strategies applied to one-third of the data for coherence and completeness",
+      "verdict": "partial",
+      "matched_id": "derived-po-007",
+      "method": "llm",
+      "reason": "The rubric requires reading both Section 4.1 and Appendix A.5. The candidate derived-po-007 covers Section 4.1, but the combined requirement is only partially met by any single candidate; derived-po-020 covers Appendix A.5."
+    },
+    {
+      "rubric_idx": 12,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The plan includes a strategy to artificially corrupt one-third of the generated summaries to achieve a diverse distribution of scores.",
+      "verdict": "partial",
+      "matched_id": "derived-pw-004",
+      "method": "llm",
+      "reason": "The candidate describes corrupting a subset of summaries using language-specific strategies, matching the rubric's action, but it does not specify the one-third proportion, a parameter difference."
+    },
+    {
+      "rubric_idx": 13,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The plan details the specific coherence corruption techniques, which are replacing verbs and nouns with their lemmas and reordering non-adjacent sentences",
+      "verdict": "partial",
+      "matched_id": "derived-pw-004",
+      "method": "llm",
+      "reason": "The candidate describes corrupting summaries for coherence by replacing verbs with lemmas and reordering non-adjacent sentences, which matches the reordering technique and part of the lemmatization technique (verbs only, missing nouns) from the rubric."
+    },
+    {
+      "rubric_idx": 14,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The plan details the specific completeness corruption techniques, which include shuffling named entities with the same labels and inserting a random, unrelated sentence from another article",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "No candidate mentions completeness corruption techniques such as shuffling named entities or inserting random unrelated sentences."
+    },
+    {
+      "rubric_idx": 15,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The agent has written code to randomly and reproducibly sample exactly one-third of the generated summaries to apply the corruption strategies.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "No derived item describes code for randomly and reproducibly sampling exactly one-third of generated summaries to apply corruption; derived-ci-004 only mentions corrupting a subset without the specific sampling procedure."
+    },
+    {
+      "rubric_idx": 16,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The agent has coded the coherence corruption functions, integrating POS tagging to successfully replace verbs and nouns with their lemmas, and implementing logic to reorder non-adjacent sentences.",
+      "verdict": "partial",
+      "matched_id": "derived-ci-004",
+      "method": "llm",
+      "reason": "The candidate describes corrupting summaries for coherence and replacing verbs with lemmas, which matches part of the coherence corruption functions. However, it does not explicitly mention integrating POS tagging, replacing nouns with lemmas, or reordering non-adjacent sentences (the text is truncated, so coverage is incomplete)."
+    },
+    {
+      "rubric_idx": 17,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The agent has coded the completeness corruption functions, successfully integrating Named Entity Recognition (NER) models to shuffle entities of the same type and injecting random out-of-context sente",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "The official rubric requires implementation of completeness corruption functions using NER to shuffle entities and injecting out-of-context sentences. No candidate derived item describes such completeness corruption; the only corruption candidate (derived-ci-004) targets coherence via verb/conjunction manipulation, not the specified completeness procedure."
+    },
+    {
+      "rubric_idx": 18,
+      "rubric_type": "Command Execution",
+      "rubric_criteria": "The data corruption pipeline (lemmatization, POS tagging, NER shuffling) executes successfully across all 8 target languages without causing out-of-bounds errors or breaking the dataset structure",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "The rubric requires executing a data corruption pipeline across languages, while all derived items require executing commands to produce results for figures and tables about evaluation metrics and human judgments. None of the derived items mentions the data corruption pipeline, lemmatization, POS tagging, NER shuffling, or the 8 target languages, making them semantically unrelated."
+    },
+    {
+      "rubric_idx": 19,
+      "rubric_type": "Paper Observation",
+      "rubric_criteria": "The agent has read Section 5.2 to extract the list of N-Gram Metrics, including ROUGE variants (with mBERT and Monolingual tokenizers), BLEU, and CHRF.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 20,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The plan includes the implementation of standard ROUGE variants (ROUGE-1, ROUGE-2, ROUGE-3, and ROUGE-L) to measure lexical overlap.",
+      "verdict": "hit",
+      "matched_id": "derived-pw-008",
+      "method": "llm",
+      "reason": "This item explicitly states computing ROUGE-1/2/3/L with default space tokenization, which directly corresponds to implementing standard ROUGE variants to measure lexical overlap."
+    },
+    {
+      "rubric_idx": 21,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The plan includes the implementation of BLEU and CHRF (character n-gram F-score) metrics for evaluating the summaries.",
+      "verdict": "hit",
+      "matched_id": "derived-pw-008",
+      "method": "llm",
+      "reason": "Candidate explicitly states the plan includes computing BLEU and CHRF scores, matching the rubric's requirement to implement those metrics."
+    },
+    {
+      "rubric_idx": 22,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The agent has coded the evaluation functions using standard libraries to calculate ROUGE-1, ROUGE-2, ROUGE-3, and ROUGE-L with default whitespace tokenization.",
+      "verdict": "hit",
+      "matched_id": "derived-ci-008",
+      "method": "llm",
+      "reason": "This candidate explicitly states computing ROUGE-1/2/3/L with default space tokenization, which corresponds to the rubric’s requirement for evaluation functions calculating these metrics with default whitespace tokenization."
+    },
+    {
+      "rubric_idx": 23,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The agent has implemented the code to correctly compute standard BLEU and CHRF metrics between the generated summaries and human references.",
+      "verdict": "hit",
+      "matched_id": "derived-ci-008",
+      "method": "llm",
+      "reason": "This candidate explicitly includes computing BLEU and CHRF scores between system summaries and gold references, which directly fulfills the rubric's requirement to implement code that correctly computes standard BLEU and CHRF metrics."
+    },
+    {
+      "rubric_idx": 24,
+      "rubric_type": "Paper Observation",
+      "rubric_criteria": "The agent has read Section 5.2 to extract the list of Neural-Based Metrics, including MoverScore, BERTScore (mBERT and Monolingual), Gemini as a Judge, and COMET",
+      "verdict": "partial",
+      "matched_id": "derived-po-012",
+      "method": "llm",
+      "reason": "The candidate states the agent has read Section 5.2 to understand its content, which covers the same section as the rubric but lacks the specific requirement to extract the list of Neural-Based Metrics; reading alone may not guarantee the extraction step is completed."
+    },
+    {
+      "rubric_idx": 25,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The plan includes the implementation of contextual embedding metrics: MoverScore and BERTScore.",
+      "verdict": "hit",
+      "matched_id": "derived-pw-009",
+      "method": "llm",
+      "reason": "The candidate explicitly describes computing MoverScore and BERTScore as part of the plan, satisfying the rubric's requirement to implement these contextual embedding metrics."
+    },
+    {
+      "rubric_idx": 26,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The plan includes setting up \"LLM-as-a-judge\" evaluation by prompting the Gemini 1.0-pro model.",
+      "verdict": "hit",
+      "matched_id": "derived-pw-009",
+      "method": "llm",
+      "reason": "Candidate explicitly includes computing Gemini-as-a-judge metric scores using Gemini 1.0 Pro, which fulfills setting up LLM-as-a-judge evaluation."
+    },
+    {
+      "rubric_idx": 27,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The plan includes the adaptation of COMET (specifically the pre-trained wmt22-comet-da model) for summarization evaluation by excluding the source input.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "No candidate describes adapting COMET by excluding the source input; the only COMET mention (derived-pw-038) simply lists it as a baseline without the required adaptation step."
+    },
+    {
+      "rubric_idx": 28,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The agent has successfully coded the integration for MoverScore and standard BERTScore to calculate the contextual similarity between summaries.",
+      "verdict": "hit",
+      "matched_id": "derived-ci-009",
+      "method": "llm",
+      "reason": "This item explicitly requires code for computing MoverScore and BERTScore (both mBERT and monolingual variants) to obtain neural metric scores, which directly satisfies the rubric's requirement to integrate MoverScore and standard BERTScore for contextual similarity calculation."
+    },
+    {
+      "rubric_idx": 29,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The agent has implemented the \"Gemini as a Judge\" evaluation script, coding an API prompt format that strictly matches the prompt given to human annotators.",
+      "verdict": "hit",
+      "matched_id": "derived-ci-029",
+      "method": "llm",
+      "reason": "The candidate explicitly states that the Gemini as a Judge baseline code is implemented, which semantically matches the rubric's requirement to implement the \"Gemini as a Judge\" evaluation script, including its API prompt format."
+    },
+    {
+      "rubric_idx": 30,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The agent has implemented the code to load the wmt22-comet-da model and modified the evaluation loop to calculate the COMET score by passing only the generation and reference, explicitly dropping the ",
+      "verdict": "partial",
+      "matched_id": "derived-ci-033",
+      "method": "llm",
+      "reason": "Candidate mentions COMET baseline, sharing the same metric, but does not specify loading wmt22-comet-da or the explicit drop of source article input required by the rubric."
+    },
+    {
+      "rubric_idx": 31,
+      "rubric_type": "Command Execution",
+      "rubric_criteria": "The evaluation pipeline for Neural-based metrics (especially running BERTScore, MoverScore, and loading the wmt22-comet-da model) executes successfully without Out-Of-Memory (OOM) errors or tensor dim",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 32,
+      "rubric_type": "Paper Observation",
+      "rubric_criteria": "The agent has read Section 6 and Table 5 to understand the main findings regarding the impact of typological families on metric correlations, specifically the negative correlation of n-gram metrics wi",
+      "verdict": "hit",
+      "matched_id": "derived-po-029",
+      "method": "anchor",
+      "reason": "anchor match"
+    },
+    {
+      "rubric_idx": 33,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The plan includes calculating Pearson (and optionally Spearman) correlation coefficients between the automated metrics scores and the human annotations for Coherence and Completeness.",
+      "verdict": "hit",
+      "matched_id": "derived-pw-010",
+      "method": "llm",
+      "reason": "The candidate explicitly states calculating Pearson correlation between metric scores and aggregated human Likert ratings, separately for coherence and completeness, which directly fulfills the rubric."
+    },
+    {
+      "rubric_idx": 34,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The plan includes a specific analysis step to aggregate the correlation results by typological family (Isolating, Agglutinative, Low Fusional, High Fusional) to evaluate the metrics' sensitivities.",
+      "verdict": "hit",
+      "matched_id": "derived-pw-011",
+      "method": "llm",
+      "reason": "The candidate explicitly groups correlations by the specified typological families, which is exactly the aggregation step required by the rubric."
+    },
+    {
+      "rubric_idx": 35,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The plan outlines a verification step to confirm that standard n-gram metrics exhibit weak or negative correlations in highly fusional languages (Arabic, Hebrew) compared to isolating or agglutinative",
+      "verdict": "hit",
+      "matched_id": "derived-pw-011",
+      "method": "llm",
+      "reason": "The candidate outlines grouping correlations by typological family, including Low Fusional (Arabic) and High Fusional (Hebrew), to compare n-gram metric correlations against isolating/agglutinative families, directly matching the verification step in the rubric."
+    },
+    {
+      "rubric_idx": 36,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The plan outlines a comparative analysis step to verify that neural-based metrics, specifically COMET, consistently outperform n-gram metrics across different typological families.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 37,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The agent has written the statistical code (e.g., using scipy.stats or pandas.corr) to compute Pearson and Spearman correlation coefficients between all automated metric outputs and the human annotati",
+      "verdict": "partial",
+      "matched_id": "derived-ci-010",
+      "method": "llm",
+      "reason": "Candidate calculates Pearson correlation for metrics vs human ratings for coherence and completeness, but omits Spearman correlation required by rubric."
+    },
+    {
+      "rubric_idx": 38,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The agent has coded data aggregation functions (e.g., using pandas.groupby) to group and summarize the calculated correlations by the four predefined typological families (Isolating, Agglutinative, Lo",
+      "verdict": "hit",
+      "matched_id": "derived-ci-011",
+      "method": "llm",
+      "reason": "Derived item directly describes grouping correlations by the four typological families (Isolating, Agglutinative, Low Fusional, High Fusional), matching the rubric's required data aggregation."
+    },
+    {
+      "rubric_idx": 39,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The agent has implemented programmatic checks or evaluation loops to dynamically verify that standard n-gram metrics yield weak or negative correlation values for high-fusional languages (Arabic, Hebr",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 40,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The agent has coded a comparative logic block to automatically assert that the COMET metric's correlation scores consistently outperform the standard n-gram metrics across all typological families.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: {\"verdict\": \"miss\", \"matched_id\": null, \"reason\": \"No candidate item describes a"
+    },
+    {
+      "rubric_idx": 41,
+      "rubric_type": "Command Execution",
+      "rubric_criteria": "The statistical analysis code to compute Pearson and Spearman correlations runs flawlessly, successfully handling any NaN values or zero-variance arrays without halting execution.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 42,
+      "rubric_type": "Result Matching",
+      "rubric_criteria": "The execution outcomes match the results in Table 5: standard n-gram metrics (like ROUGE) show weak or negative correlations with human judgments for high-fusional languages (Arabic, Hebrew).",
+      "verdict": "hit",
+      "matched_id": "derived-rm-002",
+      "method": "anchor",
+      "reason": "anchor match"
+    },
+    {
+      "rubric_idx": 43,
+      "rubric_type": "Result Matching",
+      "rubric_criteria": "The execution outcomes align with Table 5: neural-based metrics like COMET exhibit a strong inverse trend compared to n-gram metrics, showing better correlation consistently with fusional languages",
+      "verdict": "hit",
+      "matched_id": "derived-rm-002",
+      "method": "anchor",
+      "reason": "anchor match"
+    },
+    {
+      "rubric_idx": 44,
+      "rubric_type": "Paper Observation",
+      "rubric_criteria": "The agent has read Section 6 and Table 6 to check the impact of resource levels (High vs. Low) on neural metrics",
+      "verdict": "hit",
+      "matched_id": "derived-po-030",
+      "method": "anchor",
+      "reason": "anchor match"
+    },
+    {
+      "rubric_idx": 45,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The plan includes grouping the correlation results by language resource availability (High-Resource vs. Low-Resource) to evaluate the performance of neural-based metrics.",
+      "verdict": "hit",
+      "matched_id": "derived-pw-012",
+      "method": "llm",
+      "reason": "Candidate 012 explicitly groups correlation results by language resource availability (High vs. Low), directly matching the rubric."
+    },
+    {
+      "rubric_idx": 46,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The plan includes a step to verify the hypothesis that language-specific Monolingual BERT models outperform the multilingual mBERT model across both high and low-resource settings.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 47,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The plan includes a verification step to confirm that COMET achieves the strongest correlation with human scores, and specifically outperforms the \"Gemini as a Judge\" approach in these resource-constr",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "No candidate describes a step to verify that COMET achieves the strongest correlation and outperforms Gemini as a Judge in resource-constrained environments; correlation computation and grouping are present, but the explicit verification is missing."
+    },
+    {
+      "rubric_idx": 48,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The agent has coded a comparative logic block to automatically assert that the COMET metric's correlation scores consistently outperform the standard n-gram metrics across all typological families.",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "No candidate describes a comparative logic block that automatically asserts COMET's superiority over n-gram metrics across typological families. All candidates refer to individual metric computations, correlations, or grouping steps, but none implement the required assertion or comparison logic."
+    },
+    {
+      "rubric_idx": 49,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The agent has implemented the evaluation logic to explicitly compare and confirm that language-specific Monolingual BERT models achieve higher correlations than the multilingual mBERT model across bot",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 50,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The agent has written the final assertion code to verify that COMET achieves the highest correlation with human scores, specifically demonstrating its superiority over the \"Gemini as a Judge\" approach",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "No candidate describes the final assertion code that verifies COMET's highest correlation and superiority over Gemini as a Judge in low-resource environments; only individual baseline implementations and metric computation steps are listed."
+    },
+    {
+      "rubric_idx": 51,
+      "rubric_type": "Result Matching",
+      "rubric_criteria": "The execution outcomes match the results in Table 6: \"Gemini as a judge\" exhibits the lowest correlations with human scores compared to other multilingual neural metrics, regardless of language resour",
+      "verdict": "hit",
+      "matched_id": "derived-rm-003",
+      "method": "anchor",
+      "reason": "anchor match"
+    },
+    {
+      "rubric_idx": 52,
+      "rubric_type": "Result Matching",
+      "rubric_criteria": "The execution outcomes confirm the trend in Table 6: language-specific Monolingual BERT models achieve higher correlations than the multilingual mBERT model.",
+      "verdict": "hit",
+      "matched_id": "derived-rm-003",
+      "method": "anchor",
+      "reason": "anchor match"
+    },
+    {
+      "rubric_idx": 53,
+      "rubric_type": "Result Matching",
+      "rubric_criteria": "The execution outcomes confirm the final conclusion in Table 6: the COMET metric shows the strongest correlation with human scores across both high- and low-resource types, effectively bridging the ga",
+      "verdict": "hit",
+      "matched_id": "derived-rm-003",
+      "method": "anchor",
+      "reason": "anchor match"
+    },
+    {
+      "rubric_idx": 54,
+      "rubric_type": "Paper Observation",
+      "rubric_criteria": "The agent has read the \"The Impact of Metrics Adapted to non-English Languages\" subsection in Section 6 and Table 5 to check the significant impact of adequate tokenizers (mBERT or language-specific) ",
+      "verdict": "hit",
+      "matched_id": "derived-po-029",
+      "method": "anchor",
+      "reason": "anchor match"
+    },
+    {
+      "rubric_idx": 55,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The plan details the strategy to adapt ROUGE metrics by applying the mBERT Tokenizer (using Byte-Pair Encoding) across all evaluated languages.",
+      "verdict": "hit",
+      "matched_id": "derived-pw-008",
+      "method": "llm",
+      "reason": "This item explicitly describes computing ROUGE metric scores using the mBERT tokenizer, which matches the rubric's requirement to detail the strategy for adapting ROUGE metrics by applying the mBERT Tokenizer across languages."
+    },
+    {
+      "rubric_idx": 56,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The plan details the strategy to adapt ROUGE and BERTScore by initializing language-specific tokenizers and models (e.g., bert-base-turkish-cased for Turkish, DiktaBERT for Hebrew) as outlined in the ",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 57,
+      "rubric_type": "Plan Writing",
+      "rubric_criteria": "The plan includes a preprocessing step to apply lemmatization to the texts (using specific tools like spacy, zeyrek, or qalsadi) before calculating the BLEU scores, especially for highly fusional lang",
+      "verdict": "miss",
+      "matched_id": null,
+      "method": "llm",
+      "reason": "unparseable LLM output: "
+    },
+    {
+      "rubric_idx": 58,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The agent has written code to override the default tokenization in ROUGE by integrating the Byte-Pair Encoding (BPE) tokenizer from the bert-base-multilingual-cased (mBERT) model.",
+      "verdict": "hit",
+      "matched_id": "derived-ci-020",
+      "method": "llm",
+      "reason": "It describes implementing ROUGE-1 using the mBERT tokenizer, which directly corresponds to overriding the default tokenization with the mBERT BPE tokenizer."
+    },
+    {
+      "rubric_idx": 59,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The agent has implemented dynamic model loading to inject language-specific BERT models and tokenizers into BERTScore and ROUGE evaluations based on the target language, utilizing models like DiktaBER",
+      "verdict": "partial",
+      "matched_id": "derived-ci-009",
+      "method": "llm",
+      "reason": "Covers BERTScore with language-specific BERT models per language, but does not explicitly address dynamic model loading for ROUGE tokenizers as required by the compound rubric."
+    },
+    {
+      "rubric_idx": 60,
+      "rubric_type": "Code Implementation",
+      "rubric_criteria": "The agent has coded a comprehensive text preprocessing pipeline that correctly applies language-specific lemmatizers (spaCy for ES/UKR, zeyrek for TR, DiktaBERT for HE, and qalsadi for AR) to the gene",
+      "verdict": "hit",
+      "matched_id": "derived-ci-028",
+      "method": "llm",
+      "reason": "Implementing the BLEU (Lemmatized Form) baseline corresponds exactly to coding a preprocessing pipeline that applies language-specific lemmatizers to texts before computing BLEU, as required by the rubric."
+    },
+    {
+      "rubric_idx": 61,
+      "rubric_type": "Result Matching",
+      "rubric_criteria": "The results match the findings in Table 5 regarding adaptations: applying the mBERT tokenizer, a language-specific tokenizer, or lemmatized forms significantly improves or reverses the negative correl",
+      "verdict": "hit",
+      "matched_id": "derived-rm-002",
+      "method": "anchor",
+      "reason": "anchor match"
+    }
+  ],
+  "llm_input_tokens": 91902,
+  "llm_output_tokens": 40135
+}

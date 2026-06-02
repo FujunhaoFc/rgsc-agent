@@ -1,0 +1,846 @@
+{
+  "paper_id": "AMUN",
+  "experiments": {
+    "exp-table1": {
+      "evidence_in_paper": "table-1",
+      "axes": {
+        "rows": [
+          "Retrain",
+          "FT",
+          "RL",
+          "GA",
+          "BS",
+          "l1-Sparse",
+          "SalUn",
+          "AMUN",
+          "AMUN+SalUn"
+        ],
+        "cols": [
+          "UNLEARN ACC",
+          "RETAIN ACC",
+          "TEST ACC",
+          "FT AUC",
+          "AVG. GAP"
+        ]
+      },
+      "values_10_percent_forget": [
+        [
+          94.49,
+          100.0,
+          94.33,
+          50.0,
+          0.0
+        ],
+        [
+          95.16,
+          96.64,
+          92.21,
+          52.08,
+          2.06
+        ],
+        [
+          95.54,
+          97.47,
+          92.17,
+          51.33,
+          1.74
+        ],
+        [
+          98.94,
+          99.22,
+          93.39,
+          60.96,
+          4.28
+        ],
+        [
+          99.14,
+          99.89,
+          93.04,
+          57.85,
+          3.48
+        ],
+        [
+          94.29,
+          95.63,
+          91.55,
+          51.21,
+          2.16
+        ],
+        [
+          96.25,
+          98.14,
+          93.06,
+          50.88,
+          1.44
+        ],
+        [
+          95.45,
+          99.57,
+          93.45,
+          50.18,
+          0.62
+        ],
+        [
+          95.02,
+          99.58,
+          93.29,
+          50.72,
+          0.68
+        ]
+      ],
+      "values_50_percent_forget": [
+        [
+          92.09,
+          100.0,
+          91.85,
+          50.01,
+          0.0
+        ],
+        [
+          94.24,
+          95.82,
+          91.21,
+          51.74,
+          2.17
+        ],
+        [
+          94.83,
+          99.79,
+          90.08,
+          50.78,
+          1.38
+        ],
+        [
+          100.0,
+          100.0,
+          94.65,
+          63.39,
+          4.62
+        ],
+        [
+          55.24,
+          55.67,
+          50.16,
+          55.19,
+          32.01
+        ],
+        [
+          98.0,
+          98.71,
+          92.79,
+          54.44,
+          2.67
+        ],
+        [
+          96.68,
+          99.89,
+          91.97,
+          50.86,
+          1.36
+        ],
+        [
+          93.5,
+          99.71,
+          92.39,
+          49.99,
+          0.33
+        ],
+        [
+          93.56,
+          99.72,
+          92.52,
+          49.81,
+          0.36
+        ]
+      ],
+      "values": [
+        [
+          94.49,
+          100.0,
+          94.33,
+          50.0,
+          0.0
+        ],
+        [
+          95.16,
+          96.64,
+          92.21,
+          52.08,
+          2.06
+        ],
+        [
+          95.54,
+          97.47,
+          92.17,
+          51.33,
+          1.74
+        ],
+        [
+          98.94,
+          99.22,
+          93.39,
+          60.96,
+          4.28
+        ],
+        [
+          99.14,
+          99.89,
+          93.04,
+          57.85,
+          3.48
+        ],
+        [
+          94.29,
+          95.63,
+          91.55,
+          51.21,
+          2.16
+        ],
+        [
+          96.25,
+          98.14,
+          93.06,
+          50.88,
+          1.44
+        ],
+        [
+          95.45,
+          99.57,
+          93.45,
+          50.18,
+          0.62
+        ],
+        [
+          95.02,
+          99.58,
+          93.29,
+          50.72,
+          0.68
+        ]
+      ]
+    },
+    "exp-table2": {
+      "evidence_in_paper": "table-2",
+      "axes": {
+        "rows": [
+          "Retrain",
+          "RL",
+          "GA",
+          "BS",
+          "SalUn",
+          "AMUN",
+          "AMUN+Salun"
+        ],
+        "cols": [
+          "UNLEARN ACC",
+          "RETAIN ACC",
+          "TEST ACC",
+          "FT AUC",
+          "AVG. GAP"
+        ]
+      },
+      "values_10_percent_forget": [
+        [
+          94.49,
+          100.0,
+          94.33,
+          50.0,
+          0.0
+        ],
+        [
+          100.0,
+          100.0,
+          94.45,
+          61.85,
+          4.31
+        ],
+        [
+          4.77,
+          5.07,
+          5.09,
+          49.78,
+          68.53
+        ],
+        [
+          100.0,
+          100.0,
+          94.48,
+          61.41,
+          4.2
+        ],
+        [
+          100.0,
+          100.0,
+          94.47,
+          61.09,
+          4.11
+        ],
+        [
+          94.28,
+          97.47,
+          91.67,
+          52.24,
+          1.94
+        ],
+        [
+          94.19,
+          97.71,
+          91.79,
+          51.93,
+          1.77
+        ]
+      ],
+      "values_50_percent_forget": [
+        [
+          92.09,
+          100.0,
+          91.85,
+          50.01,
+          0.0
+        ],
+        [
+          100.0,
+          100.0,
+          94.57,
+          61.99,
+          4.29
+        ],
+        [
+          100.0,
+          100.0,
+          92.65,
+          63.41,
+          5.13
+        ],
+        [
+          100.0,
+          100.0,
+          94.58,
+          62.43,
+          4.4
+        ],
+        [
+          100.0,
+          100.0,
+          94.59,
+          62.45,
+          4.4
+        ],
+        [
+          92.77,
+          95.66,
+          89.43,
+          52.6,
+          2.51
+        ],
+        [
+          91.9,
+          96.59,
+          89.98,
+          52.32,
+          2.0
+        ]
+      ],
+      "values": [
+        [
+          94.49,
+          100.0,
+          94.33,
+          50.0,
+          0.0
+        ],
+        [
+          100.0,
+          100.0,
+          94.45,
+          61.85,
+          4.31
+        ],
+        [
+          4.77,
+          5.07,
+          5.09,
+          49.78,
+          68.53
+        ],
+        [
+          100.0,
+          100.0,
+          94.48,
+          61.41,
+          4.2
+        ],
+        [
+          100.0,
+          100.0,
+          94.47,
+          61.09,
+          4.11
+        ],
+        [
+          94.28,
+          97.47,
+          91.67,
+          52.24,
+          1.94
+        ],
+        [
+          94.19,
+          97.71,
+          91.79,
+          51.93,
+          1.77
+        ]
+      ]
+    },
+    "exp-figure2": {
+      "evidence_in_paper": "figure-2",
+      "summary": "Over 5 sequential unlearning requests of 2% each on ResNet-18/CIFAR-10, AMUN maintains AUC gap (D_R-vs-D_F AUC minus D_F-vs-D_T AUC) above 14 (left, with D_R) through all 5 requests. Baselines (SalUn, RL, GA, BS) drop to near 0 or negative after request 1, indicating ineffective continuous unlearning. AMUN's gap decreases gracefully from 28 (req 1) -> 14 (req 5), while baselines collapse from 15 -> 6 (SalUn) or 0 / -10 (RL, GA, BS).",
+      "data_points_left_with_D_R": [
+        {
+          "method": "AMUN",
+          "request": 1,
+          "auc_gap": 28
+        },
+        {
+          "method": "AMUN",
+          "request": 2,
+          "auc_gap": 22
+        },
+        {
+          "method": "AMUN",
+          "request": 3,
+          "auc_gap": 18
+        },
+        {
+          "method": "AMUN",
+          "request": 4,
+          "auc_gap": 16
+        },
+        {
+          "method": "AMUN",
+          "request": 5,
+          "auc_gap": 14
+        },
+        {
+          "method": "SalUn",
+          "request": 1,
+          "auc_gap": 15
+        },
+        {
+          "method": "SalUn",
+          "request": 5,
+          "auc_gap": 6
+        },
+        {
+          "method": "RL",
+          "request": 1,
+          "auc_gap": 0
+        },
+        {
+          "method": "RL",
+          "request": 5,
+          "auc_gap": 0
+        },
+        {
+          "method": "GA",
+          "request": 1,
+          "auc_gap": -10
+        },
+        {
+          "method": "GA",
+          "request": 5,
+          "auc_gap": -10
+        }
+      ]
+    },
+    "exp-table4": {
+      "evidence_in_paper": "table-4",
+      "axes": {
+        "rows": [
+          "Retrain",
+          "FT",
+          "RL",
+          "GA",
+          "BS",
+          "l1-Sparse",
+          "SalUn",
+          "AMUN",
+          "AMUN+SalUn"
+        ],
+        "cols": [
+          "UNLEARN ACC",
+          "RETAIN ACC",
+          "TEST ACC",
+          "FT AUC",
+          "AVG. GAP"
+        ]
+      },
+      "values": [
+        [
+          55.93,
+          99.98,
+          55.96,
+          50.06,
+          0.0
+        ],
+        [
+          74.99,
+          96.88,
+          56.29,
+          61.66,
+          8.36
+        ],
+        [
+          59.66,
+          68.19,
+          50.78,
+          51.38,
+          10.5
+        ],
+        [
+          0.46,
+          0.49,
+          0.5,
+          49.8,
+          52.67
+        ],
+        [
+          0.5,
+          0.51,
+          0.51,
+          49.8,
+          52.65
+        ],
+        [
+          55.27,
+          60.64,
+          49.82,
+          54.49,
+          12.8
+        ],
+        [
+          66.54,
+          76.63,
+          49.56,
+          54.64,
+          11.24
+        ],
+        [
+          62.57,
+          93.66,
+          55.52,
+          57.33,
+          5.17
+        ],
+        [
+          62.96,
+          94.42,
+          55.8,
+          57.65,
+          5.09
+        ]
+      ]
+    },
+    "exp-table5": {
+      "evidence_in_paper": "table-5",
+      "axes": {
+        "rows": [
+          "Retrain",
+          "RL",
+          "GA",
+          "BS",
+          "SalUn",
+          "AMUN",
+          "AMUN+SalUn"
+        ],
+        "cols": [
+          "UNLEARN ACC",
+          "RETAIN ACC",
+          "TEST ACC",
+          "FT AUC",
+          "AVG. GAP"
+        ]
+      },
+      "values": [
+        [
+          55.93,
+          99.98,
+          55.96,
+          50.06,
+          0.0
+        ],
+        [
+          1.36,
+          1.74,
+          1.27,
+          51.17,
+          52.15
+        ],
+        [
+          0.44,
+          0.51,
+          0.5,
+          50.55,
+          52.81
+        ],
+        [
+          0.93,
+          0.97,
+          1.02,
+          49.96,
+          52.28
+        ],
+        [
+          2.46,
+          2.89,
+          2.13,
+          52.2,
+          51.63
+        ],
+        [
+          58.54,
+          62.34,
+          43.22,
+          63.05,
+          16.5
+        ],
+        [
+          62.37,
+          68.47,
+          45.44,
+          61.24,
+          14.91
+        ]
+      ]
+    },
+    "exp-table3": {
+      "evidence_in_paper": "table-3",
+      "axes": {
+        "rows": [
+          "Retrain",
+          "AMUN"
+        ],
+        "cols": [
+          "FT AUC",
+          "FR AUC",
+          "TEST ACC"
+        ]
+      },
+      "values_10_percent_forget": [
+        [
+          49.95,
+          54.08,
+          89.01
+        ],
+        [
+          49.55,
+          54.01,
+          87.55
+        ]
+      ],
+      "values_50_percent_forget": [
+        [
+          50.19,
+          55.61,
+          85.76
+        ],
+        [
+          49.64,
+          53.23,
+          87.39
+        ]
+      ],
+      "values": [
+        [
+          49.95,
+          54.08,
+          89.01
+        ],
+        [
+          49.55,
+          54.01,
+          87.55
+        ]
+      ]
+    },
+    "exp-table6": {
+      "evidence_in_paper": "table-6",
+      "summary": "Same as Table 3 but with D_R access. AMUN FT AUC=49.12 (10%) / 49.41 (50%), TEST ACC=86.94 / 87.38, very close to Retrain baseline.",
+      "data_points": [
+        {
+          "method": "Retrain",
+          "setting": "10%",
+          "ft_auc": 49.95,
+          "fr_auc": 54.08,
+          "test_acc": 89.01
+        },
+        {
+          "method": "AMUN",
+          "setting": "10%",
+          "ft_auc": 49.12,
+          "fr_auc": 53.6,
+          "test_acc": 86.94
+        },
+        {
+          "method": "Retrain",
+          "setting": "50%",
+          "ft_auc": 50.19,
+          "fr_auc": 55.61,
+          "test_acc": 85.76
+        },
+        {
+          "method": "AMUN",
+          "setting": "50%",
+          "ft_auc": 49.41,
+          "fr_auc": 54.22,
+          "test_acc": 87.38
+        }
+      ]
+    },
+    "exp-table7": {
+      "evidence_in_paper": "table-7",
+      "summary": "TRADES-trained ResNet-18, 10% CIFAR-10 forget. AMUN with D_R: avg_gap=1.02. AMUN without D_R: avg_gap=3.57. Both effective.",
+      "data_points": [
+        {
+          "method": "Retrain",
+          "unlearn_acc": 82.33,
+          "retain_acc": 94.22,
+          "test_acc": 81.72,
+          "ft_auc": 50.04,
+          "avg_gap": 0.0
+        },
+        {
+          "method": "AMUN_with_DR",
+          "unlearn_acc": 82.65,
+          "retain_acc": 94.33,
+          "test_acc": 84.99,
+          "ft_auc": 47.18,
+          "avg_gap": 1.02
+        },
+        {
+          "method": "AMUN_no_DR",
+          "unlearn_acc": 81.38,
+          "retain_acc": 87.45,
+          "test_acc": 79.74,
+          "ft_auc": 54.61,
+          "avg_gap": 3.57
+        }
+      ]
+    },
+    "exp-figure1": {
+      "evidence_in_paper": "figure-1",
+      "summary": "Effect of fine-tuning on adversarial examples (ResNet-18/CIFAR-10, 10% forget). Across all three sub-figures (using D∪D_A, D_F∪D_A, D_A respectively), the 'Adv' curve maintains test accuracy above 80% through 20 epochs (specifically 80-90% range). In contrast, Adv-RS, Adv-RL, Orig-RL, Orig-AdvL curves all collapse to under 50% test accuracy by epoch 5 and stay there. This demonstrates that fine-tuning on adversarial examples does NOT cause catastrophic forgetting of test accuracy.",
+      "data_points_leftmost": [
+        {
+          "method": "Adv",
+          "epoch": 0,
+          "test_acc": 100
+        },
+        {
+          "method": "Adv",
+          "epoch": 5,
+          "test_acc": 85
+        },
+        {
+          "method": "Adv",
+          "epoch": 10,
+          "test_acc": 90
+        },
+        {
+          "method": "Adv",
+          "epoch": 15,
+          "test_acc": 90
+        },
+        {
+          "method": "Adv",
+          "epoch": 20,
+          "test_acc": 90
+        },
+        {
+          "method": "Adv-RS",
+          "epoch": 5,
+          "test_acc": 55
+        },
+        {
+          "method": "Adv-RS",
+          "epoch": 20,
+          "test_acc": 50
+        },
+        {
+          "method": "Adv-RL",
+          "epoch": 5,
+          "test_acc": 45
+        },
+        {
+          "method": "Adv-RL",
+          "epoch": 20,
+          "test_acc": 45
+        },
+        {
+          "method": "Orig-RL",
+          "epoch": 5,
+          "test_acc": 20
+        },
+        {
+          "method": "Orig-RL",
+          "epoch": 20,
+          "test_acc": 50
+        }
+      ]
+    },
+    "exp-table8": {
+      "evidence_in_paper": "table-8",
+      "axes": {
+        "rows": [
+          "SELF",
+          "OTHERS"
+        ],
+        "cols": [
+          "TEST ACC (10% with D_R)",
+          "FT AUC (10% with D_R)",
+          "AVG. GAP (10% with D_R)",
+          "TEST ACC (50% with D_R)",
+          "FT AUC (50% with D_R)",
+          "AVG. GAP (50% with D_R)",
+          "TEST ACC (10% no D_R)",
+          "FT AUC (10% no D_R)",
+          "AVG. GAP (10% no D_R)",
+          "TEST ACC (50% no D_R)",
+          "FT AUC (50% no D_R)",
+          "AVG. GAP (50% no D_R)"
+        ]
+      },
+      "values": [
+        [
+          93.45,
+          50.18,
+          0.62,
+          92.39,
+          49.99,
+          0.33,
+          91.67,
+          52.24,
+          1.94,
+          89.43,
+          52.6,
+          2.51
+        ],
+        [
+          92.64,
+          48.7,
+          1.57,
+          91.49,
+          47.36,
+          1.15,
+          90.56,
+          48.29,
+          3.07,
+          83.61,
+          51.11,
+          6.7
+        ]
+      ]
+    }
+  }
+}

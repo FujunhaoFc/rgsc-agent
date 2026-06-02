@@ -1,0 +1,215 @@
+{
+  "paper_id": "min-p",
+  "stages": [
+    {
+      "stage_id": "env-setup",
+      "name": "Environment Setup",
+      "stage_type": "setup",
+      "description": "Create repository, install dependencies, download datasets and models",
+      "actions": [
+        "Create repository skeleton with directories: src/, data/, configs/, tests/",
+        "Write requirements.txt with torch, transformers, datasets, numpy, accelerate, and install via pip",
+        "Download GPQA Main dataset from official source and place into data/gpqa_main/",
+        "Download GSM8K dataset from Hugging Face datasets library and save to data/gsm8k/",
+        "Download AlpacaEval Creative Writing dataset and save to data/alpacaeval/",
+        "Download Mistral 7B model from Hugging Face Hub and cache in models/mistral-7b/",
+        "Download Mistral Large (123B) model and cache in models/mistral-large/",
+        "Clone the official paper repository for reference: git clone <URL> reference_code/"
+      ],
+      "checklist_items_covered": [
+        "derived-pw-014",
+        "derived-pw-015",
+        "derived-pw-016",
+        "derived-pw-017",
+        "derived-pw-018",
+        "derived-pw-019",
+        "derived-pw-020",
+        "derived-pw-021",
+        "derived-ce-010",
+        "derived-ce-011",
+        "derived-ce-012",
+        "derived-ce-013"
+      ],
+      "depends_on": [],
+      "expected_artifacts": [
+        "repo_skeleton",
+        "requirements.txt",
+        "downloaded_datasets"
+      ]
+    },
+    {
+      "stage_id": "inference-setup",
+      "name": "Inference Setup",
+      "stage_type": "inference",
+      "description": "Set up inference pipeline (no training required)",
+      "actions": [
+        "Create src/sampling/min_p_sampler.py with a LogitsProcessor class for Hugging Face generation",
+        "Implement logit scaling: divide logits by temperature τ when τ != 1.0",
+        "Implement softmax conversion and compute maximum probability p_max",
+        "Implement threshold computation scaled_min_p = p_base * p_max and create boolean removal mask",
+        "Sort token indices by original logits descending and modify mask to keep at least min_tokens_to_keep tokens",
+        "Apply the final mask by setting logits of removed tokens to -inf",
+        "Use the filtered logits for multinomial sampling to select the next token",
+        "Write unit tests in tests/test_min_p.py covering temperature scaling, masking edge cases, and top-k keep logic"
+      ],
+      "checklist_items_covered": [
+        "derived-pw-001",
+        "derived-pw-002",
+        "derived-pw-003",
+        "derived-pw-004",
+        "derived-pw-005",
+        "derived-pw-006",
+        "derived-pw-007",
+        "derived-pw-008",
+        "derived-pw-009",
+        "derived-pw-010",
+        "derived-pw-011",
+        "derived-pw-012",
+        "derived-pw-013",
+        "derived-pw-022",
+        "derived-pw-023",
+        "derived-pw-024",
+        "derived-pw-025",
+        "derived-pw-026",
+        "derived-pw-027",
+        "derived-pw-028",
+        "derived-pw-035",
+        "derived-pw-036",
+        "derived-pw-037",
+        "derived-ci-001",
+        "derived-ci-002",
+        "derived-ci-003",
+        "derived-ci-004",
+        "derived-ci-005",
+        "derived-ci-006",
+        "derived-ci-007",
+        "derived-ci-008",
+        "derived-ci-009",
+        "derived-ci-010",
+        "derived-ci-011",
+        "derived-ci-012",
+        "derived-ci-013",
+        "derived-ci-014",
+        "derived-ci-015",
+        "derived-ci-016",
+        "derived-ci-017",
+        "derived-ce-014",
+        "derived-ce-015",
+        "derived-ce-016",
+        "derived-ce-017",
+        "derived-ce-018",
+        "derived-ce-019",
+        "derived-ce-020",
+        "derived-ce-021",
+        "derived-ce-022",
+        "derived-ce-023"
+      ],
+      "depends_on": [
+        "env-setup"
+      ],
+      "expected_artifacts": [
+        "inference_pipeline",
+        "model_weights"
+      ]
+    },
+    {
+      "stage_id": "evaluation",
+      "name": "Evaluation",
+      "stage_type": "evaluation",
+      "description": "Run evaluation on all experiments and compute metrics",
+      "actions": [
+        "Write evaluate_gpqa.py to load Mistral 7B, run min-p and baselines across τ values, and compute accuracy",
+        "Write evaluate_gsm8k.py for chain-of-thought self-consistency: generate answers, compute accuracy and diversity",
+        "Write evaluate_alpacaeval.py to generate creative writing outputs and compute win rate (e.g., using GPT-4 judge)",
+        "Implement entropy of correct predictions metric in src/metrics/entropy.py for GPQA and GSM8K",
+        "Execute GPQA evaluation suite: python evaluate_gpqa.py --config configs/gpqa.yaml",
+        "Execute GSM8K CoT evaluation: python evaluate_gsm8k.py --config configs/gsm8k.yaml --self-consistency 10",
+        "Execute AlpacaEval evaluation: python evaluate_alpacaeval.py --config configs/alpacaeval.yaml",
+        "Collect all metrics and generate result tables in results/ directory"
+      ],
+      "checklist_items_covered": [
+        "derived-pw-029",
+        "derived-pw-030",
+        "derived-pw-031",
+        "derived-pw-032",
+        "derived-pw-033",
+        "derived-pw-034",
+        "derived-ci-018",
+        "derived-ci-019",
+        "derived-ci-020",
+        "derived-ci-021",
+        "derived-ci-022",
+        "derived-ci-023",
+        "derived-ce-001",
+        "derived-ce-002",
+        "derived-ce-003",
+        "derived-ce-004",
+        "derived-ce-005",
+        "derived-ce-006",
+        "derived-ce-007",
+        "derived-ce-008",
+        "derived-ce-009",
+        "derived-rm-001",
+        "derived-rm-002",
+        "derived-rm-003",
+        "derived-rm-004",
+        "derived-rm-005",
+        "derived-rm-006",
+        "derived-rm-007",
+        "derived-rm-008",
+        "derived-rm-009"
+      ],
+      "depends_on": [
+        "inference-setup"
+      ],
+      "expected_artifacts": [
+        "evaluation_results",
+        "metric_tables"
+      ]
+    },
+    {
+      "stage_id": "final-verification",
+      "name": "Final Verification",
+      "stage_type": "verification",
+      "description": "Compare reproduced results against paper claims",
+      "actions": [
+        "Load GPQA results and create table comparing min-p accuracy vs top-p, top-k, temperature-only; assert superiority",
+        "Load GSM8K self-consistency results; plot accuracy vs diversity Pareto frontier and confirm min-p dominates top-p",
+        "Verify min-p win rates on AlpacaEval exceed top-p and other baselines; compute length-controlled win rate",
+        "Run min-p on Mistral Large at τ=3.0 and confirm accuracy >22% on GPQA Main",
+        "Measure generation throughput of min-p vs entropy-based (η/ε) sampling and verify lower runtime overhead",
+        "Produce verification report summarizing reproduced numbers, comparing to paper claims, and flagging discrepancies",
+        "Compile final verification document with plots and tables"
+      ],
+      "checklist_items_covered": [
+        "derived-rm-010",
+        "derived-rm-011",
+        "derived-rm-012",
+        "derived-rm-013",
+        "derived-rm-014",
+        "derived-rm-015",
+        "derived-rm-016"
+      ],
+      "depends_on": [
+        "evaluation"
+      ],
+      "expected_artifacts": [
+        "verification_report"
+      ]
+    }
+  ],
+  "execution_order": [
+    "env-setup",
+    "inference-setup",
+    "evaluation",
+    "final-verification"
+  ],
+  "coverage_stats": {
+    "total_derived_items": 169,
+    "paper_observation_items_excluded": 70,
+    "plannable_items": 99,
+    "covered_items": 99,
+    "coverage_ratio": 1.0,
+    "uncovered_item_ids": []
+  }
+}

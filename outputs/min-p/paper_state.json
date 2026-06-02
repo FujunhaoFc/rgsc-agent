@@ -1,0 +1,1376 @@
+{
+  "paper_id": "min-p",
+  "title": "Turning Up the Heat: Min-p Sampling for Creative and Coherent LLM Outputs",
+  "venue": null,
+  "code_url": null,
+  "problem_definition": {
+    "task": "Improve the quality-diversity trade-off in autoregressive text generation from large language models.",
+    "input": "At each decoding step, the model's predicted probability distribution over the vocabulary for the next token, conditioned on the preceding context.",
+    "output": "A sampled next token from a dynamically truncated subset of the vocabulary.",
+    "evaluation_target": "min-p sampling should outperform existing sampling methods (top-p, top-k, temperature-only, η-sampling, ε-sampling, mirostat) at balancing coherence and diversity, especially at high temperatures, as measured by accuracy on reasoning benchmarks (GPQA, GSM8K), win rates on creative writing (AlpacaEval), and human preference scores."
+  },
+  "core_method": {
+    "name": "min-p sampling",
+    "one_line": "A dynamic truncation method that scales the minimum probability threshold by the probability of the most likely token, keeping only tokens whose probabilities are at least p_base × p_max, thereby adapting the sampling pool to the model's confidence at each step.",
+    "atomic_steps": [
+      {
+        "id": "step-1",
+        "description": "Retrieve the unnormalized logits vector for the next token from the language model.",
+        "source_section": "sec-3",
+        "depends_on_method": null
+      },
+      {
+        "id": "step-2",
+        "description": "Optionally divide logits by the temperature τ (if τ != 1.0) to control randomness.",
+        "source_section": "sec-5.1",
+        "depends_on_method": null
+      },
+      {
+        "id": "step-3",
+        "description": "Convert the (temperature-scaled) logits to probabilities using softmax.",
+        "source_section": "sec-3",
+        "depends_on_method": null
+      },
+      {
+        "id": "step-4",
+        "description": "Identify the maximum token probability p_max = max(probs).",
+        "source_section": "sec-3",
+        "depends_on_method": null
+      },
+      {
+        "id": "step-5",
+        "description": "Compute the dynamic truncation threshold scaled_min_p = p_base * p_max.",
+        "source_section": "sec-3",
+        "depends_on_method": null
+      },
+      {
+        "id": "step-6",
+        "description": "Create a boolean mask marking tokens whose probability is less than scaled_min_p as candidates for removal.",
+        "source_section": "sec-3",
+        "depends_on_method": null
+      },
+      {
+        "id": "step-7",
+        "description": "Sort token indices by original logit scores in descending order.",
+        "source_section": "sec-3",
+        "depends_on_method": null
+      },
+      {
+        "id": "step-8",
+        "description": "Modify the removal mask to keep at least min_tokens_to_keep tokens (default 1) by setting the top min_tokens_to_keep positions in the sorted order to not be removed.",
+        "source_section": "sec-A.1",
+        "depends_on_method": null
+      },
+      {
+        "id": "step-9",
+        "description": "Apply the final removal mask to the logits, setting the values of removed tokens to -inf (or a very low filter value).",
+        "source_section": "sec-A.1",
+        "depends_on_method": null
+      },
+      {
+        "id": "step-10",
+        "description": "Use the filtered logits for sampling (e.g., multinomial sampling) to select the next token.",
+        "source_section": "sec-3",
+        "depends_on_method": null
+      }
+    ],
+    "settings": [
+      {
+        "id": "set-1",
+        "name": "min-p (p_base=0.05)",
+        "description": "Base threshold 0.05 – higher diversity setting, recommended range for creative tasks."
+      },
+      {
+        "id": "set-2",
+        "name": "min-p (p_base=0.1)",
+        "description": "Base threshold 0.1 – balanced setting between coherence and diversity."
+      },
+      {
+        "id": "set-3",
+        "name": "min-p (p_base=0.2)",
+        "description": "Base threshold 0.2 – lower diversity, used in human evaluation for conservative sampling."
+      }
+    ],
+    "key_hyperparameters": [
+      {
+        "name": "p_base",
+        "value": "0.05 or 0.1 (recommended); 0.2 used for low-diversity condition",
+        "source_section": "sec-3.4"
+      },
+      {
+        "name": "min_tokens_to_keep",
+        "value": "1 (default)",
+        "source_section": "sec-A.1"
+      },
+      {
+        "name": "temperature (τ)",
+        "value": "0.7 to 5.0 (main experiments use 0.7–4.0)",
+        "source_section": "sec-5.1"
+      }
+    ]
+  },
+  "datasets": [
+    {
+      "name": "GPQA Main",
+      "splits": [
+        "test"
+      ],
+      "used_for": "graduate-level multiple-choice reasoning benchmark",
+      "source_section": "sec-5.1"
+    },
+    {
+      "name": "GSM8K",
+      "splits": [
+        "test"
+      ],
+      "used_for": "grade-school math word problems with chain-of-thought reasoning",
+      "source_section": "sec-5.1"
+    },
+    {
+      "name": "AlpacaEval Creative Writing",
+      "splits": [
+        "eval"
+      ],
+      "used_for": "automated evaluation of creative writing quality via LLM-as-judge",
+      "source_section": "sec-5.1"
+    }
+  ],
+  "models": [
+    {
+      "name": "Mistral 7B",
+      "role": "language model (main evaluation)",
+      "source_section": "sec-5.1"
+    },
+    {
+      "name": "Mistral Large (123B)",
+      "role": "language model (large-scale evaluation)",
+      "source_section": "sec-5.2.1"
+    },
+    {
+      "name": "Llama 3 (1B–70B)",
+      "role": "language model (cross-model evaluation)",
+      "source_section": "sec-5.2.1"
+    },
+    {
+      "name": "Llama 3.2 70B",
+      "role": "language model (additional benchmark)",
+      "source_section": "sec-B.1"
+    },
+    {
+      "name": "Llama 3 70B",
+      "role": "language model (human evaluation)",
+      "source_section": "sec-6"
+    }
+  ],
+  "baselines": [
+    {
+      "name": "Temperature Only",
+      "type": "temperature sampling (no truncation)",
+      "reference": null,
+      "source_section": "sec-5.1"
+    },
+    {
+      "name": "Top-p",
+      "type": "nucleus sampling (cumulative probability truncation)",
+      "reference": "Holtzman et al., 2020",
+      "source_section": "sec-5.1"
+    },
+    {
+      "name": "Top-k",
+      "type": "top-k truncation",
+      "reference": "Fan et al., 2018",
+      "source_section": "sec-5.1"
+    },
+    {
+      "name": "η Sampling",
+      "type": "entropy-based truncation",
+      "reference": "Hewitt et al., 2022",
+      "source_section": "sec-5.1"
+    },
+    {
+      "name": "ε Sampling",
+      "type": "entropy-based truncation",
+      "reference": "Hewitt et al., 2022",
+      "source_section": "sec-5.1"
+    },
+    {
+      "name": "Mirostat",
+      "type": "dynamic perplexity-controlled sampling",
+      "reference": "Basu et al., 2021",
+      "source_section": "sec-5.2.3"
+    },
+    {
+      "name": "Standard Sampling (baseline for creative writing comparison)",
+      "type": "fixed temperature-only sampling at τ=1.0",
+      "reference": null,
+      "source_section": "sec-5.2.3"
+    }
+  ],
+  "metrics": [
+    {
+      "name": "Accuracy",
+      "definition": "Percentage of correctly answered questions on GPQA Main and GSM8K CoT benchmarks.",
+      "source_section": "sec-5.1"
+    },
+    {
+      "name": "Win Rate",
+      "definition": "Proportion of comparisons where the evaluated model's output is preferred over a baseline by the AlpacaEval LLM judge (GPT-4 Turbo).",
+      "source_section": "sec-5.2.3"
+    },
+    {
+      "name": "Length-Controlled Win Rate (LC-Win Rate)",
+      "definition": "Win rate adjusted for output length bias to isolate quality from verbosity.",
+      "source_section": "sec-5.2.3"
+    },
+    {
+      "name": "Entropy of Correct Predictions",
+      "definition": "Average continuous entropy of correct chain-of-thought answers, measured via language model embeddings and empirical covariance to quantify diversity.",
+      "source_section": "sec-5.2.2"
+    },
+    {
+      "name": "Human Quality Rating",
+      "definition": "Mean subjective rating (1-10) of overall coherence, relevance and quality of generated stories by human evaluators.",
+      "source_section": "sec-6"
+    },
+    {
+      "name": "Human Diversity Rating",
+      "definition": "Mean subjective rating (1-10) of how creative and distinct the three presented stories appeared to human evaluators.",
+      "source_section": "sec-6"
+    }
+  ],
+  "main_experiments": [
+    {
+      "id": "exp-table2",
+      "evidence_in_paper": "table-2",
+      "primary": true,
+      "claim": "Min-p sampling outperforms top-p, top-k, temperature-only, and entropy-based methods on GPQA Main and GSM8K CoT benchmarks, particularly at higher temperatures (τ ≥ 1.5), maintaining accuracy while baselines degrade sharply.",
+      "axes": {
+        "rows": [
+          "Temperature Only",
+          "Top-k",
+          "η Sampling",
+          "ε Sampling",
+          "Top-p",
+          "min-p sampling"
+        ],
+        "cols": [
+          "GPQA Main τ=0.7",
+          "GPQA Main τ=1.0",
+          "GPQA Main τ=1.5",
+          "GPQA Main τ=2.0",
+          "GPQA Main τ=3.0",
+          "GSM8K CoT τ=0.7",
+          "GSM8K CoT τ=1.0",
+          "GSM8K CoT τ=1.5",
+          "GSM8K CoT τ=2.0",
+          "GSM8K CoT τ=3.0"
+        ]
+      },
+      "settings_used": [
+        "set-1",
+        "set-2"
+      ],
+      "datasets_used": [
+        "GPQA Main",
+        "GSM8K"
+      ],
+      "models_used": [
+        "Mistral 7B"
+      ]
+    },
+    {
+      "id": "exp-table3a",
+      "evidence_in_paper": "table-3a",
+      "primary": true,
+      "claim": "Min-p's advantages persist with larger models; on Mistral Large (123B), min-p maintains high accuracy at temperatures up to τ=4.0 while top-p and temperature-only drop to near zero.",
+      "axes": {
+        "rows": [
+          "Temperature Only",
+          "Top-p (p=0.95)",
+          "Top-p (p=0.90)",
+          "min-p sampling"
+        ],
+        "cols": [
+          "τ=0.5",
+          "τ=1.0",
+          "τ=1.5",
+          "τ=2.0",
+          "τ=3.0",
+          "τ=4.0"
+        ]
+      },
+      "settings_used": [
+        "set-1",
+        "set-2"
+      ],
+      "datasets_used": [
+        "GPQA Main"
+      ],
+      "models_used": [
+        "Mistral Large (123B)"
+      ]
+    },
+    {
+      "id": "exp-table3b",
+      "evidence_in_paper": "table-3b",
+      "primary": true,
+      "claim": "Min-p achieves higher win rates than top-p, mirostat, and ε-sampling on the AlpacaEval Creative Writing benchmark, demonstrating superior creative writing quality.",
+      "axes": {
+        "rows": [
+          "Temperature Only",
+          "Mirostat",
+          "ε Sampling",
+          "Top-p",
+          "min-p sampling"
+        ],
+        "cols": [
+          "τ=1.0",
+          "τ=1.5"
+        ]
+      },
+      "settings_used": [
+        "set-1",
+        "set-2"
+      ],
+      "datasets_used": [
+        "AlpacaEval Creative Writing"
+      ],
+      "models_used": [
+        "Mistral 7B"
+      ]
+    },
+    {
+      "id": "exp-figure2",
+      "evidence_in_paper": "figure-2",
+      "primary": true,
+      "claim": "Min-p sampling yields a better accuracy–diversity trade-off than top-p on GSM8K CoT Self-Consistency, with configurations closer to the Pareto frontier and covering a wider range of hyperparameter sensitivity.",
+      "axes": {
+        "rows": [
+          "min-p sampling",
+          "Top-p"
+        ],
+        "cols": [
+          "Accuracy (%)",
+          "Avg. Entropy of Correct Predictions ('Creativity')"
+        ]
+      },
+      "settings_used": [
+        "set-1",
+        "set-2"
+      ],
+      "datasets_used": [
+        "GSM8K"
+      ],
+      "models_used": [
+        "Mistral 7B"
+      ]
+    },
+    {
+      "id": "exp-table4",
+      "evidence_in_paper": "table-4",
+      "primary": true,
+      "claim": "Human evaluators rate min-p outputs higher than top-p in both quality and diversity, especially at high temperatures, confirming real-world preference for min-p in creative writing.",
+      "axes": {
+        "rows": [
+          "Standard Sampling (baseline for creative writing comparison)",
+          "Top-p = 0.1",
+          "Top-p = 0.9",
+          "Min-p = 0.2",
+          "Min-p = 0.05"
+        ],
+        "cols": [
+          "Quality (T=1)",
+          "Diversity (T=1)",
+          "Quality (T=2)",
+          "Diversity (T=2)",
+          "Quality (T=3)",
+          "Diversity (T=3)"
+        ]
+      },
+      "settings_used": [
+        "set-1",
+        "set-3"
+      ],
+      "datasets_used": [],
+      "models_used": [
+        "Llama 3 70B"
+      ]
+    },
+    {
+      "id": "exp-table7",
+      "evidence_in_paper": "table-7",
+      "primary": false,
+      "claim": "Ablation on AlpacaEval Creative Writing shows min-p consistently outperforms top-p across different temperature and parameter configurations, with the highest winrate at τ=1.5 and p_base=0.1.",
+      "axes": {
+        "rows": [
+          "min-p sampling",
+          "Top-p"
+        ],
+        "cols": [
+          "Winrate (%)",
+          "Winrate (LC) (%)",
+          "Avg Length"
+        ]
+      },
+      "settings_used": [
+        "set-1",
+        "set-2"
+      ],
+      "datasets_used": [
+        "AlpacaEval Creative Writing"
+      ],
+      "models_used": [
+        "Mistral 7B"
+      ]
+    },
+    {
+      "id": "exp-table9",
+      "evidence_in_paper": "table-9",
+      "primary": false,
+      "claim": "Min-p's benefits transfer across model families: on Llama 3.1 70B, min-p matches or exceeds top-p on GPQA Main and GSM8K CoT, particularly at elevated temperatures.",
+      "axes": {
+        "rows": [
+          "Temperature Only",
+          "Top-p (p=0.9)",
+          "Top-p (p=0.95)",
+          "min-p sampling (p=0.05)",
+          "min-p sampling (p=0.1)",
+          "min-p sampling (p=0.2)"
+        ],
+        "cols": [
+          "GPQA Main τ=0.5",
+          "GPQA Main τ=0.7",
+          "GPQA Main τ=1.0",
+          "GPQA Main τ=2.0",
+          "GPQA Main τ=3.0",
+          "GSM8K CoT τ=0.7",
+          "GSM8K CoT τ=3.0"
+        ]
+      },
+      "settings_used": [
+        "set-1",
+        "set-2"
+      ],
+      "datasets_used": [
+        "GPQA Main",
+        "GSM8K"
+      ],
+      "models_used": [
+        "Llama 3.2 70B"
+      ]
+    },
+    {
+      "id": "exp-table12",
+      "evidence_in_paper": "table-12",
+      "primary": false,
+      "claim": "Combining min-p with other truncation methods (e.g., top-p + min-p) leads to double normalization issues and suboptimal performance, supporting the recommendation to use min-p as the sole truncation method.",
+      "axes": {
+        "rows": [],
+        "cols": []
+      },
+      "settings_used": [
+        "set-2"
+      ],
+      "datasets_used": [],
+      "models_used": []
+    },
+    {
+      "id": "exp-table8",
+      "evidence_in_paper": "table-8",
+      "primary": false,
+      "claim": "Llama 3 models with min-p sampling outperform top-p on GPQA and GSM8K CoT benchmarks, especially at high temperatures (>1.0).",
+      "axes": {
+        "rows": [
+          "min-p",
+          "top-p"
+        ],
+        "cols": [
+          "GPQA",
+          "GSM8K CoT"
+        ]
+      },
+      "settings_used": [],
+      "datasets_used": [
+        "GPQA",
+        "GSM8K"
+      ],
+      "models_used": [
+        "Llama 3"
+      ]
+    },
+    {
+      "id": "exp-table1",
+      "evidence_in_paper": "table-1",
+      "primary": false,
+      "claim": "Case study: min-p dynamically adjusts truncation threshold based on context certainty (token probability examples).",
+      "axes": null,
+      "settings_used": [],
+      "datasets_used": [],
+      "models_used": []
+    }
+  ],
+  "expected_claims": [
+    {
+      "id": "claim-1",
+      "claim_text": "Min-p maintains substantially higher accuracy than top-p, temperature-only, and top-k on GPQA Main and GSM8K CoT at τ = 1.5, 2.0, and 3.0.",
+      "evidence": "table-2",
+      "verification_hint": "From Table 2, at τ=1.5/2.0/3.0, ensure min-p accuracy (e.g., 28.13/26.34/24.55 on GPQA) is > top-p (24.78/6.47/0.46) and > temperature-only (25.22/5.80/0.89)."
+    },
+    {
+      "id": "claim-2",
+      "claim_text": "Min-p achieves a superior accuracy–diversity Pareto frontier compared to top-p on GSM8K CoT Self-Consistency.",
+      "evidence": "figure-2",
+      "verification_hint": "Plot accuracy vs entropy for each method's 20 configurations; confirm that min-p points dominate top-p in the upper-right region and the min-p Pareto frontier lies closer to the ideal top-right corner."
+    },
+    {
+      "id": "claim-3",
+      "claim_text": "In human evaluation, min-p scores higher than top-p on both quality and diversity across all temperature and diversity settings, with statistically significant differences at τ=3.0.",
+      "evidence": "table-4",
+      "verification_hint": "Check that for each (Temp, Diversity Setting) pair, min-p quality and diversity means exceed the corresponding top-p means; at T=3 high diversity, min-p quality 7.57 ± 0.23 vs top-p 7.11 ± 0.29, diversity 7.66 ± 0.20 vs 7.49 ± 0.24."
+    },
+    {
+      "id": "claim-4",
+      "claim_text": "Min-p scales to large models (123B parameters), retaining GPQA Main accuracy above 22% at τ=3.0 while top-p and temperature-only fall below 3%.",
+      "evidence": "table-3a",
+      "verification_hint": "In Table 3a, at τ=3.0, min-p accuracy = 22.77% vs top-p (p=0.9) = 2.01%, proving robust high-temperature reasoning."
+    },
+    {
+      "id": "claim-5",
+      "claim_text": "Min-p outperforms top-p on the AlpacaEval Creative Writing benchmark, achieving higher win rates at τ=1.0 and τ=1.5.",
+      "evidence": "table-3b",
+      "verification_hint": "Verify that min-p win rate (52.01% at τ=1.0, 56.54% at τ=1.5) exceeds top-p (50.43% at τ=1.0) and temperature-only (49.97%, 53.18%)."
+    },
+    {
+      "id": "claim-6",
+      "claim_text": "Min-p is computationally efficient compared to entropy-based methods (η/ε sampling) whose runtime grows exponentially with temperature and which fail entirely at τ ≥ 2.0.",
+      "evidence": "table-2",
+      "verification_hint": "Observe in Table 2 that η and ε sampling have no reported values for τ=2.0 and 3.0 because they could not complete evaluation, while min-p remains practical."
+    },
+    {
+      "id": "claim-7",
+      "claim_text": "Min-p dynamically adjusts its truncation threshold: in high-certainty contexts it preserves only top relevant tokens, while in low-certainty contexts it permits a diverse set, as illustrated by token probability comparisons in case studies.",
+      "evidence": "table-1",
+      "verification_hint": "In Table 1b, for the high-certainty prompt, min-p at τ=3 focuses on 'light' (80.9%) and 'sunlight' (19.1%), filtering out tokens like 'water', while top-p retains them."
+    }
+  ],
+  "reproducibility_meta": {
+    "needs_training": false,
+    "estimated_compute": "Single GPU (A100 or similar), hours for main benchmark evaluations across temperatures and models (e.g., Mistral 7B GPQA/GSM8K ~2-5 min per run, larger models proportionally longer).",
+    "data_availability": "public",
+    "code_partial_available": true,
+    "minimum_viable_experiments": [
+      "exp-table2",
+      "exp-table3a",
+      "exp-table3b",
+      "exp-figure2",
+      "exp-table4"
+    ],
+    "deferred_experiments": [
+      "exp-table7",
+      "exp-table9",
+      "exp-table12"
+    ]
+  },
+  "sections": [
+    {
+      "id": "sec-abstract",
+      "title": "ABSTRACT",
+      "level": 1,
+      "line_start": 9,
+      "line_end": 12,
+      "char_start": 242,
+      "char_end": 1355,
+      "parent": null
+    },
+    {
+      "id": "sec-1",
+      "title": "1 INTRODUCTION",
+      "level": 1,
+      "line_start": 13,
+      "line_end": 31,
+      "char_start": 1355,
+      "char_end": 4404,
+      "parent": null
+    },
+    {
+      "id": "sec-2",
+      "title": "2 RELATED WORK",
+      "level": 1,
+      "line_start": 32,
+      "line_end": 43,
+      "char_start": 4404,
+      "char_end": 6190,
+      "parent": null
+    },
+    {
+      "id": "sec-3",
+      "title": "3 MIN-p SAMPLING",
+      "level": 1,
+      "line_start": 44,
+      "line_end": 191,
+      "char_start": 6190,
+      "char_end": 15360,
+      "parent": null
+    },
+    {
+      "id": "sec-3.1",
+      "title": "3.1 OVERVIEW OF MIN-p SAMPLING",
+      "level": 2,
+      "line_start": 48,
+      "line_end": 169,
+      "char_start": 6477,
+      "char_end": 11861,
+      "parent": "sec-3"
+    },
+    {
+      "id": "sec-3.2",
+      "title": "3.2 INTUITION BEHIND MIN-p SAMPLING",
+      "level": 2,
+      "line_start": 170,
+      "line_end": 175,
+      "char_start": 11861,
+      "char_end": 13226,
+      "parent": "sec-3"
+    },
+    {
+      "id": "sec-3.3",
+      "title": "3.3 ADVANTAGES OVER EXISTING METHODS",
+      "level": 2,
+      "line_start": 176,
+      "line_end": 185,
+      "char_start": 13226,
+      "char_end": 14724,
+      "parent": "sec-3"
+    },
+    {
+      "id": "sec-3.4",
+      "title": "3.4 IMPLEMENTATION DETAILS",
+      "level": 2,
+      "line_start": 186,
+      "line_end": 191,
+      "char_start": 14724,
+      "char_end": 15360,
+      "parent": "sec-3"
+    },
+    {
+      "id": "sec-parameter-selection-guidelines",
+      "title": "Parameter Selection Guidelines.",
+      "level": 1,
+      "line_start": 192,
+      "line_end": 217,
+      "char_start": 15360,
+      "char_end": 19443,
+      "parent": null
+    },
+    {
+      "id": "sec-4",
+      "title": "4 CASE STUDIES: ILLUSTRATIVE EXAMPLES",
+      "level": 1,
+      "line_start": 218,
+      "line_end": 235,
+      "char_start": 19443,
+      "char_end": 21815,
+      "parent": null
+    },
+    {
+      "id": "sec-5",
+      "title": "5 EXPERIMENTS",
+      "level": 1,
+      "line_start": 236,
+      "line_end": 323,
+      "char_start": 21815,
+      "char_end": 34880,
+      "parent": null
+    },
+    {
+      "id": "sec-5.1",
+      "title": "5.1 EXPERIMENTAL SETUP",
+      "level": 2,
+      "line_start": 240,
+      "line_end": 255,
+      "char_start": 22020,
+      "char_end": 24486,
+      "parent": "sec-5"
+    },
+    {
+      "id": "sec-5.2",
+      "title": "5.2 RESULTS",
+      "level": 2,
+      "line_start": 256,
+      "line_end": 317,
+      "char_start": 24486,
+      "char_end": 34024,
+      "parent": "sec-5"
+    },
+    {
+      "id": "sec-5.2.1",
+      "title": "5.2.1 GRADUATE-LEVEL REASONING (GPQA MAIN)",
+      "level": 3,
+      "line_start": 258,
+      "line_end": 271,
+      "char_start": 24501,
+      "char_end": 27188,
+      "parent": "sec-5.2"
+    },
+    {
+      "id": "sec-5.2.2",
+      "title": "5.2.2 GRADE SCHOOL MATH (GSM8K COT)",
+      "level": 3,
+      "line_start": 272,
+      "line_end": 285,
+      "char_start": 27188,
+      "char_end": 29981,
+      "parent": "sec-5.2"
+    },
+    {
+      "id": "sec-5.2.3",
+      "title": "5.2.3 CREATIVE WRITING",
+      "level": 3,
+      "line_start": 286,
+      "line_end": 317,
+      "char_start": 29981,
+      "char_end": 34024,
+      "parent": "sec-5.2"
+    },
+    {
+      "id": "sec-5.3",
+      "title": "5.3 ABLATION STUDY",
+      "level": 2,
+      "line_start": 318,
+      "line_end": 323,
+      "char_start": 34024,
+      "char_end": 34880,
+      "parent": "sec-5"
+    },
+    {
+      "id": "sec-6",
+      "title": "6 HUMAN EVALUATION",
+      "level": 1,
+      "line_start": 324,
+      "line_end": 363,
+      "char_start": 34880,
+      "char_end": 42194,
+      "parent": null
+    },
+    {
+      "id": "sec-7",
+      "title": "7 CONCLUSION",
+      "level": 1,
+      "line_start": 364,
+      "line_end": 371,
+      "char_start": 42194,
+      "char_end": 43285,
+      "parent": null
+    },
+    {
+      "id": "sec-reproducibility-statement",
+      "title": "REPRODUCIBILITY STATEMENT",
+      "level": 1,
+      "line_start": 372,
+      "line_end": 377,
+      "char_start": 43285,
+      "char_end": 44481,
+      "parent": null
+    },
+    {
+      "id": "sec-ethics-statement",
+      "title": "ETHICS STATEMENT",
+      "level": 1,
+      "line_start": 378,
+      "line_end": 388,
+      "char_start": 44481,
+      "char_end": 46087,
+      "parent": null
+    },
+    {
+      "id": "sec-acknowledgements",
+      "title": "ACKNOWLEDGEMENTS",
+      "level": 1,
+      "line_start": 389,
+      "line_end": 400,
+      "char_start": 46087,
+      "char_end": 47490,
+      "parent": null
+    },
+    {
+      "id": "sec-contribution-statement",
+      "title": "CONTRIBUTION STATEMENT",
+      "level": 1,
+      "line_start": 401,
+      "line_end": 414,
+      "char_start": 47490,
+      "char_end": 48673,
+      "parent": null
+    },
+    {
+      "id": "sec-references",
+      "title": "REFERENCES",
+      "level": 1,
+      "line_start": 415,
+      "line_end": 463,
+      "char_start": 48673,
+      "char_end": 66967,
+      "parent": null
+    },
+    {
+      "id": "sec-A",
+      "title": "A IMPLEMENTATION DETAILS",
+      "level": 1,
+      "line_start": 464,
+      "line_end": 565,
+      "char_start": 66967,
+      "char_end": 77875,
+      "parent": null
+    },
+    {
+      "id": "sec-A.1",
+      "title": "A.1 MIN-p IMPLEMENTATION (CODE LISTING)",
+      "level": 2,
+      "line_start": 466,
+      "line_end": 505,
+      "char_start": 66995,
+      "char_end": 69103,
+      "parent": "sec-A"
+    },
+    {
+      "id": "sec-A.2",
+      "title": "A.2 HYPERPARAMETERS SETTINGS (SELECTION METHODOLOGY)",
+      "level": 2,
+      "line_start": 506,
+      "line_end": 523,
+      "char_start": 69103,
+      "char_end": 72419,
+      "parent": "sec-A"
+    },
+    {
+      "id": "sec-A.3",
+      "title": "A.3 TEST TIME COMPUTE CHALLENGES",
+      "level": 2,
+      "line_start": 524,
+      "line_end": 529,
+      "char_start": 72419,
+      "char_end": 73313,
+      "parent": "sec-A"
+    },
+    {
+      "id": "sec-A.4",
+      "title": "A.4 HOW PERCENTAGES THRESHOLDS DIFFER FOR MIN-P AND TOP-P",
+      "level": 2,
+      "line_start": 530,
+      "line_end": 539,
+      "char_start": 73313,
+      "char_end": 74764,
+      "parent": "sec-A"
+    },
+    {
+      "id": "sec-A.5",
+      "title": "A.5 DETAILED COMMUNITY ADOPTION STATISTICS",
+      "level": 2,
+      "line_start": 540,
+      "line_end": 565,
+      "char_start": 74764,
+      "char_end": 77875,
+      "parent": "sec-A"
+    },
+    {
+      "id": "sec-B",
+      "title": "B BENCHMARK EVALUATION RESULTS",
+      "level": 1,
+      "line_start": 566,
+      "line_end": 663,
+      "char_start": 77875,
+      "char_end": 100455,
+      "parent": null
+    },
+    {
+      "id": "sec-B.1",
+      "title": "B.1 ABLATION STUDY",
+      "level": 2,
+      "line_start": 568,
+      "line_end": 625,
+      "char_start": 77909,
+      "char_end": 93329,
+      "parent": "sec-B"
+    },
+    {
+      "id": "sec-B.4",
+      "title": "B.4 RESULTS OF GPQA MAIN OR GSM8K COT BENCHMARKS FOR MISTRAL 7B MODELS - COMBINED TOP P AND TOP K SAMPLING",
+      "level": 2,
+      "line_start": 626,
+      "line_end": 663,
+      "char_start": 93329,
+      "char_end": 100455,
+      "parent": "sec-B"
+    },
+    {
+      "id": "sec-C",
+      "title": "C ADDITIONAL EVALUATIONS",
+      "level": 1,
+      "line_start": 664,
+      "line_end": 674,
+      "char_start": 100455,
+      "char_end": 100693,
+      "parent": null
+    },
+    {
+      "id": "sec-C.1",
+      "title": "C.1 ORIGINAL HUMAN EVALUATION SURVEY METHODOLOGY",
+      "level": 2,
+      "line_start": 666,
+      "line_end": 674,
+      "char_start": 100483,
+      "char_end": 100693,
+      "parent": "sec-C"
+    },
+    {
+      "id": "sec-C.1.1",
+      "title": "C.1.1 SURVEY IMPLEMENTATION DETAILS",
+      "level": 3,
+      "line_start": 673,
+      "line_end": 674,
+      "char_start": 100654,
+      "char_end": 100693,
+      "parent": "sec-C.1"
+    },
+    {
+      "id": "sec-1",
+      "title": "1 Participant Recruitment",
+      "level": 1,
+      "line_start": 675,
+      "line_end": 685,
+      "char_start": 100693,
+      "char_end": 101041,
+      "parent": null
+    },
+    {
+      "id": "sec-2",
+      "title": "2 Recruitment Notice Participants were recruited with the following study description:",
+      "level": 1,
+      "line_start": 686,
+      "line_end": 695,
+      "char_start": 101041,
+      "char_end": 101608,
+      "parent": null
+    },
+    {
+      "id": "sec-3",
+      "title": "3 Survey Structure",
+      "level": 1,
+      "line_start": 696,
+      "line_end": 717,
+      "char_start": 101608,
+      "char_end": 102632,
+      "parent": null
+    },
+    {
+      "id": "sec-4",
+      "title": "4 Rating Criteria For each model in each section, participants provided two ratings:",
+      "level": 1,
+      "line_start": 718,
+      "line_end": 729,
+      "char_start": 102632,
+      "char_end": 103071,
+      "parent": null
+    },
+    {
+      "id": "sec-5",
+      "title": "5 Sample Presentation",
+      "level": 1,
+      "line_start": 730,
+      "line_end": 746,
+      "char_start": 103071,
+      "char_end": 104569,
+      "parent": null
+    },
+    {
+      "id": "sec-6",
+      "title": "6 Quality Control Measures",
+      "level": 1,
+      "line_start": 747,
+      "line_end": 780,
+      "char_start": 104569,
+      "char_end": 106967,
+      "parent": null
+    },
+    {
+      "id": "sec-7",
+      "title": "7 Open-Ended Questions",
+      "level": 1,
+      "line_start": 781,
+      "line_end": 786,
+      "char_start": 106967,
+      "char_end": 107442,
+      "parent": null
+    },
+    {
+      "id": "sec-8",
+      "title": "8 Data Collection & Processing",
+      "level": 1,
+      "line_start": 787,
+      "line_end": 938,
+      "char_start": 107442,
+      "char_end": 122517,
+      "parent": null
+    },
+    {
+      "id": "sec-C.2",
+      "title": "C.2 ADDITIONAL HUMAN EVALUATION WITH VLLM INFERENCE ENGINE",
+      "level": 2,
+      "line_start": 795,
+      "line_end": 827,
+      "char_start": 107872,
+      "char_end": 113975,
+      "parent": "sec-8"
+    },
+    {
+      "id": "sec-C.3",
+      "title": "C.3 ADDITIONAL LLM-AS-A-JUDGE EVALUATION FOR CREATIVE WRITING",
+      "level": 2,
+      "line_start": 828,
+      "line_end": 938,
+      "char_start": 113975,
+      "char_end": 122517,
+      "parent": "sec-8"
+    },
+    {
+      "id": "sec-C.3.1",
+      "title": "C.3.1 STRUCTURED GENERATION FRAMEWORK",
+      "level": 3,
+      "line_start": 837,
+      "line_end": 849,
+      "char_start": 114692,
+      "char_end": 115237,
+      "parent": "sec-C.3"
+    },
+    {
+      "id": "sec-C.3.2",
+      "title": "C.3.2 CREATIVE WRITING TASK",
+      "level": 3,
+      "line_start": 850,
+      "line_end": 858,
+      "char_start": 115237,
+      "char_end": 115607,
+      "parent": "sec-C.3"
+    },
+    {
+      "id": "sec-C.3.3",
+      "title": "C.3.3 SAMPLING PARAMETERS",
+      "level": 3,
+      "line_start": 859,
+      "line_end": 868,
+      "char_start": 115607,
+      "char_end": 115944,
+      "parent": "sec-C.3"
+    },
+    {
+      "id": "sec-C.3.4",
+      "title": "C.3.4 EVALUATION METHODOLOGY",
+      "level": 3,
+      "line_start": 869,
+      "line_end": 903,
+      "char_start": 115944,
+      "char_end": 117328,
+      "parent": "sec-C.3"
+    },
+    {
+      "id": "sec-C.3.5",
+      "title": "C.3.5 DATA COLLECTION AND ANALYSIS",
+      "level": 3,
+      "line_start": 904,
+      "line_end": 916,
+      "char_start": 117328,
+      "char_end": 117948,
+      "parent": "sec-C.3"
+    },
+    {
+      "id": "sec-C.3.6",
+      "title": "C.3.6 RESULTS OF CONSTRAINED LLM-AS-JUDGE EVALUATION",
+      "level": 3,
+      "line_start": 917,
+      "line_end": 938,
+      "char_start": 117948,
+      "char_end": 122517,
+      "parent": "sec-C.3"
+    },
+    {
+      "id": "sec-D",
+      "title": "D APPLICATIONS AND FUTURE WORK",
+      "level": 1,
+      "line_start": 939,
+      "line_end": 989,
+      "char_start": 122517,
+      "char_end": 131374,
+      "parent": null
+    },
+    {
+      "id": "sec-D.1",
+      "title": "D.1 REAL-WORLD APPLICATIONS OF MIN-P SAMPLING",
+      "level": 2,
+      "line_start": 941,
+      "line_end": 950,
+      "char_start": 122551,
+      "char_end": 124881,
+      "parent": "sec-D"
+    },
+    {
+      "id": "sec-D.2",
+      "title": "D.2 LIMITATIONS AND FUTURE RESEARCH DIRECTIONS",
+      "level": 2,
+      "line_start": 951,
+      "line_end": 989,
+      "char_start": 124881,
+      "char_end": 131374,
+      "parent": "sec-D"
+    }
+  ],
+  "entities": {
+    "tables": [
+      {
+        "id": "table-13",
+        "label": "13",
+        "caption": "",
+        "first_mention_line": 194,
+        "context_lines": [
+          189,
+          214
+        ],
+        "in_section": "sec-parameter-selection-guidelines"
+      },
+      {
+        "id": "table-12",
+        "label": "12",
+        "caption": "",
+        "first_mention_line": 196,
+        "context_lines": [
+          191,
+          216
+        ],
+        "in_section": "sec-parameter-selection-guidelines"
+      },
+      {
+        "id": "table-1",
+        "label": "1",
+        "caption": "Token probability comparison between top-p and min-p. Case Study 1 shows min-p increasing token diversity. Case Study 2 shows min-p staying coherent in high-confidence scenarios.",
+        "first_mention_line": 203,
+        "context_lines": [
+          198,
+          223
+        ],
+        "in_section": "sec-parameter-selection-guidelines"
+      },
+      {
+        "id": "table-10",
+        "label": "10",
+        "caption": "",
+        "first_mention_line": 250,
+        "context_lines": [
+          245,
+          270
+        ],
+        "in_section": "sec-5.1"
+      },
+      {
+        "id": "table-2",
+        "label": "2",
+        "caption": "",
+        "first_mention_line": 262,
+        "context_lines": [
+          257,
+          282
+        ],
+        "in_section": "sec-5.2.1"
+      },
+      {
+        "id": "table-3a",
+        "label": "3a",
+        "caption": "",
+        "first_mention_line": 264,
+        "context_lines": [
+          259,
+          284
+        ],
+        "in_section": "sec-5.2.1"
+      },
+      {
+        "id": "table-8",
+        "label": "8",
+        "caption": "",
+        "first_mention_line": 270,
+        "context_lines": [
+          265,
+          290
+        ],
+        "in_section": "sec-5.2.1"
+      },
+      {
+        "id": "table-3b",
+        "label": "3b",
+        "caption": "",
+        "first_mention_line": 314,
+        "context_lines": [
+          309,
+          334
+        ],
+        "in_section": "sec-5.2.3"
+      },
+      {
+        "id": "table-7",
+        "label": "7",
+        "caption": "",
+        "first_mention_line": 322,
+        "context_lines": [
+          317,
+          342
+        ],
+        "in_section": "sec-5.3"
+      },
+      {
+        "id": "table-3",
+        "label": "3",
+        "caption": "Min-p sampling performance on GPQA Main (Mistral Large, left) and AlpacaEval Creative Writing (right). We focus on min-p = 0.05 or 0.1 or top-p = 0.9 or 0.95. Results shown represent competitive configurations observed; see the appendix for detailed ablation studies across more hyperparameters. Best scores bolded; best scores beyond standard error (±1-1.5%) in italics.",
+        "first_mention_line": 330,
+        "context_lines": [
+          325,
+          350
+        ],
+        "in_section": "sec-6"
+      },
+      {
+        "id": "table-4",
+        "label": "4",
+        "caption": "Human Evaluation: Min-p outperforms top-p in quality and diversity. Scores shown on 1-10 scale (mean ± standard error). Best results bolded; significant differences (p<0.05) in italics.",
+        "first_mention_line": 354,
+        "context_lines": [
+          349,
+          374
+        ],
+        "in_section": "sec-6"
+      },
+      {
+        "id": "table-5",
+        "label": "5",
+        "caption": "Results for Mixtral-7b at Risk Level 15 (Zhou et al., 2024) Risk standard error (indicating stability) and recall mean (indicating diversity) of different truncation sampling methods at different risk levels using different models. The best and worst scores are marked in bold and blue, respectively.",
+        "first_mention_line": 518,
+        "context_lines": [
+          513,
+          538
+        ],
+        "in_section": "sec-A.2"
+      },
+      {
+        "id": "table-6",
+        "label": "6",
+        "caption": "",
+        "first_mention_line": 542,
+        "context_lines": [
+          537,
+          562
+        ],
+        "in_section": "sec-A.5"
+      },
+      {
+        "id": "table-9",
+        "label": "9",
+        "caption": "Accuracy (%) on GPQA Main and GSM8K CoT benchmarks for Llama 3.1 70B models",
+        "first_mention_line": 607,
+        "context_lines": [
+          602,
+          627
+        ],
+        "in_section": "sec-B.1"
+      },
+      {
+        "id": "table-11",
+        "label": "11",
+        "caption": "Accuracy (%) on GSM8K benchmark for Mistral-7B model.",
+        "first_mention_line": 621,
+        "context_lines": [
+          616,
+          641
+        ],
+        "in_section": "sec-B.1"
+      },
+      {
+        "id": "table-14",
+        "label": "14",
+        "caption": "Performance Comparison between Best Score and Greedy Score",
+        "first_mention_line": 660,
+        "context_lines": [
+          655,
+          680
+        ],
+        "in_section": "sec-B.4"
+      },
+      {
+        "id": "table-15",
+        "label": "15",
+        "caption": "Refined human evaluation comparing min-p and top-p sampling using VLLM inference engine. Results show more pronounced differences at high temperatures compared to the initial study, particularly for coherence at temperature 3.0. Mean scores on a 1-10 scale ± standard error.",
+        "first_mention_line": 818,
+        "context_lines": [
+          813,
+          838
+        ],
+        "in_section": "sec-C.2"
+      },
+      {
+        "id": "table-16",
+        "label": "16",
+        "caption": "Overall Performance Comparison across all temperatures and configurations",
+        "first_mention_line": 923,
+        "context_lines": [
+          918,
+          943
+        ],
+        "in_section": "sec-C.3.6"
+      },
+      {
+        "id": "table-17",
+        "label": "17",
+        "caption": "",
+        "first_mention_line": 925,
+        "context_lines": [
+          920,
+          945
+        ],
+        "in_section": "sec-C.3.6"
+      },
+      {
+        "id": "table-18",
+        "label": "18",
+        "caption": "",
+        "first_mention_line": 931,
+        "context_lines": [
+          926,
+          951
+        ],
+        "in_section": "sec-C.3.6"
+      }
+    ],
+    "figures": [
+      {
+        "id": "figure-1",
+        "label": "1",
+        "caption": "Comparison of sampling methods. (a) Initial token distribution. (b) Top-p sampling. (c) Top-k sampling. (d) Min- $- p$ sampling. Min $- p$ sampling dynamically adjusts its threshold based on the model’s confidence, focusing on likeliest tokens when confident and allowing more diverse options when uncertain. This dynamic threshold balances coherence and diversity better than top-p and top-k.",
+        "first_mention_line": 147,
+        "context_lines": [
+          142,
+          167
+        ],
+        "in_section": "sec-3.1"
+      },
+      {
+        "id": "figure-2",
+        "label": "2",
+        "caption": "",
+        "first_mention_line": 250,
+        "context_lines": [
+          245,
+          270
+        ],
+        "in_section": "sec-5.1"
+      }
+    ],
+    "algorithms": [],
+    "equations": []
+  }
+}

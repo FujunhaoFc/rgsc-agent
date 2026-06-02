@@ -1,0 +1,415 @@
+{
+  "paper_id": "min-p",
+  "experiments": {
+    "exp-table2": {
+      "evidence_in_paper": "table-2",
+      "axes": {
+        "rows": [
+          "Temperature Only",
+          "Top-k",
+          "η Sampling",
+          "ε Sampling",
+          "Top-p",
+          "min-p sampling"
+        ],
+        "cols": [
+          "GPQA Main τ=0.7",
+          "GPQA Main τ=1.0",
+          "GPQA Main τ=1.5",
+          "GPQA Main τ=2.0",
+          "GPQA Main τ=3.0",
+          "GSM8K CoT τ=0.7",
+          "GSM8K CoT τ=1.0",
+          "GSM8K CoT τ=1.5",
+          "GSM8K CoT τ=2.0",
+          "GSM8K CoT τ=3.0"
+        ]
+      },
+      "values": [
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "exp-table3a": {
+      "evidence_in_paper": "table-3a",
+      "axes": {
+        "rows": [
+          "Temperature Only",
+          "Top-p (p=0.95)",
+          "Top-p (p=0.90)",
+          "min-p sampling"
+        ],
+        "cols": [
+          "τ=0.5",
+          "τ=1.0",
+          "τ=1.5",
+          "τ=2.0",
+          "τ=3.0",
+          "τ=4.0"
+        ]
+      },
+      "values": [
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "exp-table3b": {
+      "evidence_in_paper": "table-3b",
+      "axes": {
+        "rows": [
+          "Temperature Only",
+          "Mirostat",
+          "ε Sampling",
+          "Top-p",
+          "min-p sampling"
+        ],
+        "cols": [
+          "τ=1.0",
+          "τ=1.5"
+        ]
+      },
+      "values": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    },
+    "exp-figure2": {
+      "evidence_in_paper": "figure-2",
+      "axes": {
+        "rows": [
+          "min-p sampling",
+          "Top-p"
+        ],
+        "cols": [
+          "Accuracy (%)",
+          "Avg. Entropy of Correct Predictions ('Creativity')"
+        ]
+      },
+      "values": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    },
+    "exp-table4": {
+      "evidence_in_paper": "table-4",
+      "axes": {
+        "rows": [
+          "Standard Sampling (baseline for creative writing comparison)",
+          "Top-p = 0.1",
+          "Top-p = 0.9",
+          "Min-p = 0.2",
+          "Min-p = 0.05"
+        ],
+        "cols": [
+          "Quality (T=1)",
+          "Diversity (T=1)",
+          "Quality (T=2)",
+          "Diversity (T=2)",
+          "Quality (T=3)",
+          "Diversity (T=3)"
+        ]
+      },
+      "values": [
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "exp-table7": {
+      "evidence_in_paper": "table-7",
+      "axes": {
+        "rows": [
+          "min-p sampling",
+          "Top-p"
+        ],
+        "cols": [
+          "Winrate (%)",
+          "Winrate (LC) (%)",
+          "Avg Length"
+        ]
+      },
+      "values": [
+        [
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "exp-table9": {
+      "evidence_in_paper": "table-9",
+      "axes": {
+        "rows": [
+          "Temperature Only",
+          "Top-p (p=0.9)",
+          "Top-p (p=0.95)",
+          "min-p sampling (p=0.05)",
+          "min-p sampling (p=0.1)",
+          "min-p sampling (p=0.2)"
+        ],
+        "cols": [
+          "GPQA Main τ=0.5",
+          "GPQA Main τ=0.7",
+          "GPQA Main τ=1.0",
+          "GPQA Main τ=2.0",
+          "GPQA Main τ=3.0",
+          "GSM8K CoT τ=0.7",
+          "GSM8K CoT τ=3.0"
+        ]
+      },
+      "values": [
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "exp-table12": {
+      "evidence_in_paper": "table-12",
+      "summary": "[PLACEHOLDER - 待手工填充]"
+    },
+    "exp-table8": {
+      "evidence_in_paper": "table-8",
+      "axes": {
+        "rows": [
+          "min-p",
+          "top-p"
+        ],
+        "cols": [
+          "GPQA",
+          "GSM8K CoT"
+        ]
+      },
+      "values": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ]
+    },
+    "exp-table1": {
+      "evidence_in_paper": "table-1",
+      "summary": "[PLACEHOLDER - 待手工填充]"
+    }
+  }
+}
