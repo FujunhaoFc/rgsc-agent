@@ -549,9 +549,9 @@
     },
     {
       "id": "claim-6",
-      "claim_text": "The asynchronous BN training with MCSIE loss (I0T_async) further reduces modality gap compared to standard training, as shown in ablation.",
+      "claim_text": "Adding MCSIE loss during I0T_async BN training improves retrieval performance (I2T 70.9 → 72.5, T2I 72.3 → 73.8) compared to training without MCSIE.",
       "evidence": "table-8",
-      "verification_hint": "Compare CD and downstream scores for with/without MCSIE in Table 8."
+      "verification_hint": "Compare BN* w/o MCSIE (I2T=70.9, T2I=72.3) vs BN* w/ MCSIE (I2T=72.5, T2I=73.8) in Table 8. MCSIE improves retrieval but slightly increases CD (0.442 → 0.479, paper interprets as MCSIE enabling robust BN learning despite minor CD trade-off)."
     }
   ],
   "reproducibility_meta": {

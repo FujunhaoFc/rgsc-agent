@@ -1,6 +1,10 @@
 {
   "paper_id": "min-p",
   "experiments": {
+    "exp-table1": {
+      "evidence_in_paper": "table-1",
+      "summary": "Case study comparing top-p vs min-p token probability behavior. Case Study 1 (low-confidence prompt about a battle scene): at τ=3, both top-p and min-p preserve the top tokens 'was' (top-p=13.1%, min-p=18.5%), 'lasted' (6.7% / 9.5%), 'between' (5.9% / 8.2%), 'left' (5.3% / 7.4%), 'would' (4.7% / 6.6%), 'seemed' (2.5% / 3.5%); min-p maintains diversity similar to top-p. Case Study 2 (high-confidence prompt about rainbow refraction): at τ=3, top-p retains 'light' (38.2%), 'sunlight' (9.0%), 'water' (3.8%), 'sunshine' (3.2%), 'a' (3.0%), 'moisture' (3.0%); min-p filters aggressively to only 'light' (80.9%) and 'sunlight' (19.1%), removing semantically less-relevant tokens. This demonstrates min-p's dynamic threshold: it relaxes in low-confidence contexts and constrains in high-confidence ones."
+    },
     "exp-table2": {
       "evidence_in_paper": "table-2",
       "axes": {
@@ -27,76 +31,76 @@
       },
       "values": [
         [
+          27.23,
+          22.77,
+          25.22,
+          5.8,
+          0.89,
+          29.56,
+          17.51,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          26.34,
+          23.66,
+          22.77,
+          16.52,
+          5.88,
+          30.63,
+          17.59,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          28.13,
+          25.45,
+          24.55,
           null,
           null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
+          32.63,
+          26.99,
+          0.49,
           null,
           null
         ],
         [
+          27.9,
+          25.45,
+          24.11,
           null,
           null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
+          31.69,
+          26.84,
+          0.56,
           null,
           null
         ],
         [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
+          29.02,
+          25.0,
+          24.78,
+          6.47,
+          0.46,
+          36.09,
+          27.67,
+          0.68,
+          0.0,
+          0.0
         ],
         [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
+          29.18,
+          25.89,
+          28.13,
+          26.34,
+          24.55,
+          35.18,
+          30.86,
+          18.42,
+          6.21,
+          0.0
         ]
       ]
     },
@@ -120,36 +124,36 @@
       },
       "values": [
         [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
+          37.72,
+          31.25,
+          29.02,
+          20.09,
+          2.9,
+          0.89
         ],
         [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
+          39.51,
+          33.26,
+          29.24,
+          18.75,
+          2.01,
+          0.67
         ],
         [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
+          40.18,
+          34.38,
+          29.69,
+          21.21,
+          2.01,
+          0.89
         ],
         [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
+          38.17,
+          34.6,
+          31.03,
+          27.46,
+          22.77,
+          13.84
         ]
       ]
     },
@@ -170,246 +174,50 @@
       },
       "values": [
         [
-          null,
+          49.97,
+          53.18
+        ],
+        [
+          16.69,
+          14.23
+        ],
+        [
+          43.5,
+          45.51
+        ],
+        [
+          50.43,
           null
         ],
         [
-          null,
-          null
-        ],
-        [
-          null,
-          null
-        ],
-        [
-          null,
-          null
-        ],
-        [
-          null,
-          null
+          52.01,
+          56.54
         ]
       ]
     },
     "exp-figure2": {
       "evidence_in_paper": "figure-2",
-      "axes": {
-        "rows": [
-          "min-p sampling",
-          "Top-p"
-        ],
-        "cols": [
-          "Accuracy (%)",
-          "Avg. Entropy of Correct Predictions ('Creativity')"
-        ]
-      },
-      "values": [
-        [
-          null,
-          null
-        ],
-        [
-          null,
-          null
-        ]
-      ]
+      "summary": "Accuracy vs Average Entropy of Correct Predictions (creativity) on GSM8K CoT-SC, Mistral-7B. Min-p configurations (circles, 20 hyperparam points) consistently lie in the upper-right region (higher accuracy + higher entropy), forming a Pareto frontier above and to the right of top-p's (triangles, 20 points). Top-p configurations cluster tightly with low spread. Min-p frontier is closer to the ideal top-right corner, dominating top-p across the accuracy-diversity trade-off."
     },
     "exp-table4": {
       "evidence_in_paper": "table-4",
-      "axes": {
-        "rows": [
-          "Standard Sampling (baseline for creative writing comparison)",
-          "Top-p = 0.1",
-          "Top-p = 0.9",
-          "Min-p = 0.2",
-          "Min-p = 0.05"
-        ],
-        "cols": [
-          "Quality (T=1)",
-          "Diversity (T=1)",
-          "Quality (T=2)",
-          "Diversity (T=2)",
-          "Quality (T=3)",
-          "Diversity (T=3)"
-        ]
-      },
-      "values": [
-        [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ]
-      ]
+      "summary": "Human evaluation Quality and Diversity scores (1-10 scale, mean ± std error). LOW DIVERSITY SETTINGS [Standard / Top-p=0.1 / Min-p=0.2]: T=1 Quality 7.55±0.24 / 5.96±0.31 / 7.06±0.20, Diversity 7.08±0.29 / 2.40±0.28 / 5.83±0.28; T=2 Quality 7.76±0.26 / 5.43±0.31 / 7.62±0.21, Diversity 7.66±0.25 / 1.83±0.22 / 6.91±0.27; T=3 Quality 6.75±0.35 / 5.75±0.32 / 7.74±0.24, Diversity 7.04±0.28 / 2.25±0.34 / 7.60±0.26. HIGH DIVERSITY SETTINGS [Standard / Top-p=0.9 / Min-p=0.05]: T=1 Quality 7.96±0.15 / 7.67±0.19 / 8.02±0.19, Diversity 7.66±0.20 / 7.04±0.26 / 7.74±0.22; T=2 Quality 7.85±0.19 / 7.75±0.19 / 7.98±0.20, Diversity 7.57±0.21 / 7.66±0.21 / 7.96±0.21; T=3 Quality 6.83±0.29 / 7.11±0.29 / 7.57±0.23 (significant p<0.05), Diversity 7.43±0.28 / 7.49±0.24 / 7.66±0.20. Min-p means exceed top-p across all 12 (T, diversity) pairs."
     },
     "exp-table7": {
       "evidence_in_paper": "table-7",
-      "axes": {
-        "rows": [
-          "min-p sampling",
-          "Top-p"
-        ],
-        "cols": [
-          "Winrate (%)",
-          "Winrate (LC) (%)",
-          "Avg Length"
-        ]
-      },
-      "values": [
-        [
-          null,
-          null,
-          null
-        ],
-        [
-          null,
-          null,
-          null
-        ]
-      ]
+      "summary": "Ablation on AlpacaEval Creative Writing across temperatures (Llama 3 70B). Min-p generally outperforms top-p across temperature settings, with highest winrate achieved by min-p=0.1 at τ=1.5. Winrate (LC) results consistent with raw Winrate, confirming benefits not biased by output length."
     },
     "exp-table9": {
       "evidence_in_paper": "table-9",
-      "axes": {
-        "rows": [
-          "Temperature Only",
-          "Top-p (p=0.9)",
-          "Top-p (p=0.95)",
-          "min-p sampling (p=0.05)",
-          "min-p sampling (p=0.1)",
-          "min-p sampling (p=0.2)"
-        ],
-        "cols": [
-          "GPQA Main τ=0.5",
-          "GPQA Main τ=0.7",
-          "GPQA Main τ=1.0",
-          "GPQA Main τ=2.0",
-          "GPQA Main τ=3.0",
-          "GSM8K CoT τ=0.7",
-          "GSM8K CoT τ=3.0"
-        ]
-      },
-      "values": [
-        [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ]
-      ]
+      "summary": "Llama 3.1 70B results (Appendix). Min-p sampling matches or exceeds top-p across temperatures on GPQA Main and GSM8K CoT, confirming method generalizes across model families."
     },
     "exp-table12": {
       "evidence_in_paper": "table-12",
-      "summary": "[PLACEHOLDER - 待手工填充]"
+      "summary": "Ablation combining min-p with other truncation methods (top-p + min-p). Result: double normalization issues lead to suboptimal performance because hyperparameters are tuned for standalone use. Paper recommends min-p as primary truncation method."
     },
     "exp-table8": {
       "evidence_in_paper": "table-8",
-      "axes": {
-        "rows": [
-          "min-p",
-          "top-p"
-        ],
-        "cols": [
-          "GPQA",
-          "GSM8K CoT"
-        ]
-      },
-      "values": [
-        [
-          null,
-          null
-        ],
-        [
-          null,
-          null
-        ]
-      ]
-    },
-    "exp-table1": {
-      "evidence_in_paper": "table-1",
-      "summary": "[PLACEHOLDER - 待手工填充]"
+      "summary": "Llama 3 models comparison: min-p sampling outperforms top-p on GPQA and GSM8K CoT benchmarks, with larger gains at higher temperatures, confirming cross-family generalization."
     }
   }
 }

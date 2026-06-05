@@ -316,13 +316,15 @@ def test_is_placeholder():
     }
     assert is_placeholder(table_real) is False
 
-    # Table with one null among real values → placeholder
+    # Table with partial nulls → NOT placeholder
+    # (partial nulls represent N.A in original paper, e.g. BLEU Lemmatized on
+    # languages without a lemmatizer — legitimate data, not missing)
     table_mixed = {
         "evidence_in_paper": "table-1",
         "axes": {"rows": ["A", "B"], "cols": ["X"]},
         "values": [[None], [0.87]],
     }
-    assert is_placeholder(table_mixed) is True
+    assert is_placeholder(table_mixed) is False
 
     # Figure with placeholder summary → placeholder
     fig_placeholder = {

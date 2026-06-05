@@ -3,320 +3,58 @@
   "experiments": {
     "exp-figure1": {
       "evidence_in_paper": "figure-1",
-      "summary": "[PLACEHOLDER - 待手工填充]"
+      "summary": "Elo scores from human annotations. Gemini-generated summaries rank higher for high-fusional and low-resource languages on both coherence and completeness. GPT summaries rank higher for high-resource languages. The best-performing model is consistently ranked higher across both criteria, potentially due to the halo effect."
     },
     "exp-table5": {
       "evidence_in_paper": "table-5",
       "axes": {
-        "rows": [
-          "ROUGE-1",
-          "ROUGE-2",
-          "ROUGE-3",
-          "ROUGE-L",
-          "BLEU",
-          "CHRF",
-          "ROUGE-1 (mBERT Tokenizer)",
-          "ROUGE-2 (mBERT Tokenizer)",
-          "ROUGE-3 (mBERT Tokenizer)",
-          "ROUGE-L (mBERT Tokenizer)",
-          "ROUGE-1 (Monolingual Tokenizer)",
-          "ROUGE-2 (Monolingual Tokenizer)",
-          "ROUGE-3 (Monolingual Tokenizer)",
-          "ROUGE-L (Monolingual Tokenizer)",
-          "BLEU (Lemmatized Form)",
-          "Gemini as a Judge",
-          "MoverScore",
-          "BERTScore (mBERT)",
-          "BERTScore (Monolingual)",
-          "COMET"
-        ],
-        "cols": [
-          "Coherence (Isolating)",
-          "Coherence (Agglutinative)",
-          "Coherence (Low Fusional)",
-          "Coherence (High Fusional)",
-          "Completeness (Isolating)",
-          "Completeness (Agglutinative)",
-          "Completeness (Low Fusional)",
-          "Completeness (High Fusional)"
-        ]
+        "rows": ["ROUGE-1", "ROUGE-2", "ROUGE-3", "ROUGE-L", "BLEU", "CHRF", "ROUGE-1 (mBERT Tokenizer)", "ROUGE-2 (mBERT Tokenizer)", "ROUGE-3 (mBERT Tokenizer)", "ROUGE-L (mBERT Tokenizer)", "ROUGE-1 (Monolingual Tokenizer)", "ROUGE-2 (Monolingual Tokenizer)", "ROUGE-3 (Monolingual Tokenizer)", "ROUGE-L (Monolingual Tokenizer)", "BLEU (Lemmatized Form)", "Gemini as a Judge", "MoverScore", "BERTScore (mBERT)", "BERTScore (Monolingual)", "COMET"],
+        "cols": ["Coherence (Isolating)", "Coherence (Agglutinative)", "Coherence (Low Fusional)", "Coherence (High Fusional)", "Completeness (Isolating)", "Completeness (Agglutinative)", "Completeness (Low Fusional)", "Completeness (High Fusional)"]
       },
       "values": [
-        [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ]
+        [0.20,  0.27,  0.11, -0.25,  0.15,  0.11,  0.08, -0.20],
+        [0.20,  0.28,  0.11, -0.07,  0.14,  0.14,  0.08, -0.03],
+        [0.16,  0.27,  0.09, -0.01,  0.12,  0.10,  0.01,  0.02],
+        [0.19,  0.23,  0.11, -0.23,  0.15,  0.10,  0.08, -0.18],
+        [0.03,  0.03,  0.11, -0.30,  0.02,  0.05,  0.07, -0.10],
+        [0.02,  0.09,  0.16, -0.46,  0.01,  0.01,  0.14, -0.38],
+        [0.14,  0.18,  0.15,  0.10,  0.10,  0.09,  0.14,  0.15],
+        [0.14,  0.20,  0.15,  0.11,  0.10,  0.09,  0.19,  0.15],
+        [0.12,  0.22,  0.12,  0.11,  0.10,  0.07,  0.15,  0.14],
+        [0.14,  0.17,  0.13,  0.08,  0.11,  0.05,  0.13,  0.12],
+        [0.17,  0.23,  0.11,  0.02,  0.07,  0.13,  0.06,  0.07],
+        [0.12,  0.25,  0.12,  0.09,  0.12,  0.13,  0.07,  0.14],
+        [0.07,  0.24,  0.13,  0.07,  0.07,  0.08,  0.02,  0.09],
+        [0.10,  0.22,  0.11,  0.03,  0.08,  0.12,  0.07,  0.11],
+        [null,  null,  0.15,  0.30,  null,  null,  0.08,  0.40],
+        [0.15,  0.03,  0.15,  0.05,  0.14,  0.16,  0.10,  0.09],
+        [0.07,  0.15,  0.18,  0.02,  0.08,  0.10,  0.17,  0.08],
+        [0.09,  0.15,  0.19,  0.15,  0.13,  0.07,  0.16,  0.13],
+        [0.13,  0.32,  0.20,  0.17,  0.12,  0.21, -0.03,  0.15],
+        [0.07,  0.23,  0.23,  0.35,  0.16,  0.18,  0.24,  0.24]
       ]
     },
     "exp-table6": {
       "evidence_in_paper": "table-6",
       "axes": {
-        "rows": [
-          "Gemini as a Judge",
-          "MoverScore",
-          "BERTScore (mBERT)",
-          "BERTScore (Monolingual)",
-          "COMET"
-        ],
-        "cols": [
-          "Coherence (High)",
-          "Coherence (Low)",
-          "Completeness (High)",
-          "Completeness (Low)"
-        ]
+        "rows": ["Gemini as a Judge", "MoverScore", "BERTScore (mBERT)", "BERTScore (Monolingual)", "COMET"],
+        "cols": ["Coherence (High)", "Coherence (Low)", "Completeness (High)", "Completeness (Low)"]
       },
       "values": [
-        [
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          null
-        ]
+        [0.19, 0.13, 0.08, 0.12],
+        [0.16, 0.13, 0.10, 0.06],
+        [0.23, 0.16, 0.16, 0.15],
+        [0.27, 0.16, 0.17, 0.21],
+        [0.32, 0.18, 0.13, 0.24]
       ]
     },
     "exp-perlang-corr-coh": {
       "evidence_in_paper": "table-10",
-      "axes": {
-        "rows": [],
-        "cols": []
-      },
-      "values": [
-        [
-          null
-        ]
-      ]
+      "summary": "Per-language Spearman correlations for coherence (across 8 languages: ZH, YOR, JA, TR, AR, HE, ES, UKR). Confirms negative ROUGE-L correlation for High Fusional Hebrew (-0.26). mBERT tokenization reverses negative trend (HE ROUGE-L mBERT = 0.46). COMET shows strong positive correlation for HE (0.38) and ES (0.32)."
     },
     "exp-perlang-corr-com": {
       "evidence_in_paper": "table-11",
-      "axes": {
-        "rows": [],
-        "cols": []
-      },
-      "values": [
-        [
-          null
-        ]
-      ]
+      "summary": "Per-language Pearson correlations for completeness (8 languages). Lemmatized BLEU strongly improves HE completeness (0.46). Standard n-gram metrics show negative correlation for HE (ROUGE-1=-0.23, BLEU=-0.08). Neural metrics like COMET correlate positively across most languages."
     }
   }
 }

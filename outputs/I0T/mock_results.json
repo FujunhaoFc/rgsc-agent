@@ -29,100 +29,100 @@
       },
       "values": [
         [
+          353,
+          0.9904,
+          0.9998,
           null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
+          71.9,
+          75.0,
+          65.03,
+          5.43,
+          53.21,
+          34.86
         ],
         [
+          353,
+          0.9965,
+          0.9997,
           null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
+          72.5,
+          75.9,
+          64.46,
+          5.81,
+          51.42,
+          35.17
         ],
         [
+          353,
+          1.007,
+          0.9999,
           null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
+          74.9,
+          76.1,
+          64.75,
+          4.9,
+          54.57,
+          35.43
         ],
         [
+          353,
+          0.9682,
+          0.9998,
           null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
+          73.7,
+          74.6,
+          64.17,
+          4.93,
+          54.55,
+          35.72
         ],
         [
+          354,
+          1.0068,
+          0.9999,
           null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
+          74.7,
+          76.2,
+          64.58,
+          5.08,
+          54.56,
+          35.42
         ],
         [
+          353,
+          0.9696,
+          0.9998,
           null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
+          73.6,
+          74.1,
+          64.36,
+          4.87,
+          54.52,
+          35.7
         ],
         [
+          354,
+          0.5285,
+          0.9983,
           null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
+          71.6,
+          70.1,
+          63.14,
+          5.81,
+          53.36,
+          32.53
         ],
         [
+          354,
+          0.4795,
+          0.996,
           null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
+          72.5,
+          73.8,
+          62.97,
+          5.21,
+          53.33,
+          33.08
         ]
       ]
     },
@@ -156,121 +156,121 @@
       },
       "values": [
         [
+          353,
+          0.7642,
+          0.9985,
           null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
+          69.6,
+          67.1,
+          65.05,
+          5.94,
+          51.0,
+          34.3,
+          3.88
         ],
         [
+          353,
+          0.0291,
+          0.5632,
           null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
+          45.4,
+          54.4,
+          43.26,
+          1.67,
+          42.84,
+          29.26,
+          5.63
         ],
         [
+          353,
+          0.2493,
+          0.9858,
           null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
+          38.1,
+          46.5,
+          44.13,
+          1.37,
+          39.7,
+          27.25,
+          6.63
         ],
         [
+          353,
+          1.3799,
+          0.9998,
+          null,
+          45.2,
+          54.4,
+          9.52,
+          5.35,
           null,
           null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
+          7.5
         ],
         [
+          354,
+          0.4832,
+          0.9899,
           null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
+          69.6,
+          72.6,
+          60.4,
+          4.91,
+          50.06,
+          31.71,
+          4.5
         ],
         [
+          353,
+          0.4636,
+          0.9921,
           null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
+          51.2,
+          46.0,
+          50.32,
+          3.83,
+          42.47,
+          29.31,
+          5.88
         ],
         [
+          353,
+          0.7583,
+          0.999,
           null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
+          72.6,
+          71.6,
+          58.61,
+          3.74,
+          54.0,
+          36.1,
+          4.5
         ],
         [
+          354,
+          0.4795,
+          0.996,
           null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
+          72.5,
+          73.8,
+          62.97,
+          5.21,
+          53.33,
+          33.08,
+          3.63
         ],
         [
+          353,
+          0.0102,
+          0.5374,
           null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
+          73.3,
+          76.3,
+          63.07,
+          4.76,
+          53.97,
+          33.58,
+          1.88
         ]
       ]
     },
@@ -294,66 +294,58 @@
       },
       "values": [
         [
+          0.188,
           null,
-          null,
-          null,
-          null
+          70.3,
+          73.0
         ],
         [
+          0.1387,
           null,
-          null,
-          null,
-          null
+          71.5,
+          73.3
         ],
         [
+          0.0986,
           null,
-          null,
-          null,
-          null
+          71.9,
+          73.9
         ],
         [
+          0.071,
           null,
-          null,
-          null,
-          null
+          72.3,
+          73.7
         ],
         [
+          0.0542,
           null,
-          null,
-          null,
-          null
+          72.0,
+          74.0
         ],
         [
+          0.0102,
           null,
-          null,
-          null,
-          null
+          73.3,
+          76.3
         ]
       ]
     },
     "exp-figure3": {
       "evidence_in_paper": "figure-3",
-      "summary": "[PLACEHOLDER - 待手工填充]"
+      "summary": "Normalized embedding activations for image and text encoders. Long-CLIP (column 1): peak negative activation at image dim 93, positive peaks at text dims 134 and 313, with severe modality gap CD=0.9904. Clipping (column 2): peaks still present after clipping at ±0.1 range, severe gap persists. Mind-the-Gap (MG, column 3): peaks remain visible, low severity but artificial shift. I0T_post (column 4): NO peak activations, mean activations close to zero across all hidden dimensions, CD=0.0102 (near zero). I0T effectively removes modality-specific characteristics that other methods leave intact."
     },
     "exp-figure4": {
       "evidence_in_paper": "figure-4",
-      "summary": "[PLACEHOLDER - 待手工填充]"
+      "summary": "BLIP vs I0T methods on parameters efficiency. BLIP has substantially more parameters than I0T variants. I0T_async (354m) and I0T_post (353m) achieve 94.68% and 47.74% lower centroid distance than BLIP while maintaining similar relative correlation on Flickr-Expert. 2.5x fewer parameters than BLIP."
     },
     "exp-figure5": {
       "evidence_in_paper": "figure-5",
-      "summary": "[PLACEHOLDER - 待手工填充]"
+      "summary": "Cosine similarity distributions. CLIP-S: min=0.150, max=0.350, range=0.200, narrow skewed clustered around 0.25. PAC-S: min=0.100, max=0.400, range=0.300, similar narrow distribution. IOT-S (I0T_post): min=-0.349, max=0.660, range=1.009 (~5x wider than CLIP-S), non-skewed with mean approximately 0.0. IOT-S enables intuitive scoring: negative pairs below 0, positive pairs above 0. +21% score for correct pairs vs CLIP-S, -20% for incorrect."
     },
     "exp-table8": {
       "evidence_in_paper": "table-8",
-      "axes": {
-        "rows": [],
-        "cols": []
-      },
-      "values": [
-        [
-          null
-        ]
-      ]
+      "summary": "Ablation comparing BN* training without and with MCSIE loss. Without MCSIE: CD=0.442, LS=0.999, I2T=70.9, T2I=72.3. With MCSIE: CD=0.479, LS=0.996, I2T=72.5, T2I=73.8. MCSIE produces slightly higher CD (worse on modality gap by 0.04 absolute) but markedly better retrieval (+1.6 I2T, +1.5 T2I). MCSIE benefit is in retrieval, not in CD itself; paper interprets as MCSIE enabling robust learning of modality-specific characteristics."
     }
   }
 }

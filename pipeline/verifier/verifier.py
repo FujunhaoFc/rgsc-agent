@@ -85,7 +85,7 @@ def _call_llm(
     prompt: str,
     *,
     temperature: float = 0.2,
-    max_tokens: int = 2500,
+    max_tokens: int = 4000,
 ) -> Tuple[str, dict]:
     """Make a single LLM call. Returns (text_response, usage_info).
 
@@ -134,7 +134,7 @@ def _save_claim_debug(
         "claim_id": claim_id,
         "model": _model_name(),
         "temperature": 0.2,
-        "max_tokens": 2500,
+        "max_tokens": 4000,
         "input_tokens": usage.get("input_tokens", 0),
         "output_tokens": usage.get("output_tokens", 0),
         "timestamp": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S"),
@@ -233,11 +233,12 @@ def is_placeholder(result_data: Optional[dict]) -> bool:
         values = result_data.get("values", [])
         if not values:
             return True
-        for row in values:
-            for cell in row:
-                if cell is None:
-                    return True
-        return False
+        # Flatten all cells, count nulls. Partial nulls (e.g. N.A in original
+        # paper) are legitimate data — only ALL-null counts as placeholder.
+        all_cells = [c for row in values for c in row]
+        if not all_cells:
+            return True
+        return all(c is None for c in all_cells)
 
     # Unknown experiment shape — treat as placeholder to be safe
     return True

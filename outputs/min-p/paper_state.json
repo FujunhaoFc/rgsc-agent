@@ -512,9 +512,9 @@
   "expected_claims": [
     {
       "id": "claim-1",
-      "claim_text": "Min-p maintains substantially higher accuracy than top-p, temperature-only, and top-k on GPQA Main and GSM8K CoT at τ = 1.5, 2.0, and 3.0.",
+      "claim_text": "On GPQA Main at τ=1.5, 2.0, and 3.0, min-p sampling achieves higher accuracy than top-p, temperature-only, and top-k sampling.",
       "evidence": "table-2",
-      "verification_hint": "From Table 2, at τ=1.5/2.0/3.0, ensure min-p accuracy (e.g., 28.13/26.34/24.55 on GPQA) is > top-p (24.78/6.47/0.46) and > temperature-only (25.22/5.80/0.89)."
+      "verification_hint": "From Table 2 GPQA columns: at τ=1.5 min-p=28.13 vs top-p=24.78 vs temp-only=25.22 vs top-k=22.77; at τ=2.0 min-p=26.34 vs top-p=6.47 vs temp-only=5.80 vs top-k=16.52; at τ=3.0 min-p=24.55 vs top-p=0.46 vs temp-only=0.89 vs top-k=5.88. Min-p is highest at all 12 cells (3 temps × 4 methods comparison)."
     },
     {
       "id": "claim-2",
@@ -536,15 +536,15 @@
     },
     {
       "id": "claim-5",
-      "claim_text": "Min-p outperforms top-p on the AlpacaEval Creative Writing benchmark, achieving higher win rates at τ=1.0 and τ=1.5.",
+      "claim_text": "On AlpacaEval Creative Writing, min-p achieves higher win rates than temperature-only sampling at both τ=1.0 and τ=1.5, and exceeds top-p at τ=1.0.",
       "evidence": "table-3b",
-      "verification_hint": "Verify that min-p win rate (52.01% at τ=1.0, 56.54% at τ=1.5) exceeds top-p (50.43% at τ=1.0) and temperature-only (49.97%, 53.18%)."
+      "verification_hint": "Min-p win rate: 52.01% at τ=1.0, 56.54% at τ=1.5. Compare against Temperature Only (49.97% / 53.18%) — min-p higher at both. Top-p at τ=1.0 = 50.43% — min-p higher; top-p at τ=1.5 is not reported in Table 3b."
     },
     {
       "id": "claim-6",
-      "claim_text": "Min-p is computationally efficient compared to entropy-based methods (η/ε sampling) whose runtime grows exponentially with temperature and which fail entirely at τ ≥ 2.0.",
+      "claim_text": "η-sampling and ε-sampling fail entirely at τ ≥ 2.0 (cannot produce results), while min-p remains practical and produces valid accuracy scores.",
       "evidence": "table-2",
-      "verification_hint": "Observe in Table 2 that η and ε sampling have no reported values for τ=2.0 and 3.0 because they could not complete evaluation, while min-p remains practical."
+      "verification_hint": "In Table 2 GPQA and GSM8K cols at τ=2.0 and τ=3.0: η/ε sampling rows are empty (could not complete evaluation); min-p sampling rows have valid scores (e.g. GPQA τ=2.0=26.34, τ=3.0=24.55)."
     },
     {
       "id": "claim-7",

@@ -459,9 +459,9 @@
     },
     {
       "id": "claim-3",
-      "claim_text": "COMET achieves the highest correlation among all metrics across typological families, with 0.35 for high-fusional coherence and 0.24 for completeness.",
+      "claim_text": "In Table 5 High-Fusional Coherence column, COMET (row 20) achieves the highest correlation 0.35 among all 20 metrics evaluated.",
       "evidence": "table-5",
-      "verification_hint": "Check row 21 (COMET) across all family columns; confirm 0.35 is the highest in high-fusional coherence and 0.24 in completeness."
+      "verification_hint": "Check row 20 (COMET) col 3 (Coherence High Fusional) in Table 5: expect 0.35. Verify this is the maximum value across all 20 rows of column 3."
     },
     {
       "id": "claim-4",

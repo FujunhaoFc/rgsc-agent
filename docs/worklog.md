@@ -14,3 +14,4 @@
 技术债务记录:
 - pipeline/stage_planner/planner.py 重复实现了 LLM client (复用了 paper_observer/llm_summarizer.py 的设计但没复用代码). Phase 3 启动时统一抽到 pipeline/common/llm.py
 - pipeline/verifier/verifier.py 同样重复实现了 _call_llm (遵循 planner.py 模式). Phase 3 后期 Executor 时统一抽取.
+2026-06-05 | Phase 3.1 Verifier 5 篇 mock 端到端完成 | 5 篇 real mock 全部跑通: AMUN/Beyond-Ngram/I0T/INCLINE overall=1.0, min-p overall=0.929 (6P/1Q). Patches: Beyond-Ngram claim-3 二次收窄, I0T figure-5 summary 化 + claim-6 patch, min-p claim-1/5/6 patch + table-4 summary 化. Tech debt 暴露: (1) expected_claims schema 只支持单 evidence, 跨表 claim 处理需 array; (2) results schema oneOf table/figure 互斥, mixed entry 不便 → workaround 用 summary-only; (3) Phase 1 expected_claims 抽取 over-generalization 是稳定模式 (5 篇里 3 篇出现, 论文 narrative-data mismatch 案例): Beyond-Ngram (COMET highest 描述过宽), I0T claim-6 (MCSIE reduces gap 与数据矛盾), min-p claim-1/5/6 (笛卡尔积 over-coverage). Verifier 反向作为 Paper Observer 质检工具的价值是 system paper key insight

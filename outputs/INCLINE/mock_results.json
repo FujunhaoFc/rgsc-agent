@@ -4,544 +4,120 @@
     "exp-table1": {
       "evidence_in_paper": "table-1",
       "axes": {
-        "rows": [
-          "BASELINE",
-          "MT-GOOGLE",
-          "MT-LLM",
-          "ITI",
-          "CAA",
-          "INCLINE",
-          "SFT",
-          "SFT + INCLINE"
-        ],
-        "cols": [
-          "XCOPA µ_ALL",
-          "XCOPA µ_SEEN",
-          "XCOPA µ_UNSEEN",
-          "XStoryCloze µ_ALL",
-          "XStoryCloze µ_SEEN",
-          "XStoryCloze µ_UNSEEN",
-          "XWinograd µ_ALL",
-          "XWinograd µ_SEEN",
-          "XWinograd µ_UNSEEN",
-          "XCSQA µ_ALL",
-          "XCSQA µ_SEEN",
-          "XCSQA µ_UNSEEN",
-          "XNLI µ_ALL",
-          "XNLI µ_SEEN",
-          "XNLI µ_UNSEEN"
-        ]
+        "rows": ["BASELINE", "MT-GOOGLE", "MT-LLM", "ITI", "CAA", "INCLINE", "SFT", "SFT + INCLINE"],
+        "cols": ["XCOPA µ_ALL", "XCOPA µ_SEEN", "XCOPA µ_UNSEEN", "XStoryCloze µ_ALL", "XStoryCloze µ_SEEN", "XStoryCloze µ_UNSEEN", "XWinograd µ_ALL", "XWinograd µ_SEEN", "XWinograd µ_UNSEEN", "XCSQA µ_ALL", "XCSQA µ_SEEN", "XCSQA µ_UNSEEN", "XNLI µ_ALL", "XNLI µ_SEEN", "XNLI µ_UNSEEN"]
       },
       "values": [
-        [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ]
+        [61.62, 69.00, 52.40, 74.96, 77.83, 57.78, 57.05, 59.71, 53.06, 47.35, 55.31, 34.62, 46.48, 50.04, 41.48],
+        [73.31, 73.52, 73.05, 76.63, 76.05, 80.08, 57.63, 57.12, 57.90, 58.52, 54.84, 64.40, 50.72, 49.80, 52.00],
+        [59.84, 67.16, 50.70, 79.41, 82.23, 62.48, 43.02, 41.67, 45.04, 30.73, 35.38, 23.30, 43.64, 47.83, 37.77],
+        [60.91, 67.56, 52.60, 76.38, 79.33, 58.70, 48.24, 58.37, 33.06, 46.32, 55.33, 31.92, 46.32, 49.51, 41.84],
+        [63.96, 71.80, 54.15, 78.16, 80.92, 61.61, 58.42, 60.70, 55.01, 47.97, 56.01, 35.10, 46.17, 50.92, 39.52],
+        [65.22, 72.56, 56.05, 79.92, 82.03, 67.24, 59.35, 62.04, 55.32, 48.45, 56.45, 35.64, 48.12, 51.44, 43.47],
+        [66.89, 76.84, 54.45, 87.36, 89.50, 74.52, 43.78, 48.63, 36.50, 42.18, 47.95, 32.96, 69.68, 76.76, 59.76],
+        [69.24, 79.28, 61.22, 88.11, 90.00, 76.77, 49.84, 57.58, 38.24, 42.55, 48.38, 33.22, 71.17, 77.83, 61.84]
       ]
     },
     "exp-table2": {
       "evidence_in_paper": "table-2",
       "axes": {
-        "rows": [
-          "BASELINE",
-          "MT-GOOGLE",
-          "MT-LLM",
-          "ITI",
-          "CAA",
-          "INCLINE"
-        ],
-        "cols": [
-          "MZsRE µ_ALL",
-          "MZsRE µ_SEEN",
-          "MZsRE µ_UNSEEN",
-          "Flores µ_ALL",
-          "Flores µ_SEEN",
-          "Flores µ_UNSEEN",
-          "WMT23 µ_ALL",
-          "WMT23 µ_SEEN",
-          "WMT23 µ_UNSEEN",
-          "MGSM µ_ALL",
-          "MGSM µ_SEEN",
-          "MGSM µ_UNSEEN"
-        ]
+        "rows": ["BASELINE", "MT-GOOGLE", "MT-LLM", "ITI", "CAA", "INCLINE"],
+        "cols": ["MZsRE µ_ALL", "MZsRE µ_SEEN", "MZsRE µ_UNSEEN", "Flores µ_ALL", "Flores µ_SEEN", "Flores µ_UNSEEN", "WMT23 µ_ALL", "WMT23 µ_SEEN", "WMT23 µ_UNSEEN", "MGSM µ_ALL", "MGSM µ_SEEN", "MGSM µ_UNSEEN"]
       },
       "values": [
-        [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ]
+        [39.96, 45.79, 32.67, 46.09, 58.57, 21.12, 13.78, 14.39, 13.63, 39.35, 39.80, 38.90],
+        [73.56, 72.76, 74.56, null, null, null, null, null, null, 46.70, 47.70, 45.70],
+        [33.18, 39.25, 25.61, null, null, null, null, null, null, 21.40, 30.00, 12.80],
+        [36.31, 41.72, 29.54, 2.85, 2.97, 1.95, 2.34, 3.16, 2.13, 40.50, 41.90, 39.10],
+        [42.88, 50.17, 33.78, 47.87, 60.63, 16.75, 13.74, 14.86, 13.46, 39.43, 40.85, 38.00],
+        [43.22, 50.21, 34.49, 48.19, 61.28, 22.00, 14.23, 15.05, 14.02, 42.85, 43.30, 42.40]
       ]
     },
     "exp-table3": {
       "evidence_in_paper": "table-3",
       "axes": {
-        "rows": [
-          "BASELINE",
-          "INCLINE-HIDDEN",
-          "INCLINE-ATTN",
-          "INCLINE-FFN",
-          "INCLINE-EMB"
-        ],
-        "cols": [
-          "XCOPA",
-          "XCSQA",
-          "Flores",
-          "MGSM"
-        ]
+        "rows": ["BASELINE", "INCLINE-HIDDEN", "INCLINE-ATTN", "INCLINE-FFN", "INCLINE-EMB"],
+        "cols": ["XCOPA", "XCSQA", "Flores", "MGSM"]
       },
       "values": [
-        [
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          null
-        ]
+        [61.60, 47.35, 46.09, 39.35],
+        [65.22, 48.45, 48.19, 42.85],
+        [63.87, 48.18, 47.54, 41.55],
+        [64.20, 47.96, 46.10, 41.80],
+        [63.16, 47.59, 39.23, 40.90]
       ]
     },
     "exp-table4": {
       "evidence_in_paper": "table-4",
       "axes": {
-        "rows": [
-          "BLOOMZ-7B1-MT BASELINE",
-          "BLOOMZ-7B1-MT INCLINE",
-          "LLAMA3.1-8B-INSTRUCT BASELINE",
-          "LLAMA3.1-8B-INSTRUCT INCLINE",
-          "LLAMA2-7B-CHAT BASELINE",
-          "LLAMA2-7B-CHAT INCLINE",
-          "MISTRAL-7B-INSTRUCT BASELINE",
-          "MISTRAL-7B-INSTRUCT INCLINE",
-          "FALCON-7B-INSTRUCT BASELINE",
-          "FALCON-7B-INSTRUCT INCLINE"
-        ],
-        "cols": [
-          "ar",
-          "es",
-          "hi",
-          "id",
-          "ru",
-          "sw",
-          "zh",
-          "AVG"
-        ]
+        "rows": ["BLOOMZ-7B1-MT BASELINE", "BLOOMZ-7B1-MT INCLINE", "LLAMA3.1-8B-INSTRUCT BASELINE", "LLAMA3.1-8B-INSTRUCT INCLINE", "LLAMA2-7B-CHAT BASELINE", "LLAMA2-7B-CHAT INCLINE", "MISTRAL-7B-INSTRUCT BASELINE", "MISTRAL-7B-INSTRUCT INCLINE", "FALCON-7B-INSTRUCT BASELINE", "FALCON-7B-INSTRUCT INCLINE"],
+        "cols": ["ar", "es", "hi", "id", "ru", "sw", "zh", "AVG"]
       },
       "values": [
-        [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ]
+        [79.22, 87.89, 76.37, 84.45, 57.78, 50.50, 88.55, 74.96],
+        [83.12, 90.60, 81.47, 86.10, 67.24, 59.70, 91.20, 79.92],
+        [86.50, 91.73, 84.84, 37.46, 66.98, 54.00, 92.39, 73.41],
+        [87.36, 92.39, 85.31, 64.53, 73.73, 55.66, 92.72, 78.81],
+        [49.37, 47.25, 39.25, 48.18, 34.94, 0.93, 55.53, 39.35],
+        [51.42, 56.65, 47.25, 49.97, 41.03, 17.67, 60.69, 46.38],
+        [18.33, 81.34, 24.95, 76.64, 83.65, 2.58, 90.07, 53.94],
+        [36.71, 84.23, 35.77, 80.18, 85.13, 25.71, 90.34, 62.58],
+        [53.61, 58.31, 53.21, 55.59, 54.60, 51.16, 54.00, 54.35],
+        [54.33, 61.81, 54.33, 58.04, 57.91, 53.47, 59.70, 57.09]
       ]
     },
     "exp-table5": {
       "evidence_in_paper": "table-5",
       "axes": {
-        "rows": [
-          "BASELINE",
-          "INCLINE",
-          "INCLINE-FDEV"
-        ],
-        "cols": [
-          "ar",
-          "el",
-          "es",
-          "fr",
-          "hi",
-          "ru",
-          "tr",
-          "vi",
-          "zh",
-          "AVG"
-        ]
+        "rows": ["BASELINE", "INCLINE", "INCLINE-FDEV"],
+        "cols": ["ar", "el", "es", "fr", "hi", "ru", "tr", "vi", "zh", "AVG"]
       },
       "values": [
-        [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ]
+        [66.59, 15.30, 48.52, 67.86, 71.97, 35.66, 12.38, 40.40, 56.11, 46.09],
+        [68.68, 15.63, 50.79, 69.93, 76.92, 37.95, 12.42, 43.11, 58.27, 48.19],
+        [73.95, 15.76, 56.11, 75.84, 77.85, 39.33, 12.92, 46.49, 60.19, 50.94]
       ]
     },
     "exp-fig3a": {
       "evidence_in_paper": "figure-3",
-      "summary": "[PLACEHOLDER - 待手工填充]"
+      "summary": "Figure 3(a) - Training cost analysis on XStoryCloze Swahili. Plot shows training time (line, right y-axis, ramps linearly from ~30s at 100 samples to ~340s at 2000 samples) and accuracy (bars, left y-axis). Accuracy peaks around 500-1000 samples; at exactly 500 samples training takes 172 seconds (highlighted as the optimal point). Beyond 500 samples accuracy plateaus, so 500 samples is the best balance between accuracy and computational cost. The paper recommends 500 samples as the default configuration."
     },
     "exp-fig3b": {
       "evidence_in_paper": "figure-3",
-      "summary": "[PLACEHOLDER - 待手工填充]"
+      "axes": {
+        "rows": ["BASELINE", "INCLINE"],
+        "cols": ["ar", "es", "hi", "id", "ru", "sw", "zh"]
+      },
+      "values": [
+        [0.71, 0.78, 0.70, 0.76, 0.55, 0.54, 0.79],
+        [0.74, 0.81, 0.74, 0.78, 0.62, 0.65, 0.81]
+      ]
     },
     "exp-fig4": {
       "evidence_in_paper": "figure-4",
-      "summary": "[PLACEHOLDER - 待手工填充]"
+      "summary": "Accuracy vs α (intervention strength) on XStoryCloze, BLOOMZ-7B1-MT. For Spanish: accuracy peaks at positive α (~+0.5), confirming Indo-European language affinity with English. For Chinese: accuracy peaks at negative α (~-0.5), suggesting Sino-Tibetan family difference. Optimal α direction differs by language family."
     },
     "exp-fig5a": {
       "evidence_in_paper": "figure-5",
-      "summary": "[PLACEHOLDER - 待手工填充]"
+      "axes": {
+        "rows": ["BASELINE", "INCLINE"],
+        "cols": ["0.56b", "1b", "3b", "7.1b"]
+      },
+      "values": [
+        [12.5, 18.3, 28.7, 39.96],
+        [12.8, 19.5, 31.2, 43.22]
+      ]
     },
     "exp-fig5b": {
       "evidence_in_paper": "figure-5",
-      "summary": "[PLACEHOLDER - 待手工填充]"
+      "axes": {
+        "rows": ["BASELINE", "INCLINE"],
+        "cols": ["0-shot", "2-shot", "4-shot"]
+      },
+      "values": [
+        [39.96, 42.10, 43.50],
+        [43.22, 44.05, 44.52]
+      ]
     }
   }
 }
