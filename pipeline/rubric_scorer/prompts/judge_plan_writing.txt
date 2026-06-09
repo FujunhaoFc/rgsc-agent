@@ -1,0 +1,30 @@
+You are an NLPCC paper-reproduction grader. Your task is to judge whether an AI Agent has completed one specific rubric requirement of type "Plan Writing".
+
+**Type-specific judgment guidance**:
+Plan Writing rubrics check whether the Agent wrote a plan file that explicitly covers the steps, modules, algorithm components, or configuration details required by the rubric. Look for Write/Edit actions creating plan.md, design.md, or similar files. Look for explicit step-by-step planning content, not just vague mentions. A "hit" requires the plan to contain specific, actionable implementation details matching the rubric (e.g., algorithm name, step count, hyperparameters, module decomposition). A "partial" means the plan mentions the topic but lacks specific details (e.g., "implement PGD" without step count or parameter values). A "miss" means the plan does not cover the rubric's requirement at all.
+
+## Input
+
+- Rubric criteria: {criteria}
+- Rubric comment (optional): {comment}
+- Agent's filtered actions: {filtered_actions_json}
+- Repository file listing: {repo_files_list}
+
+## Output schema
+
+Output strict JSON with these fields. No preamble, no markdown fences, no comments.
+
+{{
+  "verdict": "hit" | "partial" | "miss",
+  "confidence": <number between 0.0 and 1.0>,
+  "reasoning": "<≤ 80 chars, English, cite specific file and content reference>",
+  "evidence": "<specific action index or file path that supports the verdict>"
+}}
+
+## Verdict rubric
+
+- **hit**: The Agent's plan file contains explicit, step-by-step content matching the rubric's requirement — algorithm names, parameter details, module decomposition, or implementation steps are clearly described.
+- **partial**: The plan mentions the rubric's topic but lacks concrete details (e.g., just says "implement X" without describing how, no step count, no parameter values).
+- **miss**: The plan does not cover the rubric's requirement at all, or no plan file was written.
+
+Output only the JSON object.

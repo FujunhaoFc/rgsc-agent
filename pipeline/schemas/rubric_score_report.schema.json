@@ -1,0 +1,190 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "rubric_score_report",
+  "description": "Rubric Scorer output — per-rubric hit/partial/miss verdicts, score breakdown by type, and estimated overall score. v1 schema.",
+  "type": "object",
+  "required": [
+    "paper_id",
+    "total_score",
+    "estimated_score",
+    "estimated_recall",
+    "by_type",
+    "rubric_results",
+    "scorer_model",
+    "scorer_version",
+    "timestamp"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "paper_id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Paper identifier matching the directory name."
+    },
+    "total_score": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Maximum possible score = sum of all rubric.score values."
+    },
+    "estimated_score": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Estimated score = sum of earned_score across all rubrics."
+    },
+    "estimated_recall": {
+      "type": "number",
+      "minimum": 0.0,
+      "maximum": 1.0,
+      "description": "estimated_score / total_score."
+    },
+    "by_type": {
+      "type": "object",
+      "description": "Score breakdown by rubric type. Five keys matching the 5 rubric types.",
+      "additionalProperties": false,
+      "required": [
+        "Paper Observation",
+        "Plan Writing",
+        "Code Implementation",
+        "Command Execution",
+        "Result Matching"
+      ],
+      "properties": {
+        "Paper Observation": {
+          "type": "object",
+          "required": ["total", "estimated", "rate"],
+          "additionalProperties": false,
+          "properties": {
+            "total": { "type": "number", "minimum": 0, "description": "Sum of rubric scores for this type." },
+            "estimated": { "type": "number", "minimum": 0, "description": "Sum of earned scores for this type." },
+            "rate": { "type": "number", "minimum": 0.0, "maximum": 1.0, "description": "estimated / total for this type." }
+          }
+        },
+        "Plan Writing": {
+          "type": "object",
+          "required": ["total", "estimated", "rate"],
+          "additionalProperties": false,
+          "properties": {
+            "total": { "type": "number", "minimum": 0 },
+            "estimated": { "type": "number", "minimum": 0 },
+            "rate": { "type": "number", "minimum": 0.0, "maximum": 1.0 }
+          }
+        },
+        "Code Implementation": {
+          "type": "object",
+          "required": ["total", "estimated", "rate"],
+          "additionalProperties": false,
+          "properties": {
+            "total": { "type": "number", "minimum": 0 },
+            "estimated": { "type": "number", "minimum": 0 },
+            "rate": { "type": "number", "minimum": 0.0, "maximum": 1.0 }
+          }
+        },
+        "Command Execution": {
+          "type": "object",
+          "required": ["total", "estimated", "rate"],
+          "additionalProperties": false,
+          "properties": {
+            "total": { "type": "number", "minimum": 0 },
+            "estimated": { "type": "number", "minimum": 0 },
+            "rate": { "type": "number", "minimum": 0.0, "maximum": 1.0 }
+          }
+        },
+        "Result Matching": {
+          "type": "object",
+          "required": ["total", "estimated", "rate"],
+          "additionalProperties": false,
+          "properties": {
+            "total": { "type": "number", "minimum": 0 },
+            "estimated": { "type": "number", "minimum": 0 },
+            "rate": { "type": "number", "minimum": 0.0, "maximum": 1.0 }
+          }
+        }
+      }
+    },
+    "rubric_results": {
+      "type": "array",
+      "description": "Per-rubric verdict and score breakdown.",
+      "items": {
+        "type": "object",
+        "required": [
+          "rubric_idx",
+          "criteria",
+          "type",
+          "rubric_score",
+          "verdict",
+          "earned_score",
+          "confidence",
+          "reasoning",
+          "evidence"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "rubric_idx": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Index of this rubric in rubrics.json (0-based)."
+          },
+          "criteria": {
+            "type": "string",
+            "minLength": 1,
+            "description": "The rubric criteria text."
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "Paper Observation",
+              "Plan Writing",
+              "Code Implementation",
+              "Command Execution",
+              "Result Matching"
+            ],
+            "description": "Rubric type — one of the 5 NLPCC categories."
+          },
+          "rubric_score": {
+            "type": "number",
+            "minimum": 0,
+            "description": "Maximum score for this rubric item."
+          },
+          "verdict": {
+            "type": "string",
+            "enum": ["hit", "partial", "miss"],
+            "description": "LLM judge verdict for this rubric."
+          },
+          "earned_score": {
+            "type": "number",
+            "minimum": 0,
+            "description": "Actual score earned: rubric_score for hit, 0.5*rubric_score for partial, 0 for miss."
+          },
+          "confidence": {
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": 1.0,
+            "description": "LLM judge confidence (0.0–1.0)."
+          },
+          "reasoning": {
+            "type": "string",
+            "maxLength": 200,
+            "description": "Brief explanation of the verdict (≤ 80 chars recommended, English)."
+          },
+          "evidence": {
+            "type": "string",
+            "description": "Specific action index or file path supporting the verdict."
+          }
+        }
+      }
+    },
+    "scorer_model": {
+      "type": "string",
+      "description": "LLM model used for rubric judging (e.g. 'deepseek-v4-pro')."
+    },
+    "scorer_version": {
+      "type": "string",
+      "description": "Scorer module version tag (e.g. 'v1')."
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO-8601 UTC timestamp of scoring run."
+    }
+  }
+}
