@@ -46,9 +46,9 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 from pipeline.rubric_scorer.retrieval import filter_actions  # noqa: E402
+from pipeline.common.paths import find_rubrics_json  # noqa: E402
 
 OUTPUTS_DIR = PROJECT_ROOT / "outputs"
-DATA_DIR = PROJECT_ROOT / "data" / "train_valid"
 PROMPT_DIR = Path(__file__).resolve().parent / "prompts"
 SCHEMA_PATH = PROJECT_ROOT / "pipeline" / "schemas" / "rubric_score_report.schema.json"
 
@@ -605,7 +605,8 @@ def score(
     Args:
         paper_id: Paper identifier (e.g. "AMUN").
         actions_path: Path to actions.json. Defaults to outputs/{paper_id}/actions.json.
-        rubrics_path: Path to rubrics.json. Defaults to data/train_valid/{paper_id}/rubrics.json.
+        rubrics_path: Path to rubrics.json. Defaults to first split containing
+            rubrics.json (train_valid/ then test/).
         repo_dir: Path to reproduced_repo directory. Defaults to outputs/{paper_id}/reproduced_repo/.
         client: Optional OpenAI client. If None, creates one (real API calls).
                 Inject a mock client in tests to avoid real LLM calls.
@@ -619,7 +620,7 @@ def score(
     """
     # Resolve paths
     if rubrics_path is None:
-        rubrics_path = str(DATA_DIR / paper_id / "rubrics.json")
+        rubrics_path = str(find_rubrics_json(paper_id))
     if actions_path is None:
         actions_path = str(OUTPUTS_DIR / paper_id / "actions.json")
     if repo_dir is None:

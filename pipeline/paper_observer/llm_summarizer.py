@@ -20,6 +20,8 @@ from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
 from dotenv import load_dotenv
+
+from pipeline.common.paths import find_paper_md
 from jsonschema import Draft7Validator, ValidationError
 from openai import OpenAI
 
@@ -497,9 +499,10 @@ if __name__ == "__main__":
     paper_name = args[0] if args else "AMUN"
     mode = args[1] if len(args) > 1 else "full"   # "skeleton", "detail", "full"
 
-    paper_path = PROJECT_ROOT / "data" / "train_valid" / paper_name / "paper.md"
-    if not paper_path.exists():
-        print(f"Paper not found: {paper_path}", file=sys.stderr)
+    try:
+        paper_path = find_paper_md(paper_name)
+    except FileNotFoundError as e:
+        print(f"Paper not found: {e}", file=sys.stderr)
         sys.exit(1)
 
     print(f"=== Extracting paper_state for {paper_name} (mode={mode}) ===\n")
