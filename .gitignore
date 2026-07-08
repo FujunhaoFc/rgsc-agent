@@ -82,3 +82,7 @@ data/train_valid/*_Full
 data/train_valid/*_NoPhaseB
 data/train_valid/*_NoRubricNormalizer
 data/train_valid/*_NoStagePlanner
+
+# Whitelist agent-workspace/_template/.claude/ (needed by MCP)
+!agent-workspace/_template/.claude
+!agent-workspace/_template/.claude/**
