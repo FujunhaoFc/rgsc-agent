@@ -1,13 +1,84 @@
+# ============================================================================
+# Credentials & environment
+# ============================================================================
+.env
+setup_env.sh
+*.key
+credentials.*
+
+# ============================================================================
+# NLPCC test set (organizer-restricted; do not commit)
+# ============================================================================
+data/test/
+
+# ============================================================================
+# Agent runtime outputs (derived per-paper Phase B artifacts + workspaces)
+# ============================================================================
+outputs/
+agent-workspace/*
+!agent-workspace/_template
+!agent-workspace/_template/**
+!agent-workspace/*.sh
+agent-workspace-ablation/
+train_valid_all/
+train_valid_extra/
+
+# ============================================================================
+# Submission archives (large binaries, contain paper-derivative data)
+# ============================================================================
+*.zip
+*.7z
+
+# ============================================================================
+# Per-item evaluator outputs (aggregate JSON is fine, per-item is not)
+# ============================================================================
+eval_results/*_eval.json
+eval_results_ablation/*_eval.json
+
+# ============================================================================
+# Editor / IDE / local tooling
+# ============================================================================
+.claude/
+.roo/
+.rooignore
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# ============================================================================
+# Python
+# ============================================================================
 .venv/
 __pycache__/
 *.pyc
+*.pyo
 .pytest_cache/
-.env
-#data/train_valid/
-#data/example_repo/
-#data/official_tools/
-#data/OFFICIAL_README.md
-outputs/*/_debug/
-outputs/*/verification_report.json
-.DS_Store
+.mypy_cache/
+.ipynb_checkpoints/
+
+# ============================================================================
+# Logs & internal notes
+# ============================================================================
 *.log
+worklog/
+_debug/
+
+# ============================================================================
+# Autodl-specific
+# ============================================================================
+autodl-tmp/
+autodl-pub/
+
+# ============================================================================
+# Backup files
+# ============================================================================
+*.bak
+
+# ============================================================================
+# Ablation symlinks (internal, not for public)
+# ============================================================================
+data/train_valid/*_Full
+data/train_valid/*_NoPhaseB
+data/train_valid/*_NoRubricNormalizer
+data/train_valid/*_NoStagePlanner
