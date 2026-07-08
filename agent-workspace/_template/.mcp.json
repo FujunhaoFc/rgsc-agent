@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "action-recorder": {
+      "command": "python",
+      "args": [
+        "/root/rgsc-agent/data/official_tools/record_tools.py",
+        "--work-dir",
+        "/root/agent-workspace/__PAPER_ID__"
+      ]
+    }
+  }
+}
