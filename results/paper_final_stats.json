@@ -1,0 +1,68 @@
+{
+  "train_self_eval": {
+    "n_papers": 12,
+    "aggregate_score_recall": 0.42044088176352706,
+    "by_type": {
+      "Paper Observation": {
+        "n_items": 114,
+        "n_satisfied": 80,
+        "score_total": 195,
+        "score_earned": 140,
+        "item_recall": 0.7017543859649122,
+        "score_recall": 0.717948717948718
+      },
+      "Plan Writing": {
+        "n_items": 238,
+        "n_satisfied": 203,
+        "score_total": 552,
+        "score_earned": 477,
+        "item_recall": 0.8529411764705882,
+        "score_recall": 0.8641304347826086
+      },
+      "Code Implementation": {
+        "n_items": 252,
+        "n_satisfied": 124,
+        "score_total": 865,
+        "score_earned": 432,
+        "item_recall": 0.49206349206349204,
+        "score_recall": 0.49942196531791905
+      },
+      "Result Matching": {
+        "n_items": 97,
+        "n_satisfied": 0,
+        "score_total": 420,
+        "score_earned": 0,
+        "item_recall": 0.0,
+        "score_recall": 0.0
+      },
+      "Command Execution": {
+        "n_items": 112,
+        "n_satisfied": 0,
+        "score_total": 463,
+        "score_earned": 0,
+        "item_recall": 0.0,
+        "score_recall": 0.0
+      }
+    }
+  },
+  "test_official": {
+    "replication_score": 0.4964,
+    "rank": 1,
+    "baseline_gpt55": 0.2419,
+    "margin_vs_baseline_pp": 25.45
+  },
+  "per_paper_recall": {
+    "ActorAttack": 0.2469879518072289,
+    "AMUN": 0.6271929824561403,
+    "CIForm": 0.5,
+    "gated-attention": 0.21311475409836064,
+    "GSL-MPP": 0.5571955719557196,
+    "I0T": 0.3035019455252918,
+    "INCLINE": 0.49504950495049505,
+    "min-p": 0.4742647058823529,
+    "n-grams": 0.33727810650887574,
+    "REPAIR": 0.39705882352941174,
+    "representation-political-llm": 0.375,
+    "SCoRe": 0.22435897435897437
+  }
+}

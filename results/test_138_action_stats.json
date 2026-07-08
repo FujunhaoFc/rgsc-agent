@@ -1,0 +1,1382 @@
+[
+  {
+    "domain": "Astronomy",
+    "paper": "advancing-glitch-classification",
+    "actions": 18,
+    "size_kb": 222,
+    "paper_lines": 518,
+    "reads": 5,
+    "writes": 8,
+    "executes": 5
+  },
+  {
+    "domain": "Astronomy",
+    "paper": "classifying-kepler-light",
+    "actions": 26,
+    "size_kb": 284,
+    "paper_lines": 641,
+    "reads": 7,
+    "writes": 14,
+    "executes": 5
+  },
+  {
+    "domain": "Astronomy",
+    "paper": "Superphot",
+    "actions": 20,
+    "size_kb": 446,
+    "paper_lines": 1373,
+    "reads": 5,
+    "writes": 9,
+    "executes": 6
+  },
+  {
+    "domain": "Astronomy",
+    "paper": "DTARPS",
+    "actions": 36,
+    "size_kb": 627,
+    "paper_lines": 1875,
+    "reads": 12,
+    "writes": 17,
+    "executes": 7
+  },
+  {
+    "domain": "Astronomy",
+    "paper": "LightPred",
+    "actions": 19,
+    "size_kb": 384,
+    "paper_lines": 2184,
+    "reads": 6,
+    "writes": 7,
+    "executes": 6
+  },
+  {
+    "domain": "Biology",
+    "paper": "CASCC",
+    "actions": 14,
+    "size_kb": 90,
+    "paper_lines": 95,
+    "reads": 1,
+    "writes": 9,
+    "executes": 4
+  },
+  {
+    "domain": "Biology",
+    "paper": "IGEGRN",
+    "actions": 15,
+    "size_kb": 152,
+    "paper_lines": 392,
+    "reads": 2,
+    "writes": 8,
+    "executes": 5
+  },
+  {
+    "domain": "Biology",
+    "paper": "scMAE",
+    "actions": 21,
+    "size_kb": 180,
+    "paper_lines": 449,
+    "reads": 8,
+    "writes": 7,
+    "executes": 6
+  },
+  {
+    "domain": "Biology",
+    "paper": "scPML",
+    "actions": 24,
+    "size_kb": 277,
+    "paper_lines": 859,
+    "reads": 5,
+    "writes": 8,
+    "executes": 11
+  },
+  {
+    "domain": "Chemistry",
+    "paper": "DataDTA",
+    "actions": 24,
+    "size_kb": 261,
+    "paper_lines": 431,
+    "reads": 6,
+    "writes": 11,
+    "executes": 7
+  },
+  {
+    "domain": "Chemistry",
+    "paper": "HGTDP-DTA",
+    "actions": 30,
+    "size_kb": 238,
+    "paper_lines": 522,
+    "reads": 6,
+    "writes": 15,
+    "executes": 9
+  },
+  {
+    "domain": "Chemistry",
+    "paper": "RetroKNN",
+    "actions": 24,
+    "size_kb": 157,
+    "paper_lines": 436,
+    "reads": 7,
+    "writes": 9,
+    "executes": 8
+  },
+  {
+    "domain": "Chemistry",
+    "paper": "Retroformer",
+    "actions": 22,
+    "size_kb": 283,
+    "paper_lines": 530,
+    "reads": 7,
+    "writes": 8,
+    "executes": 7
+  },
+  {
+    "domain": "Environment",
+    "paper": "RS3Mamba",
+    "actions": 21,
+    "size_kb": 194,
+    "paper_lines": 315,
+    "reads": 6,
+    "writes": 11,
+    "executes": 4
+  },
+  {
+    "domain": "Environment",
+    "paper": "UNetMamba",
+    "actions": 26,
+    "size_kb": 138,
+    "paper_lines": 260,
+    "reads": 6,
+    "writes": 13,
+    "executes": 7
+  },
+  {
+    "domain": "Environment",
+    "paper": "probing-the-limit",
+    "actions": 18,
+    "size_kb": 157,
+    "paper_lines": 165,
+    "reads": 5,
+    "writes": 8,
+    "executes": 5
+  },
+  {
+    "domain": "Environment",
+    "paper": "remote-sensing",
+    "actions": 22,
+    "size_kb": 215,
+    "paper_lines": 397,
+    "reads": 5,
+    "writes": 13,
+    "executes": 4
+  },
+  {
+    "domain": "Environment",
+    "paper": "representation-learning",
+    "actions": 22,
+    "size_kb": 205,
+    "paper_lines": 281,
+    "reads": 7,
+    "writes": 9,
+    "executes": 6
+  },
+  {
+    "domain": "ML",
+    "paper": "ATLANTIS",
+    "actions": 20,
+    "size_kb": 165,
+    "paper_lines": 397,
+    "reads": 4,
+    "writes": 9,
+    "executes": 7
+  },
+  {
+    "domain": "ML",
+    "paper": "AdaGroPE",
+    "actions": 33,
+    "size_kb": 319,
+    "paper_lines": 528,
+    "reads": 7,
+    "writes": 19,
+    "executes": 7
+  },
+  {
+    "domain": "ML",
+    "paper": "Cache-of-Thoughts",
+    "actions": 28,
+    "size_kb": 211,
+    "paper_lines": 479,
+    "reads": 5,
+    "writes": 15,
+    "executes": 8
+  },
+  {
+    "domain": "ML",
+    "paper": "ExPO",
+    "actions": 19,
+    "size_kb": 272,
+    "paper_lines": 538,
+    "reads": 3,
+    "writes": 12,
+    "executes": 4
+  },
+  {
+    "domain": "ML",
+    "paper": "FGA",
+    "actions": 26,
+    "size_kb": 167,
+    "paper_lines": 428,
+    "reads": 5,
+    "writes": 12,
+    "executes": 9
+  },
+  {
+    "domain": "ML",
+    "paper": "GMAIL",
+    "actions": 21,
+    "size_kb": 176,
+    "paper_lines": 537,
+    "reads": 5,
+    "writes": 7,
+    "executes": 9
+  },
+  {
+    "domain": "ML",
+    "paper": "HyperFM",
+    "actions": 21,
+    "size_kb": 195,
+    "paper_lines": 475,
+    "reads": 7,
+    "writes": 9,
+    "executes": 5
+  },
+  {
+    "domain": "ML",
+    "paper": "LARA",
+    "actions": 22,
+    "size_kb": 363,
+    "paper_lines": 508,
+    "reads": 5,
+    "writes": 10,
+    "executes": 7
+  },
+  {
+    "domain": "ML",
+    "paper": "NDAD",
+    "actions": 19,
+    "size_kb": 221,
+    "paper_lines": 518,
+    "reads": 5,
+    "writes": 7,
+    "executes": 7
+  },
+  {
+    "domain": "ML",
+    "paper": "PFPT",
+    "actions": 25,
+    "size_kb": 222,
+    "paper_lines": 542,
+    "reads": 7,
+    "writes": 14,
+    "executes": 4
+  },
+  {
+    "domain": "ML",
+    "paper": "Persona-Code",
+    "actions": 22,
+    "size_kb": 267,
+    "paper_lines": 506,
+    "reads": 7,
+    "writes": 8,
+    "executes": 7
+  },
+  {
+    "domain": "ML",
+    "paper": "ProtoVQA",
+    "actions": 19,
+    "size_kb": 191,
+    "paper_lines": 424,
+    "reads": 5,
+    "writes": 10,
+    "executes": 4
+  },
+  {
+    "domain": "ML",
+    "paper": "Router-Tuning",
+    "actions": 17,
+    "size_kb": 287,
+    "paper_lines": 463,
+    "reads": 4,
+    "writes": 7,
+    "executes": 6
+  },
+  {
+    "domain": "ML",
+    "paper": "SAFM",
+    "actions": 44,
+    "size_kb": 281,
+    "paper_lines": 356,
+    "reads": 12,
+    "writes": 9,
+    "executes": 22
+  },
+  {
+    "domain": "ML",
+    "paper": "SCGA",
+    "actions": 21,
+    "size_kb": 285,
+    "paper_lines": 450,
+    "reads": 6,
+    "writes": 9,
+    "executes": 6
+  },
+  {
+    "domain": "ML",
+    "paper": "SCoNE",
+    "actions": 21,
+    "size_kb": 271,
+    "paper_lines": 533,
+    "reads": 6,
+    "writes": 10,
+    "executes": 5
+  },
+  {
+    "domain": "ML",
+    "paper": "direct-prompt-optimization",
+    "actions": 46,
+    "size_kb": 206,
+    "paper_lines": 364,
+    "reads": 7,
+    "writes": 12,
+    "executes": 27
+  },
+  {
+    "domain": "ML",
+    "paper": "humans-and-transformer-lms",
+    "actions": 23,
+    "size_kb": 297,
+    "paper_lines": 465,
+    "reads": 7,
+    "writes": 11,
+    "executes": 5
+  },
+  {
+    "domain": "ML",
+    "paper": "lexical-popularity",
+    "actions": 47,
+    "size_kb": 966,
+    "paper_lines": 413,
+    "reads": 25,
+    "writes": 7,
+    "executes": 15
+  },
+  {
+    "domain": "ML",
+    "paper": "self-instructed-derived-prompt",
+    "actions": 28,
+    "size_kb": 262,
+    "paper_lines": 455,
+    "reads": 5,
+    "writes": 14,
+    "executes": 9
+  },
+  {
+    "domain": "ML",
+    "paper": "token-prepending",
+    "actions": 26,
+    "size_kb": 338,
+    "paper_lines": 498,
+    "reads": 9,
+    "writes": 11,
+    "executes": 6
+  },
+  {
+    "domain": "ML",
+    "paper": "RAVEN",
+    "actions": 23,
+    "size_kb": 368,
+    "paper_lines": 989,
+    "reads": 5,
+    "writes": 11,
+    "executes": 7
+  },
+  {
+    "domain": "ML",
+    "paper": "MAETok",
+    "actions": 31,
+    "size_kb": 477,
+    "paper_lines": 997,
+    "reads": 12,
+    "writes": 9,
+    "executes": 10
+  },
+  {
+    "domain": "ML",
+    "paper": "MemAgent",
+    "actions": 21,
+    "size_kb": 333,
+    "paper_lines": 999,
+    "reads": 7,
+    "writes": 8,
+    "executes": 6
+  },
+  {
+    "domain": "ML",
+    "paper": "MOSAIC",
+    "actions": 18,
+    "size_kb": 258,
+    "paper_lines": 555,
+    "reads": 4,
+    "writes": 8,
+    "executes": 6
+  },
+  {
+    "domain": "ML",
+    "paper": "GTO",
+    "actions": 22,
+    "size_kb": 287,
+    "paper_lines": 558,
+    "reads": 6,
+    "writes": 9,
+    "executes": 7
+  },
+  {
+    "domain": "ML",
+    "paper": "MODA",
+    "actions": 34,
+    "size_kb": 331,
+    "paper_lines": 559,
+    "reads": 11,
+    "writes": 16,
+    "executes": 7
+  },
+  {
+    "domain": "ML",
+    "paper": "CompAct",
+    "actions": 19,
+    "size_kb": 228,
+    "paper_lines": 563,
+    "reads": 6,
+    "writes": 8,
+    "executes": 5
+  },
+  {
+    "domain": "ML",
+    "paper": "LEANCODE",
+    "actions": 31,
+    "size_kb": 314,
+    "paper_lines": 565,
+    "reads": 6,
+    "writes": 19,
+    "executes": 6
+  },
+  {
+    "domain": "ML",
+    "paper": "E3-RL4LLMs",
+    "actions": 27,
+    "size_kb": 236,
+    "paper_lines": 576,
+    "reads": 6,
+    "writes": 13,
+    "executes": 8
+  },
+  {
+    "domain": "ML",
+    "paper": "disagreement-prediction",
+    "actions": 25,
+    "size_kb": 357,
+    "paper_lines": 577,
+    "reads": 7,
+    "writes": 11,
+    "executes": 7
+  },
+  {
+    "domain": "ML",
+    "paper": "MoA",
+    "actions": 21,
+    "size_kb": 211,
+    "paper_lines": 581,
+    "reads": 9,
+    "writes": 7,
+    "executes": 5
+  },
+  {
+    "domain": "ML",
+    "paper": "AutoEP",
+    "actions": 25,
+    "size_kb": 306,
+    "paper_lines": 582,
+    "reads": 7,
+    "writes": 11,
+    "executes": 7
+  },
+  {
+    "domain": "ML",
+    "paper": "CSNN",
+    "actions": 22,
+    "size_kb": 246,
+    "paper_lines": 597,
+    "reads": 6,
+    "writes": 7,
+    "executes": 9
+  },
+  {
+    "domain": "ML",
+    "paper": "L4Q",
+    "actions": 17,
+    "size_kb": 306,
+    "paper_lines": 598,
+    "reads": 5,
+    "writes": 7,
+    "executes": 5
+  },
+  {
+    "domain": "ML",
+    "paper": "PANDAS",
+    "actions": 27,
+    "size_kb": 299,
+    "paper_lines": 607,
+    "reads": 7,
+    "writes": 13,
+    "executes": 7
+  },
+  {
+    "domain": "ML",
+    "paper": "SUBARU",
+    "actions": 31,
+    "size_kb": 299,
+    "paper_lines": 632,
+    "reads": 10,
+    "writes": 9,
+    "executes": 12
+  },
+  {
+    "domain": "ML",
+    "paper": "muCode",
+    "actions": 22,
+    "size_kb": 283,
+    "paper_lines": 644,
+    "reads": 7,
+    "writes": 11,
+    "executes": 4
+  },
+  {
+    "domain": "ML",
+    "paper": "GAPO",
+    "actions": 22,
+    "size_kb": 281,
+    "paper_lines": 658,
+    "reads": 7,
+    "writes": 8,
+    "executes": 7
+  },
+  {
+    "domain": "ML",
+    "paper": "MAIN-RAG",
+    "actions": 26,
+    "size_kb": 195,
+    "paper_lines": 664,
+    "reads": 5,
+    "writes": 12,
+    "executes": 9
+  },
+  {
+    "domain": "ML",
+    "paper": "RLEF",
+    "actions": 20,
+    "size_kb": 258,
+    "paper_lines": 667,
+    "reads": 4,
+    "writes": 10,
+    "executes": 6
+  },
+  {
+    "domain": "ML",
+    "paper": "SensorLLM",
+    "actions": 23,
+    "size_kb": 366,
+    "paper_lines": 672,
+    "reads": 9,
+    "writes": 9,
+    "executes": 5
+  },
+  {
+    "domain": "ML",
+    "paper": "know-when-to-abstain",
+    "actions": 17,
+    "size_kb": 320,
+    "paper_lines": 682,
+    "reads": 5,
+    "writes": 8,
+    "executes": 4
+  },
+  {
+    "domain": "ML",
+    "paper": "MePO",
+    "actions": 23,
+    "size_kb": 517,
+    "paper_lines": 1317,
+    "reads": 7,
+    "writes": 11,
+    "executes": 5
+  },
+  {
+    "domain": "ML",
+    "paper": "AttnRL",
+    "actions": 26,
+    "size_kb": 189,
+    "paper_lines": 609,
+    "reads": 6,
+    "writes": 13,
+    "executes": 7
+  },
+  {
+    "domain": "ML",
+    "paper": "TIMING",
+    "actions": 19,
+    "size_kb": 286,
+    "paper_lines": 698,
+    "reads": 5,
+    "writes": 9,
+    "executes": 5
+  },
+  {
+    "domain": "ML",
+    "paper": "wmforger",
+    "actions": 20,
+    "size_kb": 255,
+    "paper_lines": 705,
+    "reads": 6,
+    "writes": 10,
+    "executes": 4
+  },
+  {
+    "domain": "ML",
+    "paper": "RoT",
+    "actions": 32,
+    "size_kb": 370,
+    "paper_lines": 731,
+    "reads": 9,
+    "writes": 10,
+    "executes": 13
+  },
+  {
+    "domain": "ML",
+    "paper": "preference-vector",
+    "actions": 37,
+    "size_kb": 321,
+    "paper_lines": 736,
+    "reads": 8,
+    "writes": 21,
+    "executes": 8
+  },
+  {
+    "domain": "ML",
+    "paper": "RFT",
+    "actions": 26,
+    "size_kb": 295,
+    "paper_lines": 742,
+    "reads": 6,
+    "writes": 12,
+    "executes": 8
+  },
+  {
+    "domain": "ML",
+    "paper": "REEF",
+    "actions": 18,
+    "size_kb": 311,
+    "paper_lines": 784,
+    "reads": 7,
+    "writes": 7,
+    "executes": 4
+  },
+  {
+    "domain": "ML",
+    "paper": "the-llm-already-knows",
+    "actions": 38,
+    "size_kb": 294,
+    "paper_lines": 786,
+    "reads": 8,
+    "writes": 21,
+    "executes": 9
+  },
+  {
+    "domain": "ML",
+    "paper": "ALTER",
+    "actions": 27,
+    "size_kb": 279,
+    "paper_lines": 793,
+    "reads": 7,
+    "writes": 12,
+    "executes": 8
+  },
+  {
+    "domain": "ML",
+    "paper": "IFT",
+    "actions": 21,
+    "size_kb": 249,
+    "paper_lines": 797,
+    "reads": 5,
+    "writes": 8,
+    "executes": 8
+  },
+  {
+    "domain": "ML",
+    "paper": "PBI-Attack",
+    "actions": 21,
+    "size_kb": 300,
+    "paper_lines": 798,
+    "reads": 4,
+    "writes": 12,
+    "executes": 5
+  },
+  {
+    "domain": "ML",
+    "paper": "MfM",
+    "actions": 23,
+    "size_kb": 231,
+    "paper_lines": 810,
+    "reads": 5,
+    "writes": 10,
+    "executes": 8
+  },
+  {
+    "domain": "ML",
+    "paper": "MIND",
+    "actions": 32,
+    "size_kb": 294,
+    "paper_lines": 811,
+    "reads": 12,
+    "writes": 11,
+    "executes": 9
+  },
+  {
+    "domain": "ML",
+    "paper": "adaptive-symbolic-reasoning",
+    "actions": 25,
+    "size_kb": 295,
+    "paper_lines": 812,
+    "reads": 5,
+    "writes": 13,
+    "executes": 7
+  },
+  {
+    "domain": "ML",
+    "paper": "fast-estimation",
+    "actions": 25,
+    "size_kb": 259,
+    "paper_lines": 822,
+    "reads": 7,
+    "writes": 11,
+    "executes": 7
+  },
+  {
+    "domain": "ML",
+    "paper": "where-is-the-answer",
+    "actions": 28,
+    "size_kb": 250,
+    "paper_lines": 837,
+    "reads": 5,
+    "writes": 9,
+    "executes": 14
+  },
+  {
+    "domain": "ML",
+    "paper": "PLTR-SD",
+    "actions": 18,
+    "size_kb": 307,
+    "paper_lines": 842,
+    "reads": 6,
+    "writes": 8,
+    "executes": 4
+  },
+  {
+    "domain": "ML",
+    "paper": "Twilight",
+    "actions": 18,
+    "size_kb": 269,
+    "paper_lines": 860,
+    "reads": 7,
+    "writes": 6,
+    "executes": 5
+  },
+  {
+    "domain": "ML",
+    "paper": "ContextReasoner",
+    "actions": 26,
+    "size_kb": 291,
+    "paper_lines": 869,
+    "reads": 9,
+    "writes": 10,
+    "executes": 7
+  },
+  {
+    "domain": "ML",
+    "paper": "data-aware-and-scalable-sensitivity",
+    "actions": 24,
+    "size_kb": 342,
+    "paper_lines": 870,
+    "reads": 8,
+    "writes": 8,
+    "executes": 8
+  },
+  {
+    "domain": "ML",
+    "paper": "LoRA-A2",
+    "actions": 21,
+    "size_kb": 273,
+    "paper_lines": 873,
+    "reads": 8,
+    "writes": 7,
+    "executes": 6
+  },
+  {
+    "domain": "ML",
+    "paper": "TraceLLM",
+    "actions": 28,
+    "size_kb": 353,
+    "paper_lines": 878,
+    "reads": 10,
+    "writes": 12,
+    "executes": 6
+  },
+  {
+    "domain": "ML",
+    "paper": "PRISM",
+    "actions": 20,
+    "size_kb": 214,
+    "paper_lines": 886,
+    "reads": 5,
+    "writes": 7,
+    "executes": 8
+  },
+  {
+    "domain": "ML",
+    "paper": "RidgeLoRA",
+    "actions": 26,
+    "size_kb": 314,
+    "paper_lines": 895,
+    "reads": 10,
+    "writes": 7,
+    "executes": 9
+  },
+  {
+    "domain": "ML",
+    "paper": "MARINE",
+    "actions": 21,
+    "size_kb": 324,
+    "paper_lines": 911,
+    "reads": 3,
+    "writes": 8,
+    "executes": 10
+  },
+  {
+    "domain": "ML",
+    "paper": "ULPT",
+    "actions": 26,
+    "size_kb": 312,
+    "paper_lines": 923,
+    "reads": 8,
+    "writes": 10,
+    "executes": 8
+  },
+  {
+    "domain": "ML",
+    "paper": "POLCA",
+    "actions": 27,
+    "size_kb": 333,
+    "paper_lines": 925,
+    "reads": 8,
+    "writes": 14,
+    "executes": 5
+  },
+  {
+    "domain": "ML",
+    "paper": "PedagogicalRL",
+    "actions": 24,
+    "size_kb": 313,
+    "paper_lines": 936,
+    "reads": 6,
+    "writes": 10,
+    "executes": 8
+  },
+  {
+    "domain": "ML",
+    "paper": "one-prompt-one-story",
+    "actions": 23,
+    "size_kb": 337,
+    "paper_lines": 939,
+    "reads": 6,
+    "writes": 11,
+    "executes": 6
+  },
+  {
+    "domain": "ML",
+    "paper": "LWD",
+    "actions": 24,
+    "size_kb": 272,
+    "paper_lines": 946,
+    "reads": 9,
+    "writes": 8,
+    "executes": 7
+  },
+  {
+    "domain": "ML",
+    "paper": "ECHO",
+    "actions": 20,
+    "size_kb": 377,
+    "paper_lines": 947,
+    "reads": 6,
+    "writes": 8,
+    "executes": 6
+  },
+  {
+    "domain": "ML",
+    "paper": "CACTI",
+    "actions": 26,
+    "size_kb": 434,
+    "paper_lines": 952,
+    "reads": 9,
+    "writes": 12,
+    "executes": 5
+  },
+  {
+    "domain": "ML",
+    "paper": "reAR",
+    "actions": 30,
+    "size_kb": 320,
+    "paper_lines": 957,
+    "reads": 7,
+    "writes": 12,
+    "executes": 11
+  },
+  {
+    "domain": "ML",
+    "paper": "ARR",
+    "actions": 24,
+    "size_kb": 248,
+    "paper_lines": 961,
+    "reads": 11,
+    "writes": 7,
+    "executes": 6
+  },
+  {
+    "domain": "ML",
+    "paper": "DEEM",
+    "actions": 19,
+    "size_kb": 400,
+    "paper_lines": 1009,
+    "reads": 6,
+    "writes": 7,
+    "executes": 6
+  },
+  {
+    "domain": "ML",
+    "paper": "MR-Q",
+    "actions": 25,
+    "size_kb": 431,
+    "paper_lines": 1017,
+    "reads": 6,
+    "writes": 11,
+    "executes": 8
+  },
+  {
+    "domain": "ML",
+    "paper": "REAP",
+    "actions": 20,
+    "size_kb": 435,
+    "paper_lines": 1026,
+    "reads": 8,
+    "writes": 5,
+    "executes": 7
+  },
+  {
+    "domain": "ML",
+    "paper": "KLASS",
+    "actions": 30,
+    "size_kb": 336,
+    "paper_lines": 1050,
+    "reads": 11,
+    "writes": 12,
+    "executes": 7
+  },
+  {
+    "domain": "ML",
+    "paper": "TokenSwap",
+    "actions": 28,
+    "size_kb": 449,
+    "paper_lines": 1051,
+    "reads": 13,
+    "writes": 7,
+    "executes": 8
+  },
+  {
+    "domain": "ML",
+    "paper": "Water-Probe",
+    "actions": 23,
+    "size_kb": 287,
+    "paper_lines": 1070,
+    "reads": 9,
+    "writes": 7,
+    "executes": 7
+  },
+  {
+    "domain": "ML",
+    "paper": "SAIL",
+    "actions": 24,
+    "size_kb": 275,
+    "paper_lines": 1075,
+    "reads": 6,
+    "writes": 10,
+    "executes": 8
+  },
+  {
+    "domain": "ML",
+    "paper": "rag-fragility",
+    "actions": 24,
+    "size_kb": 522,
+    "paper_lines": 1081,
+    "reads": 6,
+    "writes": 12,
+    "executes": 6
+  },
+  {
+    "domain": "ML",
+    "paper": "KBI",
+    "actions": 22,
+    "size_kb": 254,
+    "paper_lines": 1118,
+    "reads": 7,
+    "writes": 9,
+    "executes": 6
+  },
+  {
+    "domain": "ML",
+    "paper": "cheating-llm-benchmarks",
+    "actions": 28,
+    "size_kb": 339,
+    "paper_lines": 1130,
+    "reads": 7,
+    "writes": 12,
+    "executes": 9
+  },
+  {
+    "domain": "ML",
+    "paper": "HM3",
+    "actions": 35,
+    "size_kb": 546,
+    "paper_lines": 1189,
+    "reads": 11,
+    "writes": 13,
+    "executes": 11
+  },
+  {
+    "domain": "ML",
+    "paper": "LLaVA-Reasoner-DPO",
+    "actions": 23,
+    "size_kb": 306,
+    "paper_lines": 1194,
+    "reads": 7,
+    "writes": 9,
+    "executes": 7
+  },
+  {
+    "domain": "ML",
+    "paper": "multitask-learning",
+    "actions": 26,
+    "size_kb": 329,
+    "paper_lines": 1213,
+    "reads": 7,
+    "writes": 11,
+    "executes": 8
+  },
+  {
+    "domain": "ML",
+    "paper": "PRT",
+    "actions": 23,
+    "size_kb": 349,
+    "paper_lines": 1225,
+    "reads": 6,
+    "writes": 12,
+    "executes": 5
+  },
+  {
+    "domain": "ML",
+    "paper": "RandomSigJax",
+    "actions": 30,
+    "size_kb": 471,
+    "paper_lines": 1230,
+    "reads": 7,
+    "writes": 10,
+    "executes": 13
+  },
+  {
+    "domain": "ML",
+    "paper": "DEXTER",
+    "actions": 28,
+    "size_kb": 444,
+    "paper_lines": 1243,
+    "reads": 9,
+    "writes": 12,
+    "executes": 7
+  },
+  {
+    "domain": "ML",
+    "paper": "ERM",
+    "actions": 21,
+    "size_kb": 393,
+    "paper_lines": 1250,
+    "reads": 5,
+    "writes": 8,
+    "executes": 8
+  },
+  {
+    "domain": "ML",
+    "paper": "constrained-stable-diffusion",
+    "actions": 21,
+    "size_kb": 370,
+    "paper_lines": 1253,
+    "reads": 7,
+    "writes": 10,
+    "executes": 4
+  },
+  {
+    "domain": "ML",
+    "paper": "statistical-deficiency",
+    "actions": 24,
+    "size_kb": 324,
+    "paper_lines": 1263,
+    "reads": 7,
+    "writes": 11,
+    "executes": 6
+  },
+  {
+    "domain": "ML",
+    "paper": "Reversed-Attention",
+    "actions": 25,
+    "size_kb": 338,
+    "paper_lines": 1294,
+    "reads": 6,
+    "writes": 10,
+    "executes": 9
+  },
+  {
+    "domain": "ML",
+    "paper": "EPIC",
+    "actions": 26,
+    "size_kb": 292,
+    "paper_lines": 1355,
+    "reads": 7,
+    "writes": 10,
+    "executes": 9
+  },
+  {
+    "domain": "ML",
+    "paper": "APPL",
+    "actions": 38,
+    "size_kb": 349,
+    "paper_lines": 1367,
+    "reads": 6,
+    "writes": 28,
+    "executes": 4
+  },
+  {
+    "domain": "ML",
+    "paper": "KARMA",
+    "actions": 23,
+    "size_kb": 282,
+    "paper_lines": 1423,
+    "reads": 8,
+    "writes": 7,
+    "executes": 8
+  },
+  {
+    "domain": "ML",
+    "paper": "RDS",
+    "actions": 38,
+    "size_kb": 328,
+    "paper_lines": 1434,
+    "reads": 17,
+    "writes": 13,
+    "executes": 8
+  },
+  {
+    "domain": "ML",
+    "paper": "understanding-task-vectors",
+    "actions": 28,
+    "size_kb": 481,
+    "paper_lines": 1558,
+    "reads": 8,
+    "writes": 12,
+    "executes": 8
+  },
+  {
+    "domain": "ML",
+    "paper": "MASK",
+    "actions": 34,
+    "size_kb": 500,
+    "paper_lines": 1627,
+    "reads": 19,
+    "writes": 7,
+    "executes": 8
+  },
+  {
+    "domain": "ML",
+    "paper": "AutoSteer",
+    "actions": 24,
+    "size_kb": 273,
+    "paper_lines": 1698,
+    "reads": 6,
+    "writes": 11,
+    "executes": 7
+  },
+  {
+    "domain": "ML",
+    "paper": "PlanSearch",
+    "actions": 28,
+    "size_kb": 404,
+    "paper_lines": 1734,
+    "reads": 14,
+    "writes": 9,
+    "executes": 5
+  },
+  {
+    "domain": "ML",
+    "paper": "PromptFE",
+    "actions": 29,
+    "size_kb": 390,
+    "paper_lines": 1941,
+    "reads": 9,
+    "writes": 12,
+    "executes": 8
+  },
+  {
+    "domain": "ML",
+    "paper": "MaxSup",
+    "actions": 35,
+    "size_kb": 385,
+    "paper_lines": 1958,
+    "reads": 6,
+    "writes": 21,
+    "executes": 8
+  },
+  {
+    "domain": "ML",
+    "paper": "quantization-affects-social-bias",
+    "actions": 34,
+    "size_kb": 515,
+    "paper_lines": 2130,
+    "reads": 10,
+    "writes": 15,
+    "executes": 9
+  },
+  {
+    "domain": "ML",
+    "paper": "GAS",
+    "actions": 20,
+    "size_kb": 387,
+    "paper_lines": 1148,
+    "reads": 9,
+    "writes": 5,
+    "executes": 6
+  },
+  {
+    "domain": "Materials",
+    "paper": "CGCNN",
+    "actions": 23,
+    "size_kb": 214,
+    "paper_lines": 400,
+    "reads": 5,
+    "writes": 11,
+    "executes": 7
+  },
+  {
+    "domain": "Materials",
+    "paper": "CrabNet",
+    "actions": 28,
+    "size_kb": 223,
+    "paper_lines": 825,
+    "reads": 6,
+    "writes": 11,
+    "executes": 11
+  },
+  {
+    "domain": "Materials",
+    "paper": "CrysCo",
+    "actions": 25,
+    "size_kb": 270,
+    "paper_lines": 844,
+    "reads": 7,
+    "writes": 10,
+    "executes": 8
+  },
+  {
+    "domain": "Materials",
+    "paper": "MatDA",
+    "actions": 26,
+    "size_kb": 246,
+    "paper_lines": 703,
+    "reads": 6,
+    "writes": 11,
+    "executes": 9
+  },
+  {
+    "domain": "Materials",
+    "paper": "Matformer",
+    "actions": 26,
+    "size_kb": 320,
+    "paper_lines": 679,
+    "reads": 9,
+    "writes": 12,
+    "executes": 5
+  },
+  {
+    "domain": "Medical",
+    "paper": "DSGA-Net",
+    "actions": 19,
+    "size_kb": 224,
+    "paper_lines": 626,
+    "reads": 5,
+    "writes": 7,
+    "executes": 7
+  },
+  {
+    "domain": "Medical",
+    "paper": "SegMamba",
+    "actions": 22,
+    "size_kb": 148,
+    "paper_lines": 264,
+    "reads": 5,
+    "writes": 12,
+    "executes": 5
+  },
+  {
+    "domain": "Medical",
+    "paper": "Swin-UNETR",
+    "actions": 28,
+    "size_kb": 183,
+    "paper_lines": 270,
+    "reads": 3,
+    "writes": 20,
+    "executes": 5
+  },
+  {
+    "domain": "Medical",
+    "paper": "TransUNet",
+    "actions": 15,
+    "size_kb": 182,
+    "paper_lines": 241,
+    "reads": 5,
+    "writes": 5,
+    "executes": 5
+  },
+  {
+    "domain": "Medical",
+    "paper": "nnFormer",
+    "actions": 18,
+    "size_kb": 268,
+    "paper_lines": 480,
+    "reads": 5,
+    "writes": 8,
+    "executes": 5
+  }
+]

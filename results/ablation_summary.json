@@ -1,0 +1,182 @@
+[
+  {
+    "paper": "gated-attention",
+    "config": "Full",
+    "status": "OK",
+    "overall": 0.27049180327868855,
+    "score_earned": 33,
+    "score_possible": 122,
+    "by_type": {
+      "Paper Observation": 0.3333333333333333,
+      "Plan Writing": 0.65,
+      "Code Implementation": 0.38461538461538464,
+      "Command Execution": 0.0,
+      "Result Matching": 0.0
+    }
+  },
+  {
+    "paper": "gated-attention",
+    "config": "NoStagePlanner",
+    "status": "OK",
+    "overall": 0.2786885245901639,
+    "score_earned": 34,
+    "score_possible": 122,
+    "by_type": {
+      "Paper Observation": 0.4,
+      "Plan Writing": 0.5,
+      "Code Implementation": 0.46153846153846156,
+      "Command Execution": 0.0,
+      "Result Matching": 0.0
+    }
+  },
+  {
+    "paper": "gated-attention",
+    "config": "NoRubricNormalizer",
+    "status": "OK",
+    "overall": 0.1721311475409836,
+    "score_earned": 21,
+    "score_possible": 122,
+    "by_type": {
+      "Paper Observation": 0.26666666666666666,
+      "Plan Writing": 0.5,
+      "Code Implementation": 0.1794871794871795,
+      "Command Execution": 0.0,
+      "Result Matching": 0.0
+    }
+  },
+  {
+    "paper": "gated-attention",
+    "config": "NoPhaseB",
+    "status": "OK",
+    "overall": 0.18032786885245902,
+    "score_earned": 22,
+    "score_possible": 122,
+    "by_type": {
+      "Paper Observation": 0.2,
+      "Plan Writing": 0.6,
+      "Code Implementation": 0.1794871794871795,
+      "Command Execution": 0.0,
+      "Result Matching": 0.0
+    }
+  },
+  {
+    "paper": "AMUN",
+    "config": "Full",
+    "status": "OK",
+    "overall": 0.6140350877192983,
+    "score_earned": 140,
+    "score_possible": 228,
+    "by_type": {
+      "Paper Observation": 1.0,
+      "Plan Writing": 0.8571428571428571,
+      "Code Implementation": 0.6530612244897959,
+      "Command Execution": 0.0,
+      "Result Matching": 0.0
+    }
+  },
+  {
+    "paper": "AMUN",
+    "config": "NoStagePlanner",
+    "status": "OK",
+    "overall": 0.543859649122807,
+    "score_earned": 124,
+    "score_possible": 228,
+    "by_type": {
+      "Paper Observation": 0.9090909090909091,
+      "Plan Writing": 0.8095238095238095,
+      "Code Implementation": 0.5408163265306123,
+      "Command Execution": 0.0,
+      "Result Matching": 0.0
+    }
+  },
+  {
+    "paper": "AMUN",
+    "config": "NoRubricNormalizer",
+    "status": "OK",
+    "overall": 0.5789473684210527,
+    "score_earned": 132,
+    "score_possible": 228,
+    "by_type": {
+      "Paper Observation": 0.9090909090909091,
+      "Plan Writing": 0.9047619047619048,
+      "Code Implementation": 0.5612244897959183,
+      "Command Execution": 0.0,
+      "Result Matching": 0.0
+    }
+  },
+  {
+    "paper": "AMUN",
+    "config": "NoPhaseB",
+    "status": "OK",
+    "overall": 0.6008771929824561,
+    "score_earned": 137,
+    "score_possible": 228,
+    "by_type": {
+      "Paper Observation": 0.7272727272727273,
+      "Plan Writing": 0.873015873015873,
+      "Code Implementation": 0.673469387755102,
+      "Command Execution": 0.0,
+      "Result Matching": 0.0
+    }
+  },
+  {
+    "paper": "min-p",
+    "config": "Full",
+    "status": "OK",
+    "overall": 0.4117647058823529,
+    "score_earned": 112,
+    "score_possible": 272,
+    "by_type": {
+      "Paper Observation": 0.75,
+      "Plan Writing": 0.6829268292682927,
+      "Code Implementation": 0.5,
+      "Command Execution": 0.0,
+      "Result Matching": 0.0
+    }
+  },
+  {
+    "paper": "min-p",
+    "config": "NoStagePlanner",
+    "status": "OK",
+    "overall": 0.4411764705882353,
+    "score_earned": 120,
+    "score_possible": 272,
+    "by_type": {
+      "Paper Observation": 0.875,
+      "Plan Writing": 0.6829268292682927,
+      "Code Implementation": 0.5681818181818182,
+      "Command Execution": 0.0,
+      "Result Matching": 0.0
+    }
+  },
+  {
+    "paper": "min-p",
+    "config": "NoRubricNormalizer",
+    "status": "OK",
+    "overall": 0.375,
+    "score_earned": 102,
+    "score_possible": 272,
+    "by_type": {
+      "Paper Observation": 0.25,
+      "Plan Writing": 0.6097560975609756,
+      "Code Implementation": 0.5454545454545454,
+      "Command Execution": 0.0,
+      "Result Matching": 0.0
+    }
+  },
+  {
+    "paper": "min-p",
+    "config": "NoPhaseB",
+    "status": "OK",
+    "overall": 0.23161764705882354,
+    "score_earned": 63,
+    "score_possible": 272,
+    "by_type": {
+      "Paper Observation": 0.375,
+      "Plan Writing": 0.4634146341463415,
+      "Code Implementation": 0.2159090909090909,
+      "Command Execution": 0.0,
+      "Result Matching": 0.0
+    }
+  }
+]

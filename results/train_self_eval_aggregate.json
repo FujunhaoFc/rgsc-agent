@@ -1,0 +1,641 @@
+{
+  "papers": [
+    {
+      "paper": "ActorAttack",
+      "total_items": 50,
+      "total_score_possible": 166,
+      "total_score_earned": 41,
+      "overall_score_recall": 0.2469879518072289,
+      "by_type": {
+        "Paper Observation": {
+          "n_items": 7,
+          "n_satisfied": 7,
+          "score_total": 11,
+          "score_earned": 11,
+          "item_recall": 1.0,
+          "score_recall": 1.0
+        },
+        "Plan Writing": {
+          "n_items": 9,
+          "n_satisfied": 3,
+          "score_total": 19,
+          "score_earned": 7,
+          "item_recall": 0.3333333333333333,
+          "score_recall": 0.3684210526315789
+        },
+        "Code Implementation": {
+          "n_items": 13,
+          "n_satisfied": 7,
+          "score_total": 45,
+          "score_earned": 23,
+          "item_recall": 0.5384615384615384,
+          "score_recall": 0.5111111111111111
+        },
+        "Result Matching": {
+          "n_items": 11,
+          "n_satisfied": 0,
+          "score_total": 48,
+          "score_earned": 0,
+          "item_recall": 0.0,
+          "score_recall": 0.0
+        },
+        "Command Execution": {
+          "n_items": 10,
+          "n_satisfied": 0,
+          "score_total": 43,
+          "score_earned": 0,
+          "item_recall": 0.0,
+          "score_recall": 0.0
+        }
+      }
+    },
+    {
+      "paper": "AMUN",
+      "total_items": 77,
+      "total_score_possible": 228,
+      "total_score_earned": 143,
+      "overall_score_recall": 0.6271929824561403,
+      "by_type": {
+        "Paper Observation": {
+          "n_items": 13,
+          "n_satisfied": 10,
+          "score_total": 22,
+          "score_earned": 17,
+          "item_recall": 0.7692307692307693,
+          "score_recall": 0.7727272727272727
+        },
+        "Plan Writing": {
+          "n_items": 27,
+          "n_satisfied": 26,
+          "score_total": 63,
+          "score_earned": 60,
+          "item_recall": 0.9629629629629629,
+          "score_recall": 0.9523809523809523
+        },
+        "Code Implementation": {
+          "n_items": 28,
+          "n_satisfied": 20,
+          "score_total": 98,
+          "score_earned": 66,
+          "item_recall": 0.7142857142857143,
+          "score_recall": 0.673469387755102
+        },
+        "Command Execution": {
+          "n_items": 4,
+          "n_satisfied": 0,
+          "score_total": 20,
+          "score_earned": 0,
+          "item_recall": 0.0,
+          "score_recall": 0.0
+        },
+        "Result Matching": {
+          "n_items": 5,
+          "n_satisfied": 0,
+          "score_total": 25,
+          "score_earned": 0,
+          "item_recall": 0.0,
+          "score_recall": 0.0
+        }
+      }
+    },
+    {
+      "paper": "CIForm",
+      "total_items": 96,
+      "total_score_possible": 332,
+      "total_score_earned": 166,
+      "overall_score_recall": 0.5,
+      "by_type": {
+        "Paper Observation": {
+          "n_items": 8,
+          "n_satisfied": 6,
+          "score_total": 16,
+          "score_earned": 12,
+          "item_recall": 0.75,
+          "score_recall": 0.75
+        },
+        "Plan Writing": {
+          "n_items": 32,
+          "n_satisfied": 32,
+          "score_total": 82,
+          "score_earned": 82,
+          "item_recall": 1.0,
+          "score_recall": 1.0
+        },
+        "Code Implementation": {
+          "n_items": 32,
+          "n_satisfied": 21,
+          "score_total": 114,
+          "score_earned": 72,
+          "item_recall": 0.65625,
+          "score_recall": 0.631578947368421
+        },
+        "Command Execution": {
+          "n_items": 14,
+          "n_satisfied": 0,
+          "score_total": 70,
+          "score_earned": 0,
+          "item_recall": 0.0,
+          "score_recall": 0.0
+        },
+        "Result Matching": {
+          "n_items": 10,
+          "n_satisfied": 0,
+          "score_total": 50,
+          "score_earned": 0,
+          "item_recall": 0.0,
+          "score_recall": 0.0
+        }
+      }
+    },
+    {
+      "paper": "gated-attention",
+      "total_items": 41,
+      "total_score_possible": 122,
+      "total_score_earned": 26,
+      "overall_score_recall": 0.21311475409836064,
+      "by_type": {
+        "Paper Observation": {
+          "n_items": 9,
+          "n_satisfied": 5,
+          "score_total": 15,
+          "score_earned": 8,
+          "item_recall": 0.5555555555555556,
+          "score_recall": 0.5333333333333333
+        },
+        "Plan Writing": {
+          "n_items": 10,
+          "n_satisfied": 8,
+          "score_total": 20,
+          "score_earned": 15,
+          "item_recall": 0.8,
+          "score_recall": 0.75
+        },
+        "Code Implementation": {
+          "n_items": 11,
+          "n_satisfied": 1,
+          "score_total": 39,
+          "score_earned": 3,
+          "item_recall": 0.09090909090909091,
+          "score_recall": 0.07692307692307693
+        },
+        "Command Execution": {
+          "n_items": 5,
+          "n_satisfied": 0,
+          "score_total": 21,
+          "score_earned": 0,
+          "item_recall": 0.0,
+          "score_recall": 0.0
+        },
+        "Result Matching": {
+          "n_items": 6,
+          "n_satisfied": 0,
+          "score_total": 27,
+          "score_earned": 0,
+          "item_recall": 0.0,
+          "score_recall": 0.0
+        }
+      }
+    },
+    {
+      "paper": "GSL-MPP",
+      "total_items": 74,
+      "total_score_possible": 271,
+      "total_score_earned": 151,
+      "overall_score_recall": 0.5571955719557196,
+      "by_type": {
+        "Paper Observation": {
+          "n_items": 7,
+          "n_satisfied": 7,
+          "score_total": 14,
+          "score_earned": 14,
+          "item_recall": 1.0,
+          "score_recall": 1.0
+        },
+        "Plan Writing": {
+          "n_items": 24,
+          "n_satisfied": 23,
+          "score_total": 72,
+          "score_earned": 69,
+          "item_recall": 0.9583333333333334,
+          "score_recall": 0.9583333333333334
+        },
+        "Code Implementation": {
+          "n_items": 24,
+          "n_satisfied": 17,
+          "score_total": 96,
+          "score_earned": 68,
+          "item_recall": 0.7083333333333334,
+          "score_recall": 0.7083333333333334
+        },
+        "Command Execution": {
+          "n_items": 11,
+          "n_satisfied": 0,
+          "score_total": 55,
+          "score_earned": 0,
+          "item_recall": 0.0,
+          "score_recall": 0.0
+        },
+        "Result Matching": {
+          "n_items": 8,
+          "n_satisfied": 0,
+          "score_total": 34,
+          "score_earned": 0,
+          "item_recall": 0.0,
+          "score_recall": 0.0
+        }
+      }
+    },
+    {
+      "paper": "I0T",
+      "total_items": 102,
+      "total_score_possible": 257,
+      "total_score_earned": 78,
+      "overall_score_recall": 0.3035019455252918,
+      "by_type": {
+        "Paper Observation": {
+          "n_items": 10,
+          "n_satisfied": 5,
+          "score_total": 21,
+          "score_earned": 11,
+          "item_recall": 0.5,
+          "score_recall": 0.5238095238095238
+        },
+        "Plan Writing": {
+          "n_items": 32,
+          "n_satisfied": 23,
+          "score_total": 62,
+          "score_earned": 48,
+          "item_recall": 0.71875,
+          "score_recall": 0.7741935483870968
+        },
+        "Code Implementation": {
+          "n_items": 31,
+          "n_satisfied": 5,
+          "score_total": 86,
+          "score_earned": 19,
+          "item_recall": 0.16129032258064516,
+          "score_recall": 0.22093023255813954
+        },
+        "Command Execution": {
+          "n_items": 22,
+          "n_satisfied": 0,
+          "score_total": 58,
+          "score_earned": 0,
+          "item_recall": 0.0,
+          "score_recall": 0.0
+        },
+        "Result Matching": {
+          "n_items": 7,
+          "n_satisfied": 0,
+          "score_total": 30,
+          "score_earned": 0,
+          "item_recall": 0.0,
+          "score_recall": 0.0
+        }
+      }
+    },
+    {
+      "paper": "INCLINE",
+      "total_items": 76,
+      "total_score_possible": 202,
+      "total_score_earned": 100,
+      "overall_score_recall": 0.49504950495049505,
+      "by_type": {
+        "Paper Observation": {
+          "n_items": 13,
+          "n_satisfied": 10,
+          "score_total": 19,
+          "score_earned": 15,
+          "item_recall": 0.7692307692307693,
+          "score_recall": 0.7894736842105263
+        },
+        "Plan Writing": {
+          "n_items": 22,
+          "n_satisfied": 20,
+          "score_total": 45,
+          "score_earned": 41,
+          "item_recall": 0.9090909090909091,
+          "score_recall": 0.9111111111111111
+        },
+        "Code Implementation": {
+          "n_items": 22,
+          "n_satisfied": 12,
+          "score_total": 76,
+          "score_earned": 44,
+          "item_recall": 0.5454545454545454,
+          "score_recall": 0.5789473684210527
+        },
+        "Command Execution": {
+          "n_items": 9,
+          "n_satisfied": 0,
+          "score_total": 31,
+          "score_earned": 0,
+          "item_recall": 0.0,
+          "score_recall": 0.0
+        },
+        "Result Matching": {
+          "n_items": 10,
+          "n_satisfied": 0,
+          "score_total": 31,
+          "score_earned": 0,
+          "item_recall": 0.0,
+          "score_recall": 0.0
+        }
+      }
+    },
+    {
+      "paper": "min-p",
+      "total_items": 82,
+      "total_score_possible": 272,
+      "total_score_earned": 129,
+      "overall_score_recall": 0.4742647058823529,
+      "by_type": {
+        "Paper Observation": {
+          "n_items": 8,
+          "n_satisfied": 5,
+          "score_total": 16,
+          "score_earned": 10,
+          "item_recall": 0.625,
+          "score_recall": 0.625
+        },
+        "Plan Writing": {
+          "n_items": 31,
+          "n_satisfied": 26,
+          "score_total": 82,
+          "score_earned": 69,
+          "item_recall": 0.8387096774193549,
+          "score_recall": 0.8414634146341463
+        },
+        "Code Implementation": {
+          "n_items": 25,
+          "n_satisfied": 14,
+          "score_total": 88,
+          "score_earned": 50,
+          "item_recall": 0.56,
+          "score_recall": 0.5681818181818182
+        },
+        "Command Execution": {
+          "n_items": 12,
+          "n_satisfied": 0,
+          "score_total": 56,
+          "score_earned": 0,
+          "item_recall": 0.0,
+          "score_recall": 0.0
+        },
+        "Result Matching": {
+          "n_items": 6,
+          "n_satisfied": 0,
+          "score_total": 30,
+          "score_earned": 0,
+          "item_recall": 0.0,
+          "score_recall": 0.0
+        }
+      }
+    },
+    {
+      "paper": "n-grams",
+      "total_items": 62,
+      "total_score_possible": 169,
+      "total_score_earned": 57,
+      "overall_score_recall": 0.33727810650887574,
+      "by_type": {
+        "Paper Observation": {
+          "n_items": 8,
+          "n_satisfied": 4,
+          "score_total": 12,
+          "score_earned": 7,
+          "item_recall": 0.5,
+          "score_recall": 0.5833333333333334
+        },
+        "Plan Writing": {
+          "n_items": 22,
+          "n_satisfied": 19,
+          "score_total": 42,
+          "score_earned": 35,
+          "item_recall": 0.8636363636363636,
+          "score_recall": 0.8333333333333334
+        },
+        "Code Implementation": {
+          "n_items": 21,
+          "n_satisfied": 6,
+          "score_total": 71,
+          "score_earned": 15,
+          "item_recall": 0.2857142857142857,
+          "score_recall": 0.2112676056338028
+        },
+        "Command Execution": {
+          "n_items": 4,
+          "n_satisfied": 0,
+          "score_total": 18,
+          "score_earned": 0,
+          "item_recall": 0.0,
+          "score_recall": 0.0
+        },
+        "Result Matching": {
+          "n_items": 7,
+          "n_satisfied": 0,
+          "score_total": 26,
+          "score_earned": 0,
+          "item_recall": 0.0,
+          "score_recall": 0.0
+        }
+      }
+    },
+    {
+      "paper": "REPAIR",
+      "total_items": 44,
+      "total_score_possible": 136,
+      "total_score_earned": 54,
+      "overall_score_recall": 0.39705882352941174,
+      "by_type": {
+        "Paper Observation": {
+          "n_items": 11,
+          "n_satisfied": 8,
+          "score_total": 17,
+          "score_earned": 13,
+          "item_recall": 0.7272727272727273,
+          "score_recall": 0.7647058823529411
+        },
+        "Plan Writing": {
+          "n_items": 8,
+          "n_satisfied": 7,
+          "score_total": 17,
+          "score_earned": 15,
+          "item_recall": 0.875,
+          "score_recall": 0.8823529411764706
+        },
+        "Code Implementation": {
+          "n_items": 12,
+          "n_satisfied": 7,
+          "score_total": 44,
+          "score_earned": 26,
+          "item_recall": 0.5833333333333334,
+          "score_recall": 0.5909090909090909
+        },
+        "Command Execution": {
+          "n_items": 6,
+          "n_satisfied": 0,
+          "score_total": 27,
+          "score_earned": 0,
+          "item_recall": 0.0,
+          "score_recall": 0.0
+        },
+        "Result Matching": {
+          "n_items": 7,
+          "n_satisfied": 0,
+          "score_total": 31,
+          "score_earned": 0,
+          "item_recall": 0.0,
+          "score_recall": 0.0
+        }
+      }
+    },
+    {
+      "paper": "representation-political-llm",
+      "total_items": 57,
+      "total_score_possible": 184,
+      "total_score_earned": 69,
+      "overall_score_recall": 0.375,
+      "by_type": {
+        "Paper Observation": {
+          "n_items": 12,
+          "n_satisfied": 10,
+          "score_total": 20,
+          "score_earned": 17,
+          "item_recall": 0.8333333333333334,
+          "score_recall": 0.85
+        },
+        "Plan Writing": {
+          "n_items": 10,
+          "n_satisfied": 8,
+          "score_total": 24,
+          "score_earned": 19,
+          "item_recall": 0.8,
+          "score_recall": 0.7916666666666666
+        },
+        "Code Implementation": {
+          "n_items": 14,
+          "n_satisfied": 9,
+          "score_total": 50,
+          "score_earned": 33,
+          "item_recall": 0.6428571428571429,
+          "score_recall": 0.66
+        },
+        "Result Matching": {
+          "n_items": 13,
+          "n_satisfied": 0,
+          "score_total": 56,
+          "score_earned": 0,
+          "item_recall": 0.0,
+          "score_recall": 0.0
+        },
+        "Command Execution": {
+          "n_items": 8,
+          "n_satisfied": 0,
+          "score_total": 34,
+          "score_earned": 0,
+          "item_recall": 0.0,
+          "score_recall": 0.0
+        }
+      }
+    },
+    {
+      "paper": "SCoRe",
+      "total_items": 52,
+      "total_score_possible": 156,
+      "total_score_earned": 35,
+      "overall_score_recall": 0.22435897435897437,
+      "by_type": {
+        "Paper Observation": {
+          "n_items": 8,
+          "n_satisfied": 3,
+          "score_total": 12,
+          "score_earned": 5,
+          "item_recall": 0.375,
+          "score_recall": 0.4166666666666667
+        },
+        "Plan Writing": {
+          "n_items": 11,
+          "n_satisfied": 8,
+          "score_total": 24,
+          "score_earned": 17,
+          "item_recall": 0.7272727272727273,
+          "score_recall": 0.7083333333333334
+        },
+        "Result Matching": {
+          "n_items": 7,
+          "n_satisfied": 0,
+          "score_total": 32,
+          "score_earned": 0,
+          "item_recall": 0.0,
+          "score_recall": 0.0
+        },
+        "Code Implementation": {
+          "n_items": 19,
+          "n_satisfied": 5,
+          "score_total": 58,
+          "score_earned": 13,
+          "item_recall": 0.2631578947368421,
+          "score_recall": 0.22413793103448276
+        },
+        "Command Execution": {
+          "n_items": 7,
+          "n_satisfied": 0,
+          "score_total": 30,
+          "score_earned": 0,
+          "item_recall": 0.0,
+          "score_recall": 0.0
+        }
+      }
+    }
+  ],
+  "cross_paper_by_type": {
+    "Paper Observation": {
+      "n_items": 114,
+      "n_satisfied": 80,
+      "score_total": 195,
+      "score_earned": 140,
+      "item_recall": 0.7017543859649122,
+      "score_recall": 0.717948717948718
+    },
+    "Plan Writing": {
+      "n_items": 238,
+      "n_satisfied": 203,
+      "score_total": 552,
+      "score_earned": 477,
+      "item_recall": 0.8529411764705882,
+      "score_recall": 0.8641304347826086
+    },
+    "Code Implementation": {
+      "n_items": 252,
+      "n_satisfied": 124,
+      "score_total": 865,
+      "score_earned": 432,
+      "item_recall": 0.49206349206349204,
+      "score_recall": 0.49942196531791905
+    },
+    "Result Matching": {
+      "n_items": 97,
+      "n_satisfied": 0,
+      "score_total": 420,
+      "score_earned": 0,
+      "item_recall": 0.0,
+      "score_recall": 0.0
+    },
+    "Command Execution": {
+      "n_items": 112,
+      "n_satisfied": 0,
+      "score_total": 463,
+      "score_earned": 0,
+      "item_recall": 0.0,
+      "score_recall": 0.0
+    }
+  },
+  "_meta": {
+    "description": "Aggregate self-evaluation results on 12 training-set papers.",
+    "per_criterion_omitted": true,
+    "per_criterion_reason": "per_criterion entries contain the organizer's rubric text; only aggregate scores are shared here. The full per-criterion results are reproducible by running evaluation/rubric_evaluator.py.",
+    "source_evaluator": "evaluation/rubric_evaluator.py",
+    "source_prompt": "agent-workspace/_template/CLAUDE.md v5 with agent-workspace/batch_skim.sh"
+  }
+}

@@ -1,0 +1,261 @@
+{
+  "per_paper": [
+    {
+      "domain": "ML",
+      "paper": "AMUN",
+      "items": 77,
+      "total_score": 228,
+      "types": {
+        "Paper Observation": 13,
+        "Plan Writing": 27,
+        "Code Implementation": 28,
+        "Command Execution": 4,
+        "Result Matching": 5
+      },
+      "type_scores": {
+        "Paper Observation": 22,
+        "Plan Writing": 63,
+        "Code Implementation": 98,
+        "Command Execution": 20,
+        "Result Matching": 25
+      }
+    },
+    {
+      "domain": "ML",
+      "paper": "I0T",
+      "items": 102,
+      "total_score": 257,
+      "types": {
+        "Paper Observation": 10,
+        "Plan Writing": 32,
+        "Code Implementation": 31,
+        "Command Execution": 22,
+        "Result Matching": 7
+      },
+      "type_scores": {
+        "Paper Observation": 21,
+        "Plan Writing": 62,
+        "Code Implementation": 86,
+        "Command Execution": 58,
+        "Result Matching": 30
+      }
+    },
+    {
+      "domain": "ML",
+      "paper": "INCLINE",
+      "items": 76,
+      "total_score": 202,
+      "types": {
+        "Paper Observation": 13,
+        "Plan Writing": 22,
+        "Code Implementation": 22,
+        "Command Execution": 9,
+        "Result Matching": 10
+      },
+      "type_scores": {
+        "Paper Observation": 19,
+        "Plan Writing": 45,
+        "Code Implementation": 76,
+        "Command Execution": 31,
+        "Result Matching": 31
+      }
+    },
+    {
+      "domain": "ML",
+      "paper": "min-p",
+      "items": 82,
+      "total_score": 272,
+      "types": {
+        "Paper Observation": 8,
+        "Plan Writing": 31,
+        "Code Implementation": 25,
+        "Command Execution": 12,
+        "Result Matching": 6
+      },
+      "type_scores": {
+        "Paper Observation": 16,
+        "Plan Writing": 82,
+        "Code Implementation": 88,
+        "Command Execution": 56,
+        "Result Matching": 30
+      }
+    },
+    {
+      "domain": "ML",
+      "paper": "n-grams",
+      "items": 62,
+      "total_score": 169,
+      "types": {
+        "Paper Observation": 8,
+        "Plan Writing": 22,
+        "Code Implementation": 21,
+        "Command Execution": 4,
+        "Result Matching": 7
+      },
+      "type_scores": {
+        "Paper Observation": 12,
+        "Plan Writing": 42,
+        "Code Implementation": 71,
+        "Command Execution": 18,
+        "Result Matching": 26
+      }
+    },
+    {
+      "domain": "ML",
+      "paper": "ActorAttack",
+      "items": 50,
+      "total_score": 166,
+      "types": {
+        "Paper Observation": 7,
+        "Plan Writing": 9,
+        "Code Implementation": 13,
+        "Result Matching": 11,
+        "Command Execution": 10
+      },
+      "type_scores": {
+        "Paper Observation": 11,
+        "Plan Writing": 19,
+        "Code Implementation": 45,
+        "Result Matching": 48,
+        "Command Execution": 43
+      }
+    },
+    {
+      "domain": "ML",
+      "paper": "REPAIR",
+      "items": 44,
+      "total_score": 136,
+      "types": {
+        "Paper Observation": 11,
+        "Plan Writing": 8,
+        "Code Implementation": 12,
+        "Command Execution": 6,
+        "Result Matching": 7
+      },
+      "type_scores": {
+        "Paper Observation": 17,
+        "Plan Writing": 17,
+        "Code Implementation": 44,
+        "Command Execution": 27,
+        "Result Matching": 31
+      }
+    },
+    {
+      "domain": "ML",
+      "paper": "SCoRe",
+      "items": 52,
+      "total_score": 156,
+      "types": {
+        "Paper Observation": 8,
+        "Plan Writing": 11,
+        "Result Matching": 7,
+        "Code Implementation": 19,
+        "Command Execution": 7
+      },
+      "type_scores": {
+        "Paper Observation": 12,
+        "Plan Writing": 24,
+        "Result Matching": 32,
+        "Code Implementation": 58,
+        "Command Execution": 30
+      }
+    },
+    {
+      "domain": "ML",
+      "paper": "gated-attention",
+      "items": 41,
+      "total_score": 122,
+      "types": {
+        "Paper Observation": 9,
+        "Plan Writing": 10,
+        "Code Implementation": 11,
+        "Command Execution": 5,
+        "Result Matching": 6
+      },
+      "type_scores": {
+        "Paper Observation": 15,
+        "Plan Writing": 20,
+        "Code Implementation": 39,
+        "Command Execution": 21,
+        "Result Matching": 27
+      }
+    },
+    {
+      "domain": "ML",
+      "paper": "representation-political-llm",
+      "items": 57,
+      "total_score": 184,
+      "types": {
+        "Paper Observation": 12,
+        "Plan Writing": 10,
+        "Code Implementation": 14,
+        "Result Matching": 13,
+        "Command Execution": 8
+      },
+      "type_scores": {
+        "Paper Observation": 20,
+        "Plan Writing": 24,
+        "Code Implementation": 50,
+        "Result Matching": 56,
+        "Command Execution": 34
+      }
+    },
+    {
+      "domain": "Biology",
+      "paper": "CIForm",
+      "items": 96,
+      "total_score": 332,
+      "types": {
+        "Paper Observation": 8,
+        "Plan Writing": 32,
+        "Code Implementation": 32,
+        "Command Execution": 14,
+        "Result Matching": 10
+      },
+      "type_scores": {
+        "Paper Observation": 16,
+        "Plan Writing": 82,
+        "Code Implementation": 114,
+        "Command Execution": 70,
+        "Result Matching": 50
+      }
+    },
+    {
+      "domain": "Chemistry",
+      "paper": "GSL-MPP",
+      "items": 74,
+      "total_score": 271,
+      "types": {
+        "Paper Observation": 7,
+        "Plan Writing": 24,
+        "Code Implementation": 24,
+        "Command Execution": 11,
+        "Result Matching": 8
+      },
+      "type_scores": {
+        "Paper Observation": 14,
+        "Plan Writing": 72,
+        "Code Implementation": 96,
+        "Command Execution": 55,
+        "Result Matching": 34
+      }
+    }
+  ],
+  "total_items": {
+    "Paper Observation": 114,
+    "Plan Writing": 238,
+    "Code Implementation": 252,
+    "Command Execution": 112,
+    "Result Matching": 97
+  },
+  "total_scores": {
+    "Paper Observation": 195,
+    "Plan Writing": 552,
+    "Code Implementation": 865,
+    "Command Execution": 463,
+    "Result Matching": 420
+  },
+  "grand_total_items": 813,
+  "grand_total_score": 2495,
+  "skim_upper_bound_pct": 64.60921843687375
+}
