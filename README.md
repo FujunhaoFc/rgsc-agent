@@ -1,333 +1,243 @@
 # RGSC-Agent
 
-**Rubric-Grounded, Stage-Controlled Experiment Reproduction Agent**
+**A rubric-grounded scientific code agent for reproducing computational
+experiments from papers. Ranked first on NLPCC 2026 Shared Task 11.**
 
-For NLPCC 2026 Shared Task 11 — Agent-Based Experiment Reproduction from Scientific Papers.
+[![leaderboard](https://img.shields.io/badge/NLPCC%202026%20Task%2011-Rank%201-brightgreen)]()
+[![replication score](https://img.shields.io/badge/Replication%20Score-49.64%25-blue)]()
+[![baseline gap](https://img.shields.io/badge/vs%20GPT--5.5%20baseline-%2B25.45pp-orange)]()
 
----
+## NLPCC 2026 Shared Task 11 results
 
-**Phase 1 ✓ · Phase 2 ✓ · Phase 3.1 ✓ · Phase 3.2 Step 1 ✓ · Phase 3.2 Step 2 in progress**
+Our system, submitted as **YNU-HPCC-Task11-AgentRep**, ranked first on the
+official leaderboard for [NLPCC 2026 Shared Task 11 (Agent-Based Experiment
+Reproduction from Scientific
+Papers)](https://github.com/KOU-199024/NLPCC-2026-Shared-Task-11):
 
----
+| Rank | Team                                | Replication Score |
+| ---- | ----------------------------------- | ----------------- |
+| 1    | **YNU-HPCC-Task11-AgentRep (ours)** | **49.64%**        |
+| 2    | zzunlp_wu                           | 24.70%            |
+| 3    | QueenAgent                          | 7.03%             |
+| —    | Codex-GPT5.5-Medium (baseline)      | 24.19%            |
 
-## 1. What is RGSC-Agent?
+Our system exceeds the organizer-reported Codex + GPT-5.5 baseline by 25.45
+absolute percentage points and more than doubles the second-ranked team's
+score. On a training-set self-evaluation using an LLM judge over 12 papers,
+the same pipeline attains 42.0% aggregate score recall, with per-rubric-type
+recall of **Paper Observation 71.8%**, **Plan Writing 86.4%**,
+**Code Implementation 49.9%**.
 
-RGSC-Agent is an LLM-driven multi-agent system that automatically reproduces machine-learning experiments from scientific papers. It operates inside an MCP (Model Context Protocol) monitored environment, producing `actions.json` and a reproduced code repository that are scored against NLPCC rubric items — covering Paper Observation, Plan Writing, Code Implementation, Command Execution, and Result Matching.
+Details, including per-paper scores, rubric-type breakdown, and Phase B
+toolkit ablation, are reported in our NLPCC 2026 workshop paper (Section 5).
 
-### Why this is interesting
+## The problem
 
-Existing general-purpose coding agents (Claude Code, OpenHands, SWE-Agent) can write code, but they are not guided by the rubric structure that NLPCC evaluators actually grade against. They lack a prior over what "good coverage" means for a scientific reproduction task — they may write a complete training loop but skip reading the paper's limitations section (losing rubric points in Paper Observation), or implement the method without verifying specific numeric claims (losing Result Matching points).
+Reproducing experimental pipelines from scientific papers is hard: papers
+vary widely in length, formalism, and infrastructure assumptions, and a
+reliable reproduction requires both broad paper understanding and disciplined
+execution of long tool-use chains. Recent benchmarks — PaperBench, SciReplicate-Bench —
+score LLM agents on end-to-end reproduction and reveal a large capability
+gap between free-form agents and human researchers.
 
-RGSC-Agent gives the agent a head start: a structured `paper_state` extracted from the paper via LLM, and a derived rubric checklist that maps every paper entity to concrete rubric-style items. The agent loop (Phase 3.2 Step 2) uses this checklist as its target, optimizing toward rubric coverage from the start rather than discovering the rubric structure at runtime.
+NLPCC 2026 Shared Task 11 formalizes this problem: given a paper, an agent
+must produce a reproduction plan, code, and results, graded against a hidden
+rubric across five types (Paper Observation, Plan Writing, Code
+Implementation, Command Execution, Result Matching). Every action must be
+logged through an official MCP action-recorder for evaluation.
 
-### Scientific questions
+## RGSC-Agent in one screen
 
-This project investigates three questions relevant to PhD research on process-grounded agents:
+RGSC-Agent (**R**ubric-**G**rounded **S**cientific **C**ode Agent) is a
+structured six-phase pipeline built on Claude Code with DeepSeek V4-Pro as
+the backbone LLM.
 
-1. **Process standard derivation.** Can an LLM extract a stable, rubric-aligned process specification (`paper_state`) from a scientific paper, good enough to guide downstream reproduction? (Phase 1)
-2. **Process-level verification.** Can an independent LLM judge verify whether partial execution results match paper claims, without access to official rubrics? (Phase 3.1)
-3. **Process-level preference alignment.** Does grounding agent behavior in rubric-derived checklists improve rubric score relative to unguided agent execution? (Phase 3.2 → confirmed via Rubric Scorer comparison against Phase 1 baseline of 38–62% derived-checklist recall)
+For each paper, the agent runs:
 
----
+| Phase | Action | Output |
+| ----- | ------ | ------ |
+| A     | Read `paper.md` in ~5 targeted chunks (method, setup, datasets, baselines) | Internal paper understanding |
+| B     | Invoke three Python toolkit modules via `execute_cmd` | `paper_state.json`, `derived_checklist.json`, `task_plan.json` |
+| C     | Write `plan.md` addressing the derived checklist | Structured reproduction plan |
+| D     | Write a Python code skeleton under `src/` | Method implementation stubs |
+| E     | Execute experiments (skipped in skim mode; marked NOT REPRODUCED) | `results.md` |
+| G     | Call `export_log` to persist the action trace | `log/actions.json` |
 
-## 2. Architecture
+Under strict hardware constraints (single RTX 5090, 32 GB VRAM) and a ten-day
+window, we adopt a breadth-first **skim mode**: cover all 138 test papers
+with Phases A–D + G, honestly marking Phase E as NOT REPRODUCED rather than
+fabricating results. Two design choices push results well past the free-form
+agent baseline:
 
-```
-                  [data/train_valid/{paper}/]
-                          │
-                          ▼
-              ┌──────────────────────┐
-              │  Phase 1: Observer   │ ← LLM (DeepSeek V4-Pro)
-              │  paper.md → state    │
-              └──────────────────────┘
-                          │
-                          ├─ paper_state.json
-                          ├─ derived_checklist.json
-                          └─ coverage_diagnostic.json
-                          │
-                          ▼
-              ┌──────────────────────┐
-              │  Phase 2: Planner    │ ← LLM
-              │  state → task_plan   │
-              └──────────────────────┘
-                          │
-                          └─ task_plan.json
-                          │
-                          ▼
-              ┌─────────────────────────────┐
-              │  Phase 3.2 Step 2:           │
-              │  Agent Loop (in progress)    │ ← Claude Code + MCP
-              │  + paper.md                  │   Action Recorder
-              │  + state + checklist         │
-              └─────────────────────────────┘
-                          │
-                          ├─ actions.json
-                          └─ reproduced_repo/
-                          │
-            ┌─────────────┴────────────┐
-            ▼                          ▼
-  ┌───────────────────┐    ┌─────────────────────┐
-  │ Phase 3.1:         │   │ Phase 3.2 Step 1:    │
-  │ Verifier (self-    │   │ Rubric Scorer        │
-  │ check on results)  │   │ (NLPCC sim)          │
-  └───────────────────┘    └─────────────────────┘
-            │                          │
-            ▼                          ▼
-  verification_report.json   rubric_score_report.json
-  (Result Matching only)     (all 5 rubric types)
-```
+- **Parallel triage** dispatches seven Claude Code sub-agents to score all
+  138 papers along five axes (reproducibility, scope, hardware, infra,
+  length) before commitment — see `triage_report.md`.
+- **Toolkit-mediated Phase B** produces structured JSON artifacts before
+  free-form planning. On the training-set self-evaluation, Plan Writing
+  reaches 86.4% score recall, and ablating `derived_checklist.json` drops
+  aggregate recall by 4.6 pp.
 
-### Module table
-
-| Module | Input | Output | Status |
-|---|---|---|---|
-| Paper Observer | paper.md | paper_state.json | Phase 1 ✓ |
-| Rubric Normalizer | paper_state.json | derived_checklist.json | Phase 1 ✓ |
-| Stage Planner | paper_state.json + checklist | task_plan.json | Phase 2 ✓ |
-| Verifier | paper_state + results.json | verification_report.json | Phase 3.1 ✓ |
-| Rubric Scorer | actions.json + repo + rubrics.json | rubric_score_report.json | Phase 3.2 Step 1 ✓ |
-| Agent Loop | paper.md + state + checklist | actions.json + repo | Phase 3.2 Step 2 in progress |
-
-### NLPCC rubric type alignment
-
-| Rubric Type | Phase 1 derived from | Scored by |
-|---|---|---|
-| Paper Observation | paper_state.sections | Rubric Scorer |
-| Plan Writing | task_plan.stages | Rubric Scorer |
-| Code Implementation | paper_state.atomic_steps (Phase 1 weak point) | Rubric Scorer |
-| Command Execution | task_plan.stages | Rubric Scorer |
-| Result Matching | paper_state.expected_claims | Verifier (self-check) + Rubric Scorer |
-
----
-
-## 3. Quick Start
-
-```bash
-# 1. Clone
-git clone https://github.com/FujunhaoFc/rgsc-agent.git
-cd rgsc-agent
-
-# 2. Python 3.11+
-python3 --version   # should be >= 3.11
-
-# 3. Install dependencies
-pip install -r requirements.txt
-
-# 4. Configure API key
-cp .env.example .env
-# Edit .env to set DEEPSEEK_API_KEY=sk-xxx
-
-# 5. Prepare data
-# NLPCC Task 11 dataset (5 train/val papers) is NOT in this repo.
-# Obtain from: https://github.com/KOU-199024/NLPCC-2026-Shared-Task-11
-# Place under: data/train_valid/{paper_name}/{paper.md, paper.pdf, rubrics.json, images/}
-
-# 6. Verify installation
-pytest tests/ -v
-# Expected: 135+ test functions, all passing or with documented skips
-```
-
----
-
-## 4. Usage
-
-Each module has an independent CLI entry point. All commands run from the project root.
-
-### Paper Observer (Phase 1)
-
-Extract `paper_state.json` from a paper's markdown:
-
-```bash
-# Full extraction (skeleton + detail in one pass)
-python pipeline/paper_observer/llm_summarizer.py min-p
-
-# Two-pass extraction (lower risk of truncation for long papers)
-python pipeline/paper_observer/llm_summarizer.py min-p skeleton
-python pipeline/paper_observer/llm_summarizer.py min-p detail
-
-# Outputs:
-#   outputs/min-p/paper_state.json
-```
-
-### Rubric Normalizer (Phase 1)
-
-Derive a self-checklist from paper_state (rule-based, no LLM):
-
-```bash
-python pipeline/rubric_normalizer/derive_from_state.py min-p
-
-# Outputs:
-#   outputs/min-p/derived_checklist.json
-```
-
-### Coverage Diagnostic (Phase 1)
-
-Score derived_checklist against ground truth rubrics.json to measure recall:
-
-```bash
-python eval/coverage_diagnostic.py min-p
-# Or all 5 papers:
-python eval/coverage_diagnostic.py AMUN Beyond-Ngram I0T INCLINE min-p
-
-# Outputs:
-#   outputs/{paper}/coverage_diagnostic.json
-#   outputs/coverage_summary.json
-```
-
-### Stage Planner (Phase 2)
-
-Split the derived checklist into an ordered, dependency-chained task plan:
-
-```bash
-python pipeline/stage_planner/planner.py min-p
-
-# Outputs:
-#   outputs/min-p/task_plan.json
-#   outputs/min-p/_debug/llm_response_step5.json  (LLM refinement trace)
-```
-
-### Verifier (Phase 3.1)
-
-Judge whether experiment results match paper claims (Result Matching type only):
-
-```bash
-python pipeline/verifier/verifier.py min-p
-
-# Outputs:
-#   outputs/min-p/verification_report.json
-#   outputs/min-p/_debug/llm_response_verifier_{claim_id}.json
-```
-
-Requires `results.json` (or `mock_results.json` during development) in `outputs/min-p/`.
-
-### Rubric Scorer (Phase 3.2 Step 1)
-
-Simulate NLPCC grading of an agent submission (all 5 rubric types):
-
-```bash
-# Mock mode (no API calls, all verdicts = "hit")
-python pipeline/rubric_scorer/scorer.py --dry-run min-p
-
-# Real LLM scoring with resume support (cached rubric verdicts reused)
-python pipeline/rubric_scorer/scorer.py min-p
-
-# Force re-run all rubrics, bypassing cache
-python pipeline/rubric_scorer/scorer.py --no-resume min-p
-
-# Outputs:
-#   outputs/min-p/rubric_score_report.json
-#   outputs/min-p/_debug/rubric_scorer/llm_response_rubric_{idx:03d}.json
-```
-
----
-
-## 5. Project Layout
+## Repository layout
 
 ```
 rgsc-agent/
-├── pipeline/                       # Core modules
-│   ├── paper_observer/             # Phase 1: paper.md → paper_state
-│   │   ├── section_parser.py       #   Parse paper.md into section tree
-│   │   ├── entity_extractor.py     #   Extract tables, figures, equations
-│   │   ├── llm_summarizer.py       #   LLM extraction (skeleton + detail)
-│   │   └── build_paper_state.py    #   Schema assembly utilities
-│   ├── rubric_normalizer/          # Phase 1: paper_state → checklist
-│   │   ├── derive_from_state.py    #   Rule-based checklist generation
-│   │   ├── anchor_parser.py        #   Section/anchor extraction
-│   │   └── normalize.py            #   Checklist normalization
-│   ├── stage_planner/              # Phase 2: state → task_plan
-│   │   ├── planner.py              #   Rule-based + LLM-refined stage planning
-│   │   └── prompts/                #   LLM refinement prompts
-│   ├── verifier/                   # Phase 3.1: Result Matching self-check
-│   │   ├── verifier.py             #   LLM claim-judge engine
-│   │   └── prompts/                #   claim_judge.txt
-│   ├── rubric_scorer/              # Phase 3.2 Step 1: NLPCC rubric sim
-│   │   ├── scorer.py               #   Main scoring engine
-│   │   ├── retrieval.py            #   actions.json per-type filter
-│   │   └── prompts/                #   Type-specific judge prompts
-│   └── schemas/                    # JSON schemas for all pipeline outputs
-├── eval/                           # Evaluation scripts
-│   └── coverage_diagnostic.py      # derived_checklist vs official rubrics
+├── agent-workspace/          # Per-paper workspace template and launcher scripts
+│   ├── _template/            #   CLAUDE.md (v5, 13 KB), .mcp.json, .claude/
+│   ├── setup_paper.sh        #   Build a workspace from the template
+│   ├── batch_skim.sh         #   Launch a per-paper skim-mode session in tmux
+│   └── batch_ablation.sh     #   Launch Phase-B toolkit ablation runs
+├── pipeline/                 # Phase B toolkit
+│   ├── paper_observer/       #   Extract structured paper_state.json
+│   ├── rubric_normalizer/    #   Derive self-rubric checklist
+│   ├── stage_planner/        #   Build stage-wise task plan
+│   └── common/paths.py       #   Split-aware paper-id resolution
+├── evaluation/               # LLM-judge rubric evaluator + ablation harness
+│   ├── rubric_evaluator.py   #   454 lines, parallel LLM judge, --train_dir / --workspace_root / --output_dir CLI
+│   └── evaluate_ablation.py  #   148 lines, evaluates 3 papers × 4 configs
+├── figures/                  # matplotlib scripts to regenerate paper figures
+│   ├── make_figures.py       #   fig3, fig4 (initial), fig6
+│   ├── make_figure4_v2.py    #   fig4 with updated data
+│   ├── make_figure5.py       #   fig5 ablation
+│   └── make_figure2.py       #   fig2 workspace layout
+├── results/                  # Aggregate JSON, safe to publish
+│   ├── test_138_action_stats.json
+│   ├── train_12_rubric_structure.json
+│   ├── train_self_eval_aggregate.json
+│   ├── paper_final_stats.json
+│   └── ablation_summary.json
+├── paper/figures/            # Rendered PNG figures
 ├── data/
-│   └── train_valid/                # NLPCC training set (not in git)
-├── outputs/                        # Per-paper artifacts
-├── tests/                          # 135+ pytest test functions
-├── docs/                           # Design documents + worklog
-│   ├── paper_state_design.md       # Schema decisions, recall targets
-│   ├── rubric_scorer_design.md     # Scorer architecture, scoring rules
-│   └── worklog.md                  # Engineering journal
-├── requirements.txt
-├── .env.example
+│   ├── train_valid/          # 12 official training-set papers (flat + nested)
+│   └── official_tools/       # MCP action-recorder from the organizer
+├── triage_report.md          # 138-paper 5-axis triage
 └── README.md
 ```
 
----
+The 138-paper test set is not distributed (organizer-restricted). Agent
+outputs (`outputs/`, `agent-workspace/<paper>/`) are per-run artifacts and
+are also excluded from tracking.
 
-## 6. Current Results
+## Setup
 
-5 papers (AMUN, Beyond-Ngram, I0T, INCLINE, min-p), 399 rubric items total.
+- Python 3.13 or later.
+- DeepSeek API key (`DEEPSEEK_API_KEY`) for the toolkit LLM calls and the
+  rubric evaluator.
+- Claude Code (or a compatible MCP client) installed and reachable on `PATH`
+  as `claude` for running the agent loop.
+- The MCP action-recorder tool provided by the organizer under
+  `data/official_tools/record_tools.py`.
 
-### Phase 1: derived_checklist coverage
+```bash
+git clone https://github.com/FujunhaoFc/rgsc-agent.git
+cd rgsc-agent
+python -m venv .venv && source .venv/bin/activate
+pip install -e .
+export DEEPSEEK_API_KEY=sk-...
+```
 
-| Type                | Target | Actual | Status |
-|---------------------|--------|--------|--------|
-| Paper Observation   | ≥ 90%  | 98.1%  | ✓      |
-| Result Matching     | ≥ 80%  | 100.0% | ✓      |
-| Plan Writing        | ≥ 50%  | 48.1%  | below  |
-| Code Implementation | ≥ 50%  | 42.1%  | below  |
-| Command Execution   | ≥ 40%  | 30.4%  | below  |
-| **Overall**         | **≥ 60%** | **55.0%** | below |
+Paths in `agent-workspace/_template/.mcp.json` assume the repo lives at
+`/root/rgsc-agent` (our development environment). If you clone elsewhere,
+adjust the `--work-dir` argument in that file and in
+`agent-workspace/setup_paper.sh` accordingly.
 
-Plan Writing and Code Implementation are the two weakest categories — these items require semantic understanding of atomic method steps, which the current prompt-based extraction struggles with at the granularity NLPCC rubrics demand. Closing this gap is the main objective of Phase 3.2 Step 2 (Agent Loop), which can cover ground the derived checklist misses through autonomous code generation and execution.
+## Running the pipeline
 
-### Phase 3.1: Verifier mock validation
+**Skim mode on a single paper** (~15 minutes):
 
-- All 5 papers passed mock end-to-end validation with overall score ≥ 0.929.
-- AMUN, Beyond-Ngram, I0T, INCLINE: overall = 1.0.
-- min-p: overall = 0.929 (6 pass / 1 partial).
-- Verifier serves a dual role: Result Matching self-check at agent runtime, and post-hoc Paper Observer quality audit (see `outputs/AMUN/_review_notes.md`).
+```bash
+./agent-workspace/batch_skim.sh AMUN
+tmux attach -t skim-AMUN            # optional: watch the session
+```
 
-### Phase 3.2 Step 1: Rubric Scorer sanity
+Outputs land in `~/agent-workspace/AMUN/`:
+- `log/actions.json` (action trace via MCP action-recorder)
+- `plan.md` (reproduction plan)
+- `results.md` (honest reporting; NOT REPRODUCED with reason)
+- `src/*.py` (method implementation skeleton)
 
-- All 5 papers scored on empty `actions.json` + empty `reproduced_repo/` → `estimated_recall = 0.0`.
-- 399 LLM judge calls, token cost ~$0.14, zero hallucinations (Scorer correctly assigns "miss" when no evidence exists).
+**Batch mode** (loop over a list of papers):
 
-Full per-paper breakdowns in `outputs/{paper}/coverage_diagnostic.json`.
+```bash
+for p in AMUN INCLINE min-p; do
+    ./agent-workspace/batch_skim.sh $p
+    # wait for tmux session to finish before next
+done
+```
 
----
+**Phase B toolkit ablation** (produces the data in Section 5.4 of the paper):
 
-## 7. Tech Stack
+```bash
+for cfg in Full NoStagePlanner NoRubricNormalizer NoPhaseB; do
+    ./agent-workspace/batch_ablation.sh AMUN $cfg
+done
+```
 
-- **Language**: Python 3.11+
-- **LLM**: DeepSeek V4-Pro via OpenAI-compatible API (`base_url=https://api.deepseek.com/v1`)
-- **Schemas**: jsonschema (Draft7)
-- **Validation**: pydantic ≥ 2.5
-- **Tests**: pytest (135 test functions, 191 collected; 70+ pass, some gated behind live API key)
-- **Agent framework** (Phase 3.2 Step 2): Claude Code + MCP Action Recorder
-- **LLM config**: max_tokens 4000 (Verifier/Scorer), 8000 (Stage Planner Step 5); temperature 0.2–0.3; retry strategy: 3 attempts with combined prompt + complete schema template on malformed JSON
+## Reproducing the reported numbers
 
----
+Once workspaces exist, the rubric evaluator produces the per-type recall
+tables in Sections 5.2 and 5.4 of the paper. It uses DeepSeek V4-Pro as an
+impartial LLM judge:
 
-## 8. Roadmap
+```bash
+# Training-set self-evaluation (Section 5.2)
+python evaluation/rubric_evaluator.py \
+    --train_dir data/train_valid \
+    --workspace_root ~/agent-workspace \
+    --output_dir ./eval_results \
+    --papers AMUN CIForm gated-attention GSL-MPP I0T INCLINE \
+             min-p n-grams REPAIR SCoRe ActorAttack representation-political-llm
 
-| Phase | Description | Status |
-|-------|-------------|--------|
-| Phase 1 | Paper Observer + derived checklist + coverage diagnostic | ✓ complete |
-| Phase 2 | Stage Planner (rule-based + LLM-refined task_plan) | ✓ complete |
-| Phase 3.1 | Verifier (Result Matching LLM judge) | ✓ complete |
-| Phase 3.2 Step 1 | Rubric Scorer (NLPCC simulator, empty-input sanity verified) | ✓ complete |
-| Phase 3.2 Step 2 | Agent Loop — Claude Code + MCP Action Recorder on min-p | **next** |
-| Phase 3.3 | Debugger module (auto-retry / code repair on execution failure) | planned |
-| Phase 3.4–3.6 | Scale to all 5 train papers + benchmark vs PaperBench / ScienceAgentBench | planned |
+# Phase B toolkit ablation (Section 5.4)
+python evaluation/evaluate_ablation.py \
+    --papers gated-attention AMUN min-p
+```
 
-The next milestone (Phase 3.2 Step 2) is to configure Claude Code with the MCP Action Recorder, run the agent loop on a single paper (min-p), and produce a real `actions.json`. The key measurement will be rubric_score_report.estimated_recall vs the Phase 1 derived_checklist baseline of 38–62% — the delta represents the agent's autonomous contribution beyond what the checklist captures.
+The evaluator produces `<paper>_eval.json` per paper and an aggregate
+`aggregate.json`. Aggregate JSONs are also included pre-computed under
+`results/`.
 
----
+**Regenerating the figures** (from the aggregate JSONs already in
+`results/`):
 
-## 9. References
+```bash
+python figures/make_figures.py       # fig3, fig4, fig6
+python figures/make_figure4_v2.py    # fig4 with updated data
+python figures/make_figure5.py       # fig5 ablation
+python figures/make_figure2.py       # fig2 workspace layout
+```
 
-- **NLPCC 2026 Shared Task 11**: [https://github.com/KOU-199024/NLPCC-2026-Shared-Task-11](https://github.com/KOU-199024/NLPCC-2026-Shared-Task-11) — official task definition, dataset, and evaluation protocol.
-- **MCP Action Recorder**: documented in the Task 11 repository README — the MCP server that records all agent tool calls as structured `actions.json`.
-- **PaperBench** (OpenAI, 2025): a benchmark for AI agents that reproduce ML experiments end-to-end. RGSC-Agent targets a compatible but rubric-oriented variant of the reproduction task.
-- **ScienceAgentBench** (CMU, 2025): evaluates language agents on scientific discovery tasks including code generation and data analysis.
-- **AutoReproduce**: a line of work on automatic reproduction of computational experiments; RGSC-Agent adds rubric grounding as the distinguishing contribution.
+PNGs write to `paper/figures/` by default; set `RGSC_FIGURES_OUT` to
+override.
+
+## Design notes: honest NOT REPRODUCED
+
+Under Constraints 4 and 5 of the task rubric, participants must not
+fabricate results. When we cannot actually run an experiment — because the
+paper needs a proprietary dataset, an 8×A100 training budget, or a gated
+model — we mark it as NOT REPRODUCED with a concrete reason and leave the
+implementation skeleton in place. All 138 test-set papers and all 12
+training-set papers use this policy. This design deliberately caps our
+theoretical maximum score at the sum of Paper Observation, Plan Writing, and
+Code Implementation weights (64.6% under the training-set rubric
+distribution). Our test-set result of 49.64% corresponds to 76.8% of that
+upper bound.
+
+## Citation
+
+The NLPCC 2026 workshop paper describing this system is under preparation.
+A BibTeX entry and PDF link will be added here on publication.
+
+If you use RGSC-Agent in your research, please cite the NLPCC 2026 shared
+task overview paper and this repository.
+
+## License
+
+MIT. See `LICENSE`.
+
+## Team
+
+- **System Name (ID)**: YNU-HPCC-Task11-AgentRep
+- **Team Leader**: Junhao Fu (`fujunhaofc@outlook.com`)
+- **Affiliations**: HPCC Lab, School of Information Science and Engineering,
+  Yunnan University; School of Information Engineering, Yunnan Jiaotong
+  Polytechnic University.
